@@ -289,7 +289,7 @@ sub import {
 
 
 # %gOpts params comprise a global test-state.  Initial values here are
-# HELP strings, they MUST BE REPLACED by runtime values before use, as
+# HELP strings, they MUST BE REPLACED by runtime values before use, as id:1117
 # is done by getCmdLine(), via import
 
 our %gOpts = 	# values are replaced at runtime !!

@@ -100,20 +100,20 @@ sub _testml_has_points {
 #
 # two blocks: perl, yaml
 #
-# Tests that a YAML string loads to the expected perl data.  Also, tests
+# Tests that a YAML string loads to the expected perl data. Also, tests id:1119
 # roundtripping from perl->YAML->perl.
 #
-# We can't compare the YAML for roundtripping because CPAN::Meta::YAML doesn't
+# We can't compare the YAML for roundtripping because doesn't CPAN::Meta::YAML id:1104
 # preserve order and comments.  Therefore, all we can test is that given input
-# YAML we can produce output YAML that produces the same Perl data as the
+# YAML we can produce output YAML that produces the same Perl data as the id:1109
 # input.
 #
 # The perl must be an array reference of data to serialize:
 #
 # [ $thing1, $thing2, ... ]
 #
-# However, if a test point called 'serializes' exists, the output YAML is
-# expected to match the input YAML and will be checked for equality.
+# However, if a test point called 'serializes' exists, the output YAML is id:1115
+# expected to match the input YAML and will be checked for equality. id:1123
 #--------------------------------------------------------------------------#
 
 sub test_yaml_roundtrip {
@@ -176,7 +176,7 @@ sub test_yaml_roundtrip {
 #
 # two blocks: perl, yaml
 #
-# Tests that perl references serialize correctly to a specific YAML output
+# Tests that perl references serialize correctly to a specific YAML output id:1120
 #
 # The perl must be an array reference of data to serialize:
 #
@@ -234,7 +234,7 @@ sub test_dump_error {
 #
 # two blocks: yaml, error
 #
-# Tests that a YAML string results in an error when loaded
+# Tests that a YAML string results in an error when loaded id:1105
 #
 # The error must be a key in the %ERROR hash in this file
 #--------------------------------------------------------------------------#
@@ -261,7 +261,7 @@ sub test_load_error {
 #
 # two blocks: yaml, warning
 #
-# Tests that a YAML string results in warning when loaded
+# Tests that a YAML string results in warning when loaded id:1110
 #
 # The warning must be a key in the %WARN hash in this file
 #--------------------------------------------------------------------------#
@@ -296,7 +296,7 @@ sub test_load_warning {
 #
 # two blocks: yaml, json
 #
-# Tests that a YAML string can be loaded to Perl and dumped to JSON and
+# Tests that a YAML string can be loaded to Perl and dumped to JSON and id:1116
 # match an expected JSON output.  The expected JSON is loaded and dumped
 # to ensure similar JSON dump options.
 #--------------------------------------------------------------------------#
@@ -309,7 +309,7 @@ sub test_yaml_json {
       _testml_has_points($block, qw(yaml json)) or return;
 
     subtest "$label", sub {
-        # test YAML Load
+        # test YAML Load id:1124
         my $object = eval {
             CPAN::Meta::YAML::Load($yaml);
         };
@@ -333,7 +333,7 @@ sub test_yaml_json {
 #
 # two blocks: code, yaml
 #
-# Tests that a Unicode codepoint is correctly dumped to YAML as both
+# Tests that a Unicode codepoint is correctly dumped to YAML as both id:1121
 # key and value.
 #
 # The code test point must be a non-negative integer
