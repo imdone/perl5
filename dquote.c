@@ -10,7 +10,7 @@
 #include "perl.h"
 #include "dquote_inline.h"
 
-/* XXX Add documentation after final interface and behavior is decided */
+/* XXX Add documentation after final interface and behavior is decided id:629*/
 /* May want to show context for error, so would pass S_grok_bslash_c(pTHX_ const char* current, const char* start, const bool output_warning)
     U8 source = *current;
 */
@@ -96,7 +96,7 @@ Perl_grok_bslash_o(pTHX_ char **s, const char * const send, UV *uv,
     STRLEN numbers_len;
     I32 flags = PERL_SCAN_ALLOW_UNDERSCORES
 		| PERL_SCAN_DISALLOW_PREFIX
-		/* XXX Until the message is improved in grok_oct, handle errors
+		/* XXX Until the message is improved in grok_oct, handle errors id:402
 		 * ourselves */
 	        | PERL_SCAN_SILENT_ILLDIGIT;
 
@@ -240,7 +240,7 @@ Perl_grok_bslash_x(pTHX_ char **s, const char * const send, UV *uv,
         while (isXDIGIT(**s)) { /* Position beyond the legal digits */
             (*s)++;
         }
-        /* XXX The corresponding message above for \o is just '\\o{'; other
+        /* XXX The corresponding message above for \o is just '\\o{'; other id:473
          * messages for other constructs include the '}', so are inconsistent.
          */
 	*error_msg = "Missing right brace on \\x{}";

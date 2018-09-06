@@ -31,7 +31,7 @@ plan tests =>     11 # REGEX TEST HARNESS SELFTEST
 		+ 11 # TEST -e \$srcCode
 		+  5 # REFTEXT FIXUP TESTS
 		+  5 # CANONICAL B::Concise EXAMPLE
-		+ 16 * $gOpts{selftest}; # XXX I don't understand this - DAPM
+		+ 16 * $gOpts{selftest}; # XXX I don't understand this - DAPM id:546
 
 pass("REGEX TEST HARNESS SELFTEST");
 
@@ -148,7 +148,7 @@ checkOptree ( name	=> 'fixup nextstate (in reftext)',
 	      code	=> sub {my $a},
 	      strip_open_hints => 1,
 	      expect	=> <<'EOT_EOT', expect_nt => <<'EONT_EONT');
-# 1  <;> nextstate( NOTE THAT THIS CAN BE ANYTHING ) v:>,<,%
+# 1  <;> nextstate( NOTE THAT THIS CAN BE ANYTHING ) id:314
 # 2  <0> padsv[$a:54,55] sM/LVINTRO
 # 3  <1> leavesub[1 ref] K/REFC,1
 EOT_EOT

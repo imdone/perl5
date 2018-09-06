@@ -46,7 +46,7 @@ glibpth="$*"
 # those often indicate a private use only library.  Especially badly that would
 # break things with SUNWbdb (Berkeley DB) being installed, which brings in
 # /usr/lib/libdb.so.1, but that is not really meant for public consumption.
-#  XXX Revisit after perl 5.10 -- should we apply this to older Solaris
+#  XXX Revisit after perl 5.10 -- should we apply this to older Solaris id:576
 # versions too?  (A.D. 11/2007).
 case "`$run uname -r`" in
 5.[0-9]) ;;
@@ -235,7 +235,7 @@ echo 'int main() { return 0; }' > try.c
 	# Indent to avoid propagation to config.sh
 	verbose=`${cc:-cc} $ccflags -v -o try try.c 2>&1`
 
-# XXX TODO:  'specs' output changed from 'Reading specs from' in gcc-[23] to 'Using
+# XXX TODO: 'specs' output changed from 'Reading specs from' in gcc-[23] to 'Using id:560
 # built-in specs' in gcc-4.  Perhaps we should just use the same gcc test as
 # in Configure to see if we're using gcc.
 if echo "$verbose" | egrep '(Reading specs from)|(Using built-in specs)' >/dev/null 2>&1; then

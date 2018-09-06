@@ -8,7 +8,7 @@ use vars qw( $VERSION $HTML_RENDER_CLASS $HTML_EXTENSION
 $VERSION = '3.35';
 @ISA = ();  # Yup, we're NOT a subclass of Pod::Simple::HTML!
 
-# TODO: nocontents stylesheets. Strike some of the color variations?
+# TODO: nocontents stylesheets. Strike some of the color variations? id:205
 
 use Pod::Simple::HTML ();
 BEGIN {*esc = \&Pod::Simple::HTML::esc }
@@ -460,7 +460,7 @@ sub batch_mode_page_object_init {
   my $self = shift;
   my($page, $module, $infile, $outfile, $depth) = @_;
   
-  # TODO: any further options to percolate onto this new object here?
+  # TODO: any further options to percolate onto this new object here? id:387
 
   $page->default_title($module);
   $page->index( $self->index );

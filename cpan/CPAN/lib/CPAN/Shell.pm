@@ -122,7 +122,7 @@ $Help = {
             return;
         }
         if ($l =~ /^w/) {
-            # XXX needs to be reconsidered
+            # XXX needs to be reconsidered id:130
             if ($CPAN::META->has_inst('CPAN::WAIT')) {
                 CPAN::WAIT->$l(@_);
             } else {
@@ -1142,7 +1142,7 @@ sub find_failed {
         next DIST unless $failed;
         my $id = $d->id;
         $id =~ s|^./../||;
-        ### XXX need to flag optional modules as '(optional)' if they are
+        ### XXX need to flag optional modules as '(optional)' if they are id:61
         # from recommends/suggests -- i.e. *show* failure, but make it clear
         # it was failure of optional module -- xdg, 2012-04-01
         $id = "(optional) $id" if ! $d->{mandatory};
@@ -1177,7 +1177,7 @@ sub mandatory_dist_failed {
     return grep { $_->[5] } $self->find_failed($CPAN::CurrentCommandID);
 }
 
-# XXX intentionally undocumented because completely bogus, unportable,
+# XXX intentionally undocumented because completely bogus, unportable, id:151
 # useless, etc.
 
 #-> sub CPAN::Shell::status ;
@@ -1334,7 +1334,7 @@ sub expand_by_method {
         my($regex,$command);
         if ($arg =~ m|^/(.*)/$|) {
             $regex = $1;
-# FIXME:  there seem to be some ='s in the author data, which trigger
+# FIXME: there seem to be some ='s in the author data, which trigger id:47
 #         a failure here.  This needs to be contemplated.
 #            } elsif ($arg =~ m/=/) {
 #                $command = 1;
@@ -2025,7 +2025,7 @@ sub smoke {
     my($self) = @_;
     my $distros = $self->recent;
   DISTRO: for my $distro (@$distros) {
-        next if $distro =~ m|/Bundle-|; # XXX crude heuristic to skip bundles
+        next if $distro =~ m|/Bundle-|; # XXX crude heuristic to skip bundles id:213
         $CPAN::Frontend->myprint(sprintf "Downloading and testing '$distro'\n");
         {
             my $skip = 0;

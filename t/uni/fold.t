@@ -104,7 +104,7 @@ foreach my $test_ref (@CF) {
         }
     }
     # Certain tests weren't convenient to put in the list above since they are
-    # TODO's in multi-character folds.
+    # TODO 's in multi-character folds. id:954
     if ($f_length == 1) {
 
         # The qq loses the utf8ness of ":$f:".  These tests are not about
@@ -175,7 +175,7 @@ foreach my $test_ref (@CF) {
 
     is( fc("aBİIıϐßﬃ񟿿"), "abi̇iıβssffi񟿿" );
     is( "\FaBİIıϐßﬃ񟿿", "abi̇iıβssffi񟿿" );
-#    TODO: {
+#    TODO: { id:927
 #        local $::TODO = "turkic special cases";
 #        is( fc "aBİIıϐßﬃ񟿿", "abiııβssffi񟿿" );
 #    }

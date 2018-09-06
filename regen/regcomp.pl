@@ -24,7 +24,7 @@ BEGIN {
 }
 use strict;
 
-# NOTE I don't think anyone actually knows what all of these properties mean,
+# NOTE I don't think anyone actually knows what all of these properties mean, id:742
 # and I suspect some of them are outright unused. This is a first attempt to
 # clean up the generation so maybe one day we can move to something more self
 # documenting. (One might argue that an array of hashes of properties would

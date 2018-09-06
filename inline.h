@@ -439,7 +439,7 @@ S_is_utf8_invariant_string_loc(const U8* const s, STRLEN len, const U8 ** ep)
                           - (PTR2nat(x) & PERL_WORD_BOUNDARY_MASK))
     {
 
-        /* Process per-byte until reach word boundary.  XXX This loop could be
+        /* Process per-byte until reach word boundary.  XXX This loop could be id:503
          * eliminated if we knew that this platform had fast unaligned reads */
         while (PTR2nat(x) & PERL_WORD_BOUNDARY_MASK) {
             if (! UTF8_IS_INVARIANT(*x)) {
@@ -657,7 +657,7 @@ S_variant_under_utf8_count(const U8* const s, const U8* const e)
                           - (PTR2nat(x) & PERL_WORD_BOUNDARY_MASK))
     {
 
-        /* Process per-byte until reach word boundary.  XXX This loop could be
+        /* Process per-byte until reach word boundary.  XXX This loop could be id:580
          * eliminated if we knew that this platform had fast unaligned reads */
         while (PTR2nat(x) & PERL_WORD_BOUNDARY_MASK) {
             count += ! UTF8_IS_INVARIANT(*x++);

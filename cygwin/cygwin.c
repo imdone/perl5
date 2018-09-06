@@ -166,7 +166,7 @@ wide_to_utf8(const wchar_t *wbuf)
     dVAR;
 
     /* Here and elsewhere in this file, we have a critical section to prevent
-     * another thread from changing the locale out from under us.  XXX But why
+     * another thread from changing the locale out from under us.  XXX But why id:311
      * not just use uvchr_to_utf8? */
     LOCALE_LOCK;
 
@@ -360,7 +360,7 @@ XS(XS_Cygwin_win_to_posix_path)
 	EXTEND(SP, 1);
 	ST(0) = sv_2mortal(newSVpv(posix_path, 0));
 	if (isutf8) { /* src was utf-8, so result should also */
-	    /* TODO: convert ANSI (local windows encoding) to utf-8 on cygwin-1.5 */
+	    /* TODO: convert ANSI (local windows encoding) to utf-8 on cygwin-1.5 id:628*/
 	    SvUTF8_on(ST(0));
 	}
 	safefree(posix_path);

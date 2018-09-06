@@ -324,7 +324,7 @@ my @death_only_under_strict = (
     'm/[\xABC]/' => "",
                  => 'Use \x{...} for more than two hex characters {#} m/[\xABC{#}]/',
 
-    # XXX This is a confusing error message.  The G isn't ignored; it just
+    # XXX This is a confusing error message. The G isn't ignored; it just id:949
     # terminates the \x.  Also some messages below are missing the <-- HERE,
     # aren't all category 'regexp'.  (Hence we have to turn off 'digit'
     # messages as well below)

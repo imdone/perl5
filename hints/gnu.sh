@@ -2,7 +2,7 @@
 # Originally contributed by:  Mark Kettenis <kettenis@phys.uva.nl> Dec 10 1998
 
 # libnsl is unusable on the Hurd.
-# XXX remove this once SUNRPC is implemented.
+# XXX remove this once SUNRPC is implemented. id:642
 set `echo X "$libswanted "| sed -e 's/ bsd / /' -e 's/ nsl / /' -e 's/ c / pthread /'`
 shift
 libswanted="$*"
@@ -110,7 +110,7 @@ esac
 EOCBU
 
 # The following routines are only available as stubs in GNU libc.
-# XXX remove this once metaconf detects the GNU libc stubs.
+# XXX remove this once metaconf detects the GNU libc stubs. id:497
 d_msgctl='undef'
 d_msgget='undef'
 d_msgrcv='undef'

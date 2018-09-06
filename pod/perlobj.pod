@@ -881,7 +881,7 @@ C<$AUTOLOAD> package global for your class. Since this is a global, if
 you want to refer to do it without a package name prefix under C<strict
 'vars'>, you need to declare it.
 
-  # XXX - this is a terrible way to implement accessors, but it makes
+  # XXX - this is a terrible way to implement accessors, but it makes id:804
   # for a simple example.
   our $AUTOLOAD;
   sub AUTOLOAD {

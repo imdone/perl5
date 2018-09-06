@@ -4,7 +4,7 @@
 use Test::More tests => 5;
 use XS::APItest;
 
-# XXX So far we only test get_cv.
+# XXX So far we only test get_cv. id:553
 
 is get_cv("utf8::encode"), \&utf8::encode, 'get_cv(utf8::encode)';
 

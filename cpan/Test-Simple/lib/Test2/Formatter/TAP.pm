@@ -301,7 +301,7 @@ sub assert_tap {
     }
 
     if ($directives) {
-        $directives = ' # TODO & SKIP' if $directives eq ' # TODO & skip';
+        $directives = ' # TODO & SKIP' if $directives eq ' # TODO & skip'; id:526
         $ok .= $directives;
         $ok .= " $reason" if defined($reason);
     }

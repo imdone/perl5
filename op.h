@@ -169,7 +169,7 @@ Deprecated.  Use C<GIMME_V> instead.
 #endif
 
 
-/* NOTE: OPp* flags are now auto-generated and defined in opcode.h,
+/* NOTE: OPp* flags are now auto-generated and defined in opcode.h, id:607
  *       from data in regen/op_private */
 
 

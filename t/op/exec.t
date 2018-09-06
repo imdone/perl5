@@ -168,7 +168,7 @@ TODO: {
     my $tnum = curr_test();
     if( $^O =~ /Win32/ ) {
         print "not ok $tnum - exec failure doesn't terminate process " .
-              "# TODO Win32 exec failure waits for user input\n";
+              "# TODO Win32 exec failure waits for user input\n"; id:913
         next_test();
         last TODO;
     }

@@ -35,7 +35,7 @@ holds the key and hash value.
 #include "perl.h"
 
 /* we split when we collide and we have a load factor over 0.667.
- * NOTE if you change this formula so we split earlier than previously
+ * NOTE if you change this formula so we split earlier than previously id:645
  * you MUST change the logic in hv_ksplit()
  */
 #define DO_HSPLIT(xhv) ( ((xhv)->xhv_keys + ((xhv)->xhv_keys >> 1))  > (xhv)->xhv_max )
@@ -204,7 +204,7 @@ S_hv_notallowed(pTHX_ int flags, const char *key, I32 klen,
     }
     else {
 	/* Need to free saved eventually assign to mortal SV */
-	/* XXX is this line an error ???:  SV *sv = sv_newmortal(); */
+	/* XXX is this line an error ???: SV *sv = sv_newmortal(); id:500*/
 	sv_usepvn(sv, (char *) key, klen);
     }
     if (flags & HVhek_UTF8) {
@@ -409,7 +409,7 @@ Perl_hv_common(pTHX_ HV *hv, SV *keysv, const char *key, STRLEN klen,
 	    if (mg_find((const SV *)hv, PERL_MAGIC_tied)
 		|| SvGMAGICAL((const SV *)hv))
 	    {
-		/* FIXME should be able to skimp on the HE/HEK here when
+		/* FIXME should be able to skimp on the HE/HEK here when id:577
 		   HV_FETCH_JUST_SV is true.  */
 		if (!keysv) {
 		    keysv = newSVpvn_utf8(key, klen, is_utf8);
@@ -437,7 +437,7 @@ Perl_hv_common(pTHX_ HV *hv, SV *keysv, const char *key, STRLEN klen,
 		 /* so we can free entry when freeing sv */
 		LvTARG(sv) = MUTABLE_SV(entry);
 
-		/* XXX remove at some point? */
+		/* XXX remove at some point? id:561*/
 		if (flags & HVhek_FREEKEY)
 		    Safefree(key);
 
@@ -513,7 +513,7 @@ Perl_hv_common(pTHX_ HV *hv, SV *keysv, const char *key, STRLEN klen,
 		}
 #ifdef ENV_IS_CASELESS
 	    else if (mg_find((const SV *)hv, PERL_MAGIC_env)) {
-		/* XXX This code isn't UTF8 clean.  */
+		/* XXX This code isn't UTF8 clean. id:435*/
 		char * const keysave = (char * const)key;
 		/* Will need to free this, so set FREEKEY flag.  */
 		key = savepvn(key,klen);
@@ -558,7 +558,7 @@ Perl_hv_common(pTHX_ HV *hv, SV *keysv, const char *key, STRLEN klen,
 		}
 #ifdef ENV_IS_CASELESS
 		else if (mg_find((const SV *)hv, PERL_MAGIC_env)) {
-		    /* XXX This code isn't UTF8 clean.  */
+		    /* XXX This code isn't UTF8 clean. id:646*/
 		    const char *keysave = key;
 		    /* Will need to free this, so set FREEKEY flag.  */
 		    key = savepvn(key,klen);
@@ -597,7 +597,7 @@ Perl_hv_common(pTHX_ HV *hv, SV *keysv, const char *key, STRLEN klen,
 	}
 #endif
 	else {
-	    /* XXX remove at some point? */
+	    /* XXX remove at some point? id:501*/
             if (flags & HVhek_FREEKEY)
                 Safefree(key);
 
@@ -797,7 +797,7 @@ Perl_hv_common(pTHX_ HV *hv, SV *keysv, const char *key, STRLEN klen,
 	    return hv_common(hv, keysv, key, klen, flags,
 			     HV_FETCH_ISSTORE|HV_DISABLE_UVAR_XKEY|return_svp,
 			     val, hash);
-	    /* XXX Surely that could leak if the fetch-was-store fails?
+	    /* XXX Surely that could leak if the fetch-was-store fails? id:578
 	       Just like the hv_fetch.  */
 	}
     }
@@ -980,7 +980,7 @@ Resets the hash's iterator.
 flags : 1   = push keys
         2   = push values
         1|2 = push keys and values
-        XXX use symbolic flag constants at some point?
+        XXX use symbolic flag constants at some point? id:562
 I might unroll the non-tied hv_iternext() in here at some point - DAPM
 */
 
@@ -1143,7 +1143,7 @@ S_hv_delete_common(pTHX_ HV *hv, SV *keysv, const char *key, STRLEN klen,
 		}
 #ifdef ENV_IS_CASELESS
 		else if (mg_find((const SV *)hv, PERL_MAGIC_env)) {
-		    /* XXX This code isn't UTF8 clean.  */
+		    /* XXX This code isn't UTF8 clean. id:436*/
 		    keysv = newSVpvn_flags(key, klen, SVs_TEMP);
 		    if (k_flags & HVhek_FREEKEY) {
 			Safefree(key);

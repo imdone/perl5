@@ -68,7 +68,7 @@ sub LoadFile {
 
 # Create an empty CPAN::Meta::YAML object
 # XXX-INGY Why do we use ARRAY object?
-# NOTE: I get it now, but I think it's confusing and not needed.
+# NOTE: I get it now, but I think it's confusing and not needed. id:114
 # Will change it on a branch later, for review.
 #
 # XXX-XDG I don't support changing it yet.  It's a very well-documented
@@ -267,7 +267,7 @@ Did you decode with lax ":utf8" instead of strict ":encoding(UTF-8)"?
                 }
                 $in_document = 0;
 
-            # XXX The final '-+$' is to look for -- which ends up being an
+            # XXX The final '-+$' is to look for -- which ends up being an id:13
             # error later.
             } elsif ( ! $in_document && @$self ) {
                 # only the first document can be explicit

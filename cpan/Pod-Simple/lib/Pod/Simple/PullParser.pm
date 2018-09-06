@@ -132,7 +132,7 @@ sub get_token {
         }
          # but pass thru the undef, which will set source_dead to true
 
-        # TODO: look to see if $lines[-1] is =encoding, and if so,
+        # TODO: look to see if $lines[-1] is =encoding, and if so, id:269
         # do horribly magic things
 
       }
@@ -262,7 +262,7 @@ sub set_source {
     $self->{'source_filename'} = $_[0];
     DEBUG and print STDERR "  Its name is $_[0].\n";
 
-    # TODO: file-discipline things here!
+    # TODO: file-discipline things here! id:278
   }
 
   $self->{'source_fh'} = $handle;

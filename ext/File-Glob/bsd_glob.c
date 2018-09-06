@@ -222,7 +222,7 @@ bsd_glob(const char *pattern, int flags,
 	int c;
 	Char *bufnext, *bufend, patbuf[MAXPATHLEN];
 	patnext = (U8 *) pattern;
-	/* TODO: GLOB_APPEND / GLOB_DOOFFS aren't supported yet */
+	/* TODO: GLOB_APPEND / GLOB_DOOFFS aren't supported yet id:406*/
 #if 0
 	if (!(flags & GLOB_APPEND)) {
 		pglob->gl_pathc = 0;
@@ -781,7 +781,7 @@ glob3(Char *pathbuf, Char *pathbuf_last, Char *pathend, Char *pathend_last,
 #endif
 
 	if ((dirp = g_opendir(pathbuf, pglob)) == NULL) {
-		/* TODO: don't call for ENOENT or ENOTDIR? */
+		/* TODO: don't call for ENOENT or ENOTDIR? id:477*/
 		if (pglob->gl_errfunc) {
 			if (g_Ctoc(pathbuf, buf, sizeof(buf)))
 				return (GLOB_ABEND);

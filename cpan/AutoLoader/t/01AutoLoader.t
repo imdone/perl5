@@ -191,7 +191,7 @@ EOT
     write_file( File::Spec->catfile( $autopath, 'autosplit.ix' ), $autosplit_text );
 
     my $testsub_text = <<'EOT';
-# NOTE: Derived from MyModule.pm.
+# NOTE: Derived from MyModule.pm. id:30
 # Changes made here will be lost when autosplit is run again.
 # See AutoSplit.pm.
 package MyAddon;

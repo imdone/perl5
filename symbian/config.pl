@@ -366,7 +366,7 @@ qq[;Supports UIQ v2.1\n(0x101F617B), $1, $2, 0, {"UIQ21ProductID"}\n] :
 	if (($SDK_VARIANT eq 'S60' && $SDK_VERSION ne '1.2' || $WIN eq 'winscw') || defined $S80SDK || defined $S90SDK) { # Do only if not in S60 1.2 VC.
 	    $APPS =~ s!\\epoc32\\release\\(.+)\\$UARM$!\\epoc32\\data\\z\\system\\apps\\PerlApp!i;
 	}
-	# TODO: in S60 3.0 there will be no more recognizers.
+	# TODO: in S60 3.0 there will be no more recognizers. id:761
 	my $mdl = qq["$UREL\\PerlRecog.mdl"-"!:\\system\\recogs\\PerlRecog.mdl";];
 	my $AIF = $SDK_VARIANT =~ /^S[689]0/ ? qq["$APPS\\PerlApp.aif"-"!:\\system\\apps\\PerlApp\\PerlApp.aif"] : "";
         print PERLAPP_PKG <<__EOF__;

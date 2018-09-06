@@ -1211,8 +1211,8 @@ S_locking_setlocale(pTHX_
         }
 
         /* Here, we don't know about this category, so can't handle it.
-         * XXX best we can do is to unsafely set this
-         * XXX warning */
+         * XXX best we can do is to unsafely set this id:829
+         * XXX warning id:659*/
 
         return my_setlocale(category, locale);
 
@@ -1934,7 +1934,7 @@ S_new_collate(pTHX_ const char *newcoll)
 
             /* If the results are nonsensical for this simple test, the whole
              * locale definition is suspect.  Mark it so that locale collation
-             * is not active at all for it.  XXX Should we warn? */
+             * is not active at all for it.  XXX Should we warn? id:597*/
             if (   x_len_shorter == 0
                 || x_len_longer == 0
                 || x_len_shorter >= x_len_longer)
@@ -3381,7 +3381,7 @@ Perl_init_i18nl10n(pTHX_ int printwarn)
 
         if (i > 0) {
 
-            /* XXX This is to preserve old behavior for LOCALE_ENVIRON_REQUIRED
+            /* XXX This is to preserve old behavior for LOCALE_ENVIRON_REQUIRED id:695
              * when i==0, but I (khw) don't think that behavior makes much
              * sense */
             setlocale_failure = FALSE;
@@ -3941,7 +3941,7 @@ Perl__mem_collxfrm(pTHX_ const char *input_string,
 
     /* Make sure the UTF8ness of the string and locale match */
     if (utf8 != PL_in_utf8_COLLATE_locale) {
-        /* XXX convert above Unicode to 10FFFF? */
+        /* XXX convert above Unicode to 10FFFF? id:455*/
         const char * const t = s;   /* Temporary so we can later find where the
                                        input was */
 
@@ -4570,7 +4570,7 @@ Perl__is_cur_LC_category_utf8(pTHX_ int category)
              a fallback.  And it can return that it's UTF-8, even if there are
              variances from that.  For example, Turkish locales may use the
              alternate dotted I rules, and sometimes it appears to be a
-             defective locale definition.  XXX We should probably check for
+             defective locale definition.  XXX We should probably check for id:830
              these in the Latin1 range and warn (but on glibc, requires
              iswalnum() etc. due to their not handling 80-FF correctly */
             const char *codeset = my_nl_langinfo(CODESET, FALSE);

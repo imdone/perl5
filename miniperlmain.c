@@ -100,7 +100,7 @@ main(int argc, char **argv, char **env)
 #endif
 
 #if defined(USE_ITHREADS)
-    /* XXX Ideally, this should really be happening in perl_alloc() or
+    /* XXX Ideally, this should really be happening in perl_alloc() or id:664
      * perl_construct() to keep libperl.a transparently fork()-safe.
      * It is currently done here only because Apache/mod_perl have
      * problems due to lack of a call to cancel pthread_atfork()

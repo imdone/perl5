@@ -75,7 +75,7 @@ local $ENV{PERL_INSTALL_QUIET};
     sleep 2;
     run_ok(qq{$perl Makefile.PL});
 
-    # XXX This is a fragile way to check that it reran.
+    # XXX This is a fragile way to check that it reran. id:222
     like run_ok($make), qr/^Skip /ms;
 
     ok( -e "blib/lib/Big/Dummy.pm", "blib copied pm file" );

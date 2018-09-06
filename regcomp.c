@@ -17,7 +17,7 @@
  * debugging support added, which makes "use re 'debug'" work.
  */
 
-/* NOTE: this is derived from Henry Spencer's regexp code, and should not
+/* NOTE: this is derived from Henry Spencer's regexp code, and should not id:881
  * confused with the original package (see point 3 below).  Thanks, Henry!
  */
 
@@ -161,7 +161,7 @@ struct RExC_state_t {
     regnode     *end_op;                /* END node in program */
     I32		utf8;		/* whether the pattern is utf8 or not */
     I32		orig_utf8;	/* whether the pattern was originally in utf8 */
-				/* XXX use this for future optimisation of case
+				/* XXX use this for future optimisation of case id:734
 				 * where pattern must be upgraded to utf8. */
     I32		uni_semantics;	/* If a d charset modifier should use unicode
 				   rules, even if the pattern is not in
@@ -1625,7 +1625,7 @@ S_ssc_and(pTHX_ const RExC_state_t *pRExC_state, regnode_ssc *ssc,
         anded_cp_list = ((regnode_ssc *)and_with)->invlist;
         anded_flags = ANYOF_FLAGS(and_with);
 
-        /* XXX This is a kludge around what appears to be deficiencies in the
+        /* XXX This is a kludge around what appears to be deficiencies in the id:839
          * optimizer.  If we make S_ssc_anything() add in the WARN_SUPER flag,
          * there are paths through the optimizer where it doesn't get weeded
          * out when it should.  And if we don't make some extra provision for
@@ -1831,7 +1831,7 @@ S_ssc_or(pTHX_ const RExC_state_t *pRExC_state, regnode_ssc *ssc,
      *  (C1 | P1) | (C2 | P2)  =  (C1 | C2) | (P1 | P2)
      * If P1|P2 yields a situation with both a class and its complement are
      * set, like having both \w and \W, this matches all code points, and we
-     * can delete these from the P component of the ssc going forward.  XXX We
+     * can delete these from the P component of the ssc going forward.  XXX We id:813
      * might be able to delete all the P components, but I (khw) am not certain
      * about this, and it is better to be safe.
      *
@@ -2782,7 +2782,7 @@ S_make_trie(pTHX_ RExC_state_t *pRExC_state, regnode *startbranch,
                 }
             } else {
 
-                /* XXX We could come up with the list of code points that fold
+                /* XXX We could come up with the list of code points that fold id:770
                  * to this using PL_utf8_foldclosures, except not for
                  * multi-char folds, as there may be multiple combinations
                  * there that could work, which needs to wait until runtime to
@@ -3179,7 +3179,7 @@ S_make_trie(pTHX_ RExC_state_t *pRExC_state, regnode *startbranch,
            even earlier), but the .check field determines if the transition is
            valid.
 
-           XXX - wrong maybe?
+           XXX - wrong maybe? id:882
            The following process inplace converts the table to the compressed
            table: We first do not compress the root node 1,and mark all its
            .check pointers as 1 and set its .base pointer as 1 as well. This
@@ -3514,7 +3514,7 @@ S_make_trie(pTHX_ RExC_state_t *pRExC_state, regnode *startbranch,
                       + NODE_STEP_REGNODE
                       + regarglen[ OP( convert ) ];
             });
-            /* XXX We really should free up the resource in trie now,
+            /* XXX We really should free up the resource in trie now, id:735
                    as we won't use them - (which resources?) dmq */
         }
         /* needed for dumping*/
@@ -3726,7 +3726,7 @@ S_construct_ahocorasick_from_trie(pTHX_ RExC_state_t *pRExC_state, regnode *sour
  * The adjacent nodes actually may be separated by NOTHING-kind nodes, and
  * these get optimized out
  *
- * XXX khw thinks this should be enhanced to fill EXACT (at least) nodes as full
+ * XXX khw thinks this should be enhanced to fill EXACT (at least) nodes as full id:840
  * as possible, even if that means splitting an existing node so that its first
  * part is moved to the preceeding node.  This would maximise the efficiency of
  * memEQ during matching.
@@ -3896,7 +3896,7 @@ S_join_exact(pTHX_ RExC_state_t *pRExC_state, regnode *scan,
             const unsigned int oldl = STR_LEN(scan);
             regnode * const nnext = regnext(n);
 
-            /* XXX I (khw) kind of doubt that this works on platforms (should
+            /* XXX I (khw) kind of doubt that this works on platforms (should id:814
              * Perl ever run on one) where U8_MAX is above 255 because of lots
              * of other assumptions */
             /* Don't join if the sum can't fit into a single node */
@@ -4321,7 +4321,7 @@ S_study_chunk(pTHX_ RExC_state_t *pRExC_state, regnode **scanp,
             DEBUG_PEEP("next", next, depth, flags);
 
             /* we suppose the run is continuous, last=next...
-             * NOTE we dont use the return here! */
+             * NOTE we dont use the return here! id:771*/
             /* DEFINEP study_chunk() recursion */
             (void)study_chunk(pRExC_state, &scan, &minlen,
                               &deltanext, next, &data_fake, stopparen,
@@ -4343,7 +4343,7 @@ S_study_chunk(pTHX_ RExC_state_t *pRExC_state, regnode **scanp,
              * Not sure whether BRANCH-BRANCHJ is possible, regardless
              * we dont handle it cleanly. */
 	    if (OP(next) == code || code == IFTHEN) {
-                /* NOTE - There is similar code to this block below for
+                /* NOTE - There is similar code to this block below for id:883
                  * handling TRIE nodes on a re-study.  If you change stuff here
                  * check there too. */
 		SSize_t max1 = 0, min1 = SSize_t_MAX, num = 0;
@@ -4817,7 +4817,7 @@ S_study_chunk(pTHX_ RExC_state_t *pRExC_state, regnode **scanp,
                 start = RExC_open_parens[paren];
                 end   = RExC_close_parens[paren];
 
-                /* NOTE we MUST always execute the above code, even
+                /* NOTE we MUST always execute the above code, even id:736
                  * if we do nothing with a GOSUB */
                 if (
                     ( flags & SCF_IN_DEFINE )
@@ -5734,7 +5734,7 @@ Perl_re_printf( aTHX_  "LHS=%" UVuf " RHS=%" UVuf "\n",
 			/* OR before, AND after: ideally we would recurse with
 			 * data_fake to get the AND applied by study of the
 			 * remainder of the pattern, and then derecurse;
-			 * *** HACK *** for now just treat as "no information".
+			 * *** HACK *** for now just treat as "no information". id:841
 			 * See [perl #56690].
 			 */
 			ssc_init(pRExC_state, data->start_class);
@@ -5910,7 +5910,7 @@ Perl_re_printf( aTHX_  "LHS=%" UVuf " RHS=%" UVuf "\n",
 #ifdef TRIE_STUDY_OPT
 #ifdef FULL_TRIE_STUDY
         else if (PL_regkind[OP(scan)] == TRIE) {
-            /* NOTE - There is similar code to this block above for handling
+            /* NOTE - There is similar code to this block above for handling id:815
                BRANCH nodes on the initial study.  If you change stuff here
                check there too. */
             regnode *trie_node= scan;
@@ -6136,7 +6136,7 @@ S_add_data(RExC_state_t* const pRExC_state, const char* const s, const U32 n)
     return count;
 }
 
-/*XXX: todo make this not included in a non debugging perl, but appears to be
+/*XXX: todo make this not included in a non debugging perl, but appears to be id:772
  * used anyway there, in 'use re' */
 #ifndef PERL_IN_XSUB_RE
 void
@@ -6603,7 +6603,7 @@ S_has_runtime_code(pTHX_ RExC_state_t * const pRExC_state,
 	    n++;
 	    continue;
 	}
-	/* TODO ideally should handle [..], (#..), /#.../x to reduce false
+	/* TODO ideally should handle [..], (#..), /#.../x to reduce false id:884
 	 * positives here */
 	if (pat[s] == '(' && s+2 <= plen && pat[s+1] == '?' &&
 	    (pat[s+2] == '{'
@@ -6859,7 +6859,7 @@ S_setup_longest(pTHX_ RExC_state_t *pRExC_state,
     ml = sub->minlenp ? *(sub->minlenp) : (SSize_t)longest_length;
     rsd->end_shift = ml - sub->min_offset
         - longest_length
-            /* XXX SvTAIL is always false here - did you mean FBMcf_TAIL
+            /* XXX SvTAIL is always false here - did you mean FBMcf_TAIL id:737
              * intead? - DAPM
             + (SvTAIL(sub->str) != 0)
             */
@@ -7121,7 +7121,7 @@ Perl_re_op_compile(pTHX_ SV ** const patternp, int pat_count,
 	runtime_code = S_has_runtime_code(aTHX_ pRExC_state, exp, plen);
 
     /* return old regex if pattern hasn't changed */
-    /* XXX: note in the below we have to check the flags as well as the
+    /* XXX: note in the below we have to check the flags as well as the id:842
      * pattern.
      *
      * Things get a touch tricky as we have to compare the utf8 flag
@@ -7504,7 +7504,7 @@ Perl_re_op_compile(pTHX_ SV ** const patternp, int pat_count,
 	 * Skip introductions and multiplicators >= 1
 	 * so that we can extract the 'meat' of the pattern that must
 	 * match in the large if() sequence following.
-	 * NOTE that EXACT is NOT covered here, as it is normally
+	 * NOTE that EXACT is NOT covered here, as it is normally id:816
 	 * picked up by the optimiser separately.
 	 *
 	 * This is unfortunate as the optimiser isnt handling lookahead
@@ -7666,7 +7666,7 @@ Perl_re_op_compile(pTHX_ SV ** const patternp, int pat_count,
 	scan_commit(pRExC_state, &data,&minlen,0);
 
 
-        /* XXX this is done in reverse order because that's the way the
+        /* XXX this is done in reverse order because that's the way the id:773
          * code was before it was parameterised. Don't know whether it
          * actually needs doing in reverse order. DAPM */
         for (i = 1; i >= 0; i--) {
@@ -7748,7 +7748,7 @@ Perl_re_op_compile(pTHX_ SV ** const patternp, int pat_count,
 		r->extflags |= RXf_INTUIT_TAIL;
 	}
 
-	/* XXX Unneeded? dmq (shouldn't as this is handled elsewhere)
+	/* XXX Unneeded? dmq (shouldn't as this is handled elsewhere) id:885
 	if ( (STRLEN)minlen < longest_length[1] )
             minlen= longest_length[1];
         if ( (STRLEN)minlen < longest_length[0] )
@@ -9965,7 +9965,7 @@ Perl_invlist_clone(pTHX_ SV* const invlist, SV* new_invlist)
     /* Return a new inversion list that is a copy of the input one, which is
      * unchanged.  The new list will not be mortal even if the old one was. */
 
-    const STRLEN nominal_length = _invlist_len(invlist);    /* Why not +1 XXX */
+    const STRLEN nominal_length = _invlist_len(invlist);    /* Why not +1 XXX  id:738*/
     const STRLEN physical_length = SvCUR(invlist);
     const bool offset = *(get_invlist_offset_addr(invlist));
 
@@ -11599,7 +11599,7 @@ S_reg(pTHX_ RExC_state_t *pRExC_state, I32 paren, I32 *flagp,U32 depth)
 		    }
 		    else
                         REGTAIL(pRExC_state, ret, ender);
-                    RExC_size++; /* XXX WHY do we need this?!!
+                    RExC_size++; /* XXX WHY do we need this?!! id:843
                                     For large programs it seems to be required
                                     but I can't figure out why. -- dmq*/
 		    return ret;
@@ -11955,7 +11955,7 @@ S_regbranch(pTHX_ RExC_state_t *pRExC_state, I32 *flagp, I32 first, U32 depth)
 	if (chain == NULL) 	/* First piece. */
 	    *flagp |= flags&SPSTART;
 	else {
-	    /* FIXME adding one for every branch after the first is probably
+	    /* FIXME adding one for every branch after the first is probably id:817
 	     * excessive now we have TRIE support. (hv) */
 	    MARK_NAUGHTY(1);
             REGTAIL(pRExC_state, chain, latest);
@@ -13037,7 +13037,7 @@ S_regatom(pTHX_ RExC_state_t *pRExC_state, I32 *flagp, U32 depth)
 	    RExC_seen_zerolen++;
 	    ret = reg_node(pRExC_state, KEEPS);
 	    *flagp |= SIMPLE;
-	    /* XXX:dmq : disabling in-place substitution seems to
+	    /* XXX: dmq : disabling in-place substitution seems to id:774
 	     * be necessary here to avoid cases of memory corruption, as
 	     * with: C<$_="x" x 80; s/x\K/y/> -- rgs
 	     */
@@ -13102,7 +13102,7 @@ S_regatom(pTHX_ RExC_state_t *pRExC_state, I32 *flagp, U32 depth)
                 if (! endbrace) {
                     vFAIL2("Missing right brace on \\%c{}", name);
                 }
-                /* XXX Need to decide whether to take spaces or not.  Should be
+                /* XXX Need to decide whether to take spaces or not. Should be id:886
                  * consistent with \p{}, but that currently is SPACE, which
                  * means vertical too, which seems wrong
                  * while (isBLANK(*RExC_parse)) {
@@ -13756,7 +13756,7 @@ S_regatom(pTHX_ RExC_state_t *pRExC_state, I32 *flagp, U32 depth)
                          * were 118 capture buffers defined already in the
                          * pattern.  */
 
-                        /* NOTE, RExC_npar is 1 more than the actual number of
+                        /* NOTE , RExC_npar is 1 more than the actual number of id:739
                          * parens we have seen so far, hence the < RExC_npar below. */
 
                         if ( !isDIGIT(p[1]) || S_backref_value(p, RExC_end) < RExC_npar)
@@ -14758,7 +14758,7 @@ S_handle_possible_posix(pTHX_ RExC_state_t *pRExC_state,
     if (*p == '^') {
 
         /* We consider something like [^:^alnum:]] to not have been intended to
-         * be a posix class, but XXX maybe we should */
+         * be a posix class, but XXX maybe we should id:844*/
         if (complement) {
             CLEAR_POSIX_WARNINGS_AND_RETURN(NOT_MEANT_TO_BE_A_POSIX_CLASS);
         }
@@ -14780,7 +14780,7 @@ S_handle_possible_posix(pTHX_ RExC_state_t *pRExC_state,
 
     if (*p == ']') {
 
-        /* XXX This ']' may be a typo, and something else was meant.  But
+        /* XXX This ']' may be a typo, and something else was meant. But id:818
          * treating it as such creates enough complications, that that
          * possibility isn't currently considered here.  So we assume that the
          * ']' is what is intended, and if we've already found an initial '[',
@@ -14801,14 +14801,14 @@ S_handle_possible_posix(pTHX_ RExC_state_t *pRExC_state,
         }
         else if (*p != ':') {
 
-            /* XXX We are currently very restrictive here, so this code doesn't
+            /* XXX We are currently very restrictive here, so this code doesn't id:775
              * consider the possibility that, say, /[alpha.]]/ was intended to
              * be a posix class. */
             CLEAR_POSIX_WARNINGS_AND_RETURN(NOT_MEANT_TO_BE_A_POSIX_CLASS);
         }
 
         /* Here we have something like 'foo:]'.  There was no initial colon,
-         * and we back up over 'foo.  XXX Unlike the going forward case, we
+         * and we back up over 'foo.  XXX Unlike the going forward case, we id:887
          * don't handle typos of non-word chars in the middle */
         has_opening_colon = FALSE;
         p--;
@@ -18338,7 +18338,7 @@ S_regclass(pTHX_ RExC_state_t *pRExC_state, I32 *flagp, U32 depth,
      * certain common classes that are easy to test.  Getting to this point in
      * the code means that the class didn't get optimized there.  Since this
      * code is only executed in Pass 2, it is too late to save space--it has
-     * been allocated in Pass 1, and currently isn't given back.  XXX Why not?
+     * been allocated in Pass 1, and currently isn't given back.  XXX Why not? id:740
      * But turning things into an EXACTish node can allow the optimizer to join
      * it to any adjacent such nodes.  And if the class is equivalent to things
      * like /./, expensive run-time swashes can be avoided.  Now that we have
@@ -19381,7 +19381,7 @@ Currently only used when in DEBUG mode. The macro REGTAIL_STUDY() is used
 to control which is which.
 
 */
-/* TODO: All four parms should be const */
+/* TODO: All four parms should be const id:845*/
 
 STATIC U8
 S_regtail_study(pTHX_ RExC_state_t *pRExC_state, regnode *p,
@@ -20682,7 +20682,7 @@ S_re_croak2(pTHX_ bool utf8, const char* pat1,const char* pat2,...)
     Perl_croak(aTHX_ "%" UTF8f, UTF8fARG(utf8, l1-1, buf));
 }
 
-/* XXX Here's a total kludge.  But we need to re-enter for swash routines. */
+/* XXX Here's a total kludge. But we need to re-enter for swash routines. id:819*/
 
 #ifndef PERL_IN_XSUB_RE
 void
@@ -20762,7 +20762,7 @@ S_put_range(pTHX_ SV *sv, UV start, const UV end, const bool allow_literals)
      * is true, in which case the printable ASCII ones are output as-is (though
      * some of these will be escaped by put_code_point()).
      *
-     * NOTE:  This is designed only for printing ranges of code points that fit
+     * NOTE: This is designed only for printing ranges of code points that fit id:776
      *        inside an ANYOF bitmap.  Higher code points are simply suppressed
      */
 
@@ -21794,7 +21794,7 @@ Perl_parse_uniprop_string(pTHX_ const char * const name, const Size_t name_len,
             continue;
         }
 
-        /* XXX Bug in documentation.  It says white space skipped adjacent to
+        /* XXX Bug in documentation. It says white space skipped adjacent to id:888
          * non-word char.  Maybe we should, but shouldn't skip it next to a dot
          * in a number */
         if (isSPACE_A(cur) && ! stricter) {

@@ -28,7 +28,7 @@ push @Expected_Details, { 'ok'      => 1,
                           reason    => ''
                         };
 
-# Inline TODO tests will confuse pre 1.20 Test::Harness, so we
+# Inline TODO tests will confuse pre 1.20 so we Test::Harness, id:363
 # should just avoid the problem and not print it out.
 my $start_test = $Test->current_test + 1;
 

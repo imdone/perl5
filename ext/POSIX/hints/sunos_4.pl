@@ -2,7 +2,7 @@
 # the problem.  Other BSD platforms may have similar problems.
 # This state of affairs also persists in glibc2, found
 # on linux systems running libc6.
-#  XXX A Configure test is needed.
+#  XXX A Configure test is needed. id:423
 
 # Although <unistd.h> is inappropriate in general for SunOS, we need it
 # in POSIX.xs to get the correct prototype for ttyname().

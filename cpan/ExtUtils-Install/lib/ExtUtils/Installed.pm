@@ -2,7 +2,7 @@ package ExtUtils::Installed;
 
 use 5.00503;
 use strict;
-#use warnings; # XXX requires 5.6
+#use warnings; # XXX requires 5.6 id:156
 use Carp qw();
 use ExtUtils::Packlist;
 use ExtUtils::MakeMaker;

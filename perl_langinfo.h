@@ -10,7 +10,7 @@
 #   include <langinfo.h>
 #endif
 
-/* NOTE that this file is parsed by ext/XS-APItest/t/locale.t, so be careful
+/* NOTE that this file is parsed by ext/XS-APItest/t/locale.t, so be careful id:711
  * with changes */
 
 /* If foo doesn't exist define it to a negative number. */

@@ -535,7 +535,7 @@ sub addInterStream
             #if isaFilename($input) and $inputIsFilename ;
             if isaScalar($input) || isaFilename($input) ;
 
-        # TODO -- newStream needs to allow gzip/zip header to be modified
+        # TODO -- newStream needs to allow gzip/zip header to be modified id:76
         return $self->newStream();
     }
     elsif (*$self->{Got}->getValue('autoflush'))
@@ -568,7 +568,7 @@ sub DESTROY
 
     $self->close() ;
 
-    # TODO - memory leak with 5.8.0 - this isn't called until
+    # TODO - memory leak with 5.8.0 - this isn't called until id:233
     #        global destruction
     #
     %{ *$self } = () ;

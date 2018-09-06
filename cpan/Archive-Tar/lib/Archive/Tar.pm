@@ -770,7 +770,7 @@ sub _extract_file {
                     return;
                 }
 
-                ### XXX keep a cache if possible, so the stats become cheaper:
+                ### XXX keep a cache if possible, so the stats become cheaper: id:111
                 $self->{_link_cache}->{$full_path} = 1 if ref $self;
             }
         }
@@ -823,7 +823,7 @@ sub _extract_file {
             return;
         }
 
-        ### XXX chown here? that might not be the same as in the archive
+        ### XXX chown here? that might not be the same as in the archive id:10
         ### as we're only chown'ing to the owner of the file we're extracting
         ### not to the owner of the directory itself, which may or may not
         ### be another entry in the archive
@@ -1309,7 +1309,7 @@ sub write {
         if( $DO_NOT_USE_PREFIX ) {
 
             ### you might have an extended prefix, if so, set it in the clone
-            ### XXX is ::Unix right?
+            ### XXX is ::Unix right? id:4
             $clone->name( length $ext_prefix
                             ? File::Spec::Unix->catdir( $ext_prefix,
                                                         $clone->full_path)
@@ -1324,7 +1324,7 @@ sub write {
             my ($prefix,$name) = $clone->_prefix_and_file( $clone->full_path );
 
             ### you might have an extended prefix, if so, set it in the clone
-            ### XXX is ::Unix right?
+            ### XXX is ::Unix right? id:28
             $prefix = File::Spec::Unix->catdir( $ext_prefix, $prefix )
                 if length $ext_prefix;
 

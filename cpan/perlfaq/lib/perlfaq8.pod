@@ -931,7 +931,7 @@ approach will suffice:
     my $handle = IO::Socket::INET->new('www.perl.com:80')
         or die "can't connect to port 80 on www.perl.com $!";
     $handle->autoflush(1);
-    if (fork()) {               # XXX: undef means failure
+    if (fork()) {               # XXX: undef means failure id:543
         select($handle);
         print while <STDIN>;    # everything from stdin to socket
     } else {

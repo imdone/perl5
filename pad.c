@@ -2357,7 +2357,7 @@ Perl_pad_fixup_inner_anons(pTHX_ PADLIST *padlist, CV *old_cv, CV *new_cv)
 	    innercv = (CV *)PadARRAY(PadlistARRAY(CvPADLIST(cv))[1])[i];
 	  }
 	  if (SvTYPE(innercv) == SVt_PVCV) {
-	    /* XXX 0afba48f added code here to check for a proto CV
+	    /* XXX 0afba48f added code here to check for a proto CV id:608
 		   attached to the pad entry by magic.  But shortly there-
 		   after 81df9f6f95 moved the magic to the pad name.  The
 		   code here was never updated, so it wasn’t doing anything

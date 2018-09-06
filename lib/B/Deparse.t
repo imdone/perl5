@@ -24,7 +24,7 @@ $/ = "\n####\n";
 while (<DATA>) {
     chomp;
     $tests ++;
-    # This code is pinched from the t/lib/common.pl for TODO.
+    # This code is pinched from the t/lib/common.pl for TODO . id:506
     # It's not clear how to avoid duplication
     my %meta = (context => '');
     foreach my $what (qw(skip todo context options)) {
@@ -565,7 +565,7 @@ is runperl(stderr => 1, switches => [ '-MO=-qq,Deparse', $path ],
 done_testing($tests);
 
 __DATA__
-# TODO [perl #120950] This succeeds when run a 2nd time
+# TODO [perl #120950] This succeeds when run a 2nd time id:583
 # y/uni/code/
 tr/\x{345}/\x{370}/;
 ####
@@ -698,7 +698,7 @@ my $foo = "Ab\x{100}\200\x{200}\237Cd\000Ef\x{1000}\cA\x{2000}\cZ";
 my $bar = "\x{100}";
 ####
 # Latin-1 chars
-# TODO ? ord("A") != 65 && "EBCDIC"
+# TODO ? ord("A") != 65 && "EBCDIC" id:567
 my $baz = "B\366\x{100}";
 my $bba = qr/B\366\x{100}/;
 ####
@@ -1059,15 +1059,15 @@ else { x(); }
 my($y, $t);
 /x${y}z$t/;
 ####
-# TODO new undocumented cpan-bug #33708
+# TODO new undocumented cpan-bug #33708 id:441
 # cpan-bug #33708
 %{$_ || {}}
 ####
-# TODO hash constants not yet fixed
+# TODO hash constants not yet fixed id:652
 # cpan-bug #33708
 use constant H => { "#" => 1 }; H->{"#"}
 ####
-# TODO optimized away 0 not yet fixed
+# TODO optimized away 0 not yet fixed id:507
 # cpan-bug #33708
 foreach my $i (@_) { 0 }
 ####
@@ -1177,11 +1177,11 @@ do {
 '???';
 !1;
 ####
-# TODO constant deparsing has been backed out for 5.12
+# TODO constant deparsing has been backed out for 5.12 id:584
 # XXXTODO ? $Config::Config{useithreads} && "doesn't work with threads"
 # tests that shouldn't be constant folded
 # It might be fundamentally impossible to make this work on ithreads, in which
-# case the TODO should become a SKIP
+# case the TODO should become a SKIP id:568
 x() if $a;
 if ($a == 1) { x() } elsif ($b == 2) { z() }
 if (do { foo(); GLIPP }) { x() }
@@ -1192,32 +1192,32 @@ if ($a == 1) { x(); } elsif ($b == 2) { z(); }
 if (do { foo(); GLIPP }) { x(); }
 if (do { ++$a; GLIPP }) { x(); }
 ####
-# TODO constant deparsing has been backed out for 5.12
+# TODO constant deparsing has been backed out for 5.12 id:442
 # tests for deparsing constants
 warn PI;
 ####
-# TODO constant deparsing has been backed out for 5.12
+# TODO constant deparsing has been backed out for 5.12 id:653
 # tests for deparsing imported constants
 warn O_TRUNC;
 ####
-# TODO constant deparsing has been backed out for 5.12
+# TODO constant deparsing has been backed out for 5.12 id:508
 # tests for deparsing re-exported constants
 warn O_CREAT;
 ####
-# TODO constant deparsing has been backed out for 5.12
+# TODO constant deparsing has been backed out for 5.12 id:585
 # tests for deparsing imported constants that got deleted from the original namespace
 warn O_APPEND;
 ####
-# TODO constant deparsing has been backed out for 5.12
+# TODO constant deparsing has been backed out for 5.12 id:569
 # XXXTODO ? $Config::Config{useithreads} && "doesn't work with threads"
 # tests for deparsing constants which got turned into full typeglobs
 # It might be fundamentally impossible to make this work on ithreads, in which
-# case the TODO should become a SKIP
+# case the TODO should become a SKIP id:443
 warn O_EXCL;
 eval '@Fcntl::O_EXCL = qw/affe tiger/;';
 warn O_EXCL;
 ####
-# TODO constant deparsing has been backed out for 5.12
+# TODO constant deparsing has been backed out for 5.12 id:654
 # tests for deparsing of blessed constant with overloaded numification
 warn OVERLOADED_NUMIFICATION;
 ####
@@ -1233,12 +1233,12 @@ print $main::x;
 no strict 'vars';
 $x;
 ####
-# TODO Subsets of warnings could be encoded textually, rather than as bitflips.
+# TODO Subsets of warnings could be encoded textually, rather than as bitflips. id:509
 # subsets of warnings
 no warnings 'deprecated';
 my $x;
 ####
-# TODO Better test for CPAN #33708 - the deparsed code has different behaviour
+# TODO Better test for CPAN #33708 - the deparsed code has different behaviour id:586
 # CPAN #33708
 use strict;
 no warnings;
@@ -1719,7 +1719,7 @@ my @x;
 @x = ($#{;}, $#{:}, $#{1}), $#_;
 ####
 # ${#} interpolated
-# It's a known TODO that warnings are deparsed as bits, not textually.
+# It's a known TODO that warnings are deparsed as bits, not textually. id:570
 no warnings;
 () = "${#}a";
 ####
@@ -2105,7 +2105,7 @@ my sub g {
     sub f { }
 }
 ####
-# TODO only partially fixed
+# TODO only partially fixed id:444
 # lexical state subroutine with outer declaration and inner definition
 # CONTEXT use feature 'lexical_subs', 'state'; no warnings 'experimental::lexical_subs';
 ();

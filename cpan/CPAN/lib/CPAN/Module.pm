@@ -316,7 +316,7 @@ sub as_string {
                      $local_file || "(not installed)");
     push @m, sprintf($sprintf, 'INST_VERSION',
                      $self->inst_version) if $local_file;
-    if (%{$CPAN::META->{is_tested}||{}}) { # XXX needs to be methodified somehow
+    if (%{$CPAN::META->{is_tested}||{}}) { # XXX needs to be methodified somehow id:212
         my $available_file = $self->available_file;
         if ($available_file && $available_file ne $local_file) {
             push @m, sprintf($sprintf, 'AVAILABLE_FILE', $available_file);

@@ -61,11 +61,11 @@ my $bare_yaml_meta = catfile( test_data_directory(), 'bareyaml.meta' );
 my $bad_yaml_meta = catfile( test_data_directory(), 'BadMETA.yml' );
 my $CL018_yaml_meta = catfile( test_data_directory(), 'CL018_yaml.meta' );
 
-# These test YAML/JSON detection without the typical file name suffix
+# These test YAML /JSON detection without the typical file name suffix id:94
 my $yaml_meta = catfile( test_data_directory(), 'yaml.meta' );
 my $json_meta = catfile( test_data_directory(), 'json.meta' );
 
-### YAML tests
+### YAML tests id:120
 {
   local $ENV{PERL_YAML_BACKEND} if not $ENV{PERL_CORE}; # ensure we always get CPAN::META::YAML
 

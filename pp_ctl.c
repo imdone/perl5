@@ -504,7 +504,7 @@ PP(pp_formline)
      * to allocate. It may be exceeded later */
     linemax = (SvCUR(formsv) * (IN_BYTES ? 1 : 3) + 1);
     t = SvGROW(PL_formtarget, len + linemax + 1);
-    /* XXX from now onwards, SvCUR(PL_formtarget) is invalid */
+    /* XXX from now onwards, SvCUR(PL_formtarget) is invalid id:619*/
     t += len;
     f = SvPV_const(formsv, len);
 
@@ -997,7 +997,7 @@ PP(pp_mapwhile)
     if (items && gimme != G_VOID) {
 	/* might need to make room back there first */
 	if (items > PL_markstack_ptr[-1] - PL_markstack_ptr[-2]) {
-	    /* XXX this implementation is very pessimal because the stack
+	    /* XXX this implementation is very pessimal because the stack id:806
 	     * is repeatedly extended for every set of items.  Is possible
 	     * to do this without any stack extension or copying at all
 	     * by maintaining a separate list over which the map iterates
@@ -2744,7 +2744,7 @@ S_check_op_type(pTHX_ OP * const o)
 {
     /* Eventually we may want to stack the needed arguments
      * for each op.  For now, we punt on the hard ones. */
-    /* XXX This comment seems to me like wishful thinking.  --sprout */
+    /* XXX This comment seems to me like wishful thinking. --sprout id:684*/
     if (o == UNENTERABLE)
 	Perl_croak(aTHX_
                   "Can't \"goto\" into a binary or list expression");
@@ -3420,7 +3420,7 @@ S_doeval_compile(pTHX_ U8 gimme, CV* outside, U32 seq, HV *hh)
 	    sv_sethek(PL_curstname, HvNAME_HEK(PL_curstash));
 	}
     }
-    /* XXX:ajgo do we really need to alloc an AV for begin/checkunit */
+    /* XXX: ajgo do we really need to alloc an AV for begin/checkunit id:875*/
     SAVESPTR(PL_beginav);
     PL_beginav = newAV();
     SAVEFREESV(PL_beginav);
@@ -3874,7 +3874,7 @@ S_require_file(pTHX_ SV *sv)
 			    "Compilation failed in require", unixname);
 	}
 
-        /*XXX OPf_KIDS should always be true? -dapm 4/2017 */
+        /*XXX OPf_KIDS should always be true? -dapm 4/2017 id:728*/
         if (PL_op->op_flags & OPf_KIDS) {
             SVOP * const kid = (SVOP*)cUNOP->op_first;
 
@@ -4462,7 +4462,7 @@ PP(pp_entereval)
     if (PERLDB_LINE_OR_SAVESRC && PL_curstash != PL_debstash)
 	save_lines(CopFILEAV(&PL_compiling), PL_parser->linestr);
     else {
-	/* XXX For C<eval "...">s within BEGIN {} blocks, this ends up
+	/* XXX For C<eval "...">s within BEGIN {} blocks, this ends up id:620
 	   deleting the eval's FILEGV from the stash before gv_check() runs
 	   (i.e. before run-time proper). To work around the coredump that
 	   ensues, we always turn GvMULTI_on for any globals that were
@@ -5634,7 +5634,7 @@ S_run_user_filter(pTHX_ int idx, SV *buf_sv, int maxlen)
     /* I was having segfault trouble under Linux 2.2.5 after a
        parse error occurred.  (Had to hack around it with a test
        for PL_parser->error_count == 0.)  Solaris doesn't segfault --
-       not sure where the trouble is yet.  XXX */
+       not sure where the trouble is yet.  XXX  id:807*/
 
     {
 	SV *const cache = datasv;

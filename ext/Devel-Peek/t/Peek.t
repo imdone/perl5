@@ -1365,7 +1365,7 @@ like(
     'OUTSIDE + UTF8 works'
 );
 
-# TODO AUTOLOAD = stashname, which requires using a XS autoload
+# TODO AUTOLOAD = stashname, which requires using a XS autoload id:404
 # and calling Dump() on the cv
 
 

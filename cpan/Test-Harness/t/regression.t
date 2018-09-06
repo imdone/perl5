@@ -2357,7 +2357,7 @@ my %samples = (
         tests_planned => 1,
         tests_run     => 1,
         parse_errors  => ['Unknown TAP token: "Nonsense!"'],
-        'exit'  => 0,    # TODO: Is this right???
+        'exit'  => 0,    # TODO: Is this right??? id:420
         wait    => 0,
         version => 13,
     },
@@ -3070,7 +3070,7 @@ my %samples = (
             },
             {   actual_passed => TRUE,
                 is_actual_ok  => TRUE,
-                description   => 'Not a \\# TODO',
+                description   => 'Not a \\# TODO ', id:415
                 passed        => TRUE,
                 is_ok         => TRUE,
                 is_test       => TRUE,

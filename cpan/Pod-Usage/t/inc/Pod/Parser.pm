@@ -769,7 +769,7 @@ sub parse_text {
     ## Keep track of the "current" interior sequence, and maintain a stack
     ## of "in progress" sequences.
     ##
-    ## NOTE that we push our own "accumulator" at the very beginning of the
+    ## NOTE that we push our own "accumulator" at the very beginning of the id:176
     ## stack. It's really a parse-tree, not a sequence; but it implements
     ## the methods we need so we can use it to gather-up all the sequences
     ## and strings we parse. Thus, by the end of our parsing, it should be
@@ -1073,7 +1073,7 @@ sub parse_from_filehandle {
     local $_;
 
     ## Put this stream at the top of the stack and do beginning-of-input
-    ## processing. NOTE that $in_fh might be reset during this process.
+    ## processing. NOTE that $in_fh might be reset during this process. id:346
     my $topstream = $self->_push_input_stream($in_fh, $out_fh);
     (exists $opts{-cutting})  and  $self->cutting( $opts{-cutting} );
 
@@ -1206,7 +1206,7 @@ sub parse_from_file {
         $close_input = 1;
     }
 
-    ## NOTE: we need to be *very* careful when "defaulting" the output
+    ## NOTE: we need to be *very* careful when "defaulting" the output id:271
     ## file. We only want to use a default if this is the beginning of
     ## the entire document (but *not* if this is an included file). We
     ## determine this by seeing if the input stream stack has been set-up
@@ -1219,7 +1219,7 @@ sub parse_from_file {
             croak "Output to $1 reference not supported!\n";
         }
         elsif (ref($outfile) eq 'SCALAR') {
-#           # NOTE: IO::String isn't a part of the perl distribution,
+#           # NOTE: isn't a part of the perl distribution, IO::String id:280
 #           #       so probably we shouldn't support this case...
 #           require IO::String;
 #           $myData{_OUTFILE} = "$outfile";
@@ -1546,7 +1546,7 @@ sub _push_input_stream {
     ## Initialize stuff for the entire document if this is *not*
     ## an included file.
     ##
-    ## NOTE: we need to be *very* careful when "defaulting" the output
+    ## NOTE: we need to be *very* careful when "defaulting" the output id:390
     ## filehandle. We only want to use a default value if this is the
     ## beginning of the entire document (but *not* if this is an included
     ## file).

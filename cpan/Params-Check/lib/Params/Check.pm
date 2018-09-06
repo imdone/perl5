@@ -258,7 +258,7 @@ sub check {
     ### sensible defaults ###
     $verbose ||= $VERBOSE || 0;
 
-    ### XXX what type of template is it? ###
+    ### XXX what type of template is it? ### id:378
     ### { key => { } } ?
     #if (ref $args eq 'HASH') {
     #    1;

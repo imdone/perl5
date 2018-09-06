@@ -62,7 +62,7 @@ NETDB_DEFINE_CONTEXT
 # endif
 #endif
 
-/* XXX Configure test needed.
+/* XXX Configure test needed. id:730
    h_errno might not be a simple 'int', especially for multi-threaded
    applications, see "extern int errno in perl.h".  Creating such
    a test requires taking into account the differences between
@@ -355,7 +355,7 @@ PP(pp_glob)
 
     if (PL_op->op_flags & OPf_SPECIAL) {
 	/* call Perl-level glob function instead. Stack args are:
-	 * MARK, wildcard
+	 * MARK , wildcard id:622
 	 * and following OPs should be: gv(CORE::GLOBAL::glob), entersub
 	 * */
 	return NORMAL;
@@ -1551,7 +1551,7 @@ PP(pp_leavewrite)
     EXTEND(SP, 1);
 
     if (is_return)
-        /* XXX the semantics of doing 'return' in a format aren't documented.
+        /* XXX the semantics of doing 'return' in a format aren't documented. id:809
          * Currently we ignore any args to 'return' and just return
          * a single undef in both scalar and list contexts
          */
@@ -2295,7 +2295,7 @@ PP(pp_truncate)
      * and ftruncate(), both off_t and size_t have supporters. In
      * general one would think that when using large files, off_t is
      * at least as wide as size_t, so using an off_t should be okay. */
-    /* XXX Configure probe for the length type of *truncate() needed XXX */
+    /* XXX Configure probe for the length type of *truncate() needed XXX id:766*/
     Off_t len;
 
 #if Off_t_size > IVSIZE
@@ -2305,7 +2305,7 @@ PP(pp_truncate)
 #endif
     /* Checking for length < 0 is problematic as the type might or
      * might not be signed: if it is not, clever compilers will moan. */
-    /* XXX Configure probe for the signedness of the length type of *truncate() needed? XXX */
+    /* XXX Configure probe for the signedness of the length type of *truncate() needed? XXX id:878*/
     SETERRNO(0,0);
     {
 	SV * const sv = POPs;
@@ -2480,7 +2480,7 @@ PP(pp_flock)
     IO *const io = GvIO(gv);
     PerlIO *const fp = io ? IoIFP(io) : NULL;
 
-    /* XXX Looks to me like io is always NULL at this point */
+    /* XXX Looks to me like io is always NULL at this point id:731*/
     if (fp) {
 	(void)PerlIO_flush(fp);
 	value = (I32)(PerlLIO_flock(PerlIO_fileno(fp), argtype) >= 0);
@@ -2748,7 +2748,7 @@ PP(pp_ssockopt)
 	if (PerlSock_getsockopt(fd, lvl, optname, SvPVX(sv), &len) < 0)
 	    goto nuts2;
 #if defined(_AIX)
-        /* XXX Configure test: does getsockopt set the length properly? */
+        /* XXX Configure test: does getsockopt set the length properly? id:623*/
         if (len == 256)
             len = sizeof(int);
 #endif
@@ -2762,7 +2762,7 @@ PP(pp_ssockopt)
 #else
 # define SETSOCKOPT_OPTION_VALUE_T const char *
 #endif
-	/* XXX TODO: We need to have a proper type (a Configure probe,
+	/* XXX TODO: We need to have a proper type (a Configure probe, id:810
 	 * etc.) for what the C headers think of the third argument of
 	 * setsockopt(), the option_value read-only buffer: is it
 	 * a "char *", or a "void *", const or not.  Some compilers
@@ -3871,7 +3871,7 @@ PP(pp_readlink)
 
     TAINT;
     tmps = POPpconstx;
-    /* NOTE: if the length returned by readlink() is sizeof(buf) - 1,
+    /* NOTE: if the length returned by readlink() is sizeof(buf) - 1, id:767
      * it is impossible to know whether the result was truncated. */
     len = readlink(tmps, buf, sizeof(buf) - 1);
     if (len < 0)
@@ -4122,9 +4122,9 @@ PP(pp_telldir)
 {
 #if defined(HAS_TELLDIR) || defined(telldir)
     dSP; dTARGET;
- /* XXX does _anyone_ need this? --AD 2/20/1998 */
- /* XXX netbsd still seemed to.
-    XXX HAS_TELLDIR_PROTO is new style, NEED_TELLDIR_PROTO is old style.
+ /* XXX does _anyone_ need this? --AD 2/20/1998 id:879*/
+ /* XXX netbsd still seemed to. id:732
+    XXX HAS_TELLDIR_PROTO is new style, NEED_TELLDIR_PROTO is old style. id:624
     --JHI 1999-Feb-02 */
 # if !defined(HAS_TELLDIR_PROTO) || defined(NEED_TELLDIR_PROTO)
     long telldir (DIR *);
@@ -4818,7 +4818,7 @@ PP(pp_gmtime)
 
     if (err == NULL) {
 	/* diag_listed_as: gmtime(%f) failed */
-	/* XXX %lld broken for quads */
+	/* XXX %lld broken for quads id:811*/
       failed:
 	Perl_ck_warner(aTHX_ packWARN(WARN_OVERFLOW),
 		       "%s(%.0" NVff ") failed", opname, when);
@@ -5028,7 +5028,7 @@ PP(pp_ghostent)
     I32 which = PL_op->op_type;
     char **elem;
     SV *sv;
-#ifndef HAS_GETHOST_PROTOS /* XXX Do we need individual probes? */
+#ifndef HAS_GETHOST_PROTOS /* XXX Do we need individual probes? id:768*/
     struct hostent *gethostbyaddr(Netdb_host_t, Netdb_hlen_t, int);
     struct hostent *gethostbyname(Netdb_name_t);
     struct hostent *gethostent(void);
@@ -5119,7 +5119,7 @@ PP(pp_gnetent)
     dSP;
     I32 which = PL_op->op_type;
     SV *sv;
-#ifndef HAS_GETNET_PROTOS /* XXX Do we need individual probes? */
+#ifndef HAS_GETNET_PROTOS /* XXX Do we need individual probes? id:880*/
     struct netent *getnetbyaddr(Netdb_net_t, int);
     struct netent *getnetbyname(Netdb_name_t);
     struct netent *getnetent(void);
@@ -5195,7 +5195,7 @@ PP(pp_gprotoent)
     dSP;
     I32 which = PL_op->op_type;
     SV *sv;
-#ifndef HAS_GETPROTO_PROTOS /* XXX Do we need individual probes? */
+#ifndef HAS_GETPROTO_PROTOS /* XXX Do we need individual probes? id:733*/
     struct protoent *getprotobyname(Netdb_name_t);
     struct protoent *getprotobynumber(int);
     struct protoent *getprotoent(void);
@@ -5258,7 +5258,7 @@ PP(pp_gservent)
     dSP;
     I32 which = PL_op->op_type;
     SV *sv;
-#ifndef HAS_GETSERV_PROTOS /* XXX Do we need individual probes? */
+#ifndef HAS_GETSERV_PROTOS /* XXX Do we need individual probes? id:838*/
     struct servent *getservbyname(Netdb_name_t, Netdb_name_t);
     struct servent *getservbyport(int, Netdb_name_t);
     struct servent *getservent(void);
@@ -5805,7 +5805,7 @@ PP(pp_syscall)
 
 #ifdef FCNTL_EMULATE_FLOCK
 
-/*  XXX Emulate flock() with fcntl().
+/*  XXX Emulate flock() with fcntl(). id:812
     What's really needed is a good file locking module.
 */
 
@@ -5842,7 +5842,7 @@ fcntl_emulate_flock(int fd, int operation)
 
 #ifdef LOCKF_EMULATE_FLOCK
 
-/*  XXX Emulate flock() with lockf().  This is just to increase
+/*  XXX Emulate flock() with lockf(). This is just to increase id:769
     portability of scripts.  The calls are not completely
     interchangeable.  What's really needed is a good file
     locking module.

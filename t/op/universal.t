@@ -160,7 +160,7 @@ eval "use UNIVERSAL";
 ok $a->isa("UNIVERSAL");
 
 my $sub2 = join ' ', sort grep { defined &{"UNIVERSAL::$_"} } keys %UNIVERSAL::;
-# XXX import being here is really a bug
+# XXX import being here is really a bug id:1055
 if ('a' lt 'A') {
     is $sub2, "can import isa DOES VERSION";
 } else {

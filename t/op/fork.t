@@ -69,8 +69,8 @@ if ($cid = fork) {
     print "ok 2\n";
 }
 else {
-    # XXX On Windows the default signal handler kills the
-    # XXX whole process, not just the thread (pseudo-process)
+    # XXX On Windows the default signal handler kills the id:1016
+    # XXX whole process, not just the thread (pseudo-process) id:897
     $SIG{INT} = sub { exit };
     print "ok 1\n";
     sleep 5;
@@ -350,7 +350,7 @@ BEGIN {
     fork and exit;
     print "inner\n";
 }
-# XXX In emulated fork(), the child will not execute anything after
+# XXX In emulated fork(), the child will not execute anything after id:914
 # the BEGIN block, due to difficulties in recreating the parse stacks
 # and restarting yyparse() midstream in the child.  This can potentially
 # be overcome by treating what's after the BEGIN{} as a brand new parse.

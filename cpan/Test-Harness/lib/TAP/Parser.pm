@@ -721,7 +721,7 @@ line.
 If a test had either a C<TODO> or C<SKIP> directive, this method will return
 the accompanying explanation, if present.
 
-  not ok 17 - 'Pigs can fly' # TODO not enough acid
+  not ok 17 - 'Pigs can fly' # TODO not enough acid id:179
 
 For the above line, the explanation is I<not enough acid>.
 
@@ -1208,7 +1208,7 @@ sub _make_state_table {
                 my ( $number, $tests_run )
                   = ( $test->number, ++$self->{tests_run} );
 
-                # Fake TODO state
+                # Fake TODO state id:349
                 if ( defined $number && delete $planned_todo{$number} ) {
                     $test->set_directive('TODO');
                 }
@@ -1634,7 +1634,7 @@ test output:
              # normal passing test
              print color 'green';
          }
-         elsif ( !$test->is_ok ) {    # even if it's TODO
+         elsif ( !$test->is_ok ) {    # even if it's TODO  id:274
              print color 'white on_red';
          }
          elsif ( $test->has_skip ) {
@@ -1696,7 +1696,7 @@ following should be used:
 
  1..2
  ok 1 - We have liftoff
- not ok 2 - Anti-gravity device activated # TODO
+ not ok 2 - Anti-gravity device activated # TODO  id:283
 
 =item * 'Missing' tests
 

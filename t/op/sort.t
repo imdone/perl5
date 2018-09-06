@@ -866,7 +866,7 @@ cmp_ok($answer,'eq','good','sort subr called from other package');
 
 
 
-# I commented out this TODO test because messing with FREEd scalars on the
+# I commented out this TODO test because messing with FREEd scalars on the id:917
 # stack can have all sorts of strange side-effects, not made safe by eval
 # - DAPM.
 #

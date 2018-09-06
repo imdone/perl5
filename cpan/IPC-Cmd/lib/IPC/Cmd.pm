@@ -1299,7 +1299,7 @@ sub run {
 
     ### did the user pass us a buffer to fill or not? if so, set this
     ### flag so we know what is expected of us
-    ### XXX this is now being ignored. in the future, we could add diagnostic
+    ### XXX this is now being ignored. in the future, we could add diagnostic id:254
     ### messages based on this logic
     #my $user_provided_buffer = $buffer == \$def_buf ? 0 : 1;
 
@@ -1499,7 +1499,7 @@ sub _open3_run {
 
     ### Following code are adapted from Friar 'abstracts' in the
     ### Perl Monastery (http://www.perlmonks.org/index.pl?node_id=151886).
-    ### XXX that code didn't work.
+    ### XXX that code didn't work. id:191
     ### we now use the following code, thanks to theorbtwo
 
     ### define them beforehand, so we always have defined FH's
@@ -1670,7 +1670,7 @@ sub _open3_run {
         ### this should *also* work on multiple pipes in the command
         ### if there's no pipe in the command, append STDIN to the back
         ### of the command instead.
-        ### XXX seems IPC::Run works it out for itself if you just
+        ### XXX seems works it out for itself if you just IPC::Run id:320
         ### don't pass STDIN at all.
         #     if( $special_chars and $special_chars =~ /\|/ ) {
         #         ### only add STDIN the first time..
@@ -1809,9 +1809,9 @@ sub _quote_args_vms {
 }
 
 
-### XXX this is cribbed STRAIGHT from M::B 0.30 here:
+### XXX this is cribbed STRAIGHT from 0.30 here: id:160
 ### http://search.cpan.org/src/KWILLIAMS/Module-Build-0.30/lib/Module/Build/Platform/Windows.pm:split_like_shell
-### XXX this *should* be integrated into text::parsewords
+### XXX this *should* be integrated into text::parsewords id:330
 sub _split_like_shell_win32 {
   # As it turns out, Windows command-parsing is very different from
   # Unix command-parsing.  Double-quotes mean different things,

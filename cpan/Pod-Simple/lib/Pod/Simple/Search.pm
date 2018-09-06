@@ -451,7 +451,7 @@ sub simplify_name {
   my($self, $str) = @_;
     
   # Remove all path components
-  #                             XXX Why not just use basename()? -- SMB
+  #                             XXX Why not just use basename()? -- SMB id:388
 
   if ($^O eq 'MacOS') { $str =~ s{^.*:+}{}s }
   else                { $str =~ s{^.*/+}{}s }

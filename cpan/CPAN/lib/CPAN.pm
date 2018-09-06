@@ -774,7 +774,7 @@ There seems to be running another CPAN process according to '$lockfile'.
 Please report if something unexpected happens\n");
                 $RUN_DEGRADED = 1;
                 for ($CPAN::Config) {
-                    # XXX
+                    # XXX  id:37
                     # $_->{build_dir_reuse} = 0; # 2006-11-17 akoenig Why was that?
                     $_->{commandnumber_in_prompt} = 0; # visibility
                     $_->{histfile}       = "";  # who should win otherwise?
@@ -1122,7 +1122,7 @@ sub has_usable {
                                   },
                                  ],
                'File::Temp' => [
-                                # XXX we should probably delete from
+                                # XXX we should probably delete from id:95
                                 # %INC too so we can load after we
                                 # installed a new enough version --
                                 # I'm not sure.

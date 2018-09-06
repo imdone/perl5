@@ -990,7 +990,7 @@ perl_destruct(pTHXx)
 
     /* loosen bonds of global variables */
 
-    /* XXX can PL_parser still be non-null here? */
+    /* XXX can PL_parser still be non-null here? id:673*/
     if(PL_parser && PL_parser->rsfp) {
 	(void)PerlIO_close(PL_parser->rsfp);
 	PL_parser->rsfp = NULL;
@@ -2802,7 +2802,7 @@ Perl_get_cvn_flags(pTHX_ const char *name, STRLEN len, I32 flags)
     if (gv && UNLIKELY(SvROK(gv)) && SvTYPE(SvRV((SV *)gv)) == SVt_PVCV)
 	return (CV*)SvRV((SV *)gv);
 
-    /* XXX this is probably not what they think they're getting.
+    /* XXX this is probably not what they think they're getting. id:864
      * It has the same effect as "sub name;", i.e. just a forward
      * declaration! */
     if ((flags & ~GV_NOADD_MASK) && !GvCVu(gv)) {
@@ -3238,7 +3238,7 @@ Perl_require_pv(pTHX_ const char *pv)
 }
 
 STATIC void
-S_usage(pTHX)		/* XXX move this out into a module ? */
+S_usage(pTHX)		/* XXX move this out into a module ? id:717*/
 {
     /* This message really ought to be max 23 lines.
      * Removed -h because the user already knows that option. Others? */
@@ -3558,10 +3558,10 @@ Perl_moreswitches(pTHX_ const char *s)
 	}
 	return s;
     case 'M':
-	forbid_setid('M', FALSE);	/* XXX ? */
+	forbid_setid('M', FALSE);	/* XXX ? id:609*/
 	/* FALLTHROUGH */
     case 'm':
-	forbid_setid('m', FALSE);	/* XXX ? */
+	forbid_setid('m', FALSE);	/* XXX ? id:707*/
 	if (*++s) {
 	    const char *start;
 	    const char *end;
@@ -4358,7 +4358,7 @@ Perl_populate_isa(pTHX_ const char *name, STRLEN len, ...)
     if(AvFILLp(isa) != -1)
 	return;
 
-    /* NOTE: No support for tied ISA */
+    /* NOTE: No support for tied ISA id:674*/
 
     va_start(args, len);
     do {

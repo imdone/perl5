@@ -315,7 +315,7 @@ libswanted_uselargefiles="`getconf XBS5_ILP32_OFFBIG_LIBS 2>/dev/null|sed -e 's@
 	#   Default is 256 MB, which sounds large but caused a software
 	#   vendor problems. So this sets heap to 2 GB maximum. Anything
 	#   higher and you'd want to consider 64 bit perl.
-	# - NOTE however, that setting this in 64bit mode will limit your
+	# - NOTE however, that setting this in 64bit mode will limit your id:573
 	#   amount of available memory to 2GB, so we set this only in
 	#   32bit mode to avoid future problems a la "should be enough
 	#   for everyone" ...

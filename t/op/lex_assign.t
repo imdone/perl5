@@ -183,7 +183,7 @@ for my $glob (*__) {
   $glob = split;
 }
 
-# XXX This test does not really belong here, as it has nothing to do with
+# XXX This test does not really belong here, as it has nothing to do with id:991
 #     OPpTARGET_MY optimisation.  But where should it go?
 eval {
     sub PVBM () { 'foo' }

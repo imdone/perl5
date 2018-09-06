@@ -7,7 +7,7 @@
 # attempt 2 reparentings and see if the PID both orphaned grandchildren get is
 # the same. (and not ours)
 #
-# NOTE: Docker and Linux containers set parent to 0 on orphaned tests.
+# NOTE: Docker and Linux containers set parent to 0 on orphaned tests. id:990
 # We have to adjust to this below.
 
 BEGIN {

@@ -486,7 +486,7 @@ sub _do_middle_main_loop {
           last if $to_unget[-1]->is_end
               and $to_unget[-1]->tagname eq $tagname;
           
-          # TODO: support for X<...>'s found in here?  (maybe hack into linearize_tokens)
+          # TODO: support for X<...>'s found in here? (maybe hack into linearize_tokens) id:343
         }
 
         my $name = $self->linearize_tokens(@to_unget);
@@ -803,7 +803,7 @@ sub resolve_pod_link_by_table {
 
   my($self, $to, $section) = @_;
 
-  # TODO: add a method that actually populates podhtml_LOT from a file?
+  # TODO: add a method that actually populates podhtml_LOT from a file? id:268
 
   if(defined $section) {
     $to = '' unless defined $to and length $to;

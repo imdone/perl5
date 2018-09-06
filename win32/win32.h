@@ -525,7 +525,7 @@ typedef  char *		caddr_t;	/* In malloc.c (core address). */
 #define WM_USER_MAX     (WM_USER_MIN+1)
 
 struct thread_intern {
-    /* XXX can probably use one buffer instead of several */
+    /* XXX can probably use one buffer instead of several id:1077*/
     char		Wstrerror_buffer[512];
     struct servent	Wservent;
     char		Wgetlogin_buffer[128];

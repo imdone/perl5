@@ -38,7 +38,7 @@ my %feature = (
     signatures      => 'signatures',
 );
 
-# NOTE: If a feature is ever enabled in a non-contiguous range of Perl
+# NOTE: If a feature is ever enabled in a non-contiguous range of Perl id:846
 #       versions, any code below that uses %BundleRanges will have to
 #       be changed to account.
 
@@ -375,7 +375,7 @@ our $VERSION = '1.53';
 
 FEATURES
 
-# TODO:
+# TODO:  id:820
 # - think about versioned features (use feature switch => 2)
 
 =head1 NAME

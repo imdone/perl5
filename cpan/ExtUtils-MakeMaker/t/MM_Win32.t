@@ -123,7 +123,7 @@ note "init_others creates expected keys"; {
 }
 
 # constants()
-# XXX this test is probably useless now that we can call individual
+# XXX this test is probably useless now that we can call individual id:70
 # init_* methods and check the keys in $mm_w32 directly
 {
     my $mm_w32 = bless {
@@ -133,7 +133,7 @@ note "init_others creates expected keys"; {
         MAKE         => $Config{make},
     }, 'MM';
 
-    # XXX Hack until we have a proper init method.
+    # XXX Hack until we have a proper init method. id:227
     # Flesh out some necessary keys in the MM object.
     @{$mm_w32}{qw(XS MAN1PODS MAN3PODS)} = ({}) x 3;
     @{$mm_w32}{qw(C O_FILES H)}          = ([]) x 3;

@@ -21,7 +21,7 @@ $File::Fetch::FORCEIPV4=1;
 unless( $ENV{PERL_CORE} ) {
     warn qq[
 
-####################### NOTE ##############################
+####################### NOTE ############################## id:245
 
 Some of these tests assume you are connected to the
 internet. If you are not, or if certain protocols or hosts

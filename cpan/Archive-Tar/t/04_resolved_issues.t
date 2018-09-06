@@ -59,7 +59,7 @@ use_ok( $FileClass );
 ### bug #14922
 ### There's a bug in Archive::Tar that causes a file like: foo/foo.txt
 ### to be stored in the tar file as: foo/.txt
-### XXX could not be reproduced in 1.26 -- leave test to be sure
+### XXX could not be reproduced in 1.26 -- leave test to be sure id:5
 {   ok( 1,                      "Testing bug 14922" );
 
     my $dir     = $$ . '/';
@@ -175,7 +175,7 @@ use_ok( $FileClass );
 ### Addresses RT #44680: Improve error reporting on short corrupted archives
 {   ok( 1,                      "Testing bug 44680" );
 
-    {   ### XXX whitebox test -- resetting the error string
+    {   ### XXX whitebox test -- resetting the error string id:29
         no warnings 'once';
         $Archive::Tar::error = "";
     }

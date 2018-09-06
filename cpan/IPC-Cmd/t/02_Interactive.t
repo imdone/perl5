@@ -33,7 +33,7 @@ my @Conf = (
 ### first, check which FD's are open. they should be open
 ### /after/ we run our tests as well.
 ### 0, 1 and 2 should be open, as they are STDOUT, STDERR and STDIN
-### XXX 2 are opened by Test::Builder at least.. this is 'whitebox'
+### XXX 2 are opened by at least.. this is 'whitebox' Test::Builder id:192
 ### knowledge, so unsafe to test against. around line 1322:
 # sub _open_testhandles {
 #     return if $Opened_Testhandles;

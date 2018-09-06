@@ -91,7 +91,7 @@ sub test_not_inherited {
     my $rc  = $? >> 8;
     open STDERR, ">&SAVERR" or die "error: restore STDERR: $!";
     close SAVERR or die "error: close SAVERR: $!";
-    # XXX: it seems one cannot rely on a non-zero return code,
+    # XXX: it seems one cannot rely on a non-zero return code, id:925
     # at least not on Tru64.
     # cmp_ok( $rc, '!=', 0,
     #     "child return code=$rc (non-zero means cannot inherit fd=$expected_fd)" );

@@ -228,7 +228,7 @@ like $warning,
   qr/^\Qtodo_failed() is deprecated.  Please use "todo_passed()"/,
   '... but issue a deprecation warning';
 
-# TODO directive
+# TODO directive id:294
 
 $test = run_tests(
     {   class => TEST,
@@ -238,7 +238,7 @@ $test = run_tests(
             description => '... and this test is fine',
             directive   => 'TODO',
             explanation => 'why not?',
-            raw         => 'not ok 5 and this test is fine # TODO why not?',
+            raw         => 'not ok 5 and this test is fine # TODO why not?', id:523
             type        => 'test',
         },
     },
@@ -255,7 +255,7 @@ $test = run_tests(
         has_skip     => '',
         has_todo     => 1,
         as_string =>
-          'not ok 5 ... and this test is fine # TODO why not?',
+          'not ok 5 ... and this test is fine # TODO why not?', id:360
         is_unplanned  => '',
         has_directive => 1,
     }

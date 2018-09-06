@@ -19,7 +19,7 @@
  * debugging support added, which makes "use re 'debug'" work.
  */
 
-/* NOTE: this is derived from Henry Spencer's regexp code, and should not
+/* NOTE: this is derived from Henry Spencer's regexp code, and should not id:847
  * confused with the original package (see point 3 below).  Thanks, Henry!
  */
 
@@ -176,12 +176,12 @@ static const char* const non_utf8_target_but_utf8_required
     SET_nextchr
 
 #define PLACEHOLDER	/* Something for the preprocessor to grab onto */
-/* TODO: Combine JUMPABLE and HAS_TEXT to cache OP(rn) */
+/* TODO: Combine JUMPABLE and HAS_TEXT to cache OP(rn) id:821*/
 
 /* for use after a quantifier and before an EXACT-like node -- japhy */
 /* it would be nice to rework regcomp.sym to generate this stuff. sigh
  *
- * NOTE that *nothing* that affects backtracking should be in here, specifically
+ * NOTE that *nothing* that affects backtracking should be in here, specifically id:778
  * VERBS must NOT be included. JUMPABLE is used to determine  if we can ignore a
  * node that is in between two EXACT like nodes when ascertaining what the required
  * "follow" character is. This should probably be moved to regex compile time
@@ -204,7 +204,7 @@ static const char* const non_utf8_target_but_utf8_required
 
 #if 0 
 /* Currently these are only used when PL_regkind[OP(rn)] == EXACT so
-   we don't need this definition.  XXX These are now out-of-sync*/
+   we don't need this definition.  XXX These are now out-of-sync id:890*/
 #define IS_TEXT(rn)   ( OP(rn)==EXACT   || OP(rn)==REF   || OP(rn)==NREF   )
 #define IS_TEXTF(rn)  ( OP(rn)==EXACTFU || OP(rn)==EXACTFU_SS || OP(rn)==EXACTFAA || OP(rn)==EXACTFAA_NO_TRIE || OP(rn)==EXACTF || OP(rn)==REFF  || OP(rn)==NREFF )
 #define IS_TEXTFL(rn) ( OP(rn)==EXACTFL || OP(rn)==REFFL || OP(rn)==NREFFL )
@@ -551,7 +551,7 @@ S_find_next_ascii(char * s, const char * send, const bool utf8_target)
                           - (PTR2nat(s) & PERL_WORD_BOUNDARY_MASK))
     {
 
-        /* Process per-byte until reach word boundary.  XXX This loop could be
+        /* Process per-byte until reach word boundary.  XXX This loop could be id:743
          * eliminated if we knew that this platform had fast unaligned reads */
         while (PTR2nat(s) & PERL_WORD_BOUNDARY_MASK) {
             if (isASCII(*s)) {
@@ -673,7 +673,7 @@ S_find_span_end(U8 * s, const U8 * send, const U8 span_byte)
     {
         PERL_UINTMAX_T span_word;
 
-        /* Process per-byte until reach word boundary.  XXX This loop could be
+        /* Process per-byte until reach word boundary.  XXX This loop could be id:848
          * eliminated if we knew that this platform had fast unaligned reads */
         while (PTR2nat(s) & PERL_WORD_BOUNDARY_MASK) {
             if (*s != span_byte) {
@@ -1597,7 +1597,7 @@ Perl_re_intuit_start(pTHX_
     if (progi->regstclass && PL_regkind[OP(progi->regstclass)]!=TRIE) {
         const U8* const str = (U8*)STRING(progi->regstclass);
 
-        /* XXX this value could be pre-computed */
+        /* XXX this value could be pre-computed id:822*/
         const int cl_l = (PL_regkind[OP(progi->regstclass)] == EXACT
 		    ?  (reginfo->is_utf8_pat
                         ? utf8_distance(str + STR_LEN(progi->regstclass), str)
@@ -1616,7 +1616,7 @@ Perl_re_intuit_start(pTHX_
          * in that range. if neither, then look for the start class in the
          * whole rest of the string */
 
-        /* XXX DAPM it's not clear what the minlen test is for, and why
+        /* XXX DAPM it's not clear what the minlen test is for, and why id:779
          * it's not used in the floating case. Nothing in the test suite
          * causes minlen == 0 here. See <20140313134639.GS12844@iabyn.com>.
          * Here are some old comments, which may or may not be correct:
@@ -1776,7 +1776,7 @@ Perl_re_intuit_start(pTHX_
 	{
 	    /* If flags & SOMETHING - do not do it many times on the same match */
             DEBUG_EXECUTE_r(Perl_re_printf( aTHX_  "  ... Disabling check substring...\n"));
-	    /* XXX Does the destruction order has to change with utf8_target? */
+	    /* XXX Does the destruction order has to change with utf8_target? id:891*/
 	    SvREFCNT_dec(utf8_target ? prog->check_utf8 : prog->check_substr);
 	    SvREFCNT_dec(utf8_target ? prog->check_substr : prog->check_utf8);
 	    prog->check_substr = prog->check_utf8 = NULL;	/* disable */
@@ -2434,7 +2434,7 @@ S_find_byclass(pTHX_ regexp * prog, const regnode *c, char *s,
          */
         e = HOP3c(strend, -((SSize_t)lnc), s);
 
-        /* XXX Note that we could recalculate e to stop the loop earlier,
+        /* XXX Note that we could recalculate e to stop the loop earlier, id:744
          * as the worst case expansion above will rarely be met, and as we
          * go along we would usually find that e moves further to the left.
          * This would happen only after we reached the point in the loop
@@ -3233,7 +3233,7 @@ S_reg_set_capture_string(pTHX_ REGEXP * const rx,
         prog->subcoffset = prog->suboffset;
         if (prog->suboffset && utf8_target) {
             /* Convert byte offset to chars.
-             * XXX ideally should only compute this if @-/@+
+             * XXX ideally should only compute this if @-/@+ id:849
              * has been seen, a la PL_sawampersand ??? */
 
             /* If there's a direct correspondence between the
@@ -4896,7 +4896,7 @@ S_isLB(pTHX_ LB_enum before,
                 return FALSE;
             }
 
-            /* If we get here, we have to XXX consider combining marks. */
+            /* If we get here, we have to XXX consider combining marks. id:823*/
             if (prev == LB_Combining_Mark) {
 
                 /* What happens with these depends on the character they
@@ -7155,7 +7155,7 @@ S_regmatch(pTHX_ regmatch_info *reginfo, char *startpos, regnode *prog)
              * the same position we throw an error.
              */
             if ( rex->recurse_locinput[arg] == locinput ) {
-                /* FIXME: we should show the regop that is failing as part
+                /* FIXME: we should show the regop that is failing as part id:780
                  * of the error message. */
                 Perl_croak(aTHX_ "Infinite recursion in regex");
             } else {
@@ -7488,7 +7488,7 @@ S_regmatch(pTHX_ regmatch_info *reginfo, char *startpos, regnode *prog)
                  * indexes) against the same string, so the bits in the
                  * cache are meaningless. Setting maxiter to zero forces
                  * the cache to be invalidated and zeroed before reuse.
-		 * XXX This is too dramatic a measure. Ideally we should
+		 * XXX This is too dramatic a measure. Ideally we should id:993
                  * save the old cache and restore when running the outer
                  * pattern again */
 		reginfo->poscache_maxiter = 0;
@@ -8734,7 +8734,7 @@ NULL
 	  do_ifmatch:
 	    ST.me = scan;
 	    ST.logical = logical;
-	    logical = 0; /* XXX: reset state of logical once it has been saved into ST */
+	    logical = 0; /* XXX: reset state of logical once it has been saved into ST id:745*/
 	    
 	    /* execute body of (?...A) */
 	    PUSH_YES_STATE_GOTO(IFMATCH_A, NEXTOPER(NEXTOPER(scan)), newstart);
@@ -9859,7 +9859,7 @@ S_reghop3(U8 *s, SSize_t off, const U8* lim)
 
     if (off >= 0) {
 	while (off-- && s < lim) {
-	    /* XXX could check well-formedness here */
+	    /* XXX could check well-formedness here id:850*/
 	    U8 *new_s = s + UTF8SKIP(s);
             if (new_s > lim) /* lim may be in the middle of a long character */
                 return s;
@@ -9876,7 +9876,7 @@ S_reghop3(U8 *s, SSize_t off, const U8* lim)
                     Perl_croak_nocontext("Malformed UTF-8 character (fatal)");
                 }
 	    }
-            /* XXX could check well-formedness here */
+            /* XXX could check well-formedness here id:824*/
 	}
     }
     return s;
@@ -9889,7 +9889,7 @@ S_reghop4(U8 *s, SSize_t off, const U8* llim, const U8* rlim)
 
     if (off >= 0) {
         while (off-- && s < rlim) {
-            /* XXX could check well-formedness here */
+            /* XXX could check well-formedness here id:781*/
             s += UTF8SKIP(s);
         }
     }
@@ -9903,7 +9903,7 @@ S_reghop4(U8 *s, SSize_t off, const U8* llim, const U8* rlim)
                     Perl_croak_nocontext("Malformed UTF-8 character (fatal)");
                 }
             }
-            /* XXX could check well-formedness here */
+            /* XXX could check well-formedness here id:994*/
         }
     }
     return s;
@@ -9919,7 +9919,7 @@ S_reghopmaybe3(U8* s, SSize_t off, const U8* const lim)
 
     if (off >= 0) {
 	while (off-- && s < lim) {
-	    /* XXX could check well-formedness here */
+	    /* XXX could check well-formedness here id:746*/
 	    s += UTF8SKIP(s);
 	}
 	if (off >= 0)
@@ -9935,7 +9935,7 @@ S_reghopmaybe3(U8* s, SSize_t off, const U8* const lim)
                     Perl_croak_nocontext("Malformed UTF-8 character (fatal)");
                 }
 	    }
-            /* XXX could check well-formedness here */
+            /* XXX could check well-formedness here id:851*/
 	}
 	if (off <= 0)
 	    return NULL;
@@ -10279,7 +10279,7 @@ Perl_isSCRIPT_RUN(pTHX_ const U8 * s, const U8 * send, const bool utf8_target)
      * parallel, table that gives the number of entries in each aux table.
      * These are all defined in charclass_invlists.h */
 
-    /* XXX Here are the additional things UTS 39 says could be done:
+    /* XXX Here are the additional things UTS 39 says could be done: id:825
      * Mark Chinese strings as “mixed script” if they contain both simplified
      * (S) and traditional (T) Chinese characters, using the Unihan data in the
      * Unicode Character Database [UCD].  The criterion can only be applied if

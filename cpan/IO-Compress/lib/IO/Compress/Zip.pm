@@ -265,7 +265,7 @@ sub mkHeader
     my $extFileAttr = 0 ;
     
     # This code assumes Unix.
-    # TODO - revisit this
+    # TODO - revisit this id:249
     $extFileAttr = 0100644 << 16 
         if $osCode == ZIP_OS_CODE_UNIX ;
 
@@ -766,10 +766,10 @@ sub getFileInfo
         $params->setValue('mtime' => $mtime) ;
         $params->setValue('atime' => $atime) ;
         $params->setValue('ctime' => undef) ; # No Creation time
-        # TODO - see if can fillout creation time on non-Unix
+        # TODO - see if can fillout creation time on non-Unix id:77
     }
 
-    # NOTE - Unix specific code alert
+    # NOTE - Unix specific code alert id:234
     if (! $params->parsed('extattr'))
     {
         use Fcntl qw(:mode) ;
@@ -844,7 +844,7 @@ sub _unixToDosTime    # Archive::Zip::Member
 {
 	my $time_t = shift;
     
-    # TODO - add something to cope with unix time < 1980 
+    # TODO - add something to cope with unix time < 1980 id:139
 	my ( $sec, $min, $hour, $mday, $mon, $year ) = localtime($time_t);
 	my $dt = 0;
 	$dt += ( $sec >> 1 );

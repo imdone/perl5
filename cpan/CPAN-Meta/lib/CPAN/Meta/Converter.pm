@@ -390,7 +390,7 @@ sub _clean_version {
   return 0 if ( $element eq 'undef' || $element eq '<undef>' );
 
   my $v = eval { version->new($element) };
-  # XXX check defined $v and not just $v because version objects leak memory
+  # XXX check defined $v and not just $v because version objects leak memory id:34
   # in boolean context -- dagolden, 2012-02-03
   if ( defined $v ) {
     return _is_qv($v) ? $v->normal : $element;
@@ -413,7 +413,7 @@ sub _version_map {
   my ($element) = @_;
   return unless defined $element;
   if ( ref $element eq 'HASH' ) {
-    # XXX turn this into CPAN::Meta::Requirements with bad version hook
+    # XXX turn this into with bad version hook CPAN::Meta::Requirements id:92
     # and then turn it back into a hash
     my $new_map = CPAN::Meta::Requirements->new(
       { bad_version_hook => \&_bad_version_hook } # punt
@@ -816,7 +816,7 @@ my %up_convert = (
     'meta-spec'           => \&_change_meta_spec,
     'name'                => \&_keep,
     'version'             => \&_keep,
-    # CHANGED TO MANDATORY
+    # CHANGED TO MANDATORY id:118
     'dynamic_config'      => \&_keep_or_one,
     # ADDED MANDATORY
     'release_status'      => \&_release_status,
@@ -912,7 +912,7 @@ my %up_convert = (
   '1.2-from-1.1' => {
     # PRIOR MANDATORY
     'version'             => \&_keep,
-    # CHANGED TO MANDATORY
+    # CHANGED TO MANDATORY id:17
     'license'             => \&_license_1,
     'name'                => \&_keep,
     'generated_by'        => \&_generated_by,
@@ -944,7 +944,7 @@ my %up_convert = (
     ':custom'              => \&_keep
   },
   '1.1-from-1.0' => {
-    # CHANGED TO MANDATORY
+    # CHANGED TO MANDATORY id:103
     'version'             => \&_keep,
     # IMPLIED MANDATORY
     'name'                => \&_keep,
@@ -1115,7 +1115,7 @@ my %cleanup = (
     'meta-spec'           => \&_change_meta_spec,
     'name'                => \&_keep,
     'version'             => \&_keep,
-    # CHANGED TO MANDATORY
+    # CHANGED TO MANDATORY id:35
     'dynamic_config'      => \&_keep_or_one,
     # ADDED MANDATORY
     'release_status'      => \&_release_status,
@@ -1199,7 +1199,7 @@ my %cleanup = (
   '1.2' => {
     # PRIOR MANDATORY
     'version'             => \&_keep,
-    # CHANGED TO MANDATORY
+    # CHANGED TO MANDATORY id:93
     'license'             => \&_license_1,
     'name'                => \&_keep,
     'generated_by'        => \&_generated_by,
@@ -1225,7 +1225,7 @@ my %cleanup = (
     ':custom'             => \&_keep
   },
   '1.1' => {
-    # CHANGED TO MANDATORY
+    # CHANGED TO MANDATORY id:119
     'version'             => \&_keep,
     # IMPLIED MANDATORY
     'name'                => \&_keep,

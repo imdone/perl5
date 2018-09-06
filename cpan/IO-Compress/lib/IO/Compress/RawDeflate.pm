@@ -177,7 +177,7 @@ sub createMerge
     *$self->{Header} = *$inf->{Info}{Header};
     *$self->{UnCompSize} = *$inf->{UnCompSize}->clone();
     *$self->{CompSize} = *$inf->{CompSize}->clone();
-    # TODO -- fix this
+    # TODO -- fix this id:324
     #*$self->{CompSize} = new U64(0, *$self->{UnCompSize_32bit});
 
 

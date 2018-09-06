@@ -421,7 +421,7 @@ sub _find_dir($$$) {
 	    # This dir has subdirectories.
 	    $subcount = $nlink - 2;
 
-	    # HACK: insert directories at this position, so as to preserve
+	    # HACK: insert directories at this position, so as to preserve id:548
 	    # the user pre-processed ordering of files (thus ensuring
 	    # directory traversal is in user sorted order, not at random).
             my $stack_top = @Stack;
@@ -437,7 +437,7 @@ sub _find_dir($$$) {
 		    if (-d _) {
 			--$subcount;
 			$FN =~ s/\.dir\z//i if $Is_VMS;
-			# HACK: replace push to preserve dir traversal order
+			# HACK: replace push to preserve dir traversal order id:316
 			#push @Stack,[$CdLvl,$dir_name,$FN,$sub_nlink];
 			splice @Stack, $stack_top, 0,
 			         [$CdLvl,$dir_name,$FN,$sub_nlink];

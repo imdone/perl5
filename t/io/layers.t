@@ -7,7 +7,7 @@ BEGIN {
     require './test.pl';
     set_up_inc('../lib');
     skip_all_without_perlio();
-    # FIXME - more of these could be tested without Encode or full perl
+    # FIXME - more of these could be tested without Encode or full perl id:910
     skip_all_without_dynamic_extension('Encode');
 
     # Makes testing easier.

@@ -267,7 +267,7 @@ sub sh {
 # technically this is an unsafe usage commonality-wise, but
 # a) you have to try really hard to break it, as this test shows;
 # b) it's such an important usage that for performance reasons we
-#    mark it as safe even though it isn't really. Hence it's a TODO.
+#    mark it as safe even though it isn't really. Hence it's a TODO . id:972
 
 SKIP: {
     use Config;

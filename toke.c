@@ -46,7 +46,7 @@ Individual members of C<PL_parser> have their own documentation.
 
 #define pl_yylval	(PL_parser->yylval)
 
-/* XXX temporary backwards compatibility */
+/* XXX temporary backwards compatibility id:1065*/
 #define PL_lex_brackets		(PL_parser->lex_brackets)
 #define PL_lex_allbrackets	(PL_parser->lex_allbrackets)
 #define PL_lex_fakeeof		(PL_parser->lex_fakeeof)
@@ -2152,7 +2152,7 @@ S_force_ident(pTHX_ const char *s, int kind)
 	force_next(BAREWORD);
 	if (kind) {
 	    o->op_private = OPpCONST_ENTERED;
-	    /* XXX see note in pp_entereval() for why we forgo typo
+	    /* XXX see note in pp_entereval() for why we forgo typo id:1036
 	       warnings if the symbol must be introduced in an eval.
 	       GSAR 96-10-12 */
 	    gv_fetchpvn_flags(s, len,
@@ -2242,7 +2242,7 @@ S_force_version(pTHX_ char *s, int guessing)
 	}
     }
 
-    /* NOTE: The parser sees the package name and the VERSION swapped */
+    /* NOTE: The parser sees the package name and the VERSION swapped id:1088*/
     NEXTVAL_NEXTTOKE.opval = version;
     force_next(BAREWORD);
 
@@ -2279,7 +2279,7 @@ S_force_strict_version(pTHX_ char *s)
 	return s;
     }
 
-    /* NOTE: The parser sees the package name and the VERSION swapped */
+    /* NOTE: The parser sees the package name and the VERSION swapped id:956*/
     NEXTVAL_NEXTTOKE.opval = version;
     force_next(BAREWORD);
 
@@ -5988,7 +5988,7 @@ Perl_yylex(pTHX)
 		    PL_lex_stuff = NULL;
 		}
 		else {
-		    /* NOTE: any CV attrs applied here need to be part of
+		    /* NOTE: any CV attrs applied here need to be part of id:929
 		       the CVf_BUILTIN_ATTRS define in cv.h! */
 		    if (!PL_in_my && memEQs(SvPVX(sv), len, "lvalue")) {
 			sv_free(sv);
@@ -6034,7 +6034,7 @@ Perl_yylex(pTHX)
 		    s = skipspace(s+1);
 		else if (s == d)
 		    break;	/* require real whitespace or :'s */
-		/* XXX losing whitespace on sequential attributes here */
+		/* XXX losing whitespace on sequential attributes here id:1066*/
 	    }
 	    {
 		if (*s != ';'
@@ -6217,7 +6217,7 @@ Perl_yylex(pTHX)
 		 * disambiguated by prepending a "+" before the opening
 		 * curly in order to force resolution as an anon hash.
 		 *
-		 * XXX should probably propagate the outer expectation
+		 * XXX should probably propagate the outer expectation id:1037
 		 * into eval"" to rely less on this hack, but that could
 		 * potentially break current behavior of eval"".
 		 * GSAR 97-07-21
@@ -6290,7 +6290,7 @@ Perl_yylex(pTHX)
 		while (t < PL_bufend && isSPACE(*t))
 		    t++;
 		/* if comma follows first term, call it an anon hash */
-		/* XXX it could be a comma expression with loop modifiers */
+		/* XXX it could be a comma expression with loop modifiers id:1089*/
 		if (t < PL_bufend && ((*t == ',' && (*s == 'q' || !isLOWER(*s)))
 				   || (*t == '=' && t[1] == '>')))
 		    OPERATOR(HASHBRACK);
@@ -6729,7 +6729,7 @@ Perl_yylex(pTHX)
 			    t += UTF ? UTF8SKIP(t) : 1;
                         }
 			if (*t++ == ',') {
-			    PL_bufptr = skipspace(PL_bufptr); /* XXX can realloc */
+			    PL_bufptr = skipspace(PL_bufptr); /* XXX can realloc id:957*/
 			    while (t < PL_bufend && *t != ']')
 				t++;
 			    Perl_warner(aTHX_ packWARN(WARN_SYNTAX),
@@ -6817,7 +6817,7 @@ Perl_yylex(pTHX)
 		else if (*s == '/' && !isSPACE(s[1]) && s[1] != '='
 			 && s[1] != '/')
 		    PL_expect = XTERM;		/* e.g. print $fh /.../
-						   XXX except DORDOR operator
+						   XXX except DORDOR operator id:930
 						*/
 		else if (*s == '<' && s[1] == '<' && !isSPACE(s[2])
 			 && s[2] != '=')
@@ -6983,7 +6983,7 @@ Perl_yylex(pTHX)
 	if (!s)
 	    missingterm(NULL, 0);
 	pl_yylval.ival = OP_CONST;
-	/* FIXME. I think that this can be const if char *d is replaced by
+	/* FIXME . I think that this can be const if char *d is replaced by id:1067
 	   more localised variables.  */
 	for (d = SvPV(PL_lex_stuff, len); len; len--, d++) {
 	    if (*d == '$' || *d == '@' || *d == '\\' || !UTF8_IS_INVARIANT((U8)*d)) {
@@ -7240,7 +7240,7 @@ Perl_yylex(pTHX)
 		tmp = 0;		/* overridden by import or by GLOBAL */
 	    }
 	    else if (gv && !gvp
-		     && -tmp==KEY_lock	/* XXX generalizable kludge */
+		     && -tmp==KEY_lock	/* XXX generalizable kludge id:1038*/
 		     && GvCVu(gv))
 	    {
 		tmp = 0;		/* any sub overrides "weak" keyword */
@@ -7712,7 +7712,7 @@ Perl_yylex(pTHX)
 #if defined(WIN32) && !defined(PERL_TEXTMODE_SCRIPTS)
 		/* if the script was opened in binmode, we need to revert
 		 * it to text mode for compatibility; but only iff it has CRs
-		 * XXX this is a questionable hack at best. */
+		 * XXX this is a questionable hack at best. id:1090*/
 		if (PL_bufend-PL_bufptr > 2
 		    && PL_bufend[-1] == '\n' && PL_bufend[-2] == '\r')
 		{
@@ -9115,7 +9115,7 @@ S_checkcomma(pTHX_ const char *s, const char *name, const char *what)
 {
     PERL_ARGS_ASSERT_CHECKCOMMA;
 
-    if (*s == ' ' && s[1] == '(') {	/* XXX gotta be a better way */
+    if (*s == ' ' && s[1] == '(') {	/* XXX gotta be a better way id:958*/
 	if (ckWARN(WARN_SYNTAX)) {
 	    int level = 1;
 	    const char *w;
@@ -11192,7 +11192,7 @@ Perl_scan_num(pTHX_ const char *start, YYSTYPE* lvalp)
 #ifdef NV_MIN_EXP
                                 if (negexp
                                     && -hexfp_exp < NV_MIN_EXP - 1) {
-                                    /* NOTE: this means that the exponent
+                                    /* NOTE: this means that the exponent id:931
                                      * underflow warning happens for
                                      * the IEEE 754 subnormals (denormals),
                                      * because DBL_MIN_EXP etc are the lowest

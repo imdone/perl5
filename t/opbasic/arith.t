@@ -430,13 +430,13 @@ if ($^O eq 'VMS') {
 }
 
 if ($^O eq 'vos') {
-  print "not ok ", $T++, " # TODO VOS raises SIGFPE instead of producing infinity.\n";
+  print "not ok ", $T++, " # TODO VOS raises SIGFPE instead of producing infinity.\n"; id:1026
 }
 elsif ($vms_no_ieee || !$Config{d_double_has_inf}) {
  print "ok ", $T++, " # SKIP -- the IEEE infinity model is unavailable in this configuration.\n"
 }
 elsif ($^O eq 'ultrix') {
-  print "not ok ", $T++, " # TODO Ultrix enters deep nirvana instead of producing infinity.\n";
+  print "not ok ", $T++, " # TODO Ultrix enters deep nirvana instead of producing infinity.\n"; id:1021
 }
 else {
   # The computation of $v should overflow and produce "infinity"

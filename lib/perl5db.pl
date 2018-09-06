@@ -906,7 +906,7 @@ share($main::{'_<'.$filename}) if defined $filename;
 @ini_INC = @INC;
 
 # This was an attempt to clear out the previous values of various
-# trapped errors. Apparently it didn't help. XXX More info needed!
+# trapped errors. Apparently it didn't help. XXX More info needed! id:689
 # $prevwarn = $prevdie = $prevbus = $prevsegv = ''; # Does not help?!
 
 # We set these variables to safe values. We don't want to blindly turn
@@ -1729,7 +1729,7 @@ and then call the C<afterinit()> subroutine if there is one.
     } ## end unless ($runnonstop)
 } ## end else [ if ($notty)
 
-# XXX This looks like a bug to me.
+# XXX This looks like a bug to me. id:449
 # Why copy to @ARGS and then futz with @args?
 @ARGS = @ARGV;
 # for (@args) {
@@ -2021,7 +2021,7 @@ sub _DB__handle_c_command {
         #  Probably not needed, since we finish an interactive
         #  sub-session anyway...
         # local $filename = $filename;
-        # local *dbline = *dbline; # XXX Would this work?!
+        # local *dbline = *dbline; # XXX Would this work?! id:798
         #
         # The above question wonders if localizing the alias
         # to the magic array works or not. Since it's commented
@@ -2354,7 +2354,7 @@ sub _DB__handle_run_command_in_pager_command {
             if ( $pager =~ /^\|/ ) {
 
                 # Redirect I/O back again.
-                open( OUT, ">&STDOUT" )    # XXX: lost message
+                open( OUT, ">&STDOUT" )    # XXX: lost message id:515
                 || _db_warn("Can't restore DB::OUT");
                 open( STDOUT, ">&SAVEOUT" )
                 || _db_warn("Can't restore STDOUT");
@@ -2363,7 +2363,7 @@ sub _DB__handle_run_command_in_pager_command {
             else {
 
                 # Redirect I/O. STDOUT already safe.
-                open( OUT, ">&STDOUT" )    # XXX: lost message
+                open( OUT, ">&STDOUT" )    # XXX: lost message id:592
                 || _db_warn("Can't restore DB::OUT");
             }
             next CMD;
@@ -3148,7 +3148,7 @@ any variables we might want to address in the C<DB> package.
                     STDERR->flush();
                 };
 
-                # XXX If this is the master pid, print a newline.
+                # XXX If this is the master pid, print a newline. id:690
                 print {$OUT} "\n";
             }
         } ## end while (($term || &setterm...
@@ -3275,7 +3275,7 @@ sub _DB_on_init__initialize_globals
 
         elsif ($ImmediateStop) {
 
-            # We are supposed to stop here; XXX probably a break.
+            # We are supposed to stop here; XXX probably a break. id:450
             $ImmediateStop = 0;    # We've processed it; turn it off
             $signal        = 1;    # Simulate an interrupt to force
                                    # us into the command loop
@@ -3978,7 +3978,7 @@ sub _handle_x_command {
     if ($DB::cmd =~ s#\Ax\b# #) {    # Remainder gets done by DB::eval()
         $onetimeDump = 'dump';    # main::dumpvar shows the output
 
-        # handle special  "x 3 blah" syntax XXX propagate
+        # handle special  "x 3 blah" syntax XXX propagate id:799
         # doc back to special variables.
         if ( $DB::cmd =~ s#\A\s*(\d+)(?=\s)# #) {
             $onetimedumpDepth = $1;
@@ -5432,7 +5432,7 @@ sub cmd_h {
         # happen when you ask for h on <CR> for example
         my $qasked = quotemeta($asked);    # for searching; we don't
                                            # want to use it as a pattern.
-                                           # XXX: finds CR but not <CR>
+                                           # XXX: finds CR but not <CR> id:516
 
         # Search the help string for the command.
         if (
@@ -6381,7 +6381,7 @@ sub dumpit {
     my $otrace  = $trace;
     $single = $trace = 0;
 
-    # XXX Okay, what do $frame and $doret do, again?
+    # XXX Okay, what do $frame and $doret do, again? id:593
     local $frame = 0;
     local $doret = -2;
 
@@ -6610,7 +6610,7 @@ sub dump_trace {
 
     my ( $e, $r, @sub, $args );
 
-    # XXX Okay... why'd we do that?
+    # XXX Okay... why'd we do that? id:691
     my $nothard = not $frame & 8;
     local $frame = 0;
 
@@ -6769,7 +6769,7 @@ sub _db_system {
     open( STDIN,   "<&IN" )     || _db_warn("Can't redirect STDIN");
     open( STDOUT,  ">&OUT" )    || _db_warn("Can't redirect STDOUT");
 
-    # XXX: using csh or tcsh destroys sigint retvals!
+    # XXX: using csh or tcsh destroys sigint retvals! id:451
     system(@_);
     open( STDIN,  "<&SAVEIN" )  || _db_warn("Can't restore STDIN");
     open( STDOUT, ">&SAVEOUT" ) || _db_warn("Can't restore STDOUT");
@@ -6887,7 +6887,7 @@ sub setterm {
         $term->SetHistory(@hist);
     }
 
-    # XXX Ornaments are turned on unconditionally, which is not
+    # XXX Ornaments are turned on unconditionally, which is not id:800
     # always a good thing.
     ornaments($ornaments) if defined $ornaments;
     $term_pid = $$;
@@ -7353,8 +7353,8 @@ sub readline {
         while ($first_time or (length($buf) && ($stuff .= $buf) !~ /\n/))
         {
             $first_time = 0;
-            $IN->recv( $buf = '', 2048 );   # XXX "what's wrong with sysread?"
-                                            # XXX Don't know. You tell me.
+            $IN->recv( $buf = '', 2048 );   # XXX "what's wrong with sysread?" id:517
+                                            # XXX Don't know. You tell me. id:594
         }
 
         # What we got.
@@ -7568,7 +7568,7 @@ sub parse_options {
             local \$doret = -2;
             require '$optionRequire{$option}';
             1;
-            } || die $@   # XXX: shouldn't happen
+            } || die $@   # XXX: shouldn't happen id:692
         }
 
         # Set it.
@@ -7740,7 +7740,7 @@ sub TTY {
         # This terminal supports switching to a new TTY.
         # Can be a list of two files, or on string containing both names,
         # comma-separated.
-        # XXX Should this perhaps be an assignment from @_?
+        # XXX Should this perhaps be an assignment from @_? id:452
         my ( $in, $out ) = shift;
         if ( $in =~ /,/ ) {
 
@@ -8064,7 +8064,7 @@ use vars qw($pre580_summary);
 
 sub sethelp {
 
-    # XXX: make sure there are tabs between the command and explanation,
+    # XXX: make sure there are tabs between the command and explanation, id:801
     #      or print_help will screw up your formatting if you have
     #      eeevil ornaments enabled.  This is an insane mess.
 
@@ -8752,7 +8752,7 @@ sub dieLevel {
               ( $dieLevel == 1 ? " outside of evals" : "" ), ".\n"
               if $I_m_init;
 
-            # XXX This is probably obsolete, given that diehard() is gone.
+            # XXX This is probably obsolete, given that diehard() is gone. id:518
             print $OUT "Dump printed too.\n" if $dieLevel > 2;
         } ## end if ($dieLevel)
 
@@ -9162,7 +9162,7 @@ BEGIN {    # This does not compile, alas. (XXX eh?)
     $level = 0;            # Level of recursive debugging
 
     # "Triggers bug (?) in perl if we postpone this until runtime."
-    # XXX No details on this yet, or whether we should fix the bug instead
+    # XXX No details on this yet, or whether we should fix the bug instead id:595
     # of work around it. Stay tuned.
     @stack = (0);
 
@@ -9520,7 +9520,7 @@ question mark, which, if executed, will list the current value of the option.
         # We have a value. Create a proper option-setting command.
         elsif ( $val =~ /\s/ ) {
 
-            # XXX This may be an extraneous variable.
+            # XXX This may be an extraneous variable. id:693
             my $found;
 
             # We'll want to quote the string (because of the embedded
@@ -9809,7 +9809,7 @@ variable via C<DB::set_list>.
         ( push @hard, $file ), next
           if $file =~ /^\(\w*eval/;
 
-        # XXX I have no idea what this is doing. Yet.
+        # XXX I have no idea what this is doing. Yet. id:453
         my @add;
         @add = %{ $postponed_file{$file} }
           if $postponed_file{$file};
@@ -9826,7 +9826,7 @@ variable via C<DB::set_list>.
     } ## end for (0 .. $#had_breakpoints)
 
     # The breakpoint was inside an eval. This is a little
-    # more difficult. XXX and I don't understand it.
+    # more difficult. XXX and I don't understand it. id:828
     foreach my $hard_file (@hard) {
         # Get over to the eval in question.
         *dbline = $main::{ '_<' . $hard_file };
@@ -10157,7 +10157,7 @@ sub cmd_pre580_h {
     elsif ( $cmd =~ /^h\s+(\S.*)$/ ) {
         my $asked  = $1;                   # for proper errmsg
         my $qasked = quotemeta($asked);    # for searching
-                                           # XXX: finds CR but not <CR>
+                                           # XXX: finds CR but not <CR> id:519
         if (
             $pre580_help =~ /^
                               <?           # Optional '<'

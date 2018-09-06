@@ -227,7 +227,7 @@ SKIP: {
 is(rand($PInf), $PInf, "rand(+Inf) is +Inf");
 is(rand($NInf), $NInf, "rand(-Inf) is -Inf");
 
-# XXX Bit operations?
+# XXX Bit operations? id:915
 # +Inf & 1 == +Inf?
 # +Inf | 1 == +Inf?
 # +Inf ^ 1 == +Inf?

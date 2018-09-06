@@ -946,7 +946,7 @@ EOT
   end_tests("utf8 tests", \@items, [], "#define perl \"rules\"\n", $test_body);
 }
 
-# XXX I think that I should merge this into the utf8 test above.
+# XXX I think that I should merge this into the utf8 test above. id:217
 sub explict_call_constant {
   my ($string, $expect) = @_;
   # This does assume simple strings suitable for ''

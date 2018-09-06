@@ -39,7 +39,7 @@ plan('no_plan');
 use ExtUtils::Manifest qw(maniread);
 
 # Copied from Porting/makerel - these will get +x in the tarball
-# XXX refactor? -- dagolden, 2010-07-23
+# XXX refactor? -- dagolden, 2010-07-23 id:1027
 my %exe_list =
   map   { $_ => 1 }
   map   { my ($f) = split; glob("../$f") }

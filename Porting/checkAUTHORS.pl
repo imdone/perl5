@@ -813,7 +813,7 @@ perl\100profvince.com                   vince\100profvince.com
 perl-rt\100wizbit.be                    p5p\100perl.wizbit.be
 # Maybe we should special case this to get real names out?
 Peter.Dintelmann\100Dresdner-Bank.com   peter.dintelmann\100dresdner-bank.com
-# NOTE: There is an intentional trailing space in the line above
+# NOTE: There is an intentional trailing space in the line above id:2
 pfeifer\100wait.de                      pfeifer\100charly.informatik.uni-dortmund.de
 +                                       upf\100de.uu.net
 ribasushi@cpan.org			rabbit\100rabbit.us

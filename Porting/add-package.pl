@@ -416,7 +416,7 @@ my @ChangedFiles;
     {   chmod 0644, $file;
         open my $fh, '>', $file or die "Could not open $file for writing: $!";
         #print $fh sort { lc $a cmp lc $b } @manifest;
-        ### XXX stolen from pod/buildtoc:sub do_manifest
+        ### XXX stolen from pod/ do_manifest buildtoc:sub id:82
         print $fh
             map  { $_->[0] }
             sort { $a->[1] cmp $b->[1] || $a->[0] cmp $b->[0] }

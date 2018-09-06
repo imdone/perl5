@@ -16,7 +16,7 @@ my ($SYMBIAN_ROOT, $SYMBIAN_VERSION, $SDK_NAME, $SDK_VARIANT, $SDK_VERSION) =
 my $UID  = do "uid.pl" or die $@;
 my %PORT = %{ do "port.pl" or die $@ };
 
-my $ARM = 'armv5';#'thumb'; # TODO
+my $ARM = 'armv5';#'thumb'; # TODO  id:907
 my $S60SDK = $ENV{S60SDK}; # from sdk.pl
 my $S80SDK = $ENV{S80SDK}; # from sdk.pl
 my $S90SDK = $ENV{S90SDK}; # from sdk.pl

@@ -280,7 +280,7 @@ sub _check_and_extract_name {
     return unless contains_pod($file,$verbose);
 
     # strip non-significant path components
-    # TODO what happens on e.g. Win32?
+    # TODO what happens on e.g. Win32? id:166
     my $name = $file;
     if(defined $root_rx) {
         $name =~ s/$root_rx//is;

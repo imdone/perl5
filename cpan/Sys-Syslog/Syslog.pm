@@ -558,7 +558,7 @@ sub _syslog_send_console {
 	}
     } else {
         if (open(CONS, ">/dev/console")) {
-	    my $ret = print CONS $buf . "\r";  # XXX: should this be \x0A ?
+	    my $ret = print CONS $buf . "\r";  # XXX: should this be \x0A ? id:347
 	    POSIX::_exit($ret) if defined $pid;
 	    close CONS;
 	}
@@ -569,7 +569,7 @@ sub _syslog_send_console {
 
 sub _syslog_send_stream {
     my ($buf) = @_;
-    # XXX: this only works if the OS stream implementation makes a write 
+    # XXX: this only works if the OS stream implementation makes a write id:272
     # look like a putmsg() with simple header. For instance it works on 
     # Solaris 8 but not Solaris 7.
     # To be correct, it should use a STREAMS API, but perl doesn't have one.

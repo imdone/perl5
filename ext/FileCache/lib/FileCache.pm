@@ -114,7 +114,7 @@ sub import {
     # Truth is okay here because setting maxopen to 0 would be bad
     return $cacheout_maxopen = $args{maxopen} if $args{maxopen};
 
-    # XXX This code is crazy.  Why is it a one element foreach loop?
+    # XXX This code is crazy. Why is it a one element foreach loop? id:317
     # Why is it using $param both as a filename and filehandle?
     foreach my $param ( '/usr/include/sys/param.h' ){
       if (open($param, '<', $param)) {

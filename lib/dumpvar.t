@@ -66,7 +66,7 @@ my $bar = Bar->new(1..5);
 
 for (@prgs) {
     my($prog, $expected) = split(/\nEXPECT\n?/, $_);
-    # TODO: dumpvar::stringify() is controlled by a pile of package
+    # TODO: is controlled by a pile of package dumpvar::stringify() id:686
     # dumpvar variables: $printUndef, $unctrl, $quoteHighBit, $bareStringify,
     # and so forth.  We need to test with various settings of those.
     my $out = tie *STDOUT, 'TieOut';

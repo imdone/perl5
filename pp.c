@@ -72,7 +72,7 @@ PP(pp_clonecv)
     assert(SvTYPE(TARG) == SVt_PVCV);
     assert(protocv);
     if (CvISXSUB(protocv)) { /* constant */
-	/* XXX Should we clone it here? */
+	/* XXX Should we clone it here? id:682*/
 	/* If this changes to use SAVECLEARSV, we can move the SAVECLEARSV
 	   to introcv and remove the SvPADSTALE_off. */
 	SAVEPADSVANDMORTALIZE(ARGTARG);
@@ -1650,7 +1650,7 @@ PP(pp_modulo)
 	    if ((left_neg != right_neg) && ans)
 		ans = right - ans;
 	    if (right_neg) {
-		/* XXX may warn: unary minus operator applied to unsigned type */
+		/* XXX may warn: unary minus operator applied to unsigned type id:873*/
 		/* could change -foo to be (~foo)+1 instead	*/
 		if (ans <= ~((UV)IV_MAX)+1)
 		    sv_setiv(TARG, ~ans+1);
@@ -1674,7 +1674,7 @@ PP(pp_repeat)
     const U8 gimme = GIMME_V;
 
     if (gimme == G_ARRAY && PL_op->op_private & OPpREPEAT_DOLIST) {
-	/* TODO: think of some way of doing list-repeat overloading ??? */
+	/* TODO: think of some way of doing list-repeat overloading ??? id:726*/
 	sv = POPs;
 	SvGETMAGIC(sv);
     }
@@ -2966,7 +2966,7 @@ PP(pp_int)
     {
       SV * const sv = TOPs;
       const IV iv = SvIV_nomg(sv);
-      /* XXX it's arguable that compiler casting to IV might be subtly
+      /* XXX it's arguable that compiler casting to IV might be subtly id:618
 	 different from modf (for numbers inside (IV_MIN,UV_MAX)) in which
 	 else preferring IV has introduced a subtle behaviour change bug. OTOH
 	 relying on floating point to be accurate is a bug.  */
@@ -5310,7 +5310,7 @@ PP(pp_splice)
 	    av_extend(ary, 0);
     }
 
-    /* At this point, MARK .. SP-1 is our new LIST */
+    /* At this point, MARK .. SP-1 is our new LIST id:805*/
 
     newlen = SP - MARK;
     diff = newlen - length;
@@ -6446,12 +6446,12 @@ S_localise_gv_slot(pTHX_ GV *gv, U8 type)
 	GvSV(gv) = 0;
     }
     else if (type == OPpLVREF_AV)
-	/* XXX Inefficient, as it creates a new AV, which we are
+	/* XXX Inefficient, as it creates a new AV, which we are id:683
 	       about to clobber.  */
 	save_ary(gv);
     else {
 	assert(type == OPpLVREF_HV);
-	/* XXX Likewise inefficient.  */
+	/* XXX Likewise inefficient. id:874*/
 	save_hash(gv);
     }
 }
@@ -6525,7 +6525,7 @@ PP(pp_refassign)
     }
     if (PL_op->op_flags & OPf_MOD)
 	SETs(sv_2mortal(newSVsv(sv)));
-    /* XXX else can weak references go stale before they are read, e.g.,
+    /* XXX else can weak references go stale before they are read, e.g., id:727
        in leavesub?  */
     RETURN;
     }

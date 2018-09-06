@@ -288,7 +288,7 @@ ok $ENV{HARNESS_VERSION}, 'HARNESS_VERSION env variable should be set';
 
     @expected = (
         "$source_tests/harness_directives ..",
-        'not ok 2 - we have a something # TODO some output',
+        'not ok 2 - we have a something # TODO some output', id:353
         "ok 3 houston, we don't have liftoff # SKIP no funding",
         'ok',
         'All tests successful.',

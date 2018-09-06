@@ -23,7 +23,7 @@ use_ok( $Class );
 
 
 
-### XXX TODO:
+### XXX TODO: id:86
 ### * change to fullname
 ### * add tests for global variables
 
@@ -326,7 +326,7 @@ chmod 0644, $COMPRESS_FILE;
         for my $list (  [$TARBIN,   \@EXPECTBIN],
                         [$TARX,     \@EXPECTX],
         ) {
-            ### XXX GLOBAL! changes may affect other tests!
+            ### XXX GLOBAL! changes may affect other tests! id:112
             my($tar,$struct) = @$list;
 
             for my $aref ( @$struct ) {
@@ -700,7 +700,7 @@ sub check_tar_object {
 
     for my $file (@files) {
 
-        ### XXX ->fullname
+        ### XXX ->fullname id:11
         #my $path = File::Spec::Unix->catfile(
         #            grep { length } $file->prefix, $file->name );
         my($ename,$econtent) =

@@ -5,7 +5,7 @@ BEGIN {
 }
 
 # test the directory cache
-# XXX test --flush and %Pages being loaded/used for cross references
+# XXX test --flush and %Pages being loaded/used for cross references id:636
 
 use strict;
 use Cwd;

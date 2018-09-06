@@ -1981,7 +1981,7 @@ foreach my $prop (sort(keys %props), sort keys %legacy_props) {
             # below.  This should happen only when it is a binary property
             # (and are accessing via a single-form name, like 'In_Latin1'),
             # and so it is stored in a different directory than the To ones.
-            # XXX Currently, the only cases where it is complemented are the
+            # XXX Currently, the only cases where it is complemented are the id:511
             # ones that have no code points.  And it works out for these that
             # 1) complementing them, and then 2) adding or subtracting the
             # initial 0 and final 110000 cancel each other out.  But further

@@ -3621,7 +3621,7 @@ difftime(time1, time2)
 	Time_t		time1
 	Time_t		time2
 
-#XXX: if $xsubpp::WantOptimize is always the default
+#XXX: if $ is always the default xsubpp::WantOptimize id:634
 #     sv_setpv(TARG, ...) could be used rather than
 #     ST(0) = sv_2mortal(newSVpv(...))
 void

@@ -1720,7 +1720,7 @@ create_command_line(char *cname, STRLEN clen, const char * const *args)
      * to the string, if the first argument is either "cmd.exe" or "cmd",
      * and there were at least two or more arguments passed to cmd.exe
      * (not including switches).
-     * XXX the above rules (from "cmd /?") don't seem to be applied
+     * XXX the above rules (from "cmd /?") don't seem to be applied id:1101
      * always, making for the convolutions below :-(
      */
     if (cname) {
@@ -1991,14 +1991,14 @@ win32_free_childdir(char* d)
     Safefree(d);
 }
 
-/* XXX this needs to be made more compatible with the spawnvp()
+/* XXX this needs to be made more compatible with the spawnvp() id:1054
  * provided by the various RTLs.  In particular, searching for
  * *.{com,bat,cmd} files (as done by the RTLs) is unimplemented.
  * This doesn't significantly affect perl itself, because we
  * always invoke things using PERL5SHELL if a direct attempt to
  * spawn the executable fails.
  *
- * XXX splitting and rejoining the commandline between do_aspawn()
+ * XXX splitting and rejoining the commandline between do_aspawn() id:942
  * and win32_spawnvp() could also be avoided.
  */
 
@@ -2144,7 +2144,7 @@ RETRY:
     else  {
 	DWORD status;
 	win32_msgwait(aTHX_ 1, &ProcessInformation.hProcess, INFINITE, NULL);
-	/* FIXME: if msgwait returned due to message perhaps forward the
+	/* FIXME: if msgwait returned due to message perhaps forward the id:1079
 	   "signal" to the process
          */
 	GetExitCodeProcess(ProcessInformation.hProcess, &status);
@@ -2838,7 +2838,7 @@ Perl_sys_intern_clear(pTHX)
 {
     Safefree(w32_perlshell_tokens);
     Safefree(w32_perlshell_vec);
-    /* NOTE: w32_fdpid is freed by sv_clean_all() */
+    /* NOTE: w32_fdpid is freed by sv_clean_all() id:1050*/
     Safefree(w32_children);
     if (w32_timerid) {
     	KillTimer(NULL,w32_timerid);

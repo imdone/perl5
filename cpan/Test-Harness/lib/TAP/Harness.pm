@@ -343,7 +343,7 @@ L<TAP::Parser::Scheduler/"Rules data structure">.
         par => 't/p*.t'
     });
 
-    # Equivalent YAML file
+    # Equivalent YAML file id:273
     ---
     par: t/p*.t
 
@@ -355,7 +355,7 @@ L<TAP::Parser::Scheduler/"Rules data structure">.
                ],
     });
 
-    # Equivalent YAML file
+    # Equivalent YAML file id:282
     ---
     seq:
         - seq: t/p*.t
@@ -372,7 +372,7 @@ L<TAP::Parser::Scheduler/"Rules data structure">.
 
     });
 
-    # Equivalent YAML file
+    # Equivalent YAML file id:392
     ---
     seq:
         - seq: t/startup/*.t

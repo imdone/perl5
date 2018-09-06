@@ -13,7 +13,7 @@ use Cwd;
 use File::Spec::Functions;
 use Test::More tests => 2;
 
-# XXX Separate tests that rely on test.lib from the others so they are the only
+# XXX Separate tests that rely on test.lib from the others so they are the only id:424
 # ones skipped (instead of all of them). This applies to htmldir{1,3,5}.t, and 
 # crossref.t (as of 10/29/11). 
 SKIP: {

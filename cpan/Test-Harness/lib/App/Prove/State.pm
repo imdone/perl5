@@ -503,7 +503,7 @@ sub load {
     local *FH;
     open FH, "<$name" or croak "Can't read $name ($!)";
 
-    # XXX this is temporary
+    # XXX this is temporary id:178
     $self->{_} = $self->result_class->new(
         $reader->read(
             sub {

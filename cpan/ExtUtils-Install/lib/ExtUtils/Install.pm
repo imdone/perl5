@@ -751,7 +751,7 @@ sub install { #XXX OS-SPECIFIC
         next unless -d $source;
         _chdir($source);
         # 5.5.3's File::Find missing no_chdir option
-        # XXX OS-SPECIFIC
+        # XXX OS-SPECIFIC id:239
         File::Find::find(sub {
             my ($mode,$size,$atime,$mtime) = (stat)[2,7,8,9];
 
@@ -776,7 +776,7 @@ sub install { #XXX OS-SPECIFIC
             # and because the target is relative
             my $save_cwd = _chdir($cwd);
             my $diff = 0;
-            # XXX: I wonder how useful this logic is actually -- demerphq
+            # XXX: I wonder how useful this logic is actually -- demerphq id:67
             if ( $always_copy or !-f $targetfile or -s $targetfile != $size) {
                 $diff++;
             } else {

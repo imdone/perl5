@@ -22,7 +22,7 @@ $AnyUncompressError = '';
 push @{ $EXPORT_TAGS{all} }, @EXPORT_OK ;
 Exporter::export_ok_tags('all');
 
-# TODO - allow the user to pick a set of the three formats to allow
+# TODO - allow the user to pick a set of the three formats to allow id:250
 #        or just assume want to auto-detect any of the three formats.
 
 BEGIN

@@ -17,7 +17,7 @@ use strict;
 use warnings;
 no utf8; # Ironic, no?
 
-# NOTE!
+# NOTE ! id:694
 #
 # Think carefully before adding tests here.  In general this should be
 # used only for about three categories of tests:
@@ -467,7 +467,7 @@ SKIP: {
 }
 
 {
-    eval {utf8::encode("£")};
+    eval {utf8::encode("ï¿½")};
     like($@, qr/^Modification of a read-only value attempted/,
 	 "utf8::encode should refuse to touch read-only values");
 }

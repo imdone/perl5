@@ -56,7 +56,7 @@ my $re_capture_encoded_word_split = qr/=\?($re_charset)((?:\*$re_language)?)\?($
 my $re_encoding_strict_b = qr/[Bb]/;
 my $re_encoding_strict_q = qr/[Qq]/;
 my $re_encoded_text_strict_b = qr/[0-9A-Za-z\+\/]*={0,2}/;
-my $re_encoded_text_strict_q = qr/(?:[\x21-\x3C\x3E\x40-\x7E]|=[0-9A-Fa-f]{2})*/; # NOTE: first part are printable US-ASCII except ?, =, SPACE and TAB
+my $re_encoded_text_strict_q = qr/(?:[\x21-\x3C\x3E\x40-\x7E]|=[0-9A-Fa-f]{2})*/; # NOTE: first part are printable US-ASCII except ?, =, SPACE and TAB id:216
 my $re_encoded_word_strict = qr/=\?$re_charset(?:\*$re_language)?\?(?:$re_encoding_strict_b\?$re_encoded_text_strict_b|$re_encoding_strict_q\?$re_encoded_text_strict_q)\?=/;
 my $re_capture_encoded_word_strict = qr/=\?($re_charset)((?:\*$re_language)?)\?($re_encoding_strict_b\?$re_encoded_text_strict_b|$re_encoding_strict_q\?$re_encoded_text_strict_q)\?=/;
 
@@ -94,7 +94,7 @@ sub decode($$;$) {
 
         $stop = 1 unless length($line) or length($sep);
 
-        # NOTE: this code partially could break $chk support
+        # NOTE: this code partially could break $chk support id:238
         # in non strict mode concat consecutive encoded mime words with same charset, language and encoding
         # fixes breaking inside multi-byte characters
         1 while not $STRICT_DECODE and $line =~ s/$re_capture_encoded_word_split\s*=\?\1\2\?\3\?($re_encoded_text)\?=/=\?$1$2\?$3\?$4$5\?=/so;

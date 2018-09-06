@@ -2032,7 +2032,7 @@ sub init_PERL {
     $perl_name = 'ndbgperl' if $Is{VMS} &&
       defined $Config{usevmsdebug} && $Config{usevmsdebug} eq 'define';
 
-    # XXX This logic is flawed.  If "miniperl" is anywhere in the path
+    # XXX This logic is flawed. If "miniperl" is anywhere in the path id:58
     # it will get confused.  It should be fixed to work only on the filename.
     # Define 'FULLPERL' to be a non-miniperl (used in test: target)
     unless ($self->{FULLPERL}) {

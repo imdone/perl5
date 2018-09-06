@@ -20,7 +20,7 @@ plan tests => 16;
 my $stdout = *STDOUT;
 select($stdout);
 $stdout = 1; # whoops, PL_defoutgv no longer a GV!
-# XXX It is a GV as of 5.13.7. Is this test file needed any more?
+# XXX It is a GV as of 5.13.7. Is this test file needed any more? id:985
 
 # note that in the tests below, the return values aren't as important
 # as the fact that they don't crash

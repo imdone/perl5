@@ -34,7 +34,7 @@ is $parser->next->as_string, 'ok 1 - input file opened',
 is $parser->next->as_string, '... this is junk',
   '... and junk should parse correctly';
 is $parser->next->as_string,
-  'not ok 2 first line of the input valid # TODO some data',
+  'not ok 2 first line of the input valid # TODO some data', id:416
   '... and the second test should parse correctly';
 is $parser->next->as_string, '# this is a comment',
   '... and comments should parse correctly';
@@ -70,7 +70,7 @@ is $parser->next->as_string, 'ok 1 - input file opened',
 is $parser->next->as_string, '... this is junk',
   '... and junk should parse correctly';
 is $parser->next->as_string,
-  'not ok 2 first line of the input valid # TODO some data',
+  'not ok 2 first line of the input valid # TODO some data', id:295
   '... and the second test should parse correctly';
 is $parser->next->as_string, '# this is a comment',
   '... and comments should parse correctly';
@@ -109,7 +109,7 @@ is $parser->next->as_string, '1..5',
 is $parser->next->as_string, '... this is junk',
   '... and junk should parse correctly';
 is $parser->next->as_string,
-  'not ok 2 first line of the input valid # TODO some data',
+  'not ok 2 first line of the input valid # TODO some data', id:524
   '... and the second test should parse correctly';
 is $parser->next->as_string, '# this is a comment',
   '... and comments should parse correctly';
@@ -145,7 +145,7 @@ is $parser->next->as_string, 'ok 1 - input file opened',
 is $parser->next->as_string, '... this is junk',
   '... and junk should parse correctly';
 is $parser->next->as_string,
-  'not ok 2 first line of the input valid # TODO some data',
+  'not ok 2 first line of the input valid # TODO some data', id:361
   '... and the second test should parse correctly';
 is $parser->next->as_string, '# this is a comment',
   '... and comments should parse correctly';

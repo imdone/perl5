@@ -881,7 +881,7 @@ S_unpack_rec(pTHX_ tempsym_t* symptr, const char *s, const char *strbeg, const c
 	   stack, so must check that we're not in the middle of a /  */
         if ( unpack_only_one
 	     && (SP - PL_stack_base == start_sp_offset + 1)
-	     && (datumtype != '/') )   /* XXX can this be omitted */
+	     && (datumtype != '/') )   /* XXX can this be omitted id:808*/
             break;
 
         switch (howlen = symptr->howlen) {
@@ -3054,7 +3054,7 @@ S_pack_rec(pTHX_ SV *cat, tempsym_t* symptr, SV **beglist, SV **endlist )
 		SvGETMAGIC(fromstr);
 		if (!SvOK(fromstr)) aptr = NULL;
 		else {
-		    /* XXX better yet, could spirit away the string to
+		    /* XXX better yet, could spirit away the string to id:765
 		     * a safe spot and hang on to it until the result
 		     * of pack() (and all copies of the result) are
 		     * gone.

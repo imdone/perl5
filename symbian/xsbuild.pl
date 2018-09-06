@@ -15,7 +15,7 @@ my $SymbianVersion;
 
 if (exists $ENV{EPOCROOT}) {
     if ($ENV{EPOCROOT} =~ m!\\Symbian\\UIQ_21\\$!i) {
-	$SymbianVersion = '7.0s'; # TODO: other UIQ versions
+	$SymbianVersion = '7.0s'; # TODO: other UIQ versions id:762
     } elsif ($ENV{EPOCROOT} =~ m!\\Symbian\\(.+?)\\!i) {
 	$SymbianVersion = $1;
     }

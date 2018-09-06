@@ -576,7 +576,7 @@ Perl_sortsv_flags(pTHX_ gptr *base, size_t nmemb, SVCOMPARE_t cmp, U32 flags)
  * The quicksort implementation was derived from source code contributed
  * by Tom Horsley.
  *
- * NOTE: this code was derived from Tom Horsley's qsort replacement
+ * NOTE: this code was derived from Tom Horsley's qsort replacement id:877
  * and should not be confused with the original code.
  */
 

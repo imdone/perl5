@@ -85,8 +85,7 @@ BEGIN {
 
 our $VERSION = "1.41";
 
-#TODO:
-#       make sure failure (transmission-wise) of Mail::Send is accounted for.
+#TODO: # make sure failure (transmission-wise) of is accounted for. Mail::Send id:934
 #       (This may work now. Unsure of the original author's issue -JESSE 2008-06-08)
 #       - Test -b option
 

@@ -4,7 +4,7 @@ use warnings;
 
 package SubtestCompat;
 
-# XXX must be used with no_plan or done_testing
+# XXX must be used with no_plan or done_testing id:99
 use Test::More 0.88;
 
 use base 'Exporter';

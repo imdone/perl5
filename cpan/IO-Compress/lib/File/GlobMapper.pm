@@ -61,7 +61,7 @@ sub new
     my $class = shift ;
     my $inputGlob = shift ;
     my $outputGlob = shift ;
-    # TODO -- flags needs to default to whatever File::Glob does
+    # TODO -- flags needs to default to whatever does File::Glob id:136
     my $flags = shift || $CSH_GLOB ;
     #my $flags = shift ;
 
@@ -167,8 +167,8 @@ sub _parseBit
         }
         elsif ($2 eq '[')
         {
-            # TODO -- quotemeta & check no '/'
-            # TODO -- check for \]  & other \ within the []
+            # TODO -- quotemeta & check no '/' id:225
+            # TODO -- check for \] & other \ within the [] id:247
             $string =~ s#(.*?\])##
                 or return _unmatched("[");
             $out .= "$1)" ;
@@ -201,7 +201,7 @@ sub _parseInputGlob
     # Multiple concatenated *'s don't make sense
     #$string =~ s#\*\*+#*# ;
 
-    # TODO -- Allow space to delimit patterns?
+    # TODO -- Allow space to delimit patterns? id:75
     #my @strings = split /\s+/, $string ;
     #for my $str (@strings)
     my $out = '';
@@ -226,8 +226,8 @@ sub _parseInputGlob
         }
         elsif ($2 eq '[')
         {
-            # TODO -- quotemeta & check no '/' or '(' or ')'
-            # TODO -- check for \]  & other \ within the []
+            # TODO -- quotemeta & check no '/' or '(' or ')' id:232
+            # TODO -- check for \] & other \ within the [] id:137
             $string =~ s#(.*?\])##
                 or return _unmatched("[");
             $out .= "$1)" ;
@@ -242,8 +242,8 @@ sub _parseInputGlob
         }
         elsif ($2 eq '{')
         {
-            # TODO -- check no '/' within the {}
-            # TODO -- check for \}  & other \ within the {}
+            # TODO -- check no '/' within the {} id:226
+            # TODO -- check for \} & other \ within the {} id:248
 
             my $tmp ;
             unless ( $string =~ s/(.*?)$noPreBS\}//)

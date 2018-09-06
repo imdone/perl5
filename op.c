@@ -3410,7 +3410,7 @@ S_process_optree(pTHX_ CV *cv, OP *optree, OP* start)
 {
     OP **startp;
 
-    /* XXX for some reason, evals, require and main optrees are
+    /* XXX for some reason, evals, require and main optrees are id:835
      * never attached to their CV; instead they just hang off
      * PL_main_root + PL_main_start or PL_eval_root + PL_eval_start
      * and get manually freed when appropriate */
@@ -3539,7 +3539,7 @@ S_op_relocate_sv(pTHX_ SV** svp, PADOFFSET* targp)
     ix = pad_alloc(OP_CONST, SVf_READONLY);
     SvREFCNT_dec(PAD_SVl(ix));
     PAD_SETSV(ix, *svp);
-    /* XXX I don't know how this isn't readonly already. */
+    /* XXX I don't know how this isn't readonly already. id:665*/
     if (!SvIsCOW(PAD_SVl(ix))) SvREADONLY_on(PAD_SVl(ix));
     *svp = NULL;
     *targp = ix;
@@ -3584,7 +3584,7 @@ S_finalize_op(pTHX_ OP* o)
 	if ((o->op_private & OPpEARLY_CV) && ckWARN(WARN_PROTOTYPE)) {
 	    GV * const gv = cGVOPo_gv;
 	    if (SvTYPE(gv) == SVt_PVGV && GvCV(gv) && SvPVX_const(GvCV(gv))) {
-		/* XXX could check prototype here instead of just carping */
+		/* XXX could check prototype here instead of just carping id:603*/
 		SV * const sv = sv_newmortal();
 		gv_efullname3(sv, gv, NULL);
 		Perl_warner(aTHX_ packWARN(WARN_PROTOTYPE),
@@ -4440,7 +4440,7 @@ S_is_handle_constructor(const OP *o, I32 numargs)
 	/* FALLTHROUGH */
     case OP_SYSOPEN:
     case OP_OPEN:
-    case OP_SELECT:		/* XXX c.f. SelectSaver.pm */
+    case OP_SELECT:		/* XXX c.f. SelectSaver.pm id:701*/
     case OP_SOCKET:
     case OP_OPEN_DIR:
     case OP_ACCEPT:
@@ -5166,7 +5166,7 @@ Perl_block_end(pTHX_ I32 floor, OP *seq)
     OP* retval = scalarseq(seq);
     OP *o;
 
-    /* XXX Is the null PL_parser check necessary here? */
+    /* XXX Is the null PL_parser check necessary here? id:668*/
     assert(PL_parser); /* Let’s find out under debugging builds.  */
     if (PL_parser && PL_parser->parsed_sub) {
 	o = newSTATEOP(0, NULL, NULL);
@@ -5458,7 +5458,7 @@ S_op_integerize(pTHX_ OP *o)
     }
 
     if (type == OP_NEGATE)
-	/* XXX might want a ck_negate() for this */
+	/* XXX might want a ck_negate() for this id:836*/
 	cUNOPo->op_first->op_private &= ~OPpCONST_STRICT;
 
     return o;
@@ -5509,7 +5509,7 @@ S_fold_constants(pTHX_ OP *const o)
 #endif
         break;
     case OP_SPRINTF:
-	/* XXX what about the numeric ops? */
+	/* XXX what about the numeric ops? id:666*/
 #ifdef USE_LOCALE_NUMERIC
 	if (IN_LC_COMPILETIME(LC_NUMERIC))
 	    goto nope;
@@ -5612,7 +5612,7 @@ S_fold_constants(pTHX_ OP *const o)
 	/* Don't expect 1 (setjmp failed) or 2 (something called my_exit)  */
 	PL_warnhook = oldwarnhook;
 	PL_diehook  = olddiehook;
-	/* XXX note that this croak may fail as we've already blown away
+	/* XXX note that this croak may fail as we've already blown away id:604
 	 * the stack - eg any nested evals */
 	Perl_croak(aTHX_ "panic: fold_constants JMPENV_PUSH returned %d", ret);
     }
@@ -6950,7 +6950,7 @@ Perl_pmruntime(pTHX_ OP *o, OP *expr, OP *repl, UV flags, I32 floor)
 		op_null(scope);
 	    }
 
-            /* XXX optimize_optree() must be called on o before
+            /* XXX optimize_optree() must be called on o before id:702
              * CALL_PEEP(), as currently S_maybe_multiconcat() can't
              * currently cope with a peephole-optimised optree.
              * Calling optimize_optree() here ensures that condition
@@ -7763,7 +7763,7 @@ S_newONCEOP(pTHX_ OP *initop, OP *padop)
 			    | ((padop->op_private & ~OPpLVAL_INTRO) << 8));
     OP *const first = newOP(OP_NULL, 0);
     OP *const nullop = newCONDOP(0, first, initop, other);
-    /* XXX targlex disabled for now; see ticket #124160
+    /* XXX targlex disabled for now; see ticket #124160 id:669
 	newCONDOP(0, first, S_maybe_targlex(aTHX_ initop), other);
      */
     OP *const condop = first->op_next;
@@ -8067,7 +8067,7 @@ Perl_newSTATEOP(pTHX_ I32 flags, char *label, OP *o)
 	PL_parser->copline = NOLINE;
     }
 #ifdef USE_ITHREADS
-    CopFILE_set(cop, CopFILE(PL_curcop));	/* XXX share in a pvtable? */
+    CopFILE_set(cop, CopFILE(PL_curcop));	/* XXX share in a pvtable? id:837*/
 #else
     CopFILEGV_set(cop, CopFILEGV(PL_curcop));
 #endif
@@ -8180,7 +8180,7 @@ S_new_logop(pTHX_ I32 type, I32 flags, OP** firstp, OP** otherp)
     case OP_NEXT:
     case OP_LAST:
     case OP_REDO:
-	/* XXX: Perhaps we should emit a stronger warning for these.
+	/* XXX: Perhaps we should emit a stronger warning for these. id:713
 	   Even with the high-precedence operator they don't seem to do
 	   anything sensible.
 
@@ -8190,7 +8190,7 @@ S_new_logop(pTHX_ I32 type, I32 flags, OP** firstp, OP** otherp)
     case OP_EXIT:
     case OP_DIE:
     case OP_GOTO:
-	/* XXX: Currently we allow people to "shoot themselves in the
+	/* XXX: Currently we allow people to "shoot themselves in the id:605
 	   foot" by explicitly writing "(return $a) or $b".
 
 	   Warn unless we are looking at the result from folding or if
@@ -8203,7 +8203,7 @@ S_new_logop(pTHX_ I32 type, I32 flags, OP** firstp, OP** otherp)
 	if (!first->op_folded && !(first->op_flags & OPf_PARENS))
 	    Perl_ck_warner(aTHX_ packWARN(WARN_SYNTAX),
 	                   "Possible precedence issue with control flow operator");
-	/* XXX: Should we optimze this to "return $a;" (i.e. remove
+	/* XXX: Should we optimze this to "return $a;" (i.e. remove id:703
 	   the "or $b" part)?
 	*/
 	break;
@@ -9564,7 +9564,7 @@ Perl_newMYSUB(pTHX_ I32 floor, OP *o, OP *proto, OP *attrs, OP *block)
 	SvREFCNT_dec(CvOUTSIDE(compcv));
 	CvWEAKOUTSIDE_on(compcv);
     }
-    /* XXX else do we have a circular reference? */
+    /* XXX else do we have a circular reference? id:670*/
 
     if (cv) {	/* must reuse cv in case stub is referenced elsewhere */
 	/* transfer PL_compcv to cv */
@@ -9857,7 +9857,7 @@ Perl_newATTRSUB_x(pTHX_ I32 floor, OP *o, OP *proto, OP *attrs,
 	   Also, we may be called from load_module at run time, so
 	   PL_curstash (which sets CvSTASH) may not point to the stash the
 	   sub is stored in.  */
-	/* XXX This optimization is currently disabled for packages other
+	/* XXX This optimization is currently disabled for packages other id:861
 	       than main, since there was too much CPAN breakage.  */
 	const I32 flags =
 	   ec ? GV_NOADD_NOINIT
@@ -10711,7 +10711,7 @@ Perl_newXS_len_flags(pTHX_ const char *name, STRLEN len,
                 CvDYNFILE_on(cv);
                 CvFILE(cv) = savepv(filename);
             } else {
-            /* NOTE: not copied, as it is expected to be an external constant string */
+            /* NOTE: not copied, as it is expected to be an external constant string id:714*/
                 CvFILE(cv) = (char *)filename;
             }
         } else {
@@ -11516,7 +11516,7 @@ Perl_ck_rvconst(pTHX_ OP *o)
             OpTYPE_set(kid, OP_GV);
 	    SvREFCNT_dec(kid->op_sv);
 #ifdef USE_ITHREADS
-	    /* XXX hack: dependence on sizeof(PADOP) <= sizeof(SVOP) */
+	    /* XXX hack: dependence on sizeof(PADOP) <= sizeof(SVOP) id:606*/
 	    STATIC_ASSERT_STMT(sizeof(PADOP) <= sizeof(SVOP));
 	    kPADOP->op_padix = pad_alloc(OP_GV, SVf_READONLY);
 	    SvREFCNT_dec(PAD_SVl(kPADOP->op_padix));
@@ -11826,7 +11826,7 @@ Perl_ck_fun(pTHX_ OP *o)
 	    prev_kid = kid;
 	    kid = OpSIBLING(kid);
 	}
-	/* FIXME - should the numargs or-ing move after the too many
+	/* FIXME - should the numargs or-ing move after the too many id:704
          * arguments check? */
 	o->op_private |= numargs;
 	if (kid)
@@ -14301,7 +14301,7 @@ S_aassign_scan(pTHX_ OP* o, bool rhs, bool top, int *scalars_p)
         break;
     }
 
-    /* XXX this assumes that all other ops are "transparent" - i.e. that
+    /* XXX this assumes that all other ops are "transparent" - i.e. that id:671
      * they can return some of their children. While this true for e.g.
      * sort and grep, it's not true for e.g. map. We really need a
      * 'transparent' flag added to regen/opcodes
@@ -15592,7 +15592,7 @@ Perl_rpeep(pTHX_ OP *o)
 	    {
 		PL_curcop = ((COP*)o);
 	    }
-	    /* XXX: We avoid setting op_seq here to prevent later calls
+	    /* XXX: We avoid setting op_seq here to prevent later calls id:862
 	       to rpeep() from mistakenly concluding that optimisation
 	       has already occurred. This doesn't fix the real problem,
 	       though (See 20010220.007 (#5874)). AMS 20010719 */
@@ -16541,7 +16541,7 @@ Perl_custom_op_get_field(pTHX_ const OP *o, const xop_flags_enum field)
 	const char *pv;
 	STRLEN l;
 
-	/* XXX does all this need to be shared mem? */
+	/* XXX does all this need to be shared mem? id:715*/
 	Newxz(xop, 1, XOP);
 	pv = SvPV(HeVAL(he), l);
 	XopENTRY_set(xop, xop_name, savepvn(pv, l));

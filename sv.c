@@ -1388,7 +1388,7 @@ Perl_sv_upgrade(pTHX_ SV *const sv, svtype new_type)
 	break;
 
     case SVt_PVIV:
-	/* XXX Is this still needed?  Was it ever needed?   Surely as there is
+	/* XXX Is this still needed? Was it ever needed? Surely as there is id:854
 	   no route from NV to PVIV, NOK can never be true  */
 	assert(!SvNOKp(sv));
 	assert(!SvNOK(sv));
@@ -2761,7 +2761,7 @@ Perl_sv_2nv_flags(pTHX_ SV *const sv, const I32 flags)
                     /* Both already have p flags, so do nothing */
                 } else {
 		    const NV nv = SvNVX(sv);
-                    /* XXX should this spot have NAN_COMPARE_BROKEN, too? */
+                    /* XXX should this spot have NAN_COMPARE_BROKEN, too? id:943*/
                     if (SvNVX(sv) < (NV)IV_MAX + 0.5) {
                         if (SvIVX(sv) == I_V(nv)) {
                             SvNOK_on(sv);
@@ -2805,7 +2805,7 @@ Perl_sv_2nv_flags(pTHX_ SV *const sv, const I32 flags)
 	    report_uninit(sv);
 	assert (SvTYPE(sv) >= SVt_NV);
 	/* Typically the caller expects that sv_any is not NULL now.  */
-	/* XXX Ilya implies that this is a bug in callers that assume this
+	/* XXX Ilya implies that this is a bug in callers that assume this id:785
 	   and ideally should be fixed.  */
 	return 0.0;
     }
@@ -2887,7 +2887,7 @@ S_uiv_2buf(char *const buf, const IV iv, UV uv, const int is_uv, char **const pe
  * excluding the zero byte, on failure (not an infinity, not a nan)
  * returns zero, assert-fails on maxlen being too short.
  *
- * XXX for "Inf", "-Inf", and "NaN", we could have three read-only
+ * XXX for "Inf", "-Inf", and "NaN", we could have three read-only id:998
  * shared string constants we point to, instead of generating a new
  * string for each instance. */
 STATIC size_t
@@ -2910,11 +2910,11 @@ S_infnan_2pv(NV nv, char* buffer, size_t maxlen, char plus) {
         *s++ = 'N';
         *s++ = 'a';
         *s++ = 'N';
-        /* XXX optionally output the payload mantissa bits as
+        /* XXX optionally output the payload mantissa bits as id:750
          * "(unsigned)" (to match the nan("...") C99 function,
          * or maybe as "(0xhhh...)"  would make more sense...
          * provide a format string so that the user can decide?
-         * NOTE: would affect the maxlen and assert() logic.*/
+         * NOTE: would affect the maxlen and assert() logic. id:855*/
     }
     else {
       return 0;
@@ -3702,7 +3702,7 @@ Perl_sv_utf8_decode(pTHX_ SV *const sv)
             SvUTF8_on(sv);
         }
 	if (SvTYPE(sv) >= SVt_PVMG && SvMAGIC(sv)) {
-	    /* XXX Is this dead code?  XS_utf8_decode calls SvSETMAGIC
+	    /* XXX Is this dead code? XS_utf8_decode calls SvSETMAGIC id:944
 		   after this, clearing pos.  Does anything on CPAN
 		   need this? */
 	    /* adjust pos to the start of a UTF8 char sequence */
@@ -3918,7 +3918,7 @@ Perl_gv_setref(pTHX_ SV *const dstr, SV *const sstr)
     GvMULTI_on(dstr);
     switch (stype) {
     case SVt_PVCV:
-	location = (SV **) &(GvGP(dstr)->gp_cv); /* XXX bypassing GvCV_set */
+	location = (SV **) &(GvGP(dstr)->gp_cv); /* XXX bypassing GvCV_set id:786*/
 	import_flag = GVf_IMPORTED_CV;
 	goto common;
     case SVt_PVHV:
@@ -4571,7 +4571,7 @@ Perl_sv_setsv_flags(pTHX_ SV *dstr, SV* sstr, const I32 flags)
 	    SvCUR_set(dstr, SvCUR(sstr));
 
 	    SvTEMP_off(dstr);
-	    (void)SvOK_off(sstr);	/* NOTE: nukes most SvFLAGS on sstr */
+	    (void)SvOK_off(sstr);	/* NOTE: nukes most SvFLAGS on sstr id:999*/
 	    SvPV_set(sstr, NULL);
 	    SvLEN_set(sstr, 0);
 	    SvCUR_set(sstr, 0);
@@ -6220,7 +6220,7 @@ Perl_sv_kill_backrefs(pTHX_ SV *const sv, AV *const av)
 	    if (*svp) {
 		SV *const referrer = *svp;
 		if (SvWEAKREF(referrer)) {
-		    /* XXX Should we check that it hasn't changed? */
+		    /* XXX Should we check that it hasn't changed? id:751*/
 		    assert(SvROK(referrer));
 		    SvRV_set(referrer, 0);
 		    SvOK_off(referrer);
@@ -6572,7 +6572,7 @@ Perl_sv_clear(pTHX_ SV *const orig_sv)
 		PL_statgv = NULL;
 	    goto freescalar;
 	case SVt_REGEXP:
-	    /* FIXME for plugins */
+	    /* FIXME for plugins id:856*/
 	    pregfree2((REGEXP*) sv);
 	    goto freescalar;
 	case SVt_PVCV:
@@ -6676,7 +6676,7 @@ Perl_sv_clear(pTHX_ SV *const orig_sv)
 		if ((stash = GvSTASH(sv)))
 			sv_del_backref(MUTABLE_SV(stash), sv);
 	    }
-	    /* FIXME. There are probably more unreferenced pointers to SVs
+	    /* FIXME . There are probably more unreferenced pointers to SVs id:945
 	     * in the interpreter struct that we should check and tidy in
 	     * a similar fashion to this:  */
 	    /* See also S_sv_unglob, which does the same thing. */
@@ -7545,7 +7545,7 @@ S_utf8_mg_pos_cache_update(pTHX_ SV *const sv, MAGIC **const mgp, const STRLEN b
 	    cache[3] = byte;
 	}
     } else {
-/* float casts necessary? XXX */
+/* float casts necessary? XXX  id:787*/
 #define THREEWAY_SQUARE(a,b,c,d) \
 	    ((float)((d) - (c))) * ((float)((d) - (c))) \
 	    + ((float)((c) - (b))) * ((float)((c) - (b))) \
@@ -8400,7 +8400,7 @@ Perl_sv_gets(pTHX_ SV *const sv, PerlIO *const fp, I32 append)
 
     if (SvTHINKFIRST(sv))
 	sv_force_normal_flags(sv, append ? 0 : SV_COW_DROP_PV);
-    /* XXX. If you make this PVIV, then copy on write can copy scalars read
+    /* XXX . If you make this PVIV, then copy on write can copy scalars read id:1000
        from <>.
        However, perlbench says it's slower, because the existing swipe code
        is faster than copy on write.
@@ -9943,7 +9943,7 @@ Perl_sv_2cv(pTHX_ SV *sv, HV **const st, GV **const gvp, const I32 lref)
 	}
 	*st = GvESTASH(gv);
 	if (lref & ~GV_ADDMG && !GvCVu(gv)) {
-	    /* XXX this is probably not what they think they're getting.
+	    /* XXX this is probably not what they think they're getting. id:752
 	     * It has the same effect as "sub name;", i.e. just a forward
 	     * declaration! */
 	    newSTUB(gv,0);
@@ -10561,7 +10561,7 @@ Perl_sv_unref_flags(pTHX_ SV *const ref, const U32 flags)
        assigned to as BEGIN {$a = \"Foo"} will fail.  */
     if (SvREFCNT(target) != 1 || (flags & SV_IMMEDIATE_UNREF))
 	SvREFCNT_dec_NN(target);
-    else /* XXX Hack, but hard to make $a=$a->[1] work otherwise */
+    else /* XXX Hack, but hard to make $a=$a->[1] work otherwise id:857*/
 	sv_2mortal(target);	/* Schedule for freeing later */
 }
 
@@ -11084,7 +11084,7 @@ S_F0convert(NV nv, char *const endbuf, STRLEN *const len)
 }
 
 
-/* XXX maybe_tainted is never assigned to, so the doc above is lying. */
+/* XXX maybe_tainted is never assigned to, so the doc above is lying. id:946*/
 
 void
 Perl_sv_vcatpvfn(pTHX_ SV *const sv, const char *const pat, const STRLEN patlen,
@@ -11129,7 +11129,7 @@ Perl_sv_vcatpvfn(pTHX_ SV *const sv, const char *const pat, const STRLEN patlen,
  * The sum of them can be '1' . '0' x 2096 . '1', with implied radix point
  * after the first 1023 zero bits.
  *
- * XXX The 2098 is quite large (262.25 bytes) and therefore some sort
+ * XXX The 2098 is quite large (262.25 bytes) and therefore some sort id:788
  * of dynamically growing buffer might be better, start at just 16 bytes
  * (for example) and grow only when necessary.  Or maybe just by looking
  * at the exponents of the two doubles? */
@@ -11195,7 +11195,7 @@ S_hextract(pTHX_ const NV nv, int* exponent, bool *subnormal,
     int ix;
     int ixmin = 0, ixmax = 0;
 
-    /* XXX Inf/NaN are not handled here, since it is
+    /* XXX Inf/NaN are not handled here, since it is id:1001
      * assumed they are to be output as "Inf" and "NaN". */
 
     /* These macros are just to reduce typos, they have multiple
@@ -11529,7 +11529,7 @@ S_format_hexfp(pTHX_ char * const buf, const STRLEN bufsize, const char c,
     bool negative = FALSE;
     STRLEN elen;
 
-    /* XXX: NaN, Inf -- though they are printed as "NaN" and "Inf".
+    /* XXX: NaN, Inf -- though they are printed as "NaN" and "Inf". id:753
      *
      * For example with denormals, (assuming the vanilla
      * 64-bit double): the exponent is zero. 1xp-1074 is
@@ -12902,7 +12902,7 @@ Perl_sv_vcatpvfn_flags(pTHX_ SV *const sv, const char *const pat, const STRLEN p
             if (!lc_numeric_set) {
                 /* only set once and reuse in-locale value on subsequent
                  * iterations.
-                 * XXX what happens if we die in an eval?
+                 * XXX what happens if we die in an eval? id:858
                  */
                 STORE_LC_NUMERIC_SET_TO_NEEDED();
                 lc_numeric_set = TRUE;
@@ -13049,7 +13049,7 @@ Perl_sv_vcatpvfn_flags(pTHX_ SV *const sv, const char *const pat, const STRLEN p
                     /* "g" -> "Qg" */
                     *--ptr = 'Q';
                 }
-                /* FIXME: what to do if HAS_LONG_DOUBLE but not PERL_PRIfldbl? */
+                /* FIXME: what to do if HAS_LONG_DOUBLE but not PERL_PRIfldbl? id:975*/
 #elif defined(HAS_LONG_DOUBLE) && defined(PERL_PRIfldbl)
 		/* Note that this is HAS_LONG_DOUBLE and PERL_PRIfldbl,
 		 * not USE_LONG_DOUBLE and NVff.  In other words,
@@ -13138,9 +13138,9 @@ Perl_sv_vcatpvfn_flags(pTHX_ SV *const sv, const char *const pat, const STRLEN p
 	case 'n':
             {
                 STRLEN len;
-                /* XXX ideally we should warn if any flags etc have been
+                /* XXX ideally we should warn if any flags etc have been id:789
                  * set, e.g. "%-4.5n" */
-                /* XXX if sv was originally non-utf8 with a char in the
+                /* XXX if sv was originally non-utf8 with a char in the id:1002
                  * range 0x80-0xff, then if it got upgraded, we should
                  * calculate char len rather than byte len here */
                 len = SvCUR(sv) - origlen;
@@ -13362,7 +13362,7 @@ ptr_table_* functions.
 
 #if defined(USE_ITHREADS)
 
-/* XXX Remove this so it doesn't have to go thru the macro and return for nothing */
+/* XXX Remove this so it doesn't have to go thru the macro and return for nothing id:754*/
 #ifndef GpREFCNT_inc
 #  define GpREFCNT_inc(gp)	((gp) ? (++(gp)->gp_refcnt, (gp)) : (GP*)NULL)
 #endif
@@ -13407,7 +13407,7 @@ Perl_parser_dup(pTHX_ const yy_parser *const proto, CLONE_PARAMS *const param)
     Newxz(parser, 1, yy_parser);
     ptr_table_store(PL_ptr_table, proto, parser);
 
-    /* XXX eventually, just Copy() most of the parser struct ? */
+    /* XXX eventually, just Copy() most of the parser struct ? id:859*/
 
     parser->lex_brackets = proto->lex_brackets;
     parser->lex_casemods = proto->lex_casemods;
@@ -13476,7 +13476,7 @@ Perl_parser_dup(pTHX_ const yy_parser *const proto, CLONE_PARAMS *const param)
     Copy(proto->nexttype, parser->nexttype, 5,	I32);
     parser->nexttoke	= proto->nexttoke;
 
-    /* XXX should clone saved_curcop here, but we aren't passed
+    /* XXX should clone saved_curcop here, but we aren't passed id:976
      * proto_perl; so do it in perl_clone_using instead */
 
     return parser;
@@ -13521,7 +13521,7 @@ Perl_dirp_dup(pTHX_ DIR *const dp, CLONE_PARAMS *const param)
 #if defined(HAS_FCHDIR) && defined(HAS_TELLDIR) && defined(HAS_SEEKDIR)
     DIR *pwd;
     const Direntry_t *dirent;
-    char smallbuf[256]; /* XXX MAXPATHLEN, surely? */
+    char smallbuf[256]; /* XXX MAXPATHLEN, surely? id:790*/
     char *name = NULL;
     STRLEN len = 0;
     long pos;
@@ -13555,7 +13555,7 @@ Perl_dirp_dup(pTHX_ DIR *const dp, CLONE_PARAMS *const param)
     /* Now we should have two dir handles pointing to the same dir. */
 
     /* Be nice to the calling code and chdir back to where we were. */
-    /* XXX If this fails, then what? */
+    /* XXX If this fails, then what? id:1003*/
     PERL_UNUSED_RESULT(fchdir(my_dirfd(pwd)));
 
     /* We have no need of the pwd handle any more. */
@@ -13697,7 +13697,7 @@ Perl_mg_dup(pTHX_ MAGIC *mg, CLONE_PARAMS *const param)
 	   assignment to nmg->mg_ptr.  */
 	*nmg = *mg;
 
-	/* FIXME for plugins
+	/* FIXME for plugins id:755
 	if (nmg->mg_type == PERL_MAGIC_qr) {
 	    nmg->mg_obj	= MUTABLE_SV(CALLREGDUPE((REGEXP*)nmg->mg_obj, param));
 	}
@@ -14156,7 +14156,7 @@ S_sv_dup_common(pTHX_ const SV *const sstr, CLONE_PARAMS *const param)
 	       are now in the destination.  We can check the flags and the
 	       pointers in either, but it's possible that there's less cache
 	       missing by always going for the destination.
-	       FIXME - instrument and check that assumption  */
+	       FIXME - instrument and check that assumption id:860*/
 	    if (sv_type >= SVt_PVMG) {
 		if (SvMAGIC(dstr))
 		    SvMAGIC_set(dstr, mg_dup(SvMAGIC(dstr), param));
@@ -14177,11 +14177,11 @@ S_sv_dup_common(pTHX_ const SV *const sstr, CLONE_PARAMS *const param)
 		break;
 	    case SVt_REGEXP:
 	      duprex:
-		/* FIXME for plugins */
+		/* FIXME for plugins id:977*/
 		re_dup_guts((REGEXP*) sstr, (REGEXP*) dstr, param);
 		break;
 	    case SVt_PVLV:
-		/* XXX LvTARGOFF sometimes holds PMOP* when DEBUGGING */
+		/* XXX LvTARGOFF sometimes holds PMOP* when DEBUGGING id:791*/
 		if (LvTYPE(dstr) == 't') /* for tie: unrefcnted fake (SV**) */
 		    LvTARG(dstr) = dstr;
 		else if (LvTYPE(dstr) == 'T') /* for tie: fake HE */
@@ -14359,7 +14359,7 @@ S_sv_dup_common(pTHX_ const SV *const sstr, CLONE_PARAMS *const param)
 		}
 		/* FALLTHROUGH */
 	    case SVt_PVFM:
-		/* NOTE: not refcounted */
+		/* NOTE: not refcounted id:1004*/
 		SvANY(MUTABLE_CV(dstr))->xcv_stash =
 		    hv_dup(CvSTASH(dstr), param);
 		if ((param->flags & CLONEf_JOIN_IN) && CvSTASH(dstr))
@@ -14487,10 +14487,10 @@ Perl_cx_dup(pTHX_ PERL_CONTEXT *cxs, I32 ix, I32 max, CLONE_PARAMS* param)
 	    case CXt_EVAL:
 		ncx->blk_eval.old_namesv = sv_dup_inc(ncx->blk_eval.old_namesv,
 						      param);
-                /* XXX should this sv_dup_inc? Or only if CxEVAL_TXT_REFCNTED ???? */
+                /* XXX should this sv_dup_inc? Or only if CxEVAL_TXT_REFCNTED ???? id:756*/
 		ncx->blk_eval.cur_text	= sv_dup(ncx->blk_eval.cur_text, param);
 		ncx->blk_eval.cv = cv_dup(ncx->blk_eval.cv, param);
-                /* XXX what do do with cur_top_env ???? */
+                /* XXX what do do with cur_top_env ???? id:892*/
 		break;
 	    case CXt_LOOP_LAZYSV:
 		ncx->blk_loop.state_u.lazysv.end
@@ -14852,7 +14852,7 @@ Perl_ss_dup(pTHX_ PerlInterpreter *proto_perl, CLONE_PARAMS* param)
 	    break;
 	case SAVEt_DESTRUCTOR:
 	    ptr = POPPTR(ss,ix);
-	    TOPPTR(nss,ix) = any_dup(ptr, proto_perl);	/* XXX quite arbitrary */
+	    TOPPTR(nss,ix) = any_dup(ptr, proto_perl);	/* XXX quite arbitrary id:978*/
 	    dptr = POPDPTR(ss,ix);
 	    TOPDPTR(nss,ix) = DPTR2FPTR(void (*)(void*),
 					any_dup(FPTR2DPTR(void *, dptr),
@@ -14860,7 +14860,7 @@ Perl_ss_dup(pTHX_ PerlInterpreter *proto_perl, CLONE_PARAMS* param)
 	    break;
 	case SAVEt_DESTRUCTOR_X:
 	    ptr = POPPTR(ss,ix);
-	    TOPPTR(nss,ix) = any_dup(ptr, proto_perl);	/* XXX quite arbitrary */
+	    TOPPTR(nss,ix) = any_dup(ptr, proto_perl);	/* XXX quite arbitrary id:792*/
 	    dxptr = POPDXPTR(ss,ix);
 	    TOPDXPTR(nss,ix) = DPTR2FPTR(void (*)(pTHX_ void*),
 					 any_dup(FPTR2DPTR(void *, dxptr),
@@ -14998,7 +14998,7 @@ you don't need to do anything.
 =cut
 */
 
-/* XXX the above needs expanding by someone who actually understands it ! */
+/* XXX the above needs expanding by someone who actually understands it ! id:1005*/
 EXTERN_C PerlInterpreter *
 perl_clone_host(PerlInterpreter* proto_perl, UV flags);
 
@@ -15038,7 +15038,7 @@ perl_clone_using(PerlInterpreter *proto_perl, UV flags,
 		 struct IPerlDir* ipD, struct IPerlSock* ipS,
 		 struct IPerlProc* ipP)
 {
-    /* XXX many of the string copies here can be optimized if they're
+    /* XXX many of the string copies here can be optimized if they're id:757
      * constants; they need to be allocated as common memory and just
      * their pointers copied. */
 
@@ -15161,7 +15161,7 @@ perl_clone_using(PerlInterpreter *proto_perl, UV flags,
     PL_perl_destruct_level = proto_perl->Iperl_destruct_level;
     PL_exit_flags       = proto_perl->Iexit_flags;
 
-    /* XXX time(&PL_basetime) when asked for? */
+    /* XXX time(&PL_basetime) when asked for? id:903*/
     PL_basetime		= proto_perl->Ibasetime;
 
     PL_maxsysfd		= proto_perl->Imaxsysfd;
@@ -15188,7 +15188,7 @@ perl_clone_using(PerlInterpreter *proto_perl, UV flags,
 
     PL_filemode		= proto_perl->Ifilemode;
     PL_lastfd		= proto_perl->Ilastfd;
-    PL_oldname		= proto_perl->Ioldname;		/* XXX not quite right */
+    PL_oldname		= proto_perl->Ioldname;		/* XXX not quite right id:979*/
     PL_gensym		= proto_perl->Igensym;
 
     PL_laststatval	= proto_perl->Ilaststatval;
@@ -15209,7 +15209,7 @@ perl_clone_using(PerlInterpreter *proto_perl, UV flags,
     PL_nomemok		= proto_perl->Inomemok;
     PL_an		= proto_perl->Ian;
     PL_evalseq		= proto_perl->Ievalseq;
-    PL_origenviron	= proto_perl->Iorigenviron;	/* XXX not quite right */
+    PL_origenviron	= proto_perl->Iorigenviron;	/* XXX not quite right id:793*/
     PL_origalen		= proto_perl->Iorigalen;
 
     PL_sighandlerp	= proto_perl->Isighandlerp;
@@ -15292,12 +15292,12 @@ perl_clone_using(PerlInterpreter *proto_perl, UV flags,
 	PL_tmps_floor		= proto_perl->Itmps_floor;
 
 	/* next push_scope()/ENTER sets PL_scopestack[PL_scopestack_ix]
-	 * NOTE: unlike the others! */
+	 * NOTE: unlike the others! id:1006*/
 	PL_scopestack_ix	= proto_perl->Iscopestack_ix;
 	PL_scopestack_max	= proto_perl->Iscopestack_max;
 
 	/* next SSPUSHFOO() sets PL_savestack[PL_savestack_ix]
-	 * NOTE: unlike the others! */
+	 * NOTE: unlike the others! id:758*/
 	PL_savestack_ix		= proto_perl->Isavestack_ix;
 	PL_savestack_max	= proto_perl->Isavestack_max;
     }
@@ -15318,9 +15318,9 @@ perl_clone_using(PerlInterpreter *proto_perl, UV flags,
 #else
     PL_tainted          = FALSE;
 #endif
-    PL_curpm		= proto_perl->Icurpm;	/* XXX No PMOP ref count */
+    PL_curpm		= proto_perl->Icurpm;	/* XXX No PMOP ref count id:904*/
 
-    PL_chopset		= proto_perl->Ichopset;	/* XXX never deallocated */
+    PL_chopset		= proto_perl->Ichopset;	/* XXX never deallocated id:980*/
 
     PL_restartjmpenv	= proto_perl->Irestartjmpenv;
     PL_restartop	= proto_perl->Irestartop;
@@ -15349,7 +15349,7 @@ perl_clone_using(PerlInterpreter *proto_perl, UV flags,
     PL_opfreehook	= proto_perl->Iopfreehook;
 
 #ifdef USE_REENTRANT_API
-    /* XXX: things like -Dm will segfault here in perlio, but doing
+    /* XXX: things like -Dm will segfault here in perlio, but doing id:794
      *  PERL_SET_CONTEXT(proto_perl);
      * breaks too many other things
      */
@@ -15545,12 +15545,12 @@ perl_clone_using(PerlInterpreter *proto_perl, UV flags,
     PL_DBcv		= cv_dup(proto_perl->IDBcv, param);
 
 #ifdef PERL_USES_PL_PIDSTATUS
-    PL_pidstatus	= newHV();			/* XXX flag for cloning? */
+    PL_pidstatus	= newHV();			/* XXX flag for cloning? id:1007*/
 #endif
     PL_osname		= SAVEPV(proto_perl->Iosname);
     PL_parser		= parser_dup(proto_perl->Iparser, param);
 
-    /* XXX this only works if the saved cop has already been cloned */
+    /* XXX this only works if the saved cop has already been cloned id:759*/
     if (proto_perl->Iparser) {
 	PL_parser->saved_curcop = (COP*)any_dup(
 				    proto_perl->Iparser->saved_curcop,
@@ -15627,7 +15627,7 @@ perl_clone_using(PerlInterpreter *proto_perl, UV flags,
 	     PL_markstack_ptr - PL_markstack + 1, I32);
 
 	/* next push_scope()/ENTER sets PL_scopestack[PL_scopestack_ix]
-	 * NOTE: unlike the others! */
+	 * NOTE: unlike the others! id:905*/
 	Newx(PL_scopestack, PL_scopestack_max, I32);
 	Copy(proto_perl->Iscopestack, PL_scopestack, PL_scopestack_ix, I32);
 
@@ -15640,7 +15640,7 @@ perl_clone_using(PerlInterpreter *proto_perl, UV flags,
         AvFILLp(proto_perl->Icurstack) =
                             proto_perl->Istack_sp - proto_perl->Istack_base;
 
-	/* NOTE: si_dup() looks at PL_markstack */
+	/* NOTE: si_dup() looks at PL_markstack id:981*/
 	PL_curstackinfo		= si_dup(proto_perl->Icurstackinfo, param);
 
 	/* PL_curstack		= PL_curstackinfo->si_stack; */
@@ -15807,7 +15807,7 @@ Perl_clone_params_new(PerlInterpreter *const from, PerlInterpreter *const to)
     dVAR;
     /* Need to play this game, as newAV() can call safesysmalloc(), and that
        does a dTHX; to get the context from thread local storage.
-       FIXME - under PERL_CORE Newx(), Safefree() and friends should expand to
+       FIXME - under PERL_CORE Newx(), Safefree() and friends should expand to id:795
        a version that passes in my_perl.  */
     PerlInterpreter *const was = PERL_GET_THX;
     CLONE_PARAMS *param;
@@ -16782,7 +16782,7 @@ S_find_uninit_var(pTHX_ const OP *const obase, const SV *const uninit_sv,
 
     case OP_ENTERSUB:
     case OP_GOTO:
-	/* XXX tmp hack: these two may call an XS sub, and currently
+	/* XXX tmp hack: these two may call an XS sub, and currently id:1008
 	  XS subs don't have a SUB entry on the context stack, so CV and
 	  pad determination goes wrong, and BAD things happen. So, just
 	  don't try to determine the value under those circumstances.

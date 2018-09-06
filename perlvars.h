@@ -45,7 +45,7 @@ PERLVARI(G, curinterp,	PerlInterpreter *, NULL)
 PERLVAR(G, thr_key,	perl_key)	/* key to retrieve per-thread struct */
 #endif
 
-/* XXX does anyone even use this? */
+/* XXX does anyone even use this? id:680*/
 PERLVARI(G, do_undump,	bool,	FALSE)	/* -u or dump seen? */
 
 #ifndef PERL_USE_SAFE_PUTENV
@@ -63,7 +63,7 @@ PERLVARA(G, sig_ignoring, SIG_SIZE, int)
 PERLVARA(G, sig_defaulting, SIG_SIZE, int)
 #endif
 
-/* XXX signals are process-wide anyway, so we
+/* XXX signals are process-wide anyway, so we id:871
  * ignore the implications of this for threading */
 #ifndef HAS_SIGACTION
 PERLVARI(G, sig_trapped, int,	0)

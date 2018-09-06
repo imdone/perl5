@@ -24,7 +24,7 @@ use vars    qw[ $VERBOSE $PREFER_BIN $FROM_EMAIL $USER_AGENT
 
 $VERSION        = '0.56';
 $VERSION        = eval $VERSION;    # avoid warnings with development releases
-$PREFER_BIN     = 0;                # XXX TODO implement
+$PREFER_BIN     = 0;                # XXX TODO implement id:244
 $FROM_EMAIL     = 'File-Fetch@example.com';
 $USER_AGENT     = "File::Fetch/$VERSION";
 $BLACKLIST      = [qw|ftp|];
@@ -234,7 +234,7 @@ sub output_file {
     return $file;
 }
 
-### XXX do this or just point to URI::Escape?
+### XXX do this or just point to URI::Escape? id:72
 # =head2 $esc_uri = $ff->escaped_uri
 #
 # =cut
@@ -390,7 +390,7 @@ sub _parse_uri {
         } elsif (HAS_VOL) {
 
             ### this code comes from dmq's patch, but:
-            ### XXX if volume is empty, wouldn't that be an error? --kane
+            ### XXX if volume is empty, wouldn't that be an error? --kane id:229
             ### if so, our file://localhost test needs to be fixed as wel
             $href->{vol}    = $parts[1] || '';
 
@@ -1134,7 +1134,7 @@ sub _lynx_fetch {
     }
 
     ### print to local file ###
-    ### XXX on a 404 with a special error page, $captured will actually
+    ### XXX on a 404 with a special error page, $captured will actually id:134
     ### hold the contents of that page, and make it *appear* like the
     ### request was a success, when really it wasn't :(
     ### there doesn't seem to be an option for lynx to change the exit
@@ -1397,7 +1397,7 @@ sub _rsync_fetch {
 
     my $cmd = [ $rsync ];
 
-    ### XXX: rsync has no I/O timeouts at all, by default
+    ### XXX: rsync has no I/O timeouts at all, by default id:223
     push(@$cmd, '--timeout=' . $TIMEOUT) if $TIMEOUT;
 
     push(@$cmd, '--quiet') unless $DEBUG;

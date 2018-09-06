@@ -79,10 +79,10 @@ int putenv(char *);
 
 #define FLUSH
 
-/* NOTE:  Do not call the next three routines directly.  Use the macros
+/* NOTE: Do not call the next three routines directly. Use the macros id:1092
  * in handy.h, so that we can easily redefine everything to do tracking of
  * allocated hunks back to the original New to track down any memory leaks.
- * XXX This advice seems to be widely ignored :-(   --AD  August 1996.
+ * XXX This advice seems to be widely ignored :-( --AD August 1996. id:960
  */
 
 #if defined (DEBUGGING) || defined(PERL_IMPLICIT_SYS) || defined (PERL_TRACK_MEMPOOL)
@@ -2141,7 +2141,7 @@ Perl_my_setenv(pTHX_ const char *nam, const char *val)
             while (environ[max])
                 max++;
 
-            /* XXX shouldn't that be max+1 rather than max+2 ??? - DAPM */
+            /* XXX shouldn't that be max+1 rather than max+2 ??? - DAPM id:933*/
             tmpenv = (char**)S_env_alloc(NULL, max, 2, 0, sizeof(char*));
 
             for (j=0; j<max; j++) {         /* copy environment */
@@ -3810,7 +3810,7 @@ Perl_my_strftime(pTHX_ const char *fmt, int sec, int min, int hour, int mday, in
 
   PERL_ARGS_ASSERT_MY_STRFTIME;
 
-  init_tm(&mytm);	/* XXX workaround - see init_tm() above */
+  init_tm(&mytm);	/* XXX workaround - see init_tm() above id:1070*/
   mytm.tm_sec = sec;
   mytm.tm_min = min;
   mytm.tm_hour = hour;
@@ -4513,7 +4513,7 @@ Perl_seed(pTHX)
 #endif
     u += SEED_C3 * (U32)PerlProc_getpid();
     u += SEED_C4 * (U32)PTR2UV(PL_stack_sp);
-#ifndef PLAN9           /* XXX Plan9 assembler chokes on this; fix needed  */
+#ifndef PLAN9           /* XXX Plan9 assembler chokes on this; fix needed id:1041*/
     u += SEED_C5 * (U32)PTR2UV(&when);
 #endif
     return u;
@@ -5457,7 +5457,7 @@ S_xs_version_bootcheck(pTHX_ U32 items, U32 ax, const char *xs_p,
     if (items >= 2)	 /* version supplied as bootstrap arg */
 	sv = PL_stack_base[ax + 1];
     else {
-	/* XXX GV_ADDWARN */
+	/* XXX GV_ADDWARN id:1093*/
 	vn = "XS_VERSION";
 	sv = get_sv(Perl_form(aTHX_ "%" SVf "::%s", SVfARG(module), vn), 0);
 	if (!sv || !SvOK(sv)) {
@@ -5927,7 +5927,7 @@ static void bfd_symbolize(bfd_context* ctx,
                 /* Size and copy the source file, use only
                  * the basename of the source file.
                  *
-                 * NOTE: the basenames are fine for the
+                 * NOTE: the basenames are fine for the id:961
                  * Perl source files, but may not always
                  * be the best idea for XS files. */
                 const char *p, *b = NULL;

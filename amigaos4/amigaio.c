@@ -356,7 +356,7 @@ struct child_arg
 
 #undef kill
 
-/* FIXME: Is here's a chance, albeit it small of a clash between our pseudo pid */
+/* FIXME: Is here's a chance, albeit it small of a clash between our pseudo pid id:110*/
 /* derived from the pthread API  and the dos.library pid that newlib kill uses? */
 /* clib2 used the Process address so there was no issue */
 
@@ -495,7 +495,7 @@ restart:
 		}
 		JMPENV_POP;
 
-		/* XXX hack to avoid perl_destruct() freeing optree */
+		/* XXX hack to avoid perl_destruct() freeing optree id:9*/
 		PL_main_root = (OP *)NULL;
 	}
 
@@ -584,7 +584,7 @@ Pid_t amigaos_fork()
 
 	IExec->Wait(SIGBREAKF_CTRL_F);
 
-	PERL_SET_THX(aTHX); /* XXX perl_clone*() set TLS */
+	PERL_SET_THX(aTHX); /* XXX perl_clone*() set TLS id:3*/
 	if (handle)
 	{
 		errno = EAGAIN;
@@ -637,7 +637,7 @@ static void S_exec_failed(pTHX_ const char *cmd, int fd, int do_report)
 	}
 	if (do_report)
 	{
-		/* XXX silently ignore failures */
+		/* XXX silently ignore failures id:27*/
 		PERL_UNUSED_RESULT(PerlLIO_write(fd, (void *)&e, sizeof(int)));
 		PerlLIO_close(fd);
 	}

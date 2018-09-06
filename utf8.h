@@ -116,7 +116,7 @@ the string is invariant.
 START_EXTERN_C
 
 /* How wide can a single UTF-8 encoded character become in bytes. */
-/* NOTE: Strictly speaking Perl's UTF-8 should not be called UTF-8 since UTF-8
+/* NOTE: Strictly speaking Perl's UTF-8 should not be called UTF-8 since UTF-8 id:932
  * is an encoding of Unicode, and Unicode's upper limit, 0x10FFFF, can be
  * expressed with 4 bytes.  However, Perl thinks of UTF-8 as a way to encode
  * non-negative integers in a binary format, even those above Unicode */

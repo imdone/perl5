@@ -984,7 +984,7 @@ sub bdiv {
     # x == 0?
     return wantarray ? ($x, $class->bzero()) : $x if $x->is_zero();
 
-    # XXX TODO: list context, upgrade
+    # XXX TODO: list context, upgrade id:194
     # According to Knuth, this can be optimized by doing gcd twice (for d and n)
     # and reducing in one step. This would save us the bnorm() at the end.
     #

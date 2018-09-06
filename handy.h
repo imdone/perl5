@@ -104,9 +104,9 @@ Null SV pointer.  (No longer available when C<PERL_CORE> is defined.)
 #define cBOOL(cbool) ((cbool) ? (bool)1 : (bool)0)
 
 /* Try to figure out __func__ or __FUNCTION__ equivalent, if any.
- * XXX Should really be a Configure probe, with HAS__FUNCTION__
+ * XXX Should really be a Configure probe, with HAS__FUNCTION__ id:495
  *     and FUNCTION__ as results.
- * XXX Similarly, a Configure probe for __FILE__ and __LINE__ is needed. */
+ * XXX Similarly, a Configure probe for __FILE__ and __LINE__ is needed. id:572*/
 #if (defined(__STDC_VERSION__) && __STDC_VERSION__ >= 199901L) || (defined(__SUNPRO_C)) /* C99 or close enough. */
 #  define FUNCTION__ __func__
 #elif (defined(USING_MSVC6)) || /* MSVC6 has neither __func__ nor __FUNCTION and no good workarounds, either. */ \
@@ -116,7 +116,7 @@ Null SV pointer.  (No longer available when C<PERL_CORE> is defined.)
 #  define FUNCTION__ __FUNCTION__ /* Common extension. */
 #endif
 
-/* XXX A note on the perl source internal type system.  The
+/* XXX A note on the perl source internal type system. The id:556
    original intent was that I32 be *exactly* 32 bits.
 
    Currently, we only guarantee that I32 is *at least* 32 bits.
@@ -544,7 +544,7 @@ based on the underlying C library functions):
  * the current locale will use the tests that begin with "lc".
  */
 
-#ifdef HAS_SETLOCALE  /* XXX Is there a better test for this? */
+#ifdef HAS_SETLOCALE  /* XXX Is there a better test for this? id:430*/
 #  ifndef CTYPE256
 #    define CTYPE256
 #  endif
@@ -1143,7 +1143,7 @@ patched there.  The file as of this writing is cpan/Devel-PPPort/parts/inc/misc
 #  define _CC_GRAPH              8      /* [:graph:] */
 #  define _CC_CASED              9      /* [:lower:] or [:upper:] under /i */
 #  define _CC_SPACE             10      /* \s, [:space:] */
-#  define _CC_PSXSPC            _CC_SPACE   /* XXX Temporary, can be removed
+#  define _CC_PSXSPC            _CC_SPACE   /* XXX Temporary, can be removed id:641
                                                when the deprecated isFOO_utf8()
                                                functions are removed */
 #  define _CC_BLANK             11      /* [:blank:] */
@@ -1165,7 +1165,7 @@ patched there.  The file as of this writing is cpan/Devel-PPPort/parts/inc/misc
 #  define _CC_IS_IN_SOME_FOLD          22
 #  define _CC_MNEMONIC_CNTRL           23
 
-#  define _CC_IDCONT 24 /* XXX Temporary, can be removed when the deprecated
+#  define _CC_IDCONT 24 /* XXX Temporary, can be removed when the deprecated id:496
                            isFOO_utf8() functions are removed */
 
 /* This next group is only used on EBCDIC platforms, so theoretically could be

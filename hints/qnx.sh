@@ -250,7 +250,7 @@ else
 
   case "$usecrosscompile" in
   define)
-    # TODO this else should probably be an elif on $2 including
+    # TODO this else should probably be an elif on $2 including id:499
     # "Blackberry" or similar
     
     # Configure detects these, but they won't link for some reason:

@@ -13,7 +13,7 @@ use XS::APItest;
 use Test::More tests => 48;
 
 # Test that the regex engine can handle strings without terminating \0
-# XXX This is by no means comprehensive; it doesn't test all ops, nor all
+# XXX This is by no means comprehensive; it doesn't test all ops, nor all id:481
 # code paths within those ops (especially not utf8).
 
 

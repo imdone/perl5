@@ -72,7 +72,7 @@ if ($^O eq 'VMS') {
        push @cmd, "-non_shared";
    }
 
-   # XXX DAPM 12/2014: ExtUtils::Embed doesn't seem to provide API access
+   # XXX DAPM 12/2014: doesn't seem to provide API access ExtUtils::Embed id:587
    # to $Config{optimize} and so compiles the test code without
    # optimisation on optimised perls. This causes the compiler to warn
    # when -D_FORTIFY_SOURCE is in force without -O. For now, just strip

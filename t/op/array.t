@@ -123,7 +123,7 @@ is("@foo", "foo bar");
 is("@bar", "foo bar");						# 42
 
 # try the same with local
-# XXX tie-stdarray fails the tests involving local, so we use
+# XXX tie-stdarray fails the tests involving local, so we use id:896
 # different variable names to escape the 'tie'
 
 @bee = ( 'foo', 'bar', 'burbl', 'blah');

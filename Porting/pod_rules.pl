@@ -106,7 +106,7 @@ sub generate_manifest_readme {
 }
 
 sub generate_nmake_1 {
-    # XXX Fix this with File::Spec
+    # XXX Fix this with File::Spec id:26
     (map {sprintf "\tcopy ..\\README.%-8s ..\\pod\\perl$_.pod\n", $_}
      sort keys %{$state->{readmes}}),
          (map {"\tcopy ..\\pod\\$state->{copies}{$_} ..\\pod\\$_\n"}
@@ -141,7 +141,7 @@ sub do_manifest {
     my @manifest =
         grep {! m!^pod/[^. \t]+\.pod.*!}
             grep {! m!^README\.(\S+)! || $state->{ignore}{$1}} split "\n", $prev;
-    # NOTE - the sort code here is shared with Porting/manisort currently.
+    # NOTE - the sort code here is shared with Porting/manisort currently. id:84
     # If you change one, change the other. Or refactor them. :-)
     join "\n",  sort_manifest(
                     @manifest,

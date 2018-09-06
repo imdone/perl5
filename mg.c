@@ -360,7 +360,7 @@ Perl_mg_size(pTHX_ SV *sv)
 	case SVt_PVAV:
 	    return AvFILLp((const AV *) sv); /* Fallback to non-tied array */
 	case SVt_PVHV:
-	    /* FIXME */
+	    /* FIXME  id:698*/
 	default:
 	    Perl_croak(aTHX_ "Size magic not implemented");
 
@@ -2419,7 +2419,7 @@ Perl_magic_setvec(pTHX_ SV *sv, MAGIC *mg)
 {
     PERL_ARGS_ASSERT_MAGIC_SETVEC;
     PERL_UNUSED_ARG(mg);
-    do_vecset(sv);	/* XXX slurp this routine */
+    do_vecset(sv);	/* XXX slurp this routine id:626*/
     return 0;
 }
 
@@ -3009,11 +3009,11 @@ Perl_magic_set(pTHX_ SV *sv, MAGIC *mg)
             if (SvROK(sv)) {
                 SV *referent = SvRV(sv);
                 const char *reftype = sv_reftype(referent, 0);
-                /* XXX: dodgy type check: This leaves me feeling dirty, but
+                /* XXX: dodgy type check: This leaves me feeling dirty, but id:833
                  * the alternative is to copy pretty much the entire
                  * sv_reftype() into this routine, or to do a full string
                  * comparison on the return of sv_reftype() both of which
-                 * make me feel worse! NOTE, do not modify this comment
+                 * make me feel worse! NOTE , do not modify this comment id:663
                  * without reviewing the corresponding comment in
                  * sv_reftype(). - Yves */
                 if (reftype[0] == 'S' || reftype[0] == 'L') {
@@ -3081,7 +3081,7 @@ Perl_magic_set(pTHX_ SV *sv, MAGIC *mg)
 	break;
     case '<':
 	{
-        /* XXX $< currently silently ignores failures */
+        /* XXX $< currently silently ignores failures id:601*/
 	const Uid_t new_uid = SvUID(sv);
 	PL_delaymagic_uid = new_uid;
 	if (PL_delaymagic) {
@@ -3110,7 +3110,7 @@ Perl_magic_set(pTHX_ SV *sv, MAGIC *mg)
 	}
     case '>':
 	{
-        /* XXX $> currently silently ignores failures */
+        /* XXX $> currently silently ignores failures id:699*/
 	const Uid_t new_euid = SvUID(sv);
 	PL_delaymagic_euid = new_euid;
 	if (PL_delaymagic) {
@@ -3134,7 +3134,7 @@ Perl_magic_set(pTHX_ SV *sv, MAGIC *mg)
 	}
     case '(':
 	{
-        /* XXX $( currently silently ignores failures */
+        /* XXX $( currently silently ignores failures id:627*/
 	const Gid_t new_gid = SvGID(sv);
 	PL_delaymagic_gid = new_gid;
 	if (PL_delaymagic) {
@@ -3164,7 +3164,7 @@ Perl_magic_set(pTHX_ SV *sv, MAGIC *mg)
 #ifndef INVALID_GID
 #define INVALID_GID ((Gid_t)-1)
 #endif
-        /* XXX $) currently silently ignores failures */
+        /* XXX $) currently silently ignores failures id:834*/
 	Gid_t new_egid;
 #ifdef HAS_SETGROUPS
 	{

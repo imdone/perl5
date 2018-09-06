@@ -773,7 +773,7 @@ foreach (@syms) {
 
 if ($define{'MULTIPLICITY'} && $define{PERL_GLOBAL_STRUCT}) {
     readvar('perlvars.h', \%export, sub { "Perl_" . $_[1] . $_[2] . "_ptr" });
-    # XXX AIX seems to want the perlvars.h symbols, for some reason
+    # XXX AIX seems to want the perlvars.h symbols, for some reason id:598
     if ($ARGS{PLATFORM} eq 'aix' or $ARGS{PLATFORM} eq 'os2') {	# OS/2 needs PL_thr_key
 	readvar('perlvars.h', \%export);
     }

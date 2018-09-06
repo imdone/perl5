@@ -23,7 +23,7 @@ my %opts = (
     (map {/^no-?(.*)$/i?($1=>0):($_=>1)} map {/^--([\-_\w]+)$/} @ARGV),  # --opt --no-opt --noopt
   );
 
-# TODO
+# TODO  id:935
 #   -- error checking. When something goes wrong, just exit with rc!=0
 #   -- may be '--zip' option should be made differently?
 

@@ -182,8 +182,8 @@ esac
 # so contrary to our usual policy of *not* looking at gcc internal
 # directories we now *do* look at them, in case they contain
 # the quadmath library.
-# XXX This may apply to other gcc internal libraries, if such exist.
-# XXX This could be at Configure level, but then the $gcc is messy.
+# XXX This may apply to other gcc internal libraries, if such exist. id:559
+# XXX This could be at Configure level, but then the $gcc is messy. id:433
 case "$usequadmath" in
 "$define")
   for d in `LANG=C LC_ALL=C $gcc $ccflags $ldflags -print-search-dirs | grep libraries | cut -f2- -d= | tr ':' $trnl | grep 'gcc' | sed -e 's:/$::'`

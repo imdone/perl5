@@ -12,7 +12,7 @@ $VERSION = "5.5";
 
 sub new {
     my($class,$module,$file,$during,$error) = @_;
-    # my $at = Carp::longmess(""); # XXX find something more beautiful
+    # my $at = Carp::longmess(""); # XXX find something more beautiful id:43
     bless { module => $module,
             file => $file,
             during => $during,

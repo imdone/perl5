@@ -94,7 +94,7 @@ ok(eq_array(
 is(Test::A->O_or_D, 'Test::D', '... got the right method dispatch');    
 is(Test::A->O_or_F, 'Test::F', '... got the right method dispatch');   
 
-# NOTE: 
+# NOTE:  id:987
 # this test is particularly interesting because the p5 dispatch
 # would actually call Test::D before Test::C and Test::D is a
 # subclass of Test::C 

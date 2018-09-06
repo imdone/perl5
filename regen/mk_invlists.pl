@@ -554,7 +554,7 @@ sub output_invmap ($$$$$$$) {
         }
 
         # The short names tend to be two lower case letters, but it looks
-        # better for those if they are upper. XXX
+        # better for those if they are upper. XXX  id:777
         $short_name = uc($short_name) if length($short_name) < 3
                                       || substr($short_name, 0, 1) =~ /[[:lower:]]/;
         $name_prefix = "${short_name}_";
@@ -2340,7 +2340,7 @@ push @props, sort { prop_name_for_cmp($a) cmp prop_name_for_cmp($b) } qw(
                     Case_Folding
                     &_Perl_IVCF
                 );
-                # NOTE that the convention is that extra enum values come
+                # NOTE that the convention is that extra enum values come id:889
                 # after the property name, separated by commas, with the enums
                 # that aren't ever defined by Unicode coming last, at least 4
                 # all-uppercase characters.  The others are enum names that

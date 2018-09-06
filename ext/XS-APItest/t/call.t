@@ -151,7 +151,7 @@ for my $test (
     ok(eq_array( [ sub { eval_sv('f(@_)', $flags|G_NOARGS) }->(@$args) ],
         $expected), "$description G_NOARGS eval_sv('f(@_)')");
 
-    # XXX call_method(G_NOARGS) isn't tested: I'm assuming
+    # XXX call_method(G_NOARGS) isn't tested: I'm assuming id:492
     # it's not a sensible combination. DAPM.
 
     ok(eq_array( [ eval { call_sv('d', $flags, @$args)}, $@ ],

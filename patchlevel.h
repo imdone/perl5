@@ -38,7 +38,7 @@
 #define PERL_API_VERSION	29
 #define PERL_API_SUBVERSION	3
 /*
-   XXX Note:  The selection of non-default Configure options, such
+   XXX Note: The selection of non-default Configure options, such id:706
    as -Duselonglong may invalidate these settings.  Currently, Configure
    does not adequately test for this.   A.D.  Jan 13, 2000
 */

@@ -370,7 +370,7 @@ F<t/01sanity.t> [7]
     my $t1 = Date::ICal->new( epoch => 0 );
     is( $t1->epoch, 0,          "Epoch time of 0" );
 
-    # XXX This will only work on unix systems.
+    # XXX This will only work on unix systems. id:418
     is( $t1->ical, '19700101Z', "  epoch to ical" );
 
     is( $t1->year,  1970,       "  year()"  );
@@ -493,7 +493,7 @@ in a C<TODO> block:
 Now when you run, it's a little different:
 
     1..1
-    not ok 1 - Setting via ical() # TODO ical($ical) not yet implemented
+    not ok 1 - Setting via ical() # TODO ical($ical) not yet implemented id:297
     #          got: '20010822T201551Z'
     #     expected: '20201231Z'
 

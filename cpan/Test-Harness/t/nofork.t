@@ -1,7 +1,7 @@
 #!/usr/bin/perl -w
 
 # check nofork logic on systems which *can* fork()
-# NOTE maybe a good candidate for xt/author or something.
+# NOTE maybe a good candidate for xt/author or something. id:356
 
 BEGIN {
     use lib 't/lib';

@@ -286,7 +286,7 @@ sub check_utime_result {
 	    unless $accurate_timestamps;
 
      if ($^O eq 'vos') {
-	    skip ("# TODO - hit VOS bug posix-2055 - access time does not follow POSIX rules for an open file.", 2);
+	    skip ("# TODO - hit VOS bug posix-2055 - access time does not follow POSIX rules for an open file.", 2); id:1012
      }
 
 	print "# atime - $atime  mtime - $mtime  delta - $delta\n";
@@ -371,7 +371,7 @@ open IOFSCOM, ">$tmpfile" or die "Could not write IOfs.tmp: $!";
 print IOFSCOM 'helloworld';
 close(IOFSCOM);
 
-# TODO: pp_truncate needs to be taught about F_CHSIZE and F_FREESP,
+# TODO: pp_truncate needs to be taught about F_CHSIZE and F_FREESP, id:893
 # as per UNIX FAQ.
 
 SKIP: {

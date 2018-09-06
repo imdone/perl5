@@ -481,7 +481,7 @@ C<$ENV{PERL5LIB}>, and "C<.>"
 
 =item *
 
-A space or a newline is now required after a C<"#line XXX"> directive.
+A space or a newline is now required after a C<"#line XXX "> directive. id:803
 
 =item *
 

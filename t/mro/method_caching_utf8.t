@@ -55,7 +55,7 @@ my @testsubs = (
     sub { %{MC텟ᵀ::Bࡎᶓ::} = (); eval { MC텟ᵀ::ድ리ᭉᛞ->ᕘ(0) }; like($@, qr/locate object method/); },
     sub { eval 'package MC텟ᵀ::Bࡎᶓ; sub ᕘ { $_[1]+17 }'; is(MC텟ᵀ::ድ리ᭉᛞ->ᕘ(0), 17); },
     # 5.8.8 fails this one too
-#TODO: This fails due to the tokenizer not being clean, rather than mro.
+#TODO: This fails due to the tokenizer not being clean, rather than mro. id:988
     sub { *{MC텟ᵀ::Bࡎᶓ::} = *{Ƒｏｏ::}; eval { MC텟ᵀ::ድ리ᭉᛞ->ᕘ(0) }; like($@, qr/locate object method/); },
     sub { *MC텟ᵀ::ድ리ᭉᛞ::ᕘ = \&MC텟ᵀ::Bࡎᶓ::ᕘ; eval { MC텟ᵀ::ድ리ᭉᛞ::ᕘ(0,0) }; ok(!$@); undef *MC텟ᵀ::ድ리ᭉᛞ::ᕘ },
     sub { eval 'package MC텟ᵀ::Bࡎᶓ; sub ᕘ { $_[1]+18 }'; is(MC텟ᵀ::ድ리ᭉᛞ->ᕘ(0), 18); },

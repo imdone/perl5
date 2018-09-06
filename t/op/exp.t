@@ -80,7 +80,7 @@ is(substr($s,0,5), '0.693', 'run time log(2)');
 
 cmp_ok(exp(log($x1)), '==', 1, 'run time exp(log(1)) == 1');
 
-# NOTE: do NOT test the trigonometric functions at [+-]Pi
+# NOTE: do NOT test the trigonometric functions at [+-]Pi id:989
 # and expect to get exact results like 0, 1, -1, because
 # you may not be able to feed them exactly [+-]Pi given
 # all the variations of different long doubles.

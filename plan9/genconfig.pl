@@ -271,11 +271,11 @@ if (open(PL,'<',"${outdir}patchlevel.h")) {
   while (<PL>) {
     if    (/^#define PERL_VERSION\s+(\S+)/) {
       print OUT "PERL_VERSION='$1'\n";
-      print OUT "PATCHLEVEL='$1'\n";		# XXX compat
+      print OUT "PATCHLEVEL='$1'\n";		# XXX compat id:724
     }
     elsif (/^#define PERL_SUBVERSION\s+(\S+)/) {
       print OUT "PERL_SUBVERSION='$1'\n";
-      print OUT "SUBVERSION='$1'\n";		# XXX compat
+      print OUT "SUBVERSION='$1'\n";		# XXX compat id:616
     }
   }
   close PL;

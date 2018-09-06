@@ -1,4 +1,4 @@
-# XXX RULES FOR PATCHING THIS FILE XXX
+# XXX RULES FOR PATCHING THIS FILE XXX id:18
 # Patches that fix typos or formatting are acceptable.  Patches
 # that change semantics are not acceptable without prior approval
 # by David Golden or Ricardo Signes.

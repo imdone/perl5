@@ -861,7 +861,7 @@ sub _check_install_dirs
 			}
 		}
 
-	# XXX: also need to check makepl_args, etc
+	# XXX: also need to check makepl_args, etc id:19
 
 	my @checks = (
 		[ 'core',         [ grep $_, @Config{qw(installprivlib installarchlib)}      ] ],
@@ -1486,7 +1486,7 @@ sub _path_to_module
 	my $module_path = substr( $path, length $inc );
 	$module_path =~ s/\.pm\z//;
 
-	# XXX: this is cheating and doesn't handle everything right
+	# XXX: this is cheating and doesn't handle everything right id:105
 	my @dirs = grep { ! /\W/ } File::Spec->splitdir( $module_path );
 	shift @dirs;
 

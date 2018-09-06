@@ -422,7 +422,7 @@ sub __modify_entry_for {
 sub is_simple {
   my ($self) = @_;
   for my $module ($self->required_modules) {
-    # XXX: This is a complete hack, but also entirely correct.
+    # XXX: This is a complete hack, but also entirely correct. id:88
     return if $self->__entry_for($module)->as_string =~ /\s/;
   }
 

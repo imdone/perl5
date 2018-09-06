@@ -454,7 +454,7 @@ Perl_gv_init_pvn(pTHX_ GV *gv, HV *stash, const char *name, STRLEN len, U32 flag
 	       from a reference to CV.  */
 	    if (exported_constant)
 		GvIMPORTED_CV_on(gv);
-	    CvSTASH_set(cv, PL_curstash); /* XXX Why is this needed? */
+	    CvSTASH_set(cv, PL_curstash); /* XXX Why is this needed? id:482*/
 	} else {
 	    cv = newSTUB(gv,1);
 	}
@@ -580,7 +580,7 @@ S_maybe_add_coresub(pTHX_ HV * const stash, GV *gv,
     if (PERLDB_LINE_OR_SAVESRC)
         (void)gv_fetchfile(file); */
     CvFILE(cv) = (char *)file;
-    /* XXX This is inefficient, as doing things this order causes
+    /* XXX This is inefficient, as doing things this order causes id:554
            a prototype check in newATTRSUB.  But we have to do
            it this order as we need an op number before calling
            new ATTRSUB. */
@@ -696,7 +696,7 @@ obtained from the GV with the C<GvCV> macro.
 =cut
 */
 
-/* NOTE: No support for tied ISA */
+/* NOTE: No support for tied ISA id:428*/
 
 PERL_STATIC_INLINE GV*
 S_gv_fetchmeth_internal(pTHX_ HV* stash, SV* meth, const char* name, STRLEN len, I32 level, U32 flags)
@@ -1306,7 +1306,7 @@ Perl_gv_autoload_pvn(pTHX_ HV *stash, const char *name, STRLEN len, U32 flags)
     LEAVE;
     varsv = GvSVn(vargv);
     SvTAINTED_off(varsv); /* previous $AUTOLOAD taint is obsolete */
-    /* XXX: this process is not careful to avoid extra magic gets and sets; tied $AUTOLOAD will get noise */
+    /* XXX: this process is not careful to avoid extra magic gets and sets; tied $AUTOLOAD will get noise id:639*/
     sv_setsv(varsv, packname);
     sv_catpvs(varsv, "::");
     /* Ensure SvSETMAGIC() is called if necessary. In particular, to clear
@@ -1476,7 +1476,7 @@ S_gv_stashpvn_internal(pTHX_ const char *name, U32 namelen, I32 flags)
     if (!HvNAME_get(stash)) {
 	hv_name_set(stash, name, namelen, flags & SVf_UTF8 ? SVf_UTF8 : 0 );
 	
-	/* FIXME: This is a repeat of logic in gv_fetchpvn_flags */
+	/* FIXME: This is a repeat of logic in gv_fetchpvn_flags id:494*/
 	/* If the containing stash has multiple effective
 	   names, see that this one gets them, too. */
 	if (HvAUX(GvSTASH(tmpgv))->xhv_name_count)
@@ -1602,7 +1602,7 @@ S_gv_magicalize_isa(pTHX_ GV *gv)
 }
 
 /* This function grabs name and tries to split a stash and glob
- * from its contents. TODO better description, comments
+ * from its contents. TODO better description, comments id:571
  * 
  * If the function returns TRUE and 'name == name_end', then
  * 'gv' can be directly returned to the caller of gv_fetchpvn_flags
@@ -2108,7 +2108,7 @@ S_gv_magicalize(pTHX_ GV *gv, HV *stash, const char *name, STRLEN len,
                 UV uv;
                 if (!grok_atoUV(name, &uv, NULL) || uv > I32_MAX)
                     goto ret;
-                /* XXX why are we using a SSize_t? */
+                /* XXX why are we using a SSize_t? id:555*/
                 paren = (SSize_t)(I32)uv;
                 goto storeparen;
 	    }
@@ -2658,7 +2658,7 @@ Perl_gp_free(pTHX_ GV *gv)
 
       SvREFCNT_dec(sv);
       SvREFCNT_dec(av);
-      /* FIXME - another reference loop GV -> symtab -> GV ?
+      /* FIXME - another reference loop GV -> symtab -> GV ? id:429
          Somehow gp->gp_hv can end up pointing at freed garbage.  */
       if (hv && SvTYPE(hv) == SVt_PVHV) {
         const HEK *hvname_hek = HvNAME_HEK(hv);
@@ -3656,7 +3656,7 @@ Perl_gv_try_downgrade(pTHX_ GV *gv)
     SV **gvp;
     PERL_ARGS_ASSERT_GV_TRY_DOWNGRADE;
 
-    /* XXX Why and where does this leave dangling pointers during global
+    /* XXX Why and where does this leave dangling pointers during global id:640
        destruction? */
     if (PL_phase == PERL_PHASE_DESTRUCT) return;
 

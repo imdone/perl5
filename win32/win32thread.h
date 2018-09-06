@@ -83,7 +83,7 @@ typedef HANDLE perl_mutex;
 	 * right number of waiters (i.e. including this one) */	\
 	if (WaitForSingleObject((c)->sem,INFINITE)==WAIT_FAILED)\
 	    Perl_croak_nocontext("panic: COND_WAIT (%ld)",GetLastError());	\
-	/* XXX there may be an inconsequential race here */	\
+	/* XXX there may be an inconsequential race here id:1078*/	\
 	MUTEX_LOCK(m);						\
 	(c)->waiters--;						\
     } STMT_END
@@ -107,7 +107,7 @@ typedef HANDLE perl_mutex;
 #define THREAD_CREATE(t, f)	Perl_thread_create(t, f)
 #define THREAD_POST_CREATE(t)	NOOP
 
-/* XXX Docs mention that the RTL versions of thread creation routines
+/* XXX Docs mention that the RTL versions of thread creation routines id:1049
  * should be used, but that advice only seems applicable when the RTL
  * is not in a DLL.  RTL DLLs seem to do all of the init/deinit required
  * upon DLL_THREAD_ATTACH/DETACH.  So we seem to be completely safe using

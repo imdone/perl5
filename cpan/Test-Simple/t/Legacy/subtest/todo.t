@@ -53,10 +53,10 @@ sub test_subtest_in_todo {
         test_out( map { my $x = $_; $x =~ s/\s+$//g; $x } 
             "# Subtest: xxx",
             @outlines,
-            "not ok 1 - $xxx # TODO $todo_reason",
+            "not ok 1 - $xxx # TODO $todo_reason", id:527
             "#   Failed (TODO) test '$xxx'",
             "#   at $0 line $line{xxx}.",
-            "not ok 2 - regular todo test # TODO $todo_reason",
+            "not ok 2 - regular todo test # TODO $todo_reason", id:364
             "#   Failed (TODO) test 'regular todo test'",
             "#   at $0 line $line{reg}.",
         );
@@ -180,17 +180,17 @@ test_subtest_in_todo("todo tests in the subtest", sub {
     not ok 1 - inner test 1
     #   Failed test 'inner test 1'
     #   at $0 line $line{in1}.
-    not ok 2 - failing TODO a # TODO Inner1
+    not ok 2 - failing TODO a # TODO Inner1 id:459
     #   Failed (TODO) test 'failing TODO a'
     #   at $0 line $line{fta}.
-    ok 3 - unexpected pass a # TODO Inner1
+    ok 3 - unexpected pass a # TODO Inner1 id:483
     not ok 4 - inner test 2
     #   Failed test 'inner test 2'
     #   at $0 line $line{in2}.
-    not ok 5 - failing TODO b # TODO Inner2
+    not ok 5 - failing TODO b # TODO Inner2 id:299
     #   Failed (TODO) test 'failing TODO b'
     #   at $0 line $line{ftb}.
-    ok 6 - unexpected pass b # TODO Inner2
+    ok 6 - unexpected pass b # TODO Inner2 id:528
     not ok 7 - inner test 3
     #   Failed test 'inner test 3'
     #   at $0 line $line{in3}.

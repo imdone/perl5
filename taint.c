@@ -59,7 +59,7 @@ Perl_taint_proper(pTHX_ const char *f, const char *const s)
         else
 	    ug = " while running with -T switch";
 
-        /* XXX because taint_proper adds extra format args, we can't
+        /* XXX because taint_proper adds extra format args, we can't id:955
          * get the caller to check properly; o we just silence the warning
          * and hope the callers aren't naughty */
         GCC_DIAG_IGNORE_STMT(-Wformat-nonliteral);

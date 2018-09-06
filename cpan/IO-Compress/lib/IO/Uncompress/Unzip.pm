@@ -71,7 +71,7 @@ sub getExtraParams
 
             'stream'  => [IO::Compress::Base::Common::Parse_boolean,   0],
             
-            # TODO - This means reading the central directory to get
+            # TODO - This means reading the central directory to get id:251
             # 1. the local header offsets
             # 2. The compressed data length
         );    
@@ -132,7 +132,7 @@ sub fastForward
     my $self = shift;
     my $offset = shift;
 
-    # TODO - if Stream isn't enabled & reading from file, use seek
+    # TODO - if Stream isn't enabled & reading from file, use seek id:79
 
     my $buffer = '';
     my $c = 1024 * 16;
@@ -168,7 +168,7 @@ sub readHeader
         }
 
         # skip the data
-        # TODO - when Stream is off, use seek
+        # TODO - when Stream is off, use seek id:236
         my $buffer;
         if (*$self->{ZipData}{Streaming}) {
 
@@ -829,7 +829,7 @@ sub _dosToUnixTime
 #
 #sub is84BitCD
 #{
-#    # TODO
+#    # TODO  id:141
 #    my $self = shift ;
 #}
 

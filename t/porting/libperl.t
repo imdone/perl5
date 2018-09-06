@@ -48,7 +48,7 @@ use strict;
 use Config;
 
 if ($Config{cc} =~ /g\+\+/) {
-    # XXX Could use c++filt, maybe.
+    # XXX Could use c++filt, maybe. id:1022
     skip_all "on g++";
 }
 
@@ -185,7 +185,7 @@ sub is_perlish_symbol {
     $_[0] =~ /^(?:PL_|Perl|PerlIO)/;
 }
 
-# XXX Implement "internal test" for this script (option -t?)
+# XXX Implement "internal test" for this script (option -t?) id:947
 # to verify that the parsing does what it's intended to.
 
 sub nm_parse_gnu {

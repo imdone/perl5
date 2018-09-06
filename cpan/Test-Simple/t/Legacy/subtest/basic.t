@@ -192,7 +192,7 @@ END
     is $tb->read, <<"END", 'TODO tests should not make the parent test fail';
 1..1
     1..1
-    not ok 1 # TODO message
+    not ok 1 # TODO message id:298
     #   Failed (TODO) test at $0 line 209.
 ok 1 - Child of $0
 END

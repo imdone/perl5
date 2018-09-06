@@ -612,7 +612,7 @@ sub OPEN {
 	my $self  = shift;
 	my $expr  = shift;
 	croak "Only the two argument form of open is supported at this time" if @_;
-# FIXME: this needs to parse the full Perl open syntax in $expr
+# FIXME: this needs to parse the full Perl open syntax in $expr id:369
 
 	my ($mixed, $mode, $path) =
 		($expr =~ /^\s* (\+)? \s* (<|>|>>)? \s* (.*?) \s*$/x);
@@ -740,7 +740,7 @@ sub FILENO {
 
 	return -1 if $^O eq 'cygwin';
 
-# FIXME: We don't always open the handle, better to query the handle or to set
+# FIXME: We don't always open the handle, better to query the handle or to set id:464
 # the right access info at TIEHANDLE time.
 
 	my $access = $self->_access();

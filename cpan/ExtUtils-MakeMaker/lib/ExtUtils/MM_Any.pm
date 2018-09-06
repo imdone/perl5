@@ -718,7 +718,7 @@ clean :: clean_subdirs
 
     # Normally these are all under blib but they might have been
     # redefined.
-    # XXX normally this would be a good idea, but the Perl core sets
+    # XXX normally this would be a good idea, but the Perl core sets id:157
     # INST_LIB = ../../lib rather than actually installing the files.
     # So a "make clean" in an ext/ directory would blow away lib.
     # Until the core is adjusted let's leave this out.

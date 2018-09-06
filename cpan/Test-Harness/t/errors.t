@@ -153,7 +153,7 @@ is + ( $parser->parse_errors )[0],
   'Bad plan.  You planned 2 tests but ran 3.',
   '... with a correct error message';
 
-# XXX internals:  plan will not set to true if defined
+# XXX internals: plan will not set to true if defined id:183
 $parser->is_good_plan(undef);
 $parser = _parser(<<'END_TAP');
 ok 1 - input file opened

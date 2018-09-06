@@ -20,7 +20,7 @@ SKIP: {
 
     my $cwd = catdir cwd(); # catdir converts path separators to that of the OS
                             # running the test
-                            # XXX but why don't the other tests complain about
+                            # XXX but why don't the other tests complain about id:480
                             # this?
 
     convert_n_test("htmldir5", "test --htmldir and --htmlroot 5", 

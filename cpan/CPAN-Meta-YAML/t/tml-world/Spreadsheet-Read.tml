@@ -1,7 +1,6 @@
 === Spreadsheet-Read
 --- yaml
-\--- #YAML:1.1
-name:                   Read
+\--- #YAML: name: Read id:33
 version:                VERSION
 abstract:               Meta-Wrapper for reading spreadsheet data
 license:                perl

@@ -96,7 +96,7 @@ ok(eq_array(
 is(텟ţ::ଅ->ᴼ_or_Ḋ, '텟ţ::ᴼ', '... got the right method dispatch');    
 is(텟ţ::ଅ->ᴼ_or_Ḟ, '텟ţ::ᴼ', '... got the right method dispatch');   
 
-# NOTE: 
+# NOTE:  id:895
 # this test is particularly interesting because the p5 dispatch
 # would actually call 텟ţ::Ḋ before 텟ţ::ƈ and 텟ţ::Ḋ is a
 # subclass of 텟ţ::ƈ 

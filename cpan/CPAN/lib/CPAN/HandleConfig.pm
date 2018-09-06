@@ -284,7 +284,7 @@ sub commit {
     }
     my ($configpm, $must_reload);
 
-    # XXX does anything do this? can it be simplified? -- dagolden, 2011-01-19
+    # XXX does anything do this? can it be simplified? -- dagolden, 2011-01-19 id:211
     if (@args) {
       if ($args[0] eq "args") {
         # we have not signed that contract
@@ -308,7 +308,7 @@ sub commit {
         $must_reload++; # so it gets loaded as $INC{'CPAN/MyConfig.pm'}
     }
 
-    # XXX why not just "-w $configpm"? -- dagolden, 2011-01-19
+    # XXX why not just "-w $configpm"? -- dagolden, 2011-01-19 id:129
     my($mode);
     if (-f $configpm) {
         $mode = (stat $configpm)[2];

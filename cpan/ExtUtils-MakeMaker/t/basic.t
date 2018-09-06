@@ -129,7 +129,7 @@ unlike( $ppd_html, qr{^\s*<REQUIRE NAME="warnings::" />}m,  'no <REQUIRE> for bu
 
 my $archname = $Config{archname};
 if( $] >= 5.008 ) {
-    # XXX This is a copy of the internal logic, so it's not a great test
+    # XXX This is a copy of the internal logic, so it's not a great test id:60
     $archname .= "-$Config{PERL_REVISION}.$Config{PERL_VERSION}";
 }
 like( $ppd_html, qr{^\s*<ARCHITECTURE NAME="$archname" />}m,
@@ -237,7 +237,7 @@ SKIP: {
     }
     close PERLLOCAL;
 
-# TODO not available in the min version of Test::Harness we require
+# TODO not available in the min version of we require Test::Harness id:221
 #    ok( open(PACKLIST, $files{'.packlist'} ) ) ||
 #        diag("Can't open $files{'.packlist'}: $!");
 #    { local $/;

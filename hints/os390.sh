@@ -250,7 +250,7 @@ d_attribute_warn_unused_result='undef'
 # contrast with e.g.
 # http://www.cplusplus.com/reference/cmath/nan-function/
 # (C++ but C99 math agrees)
-# XXX: Configure scan for proper behavior
+# XXX: Configure scan for proper behavior id:644
 d_nan='undef'
 
 # Configures says this exists, but it doesn't work properly.  See

@@ -452,7 +452,7 @@ sub next_todo {
 					? "state"
 					: "my") . " "
 		: "";
-	# XXX We would do $self->keyword("sub"), but ‘my CORE::sub’
+	# XXX We would do $self->keyword("sub"), but ‘my CORE::sub’ id:565
 	#     doesn’t work and ‘my sub’ ignores a &sub in scope.  I.e.,
 	#     we have a core bug here.
 	push @text, "sub " . substr $name->PVX, 1;
@@ -480,7 +480,7 @@ sub next_todo {
 	    if (defined ($use_dec) and $self->{'expand'} < 5) {
 		return $pragmata if 0 == length($use_dec);
 
-                #  XXX bit of a hack: Test::More's use_ok() method
+                #  XXX bit of a hack: use_ok() method Test::More's id:439
                 #  builds a fake use statement which deparses as, e.g.
                 #      use Net::Ping (@{$args[0];});
                 #  As well as being superfluous (the use_ok() is deparsed
@@ -1139,7 +1139,7 @@ sub pad_subs {
 		while ($flags & PADNAMEt_OUTER && class ($protocv) ne 'CV')
 		{
 		    $cv = $cv->OUTSIDE;
-		    next PADENTRY if class($cv) eq 'SPECIAL'; # XXX freed?
+		    next PADENTRY if class($cv) eq 'SPECIAL'; # XXX freed? id:650
 		    my $padlist = $cv->PADLIST;
 		    my $ix = $name->PARENT_PAD_INDEX;
 		    $name = $padlist->NAMES->ARRAYelt($ix);
@@ -2685,7 +2685,7 @@ sub pp_scalar {
     my($op, $cx) = @_;
     my $kid = $op->first;
     if (not null $kid->sibling) {
-	# XXX Was a here-doc
+	# XXX Was a here-doc id:505
 	return $self->dquote($op);
     }
     $self->unop(@_, "scalar");
@@ -4207,13 +4207,13 @@ sub pp_av2arylen {
             my $expr;
             $expr = $self->deparse($kkid, 24); # 24 is '->'
             $expr = "$expr->\$#*";
-            # XXX maybe_local is probably wrong here: local($#-expression)
+            # XXX maybe_local is probably wrong here: local($#-expression) id:582
             # doesn't "do" local (the is no INTRO flag set)
             return $self->maybe_local($op, $cx, $expr);
         }
         else {
             # handle $#{expr} form
-            # XXX see maybe_local comment above
+            # XXX see maybe_local comment above id:566
             return $self->maybe_local($op, $cx, $self->rv2x($kid, $cx, '$#'));
         }
     }
@@ -4896,7 +4896,7 @@ sub check_proto {
 
 sub retscalar {
     my $name = $_[0]->name;
-    # XXX There has to be a better way of doing this scalar-op check.
+    # XXX There has to be a better way of doing this scalar-op check. id:440
     #     Currently PL_opargs is not exposed.
     if ($name eq 'null') {
         $name = substr B::ppname($_[0]->targ), 3
@@ -5705,7 +5705,7 @@ sub tr_chr {
     }
 }
 
-# XXX This doesn't yet handle all cases correctly either
+# XXX This doesn't yet handle all cases correctly either id:651
 
 sub tr_decode_utf8 {
     my($swash_hv, $flags) = @_;

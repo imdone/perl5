@@ -57,7 +57,7 @@ foreach (@lines) {
 
 warn "# didn't find " . join(' ', keys %ops) if keys %ops;
 
-# XXX:
+# XXX:  id:631
 # this tries to get at all tersified optypes in B::Terse
 # if you can think of a way to produce AV, NULL, PADOP, or SPECIAL,
 # add it to the regex above too. (PADOPs are currently only produced

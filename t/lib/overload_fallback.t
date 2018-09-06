@@ -16,7 +16,7 @@ ok ($x eq 'stringvalue', 'fallback worked');
 }
 
 
-# NOTE: delete the next line and this test script will pass
+# NOTE: delete the next line and this test script will pass id:894
 use overload '+' => sub { die "unused"; };
 
 my $x = bless {}, 'main';

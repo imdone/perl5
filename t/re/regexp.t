@@ -15,11 +15,11 @@
 # 	y	expect a match
 # 	n	expect no match
 # 	c	expect an error
-#	T	the test is a TODO (can be combined with y/n/c)
+#	T	the test is a TODO (can be combined with y/n/c) id:1059
 #	M	skip test on miniperl (combine with y/n/c/T)
 #	B	test exposes a known bug in Perl, should be skipped
 #	b	test exposes a known bug in Perl, should be skipped if noamp
-#	t	test exposes a bug with threading, TODO if qr_embed_thr
+#	t	test exposes a bug with threading, TODO if qr_embed_thr id:1030
 #       s       test should only be run for regex_sets_compat.t
 #       S       test should not be run for regex_sets_compat.t
 #       a       test should only be run on ASCII platforms
@@ -184,7 +184,7 @@ foreach (@tests) {
     }
     $reason = 'skipping $&' if $reason eq  '' && $skip_amp;
     $result =~ s/B//i unless $skip;
-    my $todo= $result =~ s/T// ? " # TODO" : "";
+    my $todo= $result =~ s/T// ? " # TODO " : ""; id:1082
     my $testname= $test;
     if ($comment) {
         $comment=~s/^\s*(?:#\s*)?//;
@@ -478,7 +478,7 @@ EOFCODE
 	    last;  # no need to study a syntax error
 	}
 	elsif ( $todo_qr ) {
-	    print "not ok $testname # TODO", length($reason) ? " - $reason" : '', "\n";
+	    print "not ok $testname # TODO ", length($reason) ? " - $reason" : '', "\n"; id:950
 	    next TEST;
 	}
 	elsif ($@) {

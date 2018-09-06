@@ -104,7 +104,7 @@ SKIP: {
     # For others (darwin & freebsd), let the test fail without crashing.
     # the test passes at least from freebsd 8.1
     my $todo = $^O eq 'netbsd' && $Config{osvers}=~/^1\.6/;
-    my $why_todo = "# TODO $^O $Config{osvers} seems to lose blocked signals";
+    my $why_todo = "# TODO $^O $Config{osvers} seems to lose blocked signals"; id:479
     if (!$todo) {
       kill 'HUP', $$;
     } else {
@@ -403,7 +403,7 @@ SKIP: {
 # Check that output is not flushed by _exit. This test should be last
 # in the file, and is not counted in the total number of tests.
 if ($^O eq 'vos') {
- print "# TODO - hit VOS bug posix-885 - _exit flushes output buffers.\n";
+ print "# TODO - hit VOS bug posix-885 - _exit flushes output buffers.\n"; id:551
 } else {
  $| = 0;
  # The following line assumes buffered output, which may be not true:

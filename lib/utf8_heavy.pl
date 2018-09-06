@@ -501,7 +501,7 @@ sub _loose_name ($) {
                         map  { $_->[1] }
                         sort { $a->[0] <=> $b->[0] }
                         map  { /^([0-9a-fA-F]+)/ && !$seen{$1}++ ? [ CORE::hex($1), $_ ] : () }
-                        @tmp; # XXX doesn't do ranges right
+                        @tmp; # XXX doesn't do ranges right id:454
             }
             else {
                 # mktables has gone to some trouble to make non-user defined

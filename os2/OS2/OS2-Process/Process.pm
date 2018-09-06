@@ -592,8 +592,8 @@ my %mbH_default = (
   default_button => 1,
 #  icon => 0x30,		# MB_INFORMATION
 #  iconID => 0,			# XXX???
-  flags => 0,			# XXX???
-  notifyWindow => 0,		# XXX???
+  flags => 0,			# XXX ??? id:705
+  notifyWindow => 0,		# XXX ??? id:672
 );
 
 sub MessageBoxH {

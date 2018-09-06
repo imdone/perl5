@@ -1305,7 +1305,7 @@ sub run
                      'IO::Uncompress::AnyUncompress',
                     )
     {
-        # TODO -- Add Append mode tests
+        # TODO -- Add Append mode tests id:142
 
         my $Error = getErrorRef($bit);
         my $Func = getTopFuncRef($bit);
@@ -1392,7 +1392,7 @@ sub run
                      'IO::Uncompress::AnyUncompress',
                     )
     {
-        # TODO -- Add Append mode tests
+        # TODO -- Add Append mode tests id:328
 
         my $Error = getErrorRef($bit);
         my $Func = getTopFuncRef($bit);
@@ -1484,7 +1484,7 @@ sub run
     }
 
     foreach my $TopType ($CompressClass
-                         # TODO -- add the inflate classes
+                         # TODO -- add the inflate classes id:253
                         )
     {
         my $Error = getErrorRef($TopType);
@@ -1624,6 +1624,6 @@ sub run
     }
 }
 
-# TODO add more error cases
+# TODO add more error cases id:81
 
 1;
