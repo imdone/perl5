@@ -1,33 +1,19 @@
 {
-  "exclude": [
-    "^(node_modules|bower_components|\\.imdone|target|build|dist|logs|flow-typed|imdone-export.json)[\\/\\\\]?|\\.(git|svn|hg|npmignore)|\\~$|\\.(jpg|png|gif|swp|ttf|otf)$"
-  ],
-  "watcher": true,
-  "keepEmptyPriority": true,
-  "code": {
-    "include_lists": [
-      "TODO",
-      "DOING",
-      "DONE",
-      "PLANNING",
-      "FIXME",
-      "ARCHIVE",
-      "HACK",
-      "CHANGED",
-      "XXX",
-      "IDEA",
-      "NOTE",
-      "REVIEW",
-      "MARK",
-      "YAML",
-      "HELP"
-    ]
+  "noHelp": true,
+  "sync": {
+    "useImdoneioForPriority": true,
+    "name": "imdone/perl5",
+    "id": "5b915b2ca0db8e18673878b7"
+  },
+  "marked": {
+    "langPrefix": "language-",
+    "smartLists": true,
+    "pedantic": false,
+    "breaks": false,
+    "tables": true,
+    "gfm": true
   },
   "lists": [
-    {
-      "name": "HELP",
-      "hidden": false
-    },
     {
       "name": "TODO",
       "hidden": false
@@ -57,6 +43,10 @@
       "hidden": false
     },
     {
+      "name": "HELP",
+      "hidden": false
+    },
+    {
       "name": "all",
       "hidden": false
     },
@@ -69,18 +59,28 @@
       "hidden": false
     }
   ],
-  "marked": {
-    "langPrefix": "language-",
-    "smartLists": true,
-    "pedantic": false,
-    "breaks": false,
-    "tables": true,
-    "gfm": true
+  "code": {
+    "include_lists": [
+      "TODO",
+      "DOING",
+      "DONE",
+      "PLANNING",
+      "FIXME",
+      "ARCHIVE",
+      "HACK",
+      "CHANGED",
+      "XXX",
+      "IDEA",
+      "NOTE",
+      "REVIEW",
+      "MARK",
+      "YAML",
+      "HELP"
+    ]
   },
-  "sync": {
-    "useImdoneioForPriority": true,
-    "name": "imdone/perl5",
-    "id": "5b915b2ca0db8e18673878b7"
-  },
-  "noHelp": true
+  "keepEmptyPriority": true,
+  "watcher": true,
+  "exclude": [
+    "^(node_modules|bower_components|\\.imdone|target|build|dist|logs|flow-typed|imdone-export.json)[\\/\\\\]?|\\.(git|svn|hg|npmignore)|\\~$|\\.(jpg|png|gif|swp|ttf|otf)$"
+  ]
 }
