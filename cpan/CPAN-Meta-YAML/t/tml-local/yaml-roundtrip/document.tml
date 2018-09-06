@@ -49,8 +49,7 @@ foo: bar
 # Multiple inline documents (comment variant)
 === multi_doctype_comment
 --- yaml
---- #YAML:1.0
-foo: bar
+--- #YAML: foo: bar id:1106
 --- #YAML:1.0
 - 1
 --- #YAML: foo: bar id:32

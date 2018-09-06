@@ -34,7 +34,7 @@ sub Load {
     if ( wantarray ) {
         return @$self;
     } else {
-        # To match YAML.pm, return the last document
+        # To match YAML .pm, return the last document id:1102
         return $self->[-1];
     }
 }
@@ -57,7 +57,7 @@ sub LoadFile {
     if ( wantarray ) {
         return @$self;
     } else {
-        # Return only the last document to match YAML.pm,
+        # Return only the last document to match YAML .pm, id:1107
         return $self->[-1];
     }
 }
@@ -73,7 +73,7 @@ sub LoadFile {
 #
 # XXX-XDG I don't support changing it yet.  It's a very well-documented
 # "API" of CPAN::Meta::YAML.  I'd support deprecating it, but Adam suggested
-# we not change it until YAML.pm's own OO API is established so that
+# we not change it until YAML .pm's own OO API is established so that id:1113
 # users only have one API change to digest, not two
 sub new {
     my $class = shift;
@@ -136,7 +136,7 @@ my %UNESCAPES = (
 # CPAN::Meta::YAML or not. Probably yes.
 
 # These 3 values have special meaning when unquoted and using the
-# default YAML schema. They need quotes if they are strings.
+# default YAML schema. They need quotes if they are strings. id:1112
 my %QUOTE = map { $_ => 1 } qw{
     null true false
 };
@@ -241,7 +241,7 @@ Did you decode with lax ":utf8" instead of strict ":encoding(UTF-8)"?
         my @lines = grep { ! /^\s*(?:\#.*)?\z/ }
                 split /(?:\015{1,2}\012|\015|\012)/, $string;
 
-        # Strip the initial YAML header
+        # Strip the initial YAML header id:1118
         @lines and $lines[0] =~ /^\%YAML[: ][\d\.]+.*\z/ and shift @lines;
 
         # A nibbling parser
@@ -322,7 +322,7 @@ sub _unquote_double {
     return $string;
 }
 
-# Load a YAML scalar string to the actual Perl scalar
+# Load a YAML scalar string to the actual Perl scalar id:1103
 sub _load_scalar {
     my ($self, $string, $indent, $lines) = @_;
 
@@ -806,7 +806,7 @@ use B;
 # XXX-INGY Is flock CPAN::Meta::YAML's responsibility?
 # Some platforms can't flock :-(
 # XXX-XDG I think it is.  When reading and writing files, we ought
-# to be locking whenever possible.  People (foolishly) use YAML
+# to be locking whenever possible.  People (foolishly) use YAML  id:1108
 # files for things like session storage, which has race issues.
 my $HAS_FLOCK;
 sub _can_flock {
