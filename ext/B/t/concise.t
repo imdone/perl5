@@ -429,7 +429,7 @@ like($out, qr/FUNC: \*FOO::bar/,
 
 # Test that consecutive nextstate ops are not nulled out when PERLDBf_NOOPT
 # is set.
-# XXX Does this test belong here?
+# XXX Does this test belong here? id:474
 
 $out = runperl ( switches => ["-MO=Concise"],
 		 prog => 'BEGIN{$^P = 0x04} 1 if 0; print',

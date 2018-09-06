@@ -656,7 +656,7 @@ Perl_grok_infnan(pTHX_ const char** sp, const char* send)
 
         if (isALPHA_FOLD_EQ(*s, 'S') || isALPHA_FOLD_EQ(*s, 'Q')) {
             /* snan, qNaN */
-            /* XXX do something with the snan/qnan difference */
+            /* XXX do something with the snan/qnan difference id:602*/
             s++; if (s == send) return 0;
         }
 
@@ -738,12 +738,12 @@ Perl_grok_infnan(pTHX_ const char** sp, const char* send)
                         s = u;
                     }
 
-                    /* XXX Doesn't do octal: nan("0123").
+                    /* XXX Doesn't do octal: nan("0123"). id:700
                      * Probably not a big loss. */
 
                     if ((nantype & IS_NUMBER_NOT_INT) ||
                         !(nantype && IS_NUMBER_IN_UV)) {
-                        /* XXX the nanval is currently unused, that is,
+                        /* XXX the nanval is currently unused, that is, id:667
                          * not inserted as the NaN payload of the NV.
                          * But the above code already parses the C99
                          * nan(...)  format.  See below, and see also

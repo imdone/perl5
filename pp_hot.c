@@ -2154,7 +2154,7 @@ S_aassign_copy_common(pTHX_ SV **firstlelem, SV **lastlelem,
 
             TAINT_NOT;	/* Each item is independent */
 
-            /* Dear TODO test in t/op/sort.t, I love you.
+            /* Dear TODO test in t/op/sort.t, I love you. id:764
                (It's relying on a panic, not a "semi-panic" from newSVsv()
                and then an assertion failure below.)  */
             if (UNLIKELY(SvIS_FREED(svr))) {
@@ -2376,7 +2376,7 @@ PP(pp_aassign)
                            "Assigned value is not a SCALAR reference");
                     if (lval)
                         *svp = rsv = sv_mortalcopy(rsv);
-                    /* XXX else check for weak refs?  */
+                    /* XXX else check for weak refs? id:876*/
                     rsv = SvREFCNT_inc_NN(SvRV(rsv));
                     assert(tmps_base <= PL_tmps_max);
                     PL_tmps_stack[tmps_base++] = rsv;
@@ -2753,7 +2753,7 @@ PP(pp_aassign)
 	Gid_t tmp_gid  = PerlProc_getgid();
 	Gid_t tmp_egid = PerlProc_getegid();
 
-        /* XXX $> et al currently silently ignore failures */
+        /* XXX $> et al currently silently ignore failures id:729*/
 	if (PL_delaymagic & DM_UID) {
 #ifdef HAS_SETRESUID
 	    PERL_UNUSED_RESULT(
@@ -2787,7 +2787,7 @@ PP(pp_aassign)
 	    tmp_uid  = PerlProc_getuid();
 	    tmp_euid = PerlProc_geteuid();
 	}
-        /* XXX $> et al currently silently ignore failures */
+        /* XXX $> et al currently silently ignore failures id:621*/
 	if (PL_delaymagic & DM_GID) {
 #ifdef HAS_SETRESGID
 	    PERL_UNUSED_RESULT(

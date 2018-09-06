@@ -74,7 +74,7 @@ sub wraplist {
 # appears in @MM::ISA before ExtUtils::Liblist::Kid, so if there isn't an ext()
 # in MM_VMS, then AUTOLOAD is called, and bad things happen.  So, we just
 # mimic inheritance here and hand off to ExtUtils::Liblist::Kid.
-# XXX This hackery will die soon. --Schwern
+# XXX This hackery will die soon. --Schwern id:219
 sub ext {
     require ExtUtils::Liblist::Kid;
     goto &ExtUtils::Liblist::Kid::ext;
@@ -606,7 +606,7 @@ sub constants {
     }
 
     # Fixup files for MMS macros
-    # XXX is this list complete?
+    # XXX is this list complete? id:241
     for my $macro (qw/
                    FULLEXT VERSION_FROM
 	      /	) {
@@ -829,7 +829,7 @@ Also keep around the old $(SAY) macro in case somebody's using it.
 sub tools_other {
     my($self) = @_;
 
-    # XXX Are these necessary?  Does anyone override them?  They're longer
+    # XXX Are these necessary? Does anyone override them? They're longer id:69
     # than just typing the literal string.
     my $extra_tools = <<'EXTRA_TOOLS';
 
@@ -1595,7 +1595,7 @@ $(MAP_TARGET) :: $(MAKE_APERL_FILE)
     $linkcmd =~ s/\s+/ /g;
 
     # Which *.olb files could we make use of...
-    local(%olbs);       # XXX can this be lexical?
+    local(%olbs);       # XXX can this be lexical? id:158
     $olbs{$self->{INST_ARCHAUTODIR}} = "$self->{BASEEXT}\$(LIB_EXT)";
     require File::Find;
     File::Find::find(sub {

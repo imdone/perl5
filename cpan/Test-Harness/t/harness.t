@@ -368,7 +368,7 @@ for my $test_args ( get_arg_sets() ) {
 
     @expected = (
         "$source_tests/harness_directives ..",
-        'not ok 2 - we have a something # TODO some output',
+        'not ok 2 - we have a something # TODO some output', id:289
         "ok 3 houston, we don't have liftoff # SKIP no funding",
         'ok',
         'All tests successful.',
@@ -529,7 +529,7 @@ SKIP: {
 
     my $cat = '/bin/cat';
 
-    # TODO: use TYPE on win32?
+    # TODO: use TYPE on win32? id:399
     unless ( -e $cat ) {
         skip "no '$cat'", 2;
     }

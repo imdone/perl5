@@ -1843,7 +1843,7 @@ Like C<sv_catsv> but doesn't process magic.
 #define SV_HAS_TRAILING_NUL	256
 #define SV_COW_SHARED_HASH_KEYS	512
 /* This one is only enabled for PERL_OLD_COPY_ON_WRITE */
-/* XXX This flag actually enabled for any COW.  But it appears not to do
+/* XXX This flag actually enabled for any COW. But it appears not to do id:760
        anything.  Can we just remove it?  Or will it serve some future
        purpose.  */
 #define SV_COW_OTHER_PVS	1024

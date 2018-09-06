@@ -11,7 +11,7 @@ use vars qw($VERSION);
 $VERSION = "2.19";
 
 # no prepare, because prepare is not a command on the shell command line
-# TODO: clear instance cache on reload
+# TODO: clear instance cache on reload id:38
 my %instance;
 for my $method (qw(get make test install)) {
     no strict 'refs';
@@ -217,7 +217,7 @@ sub color_cmd_tmps {
     # warn "color_cmd_tmps $depth $color " . $self->id; # sleep 1;
     my $prereq_pm = $self->prereq_pm;
     if (defined $prereq_pm) {
-        # XXX also optional_req & optional_breq? -- xdg, 2012-04-01
+        # XXX also optional_req & optional_breq? -- xdg, 2012-04-01 id:96
         # A: no, optional deps may recurse -- ak, 2014-05-07
       PREREQ: for my $pre (sort(
                 keys %{$prereq_pm->{requires}||{}},
@@ -319,7 +319,7 @@ sub shortcut_get {
 
     if (my $why = $self->check_disabled) {
         $self->{unwrapped} = CPAN::Distrostatus->new("NO $why");
-        # XXX why is this goodbye() instead of just print/warn?
+        # XXX why is this goodbye() instead of just print/warn? id:122
         # Alternatively, should other print/warns here be goodbye()?
         # -- xdg, 2012-04-05
         return $self->goodbye("[disabled] -- NA $why");
@@ -333,7 +333,7 @@ sub shortcut_get {
         );
     }
 
-    # XXX I'm not sure this should be here because it's not really
+    # XXX I'm not sure this should be here because it's not really id:21
     # a test for whether get should continue or return; this is
     # a side effect -- xdg, 2012-04-05
     $self->debug("checking missing build_dir[$self->{ID}]") if $CPAN::DEBUG;
@@ -384,7 +384,7 @@ sub get {
     my $sub_wd = CPAN::anycwd(); # for cleaning up as good as possible
 
     my($local_file);
-    # XXX I don't think this check needs to be here, as it
+    # XXX I don't think this check needs to be here, as it id:143
     # is already checked in shortcut_get() -- xdg, 2012-04-05
     unless ($self->{build_dir} && -d $self->{build_dir}) {
         $self->get_file_onto_local_disk;
@@ -392,7 +392,7 @@ sub get {
         $self->check_integrity;
         return if $CPAN::Signal;
         (my $packagedir,$local_file) = $self->run_preps_on_packagedir;
-        # XXX why is this check here? -- xdg, 2012-04-08
+        # XXX why is this check here? -- xdg, 2012-04-08 id:39
         if (exists $self->{writemakefile} && ref $self->{writemakefile}
            && $self->{writemakefile}->can("failed") &&
            $self->{writemakefile}->failed) {
@@ -403,7 +403,7 @@ sub get {
         $self->{build_dir} = $packagedir;
     }
 
-    # XXX should this move up to after run_preps_on_packagedir?
+    # XXX should this move up to after run_preps_on_packagedir? id:97
     # Otherwise, failing writemakefile can return without
     # a $CPAN::Signal check -- xdg, 2012-04-05
     if ($CPAN::Signal) {
@@ -1341,7 +1341,7 @@ sub cvs_import {
     }
     my $cvs_log = qq{"imported $package $version sources"};
     $version =~ s/\./_/g;
-    # XXX cvs: undocumented and unclear how it was meant to work
+    # XXX cvs: undocumented and unclear how it was meant to work id:123
     my @cmd = ('cvs', '-d', $cvs_root, 'import', '-m', $cvs_log,
                "$cvs_dir", $userid, "v$version");
 
@@ -1352,7 +1352,7 @@ sub cvs_import {
 
     $CPAN::Frontend->myprint(qq{@cmd\n});
     system(@cmd) == 0 or
-    # XXX cvs
+    # XXX cvs id:22
         $CPAN::Frontend->mydie("cvs import failed");
     chdir($pwd) or $CPAN::Frontend->mydie(qq{Could not chdir to "$pwd": $!});
 }
@@ -1788,7 +1788,7 @@ sub shortcut_prepare {
                 $self->{writemakefile}->failed :
                 $self->{writemakefile} =~ /^NO/
             ) {
-            # XXX maybe a retry would be in order?
+            # XXX maybe a retry would be in order? id:144
             my $err = UNIVERSAL::can($self->{writemakefile},"text") ?
                 $self->{writemakefile}->text :
                     $self->{writemakefile};
@@ -1971,7 +1971,7 @@ sub prepare {
             }
         } else {
             if (my $expect_model = $self->_prefs_with_expect("pl")) {
-                # XXX probably want to check _should_report here and warn
+                # XXX probably want to check _should_report here and warn id:40
                 # about not being able to use CPAN::Reporter with expect
                 $ret = $self->_run_via_expect($system,'writemakefile',$expect_model);
                 if (! defined $ret
@@ -2061,7 +2061,7 @@ sub make {
     }
     # Emergency brake if they said install Pippi and get newest perl
 
-    # XXX Would this make more sense in shortcut_prepare, since
+    # XXX Would this make more sense in shortcut_prepare, since id:206
     # that doesn't make sense on a perl dist either?  Broader
     # question: what is the purpose of suggesting force install
     # on a perl distribution?  That seems unlikely to result in
@@ -2205,7 +2205,7 @@ is part of the perl-%s distribution. To install that, you need to run
     }
     my ($system_ok, $system_err);
     if ($want_expect) {
-        # XXX probably want to check _should_report here and
+        # XXX probably want to check _should_report here and id:124
         # warn about not being able to use CPAN::Reporter with expect
         $system_ok = $self->_run_via_expect($system,'make',$expect_model) == 0;
     }
@@ -2281,7 +2281,7 @@ sub _run_via_expect_anyorder {
     my $timeout_start = time;
   EXPECT: while () {
         my($eof,$ran_into_timeout);
-        # XXX not up to the full power of expect. one could certainly
+        # XXX not up to the full power of expect. one could certainly id:23
         # wrap all of the talk pairs into a single expect call and on
         # success tweak it and step ahead to the next question. The
         # current implementation unnecessarily limits itself to a
@@ -2494,7 +2494,7 @@ sub prefs {
         delete $self->{prefs};
     }
     if (exists $self->{prefs}) {
-        return $self->{prefs}; # XXX comment out during debugging
+        return $self->{prefs}; # XXX comment out during debugging id:145
     }
     if ($CPAN::Config->{prefs_dir}) {
         CPAN->debug("prefs_dir[$CPAN::Config->{prefs_dir}]") if $CPAN::DEBUG;
@@ -2835,7 +2835,7 @@ sub prereqs_for_slot {
                 }
             }
         }
-        # XXX what about optional_req|breq? -- xdg, 2012-04-01
+        # XXX what about optional_req|breq? -- xdg, 2012-04-01 id:41
         for my $hash (
             $prereq_pm->{requires},
             $prereq_pm->{build_requires},
@@ -3032,7 +3032,7 @@ sub unsat_prereq {
                            ) {
                             next NOSAYER;
                         }
-                        ### XXX  don't complain about missing optional deps -- xdg, 2012-04-01
+                        ### XXX don't complain about missing optional deps -- xdg, 2012-04-01 id:207
                         if ($self->is_locally_optional($prereq_pm, $need_module)) {
                             # don't complain about failing optional prereqs
                         }
@@ -3175,7 +3175,7 @@ sub read_meta {
 }
 
 #-> sub CPAN::Distribution::read_yaml ;
-# XXX This should be DEPRECATED -- dagolden, 2011-02-05
+# XXX This should be DEPRECATED -- dagolden, 2011-02-05 id:125
 sub read_yaml {
     my($self) = @_;
     my $meta_file = $self->pick_meta_file('\.yml$');
@@ -3184,7 +3184,7 @@ sub read_yaml {
     my $yaml;
     eval { $yaml = $self->parse_meta_yml($meta_file) };
     if ($@ or ! $yaml) {
-        return undef; # if we die, then we cannot read YAML's own META.yml
+        return undef; # if we die, then we cannot read YAML 's own META.yml id:50
     }
     # not "authoritative"
     if (defined $yaml && (! ref $yaml || ref $yaml ne "HASH")) {
@@ -3246,12 +3246,12 @@ sub prereq_pm {
         my $requires = $prereqs->requirements_for(qw/runtime requires/);
         my $build_requires = $prereqs->requirements_for(qw/build requires/);
         my $test_requires = $prereqs->requirements_for(qw/test requires/);
-        # XXX we don't yet distinguish build vs test, so merge them for now
+        # XXX we don't yet distinguish build vs test, so merge them for now id:146
         $build_requires->add_requirements($test_requires);
         $req = $requires->as_string_hash;
         $breq = $build_requires->as_string_hash;
 
-        # XXX assemble optional_req && optional_breq from recommends/suggests
+        # XXX assemble optional_req && optional_breq from recommends/suggests id:42
         # depending on corresponding policies -- xdg, 2012-04-01
         CPAN->use_inst("CPAN::Meta::Requirements");
         my $opt_runtime = CPAN::Meta::Requirements->new;
@@ -3383,7 +3383,7 @@ sub prereq_pm {
             }
         }
     }
-    # XXX needs to be adapted for optional_req & optional_breq -- xdg, 2012-04-01
+    # XXX needs to be adapted for optional_req & optional_breq -- xdg, 2012-04-01 id:208
     if ($req || $breq || $opt_req || $opt_breq ) {
         return $self->{prereq_pm} = {
            requires => $req,
@@ -3556,7 +3556,7 @@ sub test {
         my $thm = CPAN::Shell->expand("Module","Test::Harness");
         my $v = $thm->inst_version;
         if (CPAN::Version->vlt($v,2.62)) {
-            # XXX Eric Wilhelm reported this as a bug: klapperl:
+            # XXX Eric Wilhelm reported this as a bug: klapperl: id:126
             # Test::Harness 3.0 self-tests, so that should be 'unless
             # installing Test::Harness'
             unless ($self->id eq $thm->distribution->id) {
@@ -3696,7 +3696,7 @@ sub _make_test_illuminate_prereqs {
     for my $m (sort keys %{$self->{sponsored_mods}}) {
         next unless $self->{sponsored_mods}{$m} > 0;
         my $m_obj = CPAN::Shell->expand("Module",$m) or next;
-        # XXX we need available_version which reflects
+        # XXX we need available_version which reflects id:51
         # $ENV{PERL5LIB} so that already tested but not yet
         # installed modules are counted.
         my $available_version = $m_obj->available_version;
@@ -3870,7 +3870,7 @@ sub goto {
     my($method) = (caller(1))[3];
     CPAN->instance("CPAN::Distribution",$goto)->$method();
     CPAN::Queue->delete_first($goto);
-    # XXX delete_first returns undef; is that what this should return
+    # XXX delete_first returns undef; is that what this should return id:147
     # up the call stack, eg. return $sefl->goto($goto) -- xdg, 2012-04-04
 }
 

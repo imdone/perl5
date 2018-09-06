@@ -7,7 +7,7 @@ require XSLoader;
 
 @ISA = qw(Exporter);
 
-# NOTE: The glob() export is only here for compatibility with 5.6.0.
+# NOTE: The glob() export is only here for compatibility with 5.6.0. id:633
 # csh_glob() should not be used directly, unless you know what you're doing.
 
 %EXPORT_TAGS = (

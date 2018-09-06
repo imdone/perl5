@@ -124,7 +124,7 @@ delete $ENV{PATHEXT} unless $had_pathext;
         PM           => { 'MM_NW5.pm' => 1 },
     }, 'MM';
 
-    # XXX Hack until we have a proper init method.
+    # XXX Hack until we have a proper init method. id:242
     # Flesh out some necessary keys in the MM object.
     foreach my $key (qw(XS C O_FILES H HTMLLIBPODS HTMLSCRIPTPODS
                         MAN1PODS MAN3PODS PARENT_NAME)) {

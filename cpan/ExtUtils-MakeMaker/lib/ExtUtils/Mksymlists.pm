@@ -143,7 +143,7 @@ sub _write_win32 {
     my @syms;
     # Export public symbols both with and without underscores to
     # ensure compatibility between DLLs from Borland C and Visual C
-    # NOTE: DynaLoader itself only uses the names without underscores,
+    # NOTE: DynaLoader itself only uses the names without underscores, id:220
     # so this is only to cover the case when the extension DLL may be
     # linked to directly from C. GSAR 97-07-10
 

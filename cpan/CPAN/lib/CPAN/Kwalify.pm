@@ -72,7 +72,7 @@ sub _validate {
                 $schema_loaded->{$schema_name} = $load->($schema_yaml);
             };
             if ($@) {
-                # we know that YAML.pm 0.62 cannot parse the schema,
+                # we know that YAML .pm 0.62 cannot parse the schema, id:46
                 # so we try a fallback
                 my $content = do {
                     my $path = __FILE__;

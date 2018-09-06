@@ -18,7 +18,7 @@ case ":$PATH:" in
 esac
 # As of UNICOS/mk 2.0.5.24 the shm* are in libc but unimplemented
 # (an attempt to use them causes a runtime error)
-# XXX Configure probe for really functional shm*() is needed XXX
+# XXX Configure probe for really functional shm*() is needed XXX id:434
 if test "$d_shm" = ""; then
     d_shmat=${d_shmat:-undef}
     d_shmdt=${d_shmdt:-undef}

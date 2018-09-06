@@ -425,8 +425,8 @@ END_EXTERN_C
 #define free			win32_free
 #endif
 
-/* XXX Why are APIs like sleep(), times() etc. inside a block
- * XXX guarded by "#ifndef WIN32IO_IS_STDIO"?
+/* XXX Why are APIs like sleep(), times() etc. inside a block id:1053
+ * XXX guarded by "#ifndef WIN32IO_IS_STDIO"? id:941
  */
 
 #define pipe(fd)		win32_pipe((fd), 512, O_BINARY)

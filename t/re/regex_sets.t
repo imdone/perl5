@@ -1,6 +1,6 @@
 #!./perl
 
-# This tests (?[...]).  XXX These are just basic tests, as full ones would be
+# This tests (?[...]).  XXX These are just basic tests, as full ones would be id:922
 # best done with an infrastructure change to allow getting out the inversion
 # list of the constructed set and then comparing it character by character
 # with the expected result.

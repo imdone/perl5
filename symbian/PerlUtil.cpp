@@ -84,7 +84,7 @@ EXPORT_C HBufC8* PerlUtil::newHBufC8fromPVn(const U8* s, STRLEN n) {
 }
 
 EXPORT_C void PerlUtil::setTDes8fromPVn(TDes8& aDes8, const U8* s, STRLEN n) {
-  // TODO: grow aDes8 if needed
+  // TODO: grow aDes8 if needed id:796
   aDes8.Copy(s, n);
 }
 
@@ -106,7 +106,7 @@ EXPORT_C HBufC16* PerlUtil::newHBufC16fromPVn(const U8 *s, STRLEN n, bool utf8) 
 }
 
 EXPORT_C void PerlUtil::setTDes16fromPVn(TDes16& aDes16, const U8 *s, STRLEN n, bool utf8) {
-  // TODO: grow aDes16 if needed
+  // TODO: grow aDes16 if needed id:1009
   if (utf8) {
     TPtrC8 aPtrC8(s, n);
     CnvUtfConverter::ConvertToUnicodeFromUtf8(aDes16, aPtrC8);

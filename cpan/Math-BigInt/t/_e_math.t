@@ -40,7 +40,7 @@ use Math::BigFloat lib => 'Calc';
     test_add(0, 0, '-', '+');
     test_add(0, 0, '+', '-');
     test_add(0, 0, '+', '+');
-    test_add(0, 0, '-', '-');          # gives "-0"! TODO: fix this!
+    test_add(0, 0, '-', '-');          # gives "-0"! TODO: fix this! id:332
 }
 
 #############################################################################
@@ -63,7 +63,7 @@ use Math::BigFloat lib => 'Calc';
         test_sub(123, 123, '-', '-');
     }
 
-    test_sub(0, 0, '-', '+');          # gives "-0"! TODO: fix this!
+    test_sub(0, 0, '-', '+');          # gives "-0"! TODO: fix this! id:257
     test_sub(0, 0, '+', '-');
     test_sub(0, 0, '+', '+');
     test_sub(0, 0, '-', '-');

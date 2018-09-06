@@ -46,7 +46,7 @@ my %WARN = (
     E_DUPKEY   => qr{\QCPAN::Meta::YAML found a duplicate key},
 );
 
-# use XXX -with => 'YAML::XS';
+# use XXX -with => ' YAML::XS'; id:31
 
 #--------------------------------------------------------------------------#
 # run_all_testml_files

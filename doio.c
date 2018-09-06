@@ -950,7 +950,7 @@ S_openn_cleanup(pTHX_ GV *gv, IO *io, PerlIO *fp, char *mode, const char *oname,
 #endif /* !PERL_MICRO */
     }
 
-    /* Eeek - FIXME !!!
+    /* Eeek - FIXME !!! id:401
      * If this is a standard handle we discard all the layer stuff
      * and just dup the fd into whatever was on the handle before !
      */
@@ -991,7 +991,7 @@ S_openn_cleanup(pTHX_ GV *gv, IO *io, PerlIO *fp, char *mode, const char *oname,
 
 #if !defined(WIN32)
            /* PL_fdpid isn't used on Windows, so avoid this useless work.
-            * XXX Probably the same for a lot of other places. */
+            * XXX Probably the same for a lot of other places. id:472*/
             {
                 Pid_t pid;
                 SV *sv;
@@ -1417,7 +1417,7 @@ Perl_nextargv(pTHX_ GV *gv, bool nomagicopen)
                     (void)PerlLIO_chmod(PL_oldname,PL_filemode);
 #endif
                     if (fileuid != statbuf.st_uid || filegid != statbuf.st_gid) {
-                        /* XXX silently ignore failures */
+                        /* XXX silently ignore failures id:544*/
 #ifdef HAS_FCHOWN
                         PERL_UNUSED_RESULT(fchown(PL_lastfd,fileuid,filegid));
 #elif defined(HAS_CHOWN)
@@ -2224,7 +2224,7 @@ S_exec_failed(pTHX_ const char *cmd, int fd, int do_report)
         Perl_warner(aTHX_ packWARN(WARN_EXEC), "Can't exec \"%s\": %s",
                     cmd, Strerror(e));
     if (do_report) {
-        /* XXX silently ignore failures */
+        /* XXX silently ignore failures id:312*/
         PERL_UNUSED_RESULT(PerlLIO_write(fd, (void*)&e, sizeof(int)));
 	PerlLIO_close(fd);
     }

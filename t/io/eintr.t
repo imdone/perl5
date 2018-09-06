@@ -31,7 +31,7 @@ unless (exists  $Config{'d_alarm'}) {
 	exit 0;
 }
 
-# XXX for some reason the stdio layer doesn't seem to interrupt
+# XXX for some reason the stdio layer doesn't seem to interrupt id:969
 # write system call when the alarm triggers.  This makes the tests
 # hang.
 

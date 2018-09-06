@@ -6,7 +6,7 @@ BEGIN {
     set_up_inc(qw '../lib ../cpan/version/lib');
 }
 
-# XXX remove this later -- dagolden, 2010-01-13
+# XXX remove this later -- dagolden, 2010-01-13 id:1019
 # local *STDERR = *STDOUT;
 
 my @syntax_cases = (

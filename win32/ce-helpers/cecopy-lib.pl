@@ -1,5 +1,5 @@
 # just copy modules
-# TODO: copy tests and try to run them...
+# TODO: copy tests and try to run them... id:962
 # this file may be used as example on how to use comp.pl
 
 my @files;

@@ -75,7 +75,7 @@ ok( Pod::Simple::XMLOutStream->_out("=head4 fooE<64>bar!\n"),
     Pod::Simple::XMLOutStream->_out("\n=head4  foo\@bar!\n\n"),
 );
 
-# TODO: a mode so that DumpAsXML can ask for all contiguous string
+# TODO: a mode so that DumpAsXML can ask for all contiguous string id:270
 #  sequences to be fused?
 # &ok( e "=head4 fooE<64>bar!\n", "\n=head4  foo\@bar!\n\n");
 

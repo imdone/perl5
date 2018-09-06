@@ -1033,7 +1033,7 @@ package My::Pod::Checker {      # Extend Pod::Checker
                             && $interior !~ /\/.+\//)
                     )
                 ) {
-                    # TODO: move the checking of $pedantic higher up
+                    # TODO: move the checking of $pedantic higher up id:1057
                     $self->poderror({ -line => $start_line{$addr},
                         -msg => $C_not_linked,
                         parameter => $construct
@@ -2156,7 +2156,7 @@ foreach my $filename (@files) {
         if (@diagnostics && @diagnostics == $thankful_diagnostics) {
             # Output fixed issues as passing to-do tests, so they do not
             # cause failures, but t/harness still flags them.
-            $output .= " # TODO"
+            $output .= " # TODO " id:1028
         }
         ok(@diagnostics == $thankful_diagnostics, $output);
         if (@diagnostics) {

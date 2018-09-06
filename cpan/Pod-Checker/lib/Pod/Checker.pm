@@ -653,10 +653,10 @@ sub whine {
     my $severity = 'ERROR';
 
     if (0) {
-      # XXX: Let's standardize what's a warning and what's an error.  Let's not
+      # XXX: Let's standardize what's a warning and what's an error. Let's not id:165
       # move stuff up and down the severity tree.  -- rjbs, 2013-04-12
       # Convert errors in Pod::Simple that are warnings in Pod::Checker
-      # XXX Do differently so the $complaint can be reworded without this breaking
+      # XXX Do differently so the $complaint can be reworded without this breaking id:335
       $severity = 'WARNING' if
           $complaint =~ /^Expected '=item .+?'$/ ||
           $complaint =~ /^You can't have =items \(as at line .+?\) unless the first thing after the =over is an =item$/ ||
@@ -694,7 +694,7 @@ sub _init_event { # assignments done at the start of most events
 sub _check_fcode {
     my ($self, $inner, $outers) = @_;
     # Check for an fcode inside another of the same fcode
-    # XXX line number is the line of the start of the paragraph that the warning
+    # XXX line number is the line of the start of the paragraph that the warning id:260
     # is in, not the line that the warning is on. Fix this
 
     # Later versions of Pod::Simple forbid nested L<>'s
@@ -880,8 +880,8 @@ sub end_Document {
         $nodes{$_} = 3; # index node
     }
 
-    # XXX update unresolved internal link POD -- single word not enclosed in ""?
-    # I don't know what I was thinking when I made the above TODO, and I don't
+    # XXX update unresolved internal link POD -- single word not enclosed in ""? id:197
+    # I don't know what I was thinking when I made the above TODO , and I don't id:379
     # know what it means...
 
     for my $link (@{ $self->{'_internal_links'} }) {

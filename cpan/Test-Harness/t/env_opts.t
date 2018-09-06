@@ -48,7 +48,7 @@ SKIP: {
     is( $harness->jobs,  4, "set jobs correctly" );
     isa_ok( $harness, "TAP::Harness::Archive", "correct harness subclass" );
 
-    # XXX: this is nasty :(
+    # XXX: this is nasty :( id:396
     is( $harness->{__archive_file}, "/archive.tgz", "correct archive found" );
 
 }

@@ -50,7 +50,7 @@ full_setup();
 require ExtUtils::MM;  # Things like CPAN assume loading ExtUtils::MakeMaker
                        # will give them MM.
 
-require ExtUtils::MY;  # XXX pre-5.8 versions of ExtUtils::Embed expect
+require ExtUtils::MY;  # XXX pre-5.8 versions of expect ExtUtils::Embed id:59
                        # loading ExtUtils::MakeMaker will give them MY.
                        # This will go when Embed is its own CPAN module.
 

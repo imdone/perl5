@@ -32,7 +32,7 @@
  *    but XS code may still explicitly use the long form, i.e.
  *    Perl_foo(aTHX_ ...)
  *
- * NOTE: ALL FUNCTIONS IN THIS FILE should have an entry with the 'b' flag in
+ * NOTE: ALL FUNCTIONS IN THIS FILE should have an entry with the 'b' flag in id:456
  * embed.fnc.
  *
  * To move a function to this file, simply cut and paste it here, and change
@@ -1329,7 +1329,7 @@ bool
 Perl_is_uni_idfirst_lc(pTHX_ UV c)
 {
     PERL_UNUSED_CONTEXT;
-    /* XXX Should probably be something that resolves to the old IDFIRST, but
+    /* XXX Should probably be something that resolves to the old IDFIRST, but id:831
      * this function is deprecated, so not bothering */
     return isIDFIRST_LC_uvchr(c);
 }
@@ -1453,8 +1453,8 @@ Perl_is_uni_xdigit_lc(pTHX_ UV c)
 U32
 Perl_to_uni_upper_lc(pTHX_ U32 c)
 {
-    /* XXX returns only the first character -- do not use XXX */
-    /* XXX no locale support yet */
+    /* XXX returns only the first character -- do not use XXX id:661*/
+    /* XXX no locale support yet id:599*/
     STRLEN len;
     U8 tmpbuf[UTF8_MAXBYTES_CASE+1];
     return (U32)to_uni_upper(c, tmpbuf, &len);
@@ -1463,8 +1463,8 @@ Perl_to_uni_upper_lc(pTHX_ U32 c)
 U32
 Perl_to_uni_title_lc(pTHX_ U32 c)
 {
-    /* XXX returns only the first character XXX -- do not use XXX */
-    /* XXX no locale support yet */
+    /* XXX returns only the first character XXX -- do not use XXX id:697*/
+    /* XXX no locale support yet id:625*/
     STRLEN len;
     U8 tmpbuf[UTF8_MAXBYTES_CASE+1];
     return (U32)to_uni_title(c, tmpbuf, &len);
@@ -1473,8 +1473,8 @@ Perl_to_uni_title_lc(pTHX_ U32 c)
 U32
 Perl_to_uni_lower_lc(pTHX_ U32 c)
 {
-    /* XXX returns only the first character -- do not use XXX */
-    /* XXX no locale support yet */
+    /* XXX returns only the first character -- do not use XXX id:832*/
+    /* XXX no locale support yet id:662*/
     STRLEN len;
     U8 tmpbuf[UTF8_MAXBYTES_CASE+1];
     return (U32)to_uni_lower(c, tmpbuf, &len);
@@ -1485,7 +1485,7 @@ Perl_is_utf8_alnum(pTHX_ const U8 *p)
 {
     PERL_ARGS_ASSERT_IS_UTF8_ALNUM;
 
-    /* NOTE: "IsWord", not "IsAlnum", since Alnum is a true
+    /* NOTE: "IsWord", not "IsAlnum", since Alnum is a true id:600
      * descendant of isalnum(3), in other words, it doesn't
      * contain the '_'. --jhi */
     return isWORDCHAR_utf8(p);

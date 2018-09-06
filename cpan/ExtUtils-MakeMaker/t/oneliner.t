@@ -56,6 +56,6 @@ try_oneliner(q{print q[ "&<>^|@() !"&<>^|@() !" ]}, [],  q{ "&<>^|@() !"&<>^|@()
 try_oneliner(q{print q[ "C:\TEST A\" ]}, [],  q{ "C:\TEST A\" },  'example 8.4' );
 try_oneliner(q{print q[ "C:\TEST %&^ A\" ]}, [],  q{ "C:\TEST %&^ A\" },  'example 8.5' );
 
-# XXX gotta rethink the newline test.  The Makefile does newline
+# XXX gotta rethink the newline test. The Makefile does newline id:64
 # escaping, then the shell.
 

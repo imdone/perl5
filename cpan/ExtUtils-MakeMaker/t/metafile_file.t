@@ -1,6 +1,6 @@
 #!/usr/bin/perl -w
 
-# This is a test of the fake YAML dumper implemented by EUMM:
+# This is a test of the fake YAML dumper implemented by EUMM: id:243
 #   ExtUtils::MM_Any::metafile_file
 
 BEGIN {
@@ -256,7 +256,7 @@ YAML
     is($mm->metafile_file(@meta), $expected, "META.yml with extra 'no_index' works");
 
 
-    # Make sure YAML.pm can ready our output
+    # Make sure YAML .pm can ready our output id:71
     SKIP: {
         skip "Need YAML.pm to test if it can load META.yml", 1
           unless eval { require YAML };
@@ -285,7 +285,7 @@ YAML
 k:      a : b
 x : y:  1
 YAML
-    # NOTE: the output is not YAML-equivalent to the input
+    # NOTE: the output is not YAML-equivalent to the input id:228
 
     is($mm->metafile_file(@meta), $expected, "no quoting is done");
 }

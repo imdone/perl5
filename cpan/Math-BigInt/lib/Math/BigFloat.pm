@@ -2122,7 +2122,7 @@ sub bmodpow {
 
     # $mod is positive, sign on $exp is ignored, result also positive
 
-    # XXX TODO: speed it up when all three numbers are integers
+    # XXX TODO: speed it up when all three numbers are integers id:331
     $num->bpow($exp)->bmod($mod);
 }
 
@@ -2318,7 +2318,7 @@ sub blog {
     local $Math::BigFloat::downgrade = undef;
 
     # upgrade $x if $x is not a Math::BigFloat (handle BigInt input)
-    # XXX TODO: rebless!
+    # XXX TODO: rebless! id:256
     if (!$x->isa('Math::BigFloat')) {
         $x = Math::BigFloat->new($x);
         $class = ref($x);
@@ -4261,7 +4261,7 @@ my @a;
             $i++;
         } elsif ($_[$i] eq 'with') {
             # alternative class for our private parts()
-            # XXX: no longer supported
+            # XXX: no longer supported id:193
             # $LIB = $_[$i+1] || 'Math::BigInt';
             $i++;
         } else {
@@ -4337,7 +4337,7 @@ sub _log {
     # in case of $x == 1, result is 0
     return $x->bzero() if $x->is_one();
 
-    # XXX TODO: rewrite this in a similar manner to bexp()
+    # XXX TODO: rewrite this in a similar manner to bexp() id:322
 
     # http://www.efunda.com/math/taylor_series/logarithmic.cfm?search_string=log
 

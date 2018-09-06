@@ -284,7 +284,7 @@ SKIP:{
         $A::B::C::D::VERSION = "$$";
         $INC{'A/B/C/D.pm'}   = "$$"."$$";
 
-        ### XXX this is no longer needed with M::Load 0.11_01
+        ### XXX this is no longer needed with 0.11_01 id:163
         #$INC{'[.A.B.C]D.pm'} = $$.$$ if $^O eq 'VMS';
     }
 

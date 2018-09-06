@@ -3,7 +3,7 @@ use strict;
 use warnings;
 our $VERSION = do { my @r = ( q$Revision: 1.3 $ =~ /\d+/g ); sprintf "%d." . "%02d" x $#r, @r };
 
-# NOTE: This table must be 1:1 mapping
+# NOTE: This table must be mapping id:66
 our %MIME_NAME_OF = (
     'AdobeStandardEncoding' => 'Adobe-Standard-Encoding',
     'AdobeSymbol'           => 'Adobe-Symbol-Encoding',
@@ -79,7 +79,7 @@ our %MIME_NAME_OF = (
     'viscii'                => 'VISCII',
 );
 
-# NOTE: %MIME_NAME_OF is still 1:1 mapping
+# NOTE: %MIME_NAME_OF is still mapping id:155
 our %ENCODE_NAME_OF = map { uc $MIME_NAME_OF{$_} => $_ } keys %MIME_NAME_OF;
 
 # Add additional 1:N mapping

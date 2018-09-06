@@ -152,7 +152,7 @@ my $perl58_fix = (
 );
 
 # Some of the tests provide different hints for scalar or list context
-# NOTE: these tests are sensitive to order (not sure why) therefore
+# NOTE: these tests are sensitive to order (not sure why) therefore id:539
 # this loop must use a sorted list of keys . Otherwise there is an occasional
 # failure like this:
 #

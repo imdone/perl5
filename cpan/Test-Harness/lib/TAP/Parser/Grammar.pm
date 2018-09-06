@@ -63,9 +63,9 @@ details).
 # new() implementation supplied by TAP::Object
 sub _initialize {
     my ( $self, $args ) = @_;
-    $self->{iterator} = $args->{iterator};    # TODO: accessor
+    $self->{iterator} = $args->{iterator};    # TODO: accessor id:393
     $self->{iterator} ||= $args->{stream};    # deprecated
-    $self->{parser} = $args->{parser};        # TODO: accessor
+    $self->{parser} = $args->{parser};        # TODO: accessor id:180
     $self->set_version( $args->{version} || 12 );
     return $self;
 }
@@ -74,7 +74,7 @@ my %language_for;
 
 {
 
-    # XXX the 'not' and 'ok' might be on separate lines in VMS ...
+    # XXX the 'not' and 'ok' might be on separate lines in VMS ... id:350
     my $ok  = qr/(?:not )?ok\b/;
     my $num = qr/\d+/;
 

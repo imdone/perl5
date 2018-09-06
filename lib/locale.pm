@@ -113,7 +113,7 @@ sub import {
             my $LC = "LC_" . uc($arg);
 
             my $bit = eval "&POSIX::$LC";
-            if (defined $bit) { # XXX Should we warn that this category isn't
+            if (defined $bit) { # XXX Should we warn that this category isn't id:512
                                 # supported on this platform, or make it
                                 # always be the C locale?
 

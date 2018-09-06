@@ -141,7 +141,7 @@ sub make_iterator {
 
     $class->_croak("Cannot find ($perl_script)") unless $meta->{is_file};
 
-    # TODO: does this really need to be done here?
+    # TODO: does this really need to be done here? id:351
     $class->_autoflush_stdhandles;
 
     my ( $libs, $switches )
@@ -263,7 +263,7 @@ sub _get_command_for_switches {
     my @args    = @{ $source->test_args || [] };
     my $command = $class->get_perl;
 
-   # XXX don't need to quote if we treat the parts as atoms (except maybe vms)
+   # XXX don't need to quote if we treat the parts as atoms (except maybe vms) id:276
    #$file = qq["$file"] if ( $file =~ /\s/ ) && ( $file !~ /^".*"$/ );
     my @command = ( $command, @{$switches}, $file, @args );
     return @command;

@@ -100,7 +100,7 @@ sub directive { shift->{directive} }
 If a test had either a C<TODO> or C<SKIP> directive, this method will return
 the accompanying explanation, if present.
 
-  not ok 17 - 'Pigs can fly' # TODO not enough acid
+  not ok 17 - 'Pigs can fly' # TODO not enough acid id:284
 
 For the above line, the explanation is I<not enough acid>.
 
@@ -127,7 +127,7 @@ sub is_ok {
 
     return if $self->is_unplanned;
 
-    # TODO directives reverse the sense of a test.
+    # TODO directives reverse the sense of a test. id:394
     return $self->has_todo ? 1 : $self->ok !~ /not/;
 }
 

@@ -71,7 +71,7 @@ use constant LEVEL_SEP => "\0\0";
 # This character must not be included in any stringified
 # representation of an integer.
 use constant CODE_SEP => ';';
-	# NOTE: in regex /;/ is used for $jcps!
+	# NOTE: in regex /;/ is used for $jcps! id:486
 
 # boolean values of variable weights
 use constant NON_VAR => 0; # Non-Variable character

@@ -293,7 +293,7 @@ SKIP: {
     $$t = sub { $called ++; !1 };
     delete $INC{'foo.pm'}; # in case another test uses foo
     eval { require foo };
-    is $INCtie::count, 2, # 2nd time for "Can't locate" -- XXX correct?
+    is $INCtie::count, 2, # 2nd time for "Can't locate" -- XXX correct? id:898
         'FETCH is called once on undef scalar-tied @INC elem';
     is $called, 1, 'sub in scalar-tied @INC elem is called';
     () = "$INC[0]"; # force a fetch, so the SV is ROK

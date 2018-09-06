@@ -37,8 +37,8 @@ not ok first line of the input valid # todo some data
 ok 3 - read the rest of the file
 not ok 4 - this is a real failure
 ok 5 
-ok 6 - you shall not pass! # TODO should have failed
-not ok 7 - Gandalf wins.  Game over.  # TODO 'bout time!
+ok 6 - you shall not pass! # TODO should have failed id:182
+not ok 7 - Gandalf wins.  Game over.  # TODO 'bout time! id:352
 END_TAP
 
 my $parser2 = TAP::Parser->new( { tap => $tap } );
@@ -194,7 +194,7 @@ isa_ok $agg, 'TAP::Parser::Aggregator';
 
 $tap = <<'END_TAP';
 1..1
-ok 1 - you shall not pass! # TODO should have failed
+ok 1 - you shall not pass! # TODO should have failed id:277
 END_TAP
 
 my $parser3 = TAP::Parser->new( { tap => $tap } );

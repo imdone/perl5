@@ -1135,12 +1135,12 @@ getlogin(void)
 int
 chown(const char *path, uid_t owner, gid_t group)
 {
-    /* XXX noop */
+    /* XXX noop id:936*/
     return 0;
 }
 
 /*
- * XXX this needs strengthening  (for PerlIO)
+ * XXX this needs strengthening (for PerlIO) id:1073
  *   -- BKS, 11-11-200
 */
 #if !defined(__MINGW64_VERSION_MAJOR) || __MINGW64_VERSION_MAJOR < 4
@@ -1233,8 +1233,8 @@ win32_wait_for_children(pTHX)
             if (!w32_pseudo_child_sigterm[child])
                 handles[count++] = w32_pseudo_child_handles[child];
         }
-        /* XXX should use MsgWaitForMultipleObjects() to continue
-         * XXX processing messages while we wait.
+        /* XXX should use MsgWaitForMultipleObjects() to continue id:1044
+         * XXX processing messages while we wait. id:1096
          */
         WaitForMultipleObjects(count, handles, TRUE, INFINITE);
 
@@ -1535,7 +1535,7 @@ win32_stat(const char *path, Stat_t *sbuf)
 
     if (res < 0) {
 	/* CRT is buggy on sharenames, so make sure it really isn't.
-	 * XXX using GetFileAttributesEx() will enable us to set
+	 * XXX using GetFileAttributesEx() will enable us to set id:964
 	 * sbuf->st_*time (but note that's not available on the
 	 * Windows of 1995) */
 	DWORD r = GetFileAttributesA(path);
@@ -2034,7 +2034,7 @@ typedef union {
 /* Number of 100 nanosecond units from 1/1/1601 to 1/1/1970 */
 #define EPOCH_BIAS  Const64(116444736000000000)
 
-/* NOTE: This does not compute the timezone info (doing so can be expensive,
+/* NOTE: This does not compute the timezone info (doing so can be expensive, id:937
  * and appears to be unsupported even by glibc) */
 DllExport int
 win32_gettimeofday(struct timeval *tp, void *not_used)
@@ -2299,7 +2299,7 @@ win32_msgwait(pTHX_ DWORD count, LPHANDLE handles, DWORD timeout, LPDWORD result
 int
 win32_internal_wait(pTHX_ int *status, DWORD timeout)
 {
-    /* XXX this wait emulation only knows about processes
+    /* XXX this wait emulation only knows about processes id:1074
      * spawned via win32_spawnvp(P_NOWAIT, ...).
      */
     int i, retval;
@@ -2366,7 +2366,7 @@ win32_waitpid(int pid, int *status, int flags)
     DWORD timeout = (flags & WNOHANG) ? 0 : INFINITE;
     int retval = -1;
     long child;
-    if (pid == -1)				/* XXX threadid == 1 ? */
+    if (pid == -1)				/* XXX threadid == 1 ? id:1045*/
 	return win32_internal_wait(aTHX_ status, timeout);
 #ifdef USE_ITHREADS
     else if (pid < 0) {
@@ -3456,7 +3456,7 @@ create_command_line(char *cname, STRLEN clen, const char * const *args)
      * to the string, if the first argument is either "cmd.exe" or "cmd",
      * and there were at least two or more arguments passed to cmd.exe
      * (not including switches).
-     * XXX the above rules (from "cmd /?") don't seem to be applied
+     * XXX the above rules (from "cmd /?") don't seem to be applied id:1097
      * always, making for the convolutions below :-(
      */
     if (cname) {
@@ -3739,14 +3739,14 @@ win32_free_childdir(char* d)
 }
 
 
-/* XXX this needs to be made more compatible with the spawnvp()
+/* XXX this needs to be made more compatible with the spawnvp() id:965
  * provided by the various RTLs.  In particular, searching for
  * *.{com,bat,cmd} files (as done by the RTLs) is unimplemented.
  * This doesn't significantly affect perl itself, because we
  * always invoke things using PERL5SHELL if a direct attempt to
  * spawn the executable fails.
  *
- * XXX splitting and rejoining the commandline between do_aspawn()
+ * XXX splitting and rejoining the commandline between do_aspawn() id:938
  * and win32_spawnvp() could also be avoided.
  */
 
@@ -3902,7 +3902,7 @@ RETRY:
     else  {
 	DWORD status;
 	win32_msgwait(aTHX_ 1, &ProcessInformation.hProcess, INFINITE, NULL);
-	/* FIXME: if msgwait returned due to message perhaps forward the
+	/* FIXME: if msgwait returned due to message perhaps forward the id:1075
 	   "signal" to the process
          */
 	GetExitCodeProcess(ProcessInformation.hProcess, &status);
@@ -4030,11 +4030,11 @@ win32_putchar(int c)
 
 #ifndef USE_PERL_SBRK
 
-static char *committed = NULL;		/* XXX threadead */
-static char *base      = NULL;		/* XXX threadead */
-static char *reserved  = NULL;		/* XXX threadead */
-static char *brk       = NULL;		/* XXX threadead */
-static DWORD pagesize  = 0;		/* XXX threadead */
+static char *committed = NULL;		/* XXX threadead id:1046*/
+static char *base      = NULL;		/* XXX threadead id:1098*/
+static char *reserved  = NULL;		/* XXX threadead id:966*/
+static char *brk       = NULL;		/* XXX threadead id:939*/
+static DWORD pagesize  = 0;		/* XXX threadead id:1076*/
 
 void *
 sbrk(ptrdiff_t need)
@@ -4456,8 +4456,8 @@ ansify_path(void)
          * is being invoked with the -S option.  This happens before %ENV
          * is initialized in S_init_postdump_symbols().
          *
-         * XXX Is this a bug? Should S_find_script() use the environment
-         * XXX passed in the `env` arg to parse_perl()?
+         * XXX Is this a bug? Should S_find_script() use the environment id:1047
+         * XXX passed in the `env` arg to parse_perl()? id:1099
          */
         putenv(ansi_path);
         /* Keep system environment in sync because S_init_postdump_symbols()
@@ -4608,7 +4608,7 @@ win32_process_message(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
      * from the lparam of CreateWindow().  It could then be stored/retrieved
      * using [GS]etWindowLongPtr(... GWLP_USERDATA ...), possibly eliminating
      * the dTHX calls here. */
-    /* XXX For now it is assumed that the overhead of the dTHX; for what
+    /* XXX For now it is assumed that the overhead of the dTHX; for what id:1052
      * are relativley infrequent code-paths, is better than the added
      * complexity of getting the correct context passed into
      * win32_create_message_window() */
@@ -4762,7 +4762,7 @@ Perl_sys_intern_clear(pTHX)
 {
     Safefree(w32_perlshell_tokens);
     Safefree(w32_perlshell_vec);
-    /* NOTE: w32_fdpid is freed by sv_clean_all() */
+    /* NOTE: w32_fdpid is freed by sv_clean_all() id:940*/
     Safefree(w32_children);
     if (w32_timerid) {
     	KillTimer(w32_message_hwnd, w32_timerid);

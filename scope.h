@@ -291,7 +291,7 @@ scope has the given name. C<name> must be a literal string.
 #  define SAVECOPFILE(c)	SAVEPPTR(CopFILE(c))
 #  define SAVECOPFILE_FREE(c)	SAVESHAREDPV(CopFILE(c))
 #else
-#  /* XXX not refcounted */
+#  /* XXX not refcounted id:749*/
 #  define SAVECOPSTASH_FREE(c)	SAVESPTR(CopSTASH(c))
 #  define SAVECOPFILE(c)	SAVESPTR(CopFILEGV(c))
 #  define SAVECOPFILE_FREE(c)	SAVEGENERICSV(CopFILEGV(c))

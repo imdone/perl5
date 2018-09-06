@@ -249,7 +249,7 @@ SWTESTPM
 		   prog => 'die q{oops}' ),
 	  qr/Module name required with -M option\b/,
   	  "-M- not allowed" );
-  }  # disable TODO on VMS
+  }  # disable TODO on VMS id:1062
 }
 is runperl(stderr => 1, prog => '#!perl -m'),
    qq 'Too late for "-m" option at -e line 1.\n', '#!perl -m';

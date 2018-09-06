@@ -261,7 +261,7 @@ struct regnode_ssc {
                                } STMT_END
 #define is_ANYOF_SYNTHETIC(n) (PL_regkind[OP(n)] == ANYOF && NEXT_OFF(n) == 1)
 
-/* XXX fix this description.
+/* XXX fix this description. id:741
    Impose a limit of REG_INFTY on various pattern matching operations
    to limit stack growth and to avoid "infinite" recursions.
 */

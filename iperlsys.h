@@ -16,7 +16,7 @@
 /*
  *	PerlXXX_YYY explained - DickH and DougL @ ActiveState.com
  *
- * XXX := functional group
+ * XXX := functional group id:564
  * YYY := stdlib/OS function name
  *
  * Continuing with the theme of PerlIO, all OS functionality was

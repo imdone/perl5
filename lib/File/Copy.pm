@@ -165,7 +165,7 @@ sub copy {
     if ($to_a_handle) {
        $to_h = $to;
     } else {
-	$to_h = \do { local *FH }; # XXX is this line obsolete?
+	$to_h = \do { local *FH }; # XXX is this line obsolete? id:685
 	open $to_h, ">", $to or goto fail_open2;
 	binmode $to_h or die "($!,$^E)";
 	$closeto = 1;

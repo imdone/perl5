@@ -937,7 +937,7 @@ sub init {
     my_yn_prompt(trust_test_report_history => 0, $matcher);
 
     #
-    #= YAML vs. YAML::Syck
+    #= YAML vs. YAML::Syck id:210
     #
     if (!$matcher or "yaml_module" =~ /$matcher/) {
         my_dflt_prompt(yaml_module => "YAML", $matcher);
@@ -952,7 +952,7 @@ sub init {
     }
 
     #
-    #= YAML code deserialisation
+    #= YAML code deserialisation id:128
     #
     my_yn_prompt(yaml_load_code => 0, $matcher);
 
@@ -1000,7 +1000,7 @@ sub init {
 
     {
         my $tar = $CPAN::Config->{tar};
-        my $prefer_external_tar = $CPAN::Config->{prefer_external_tar}; # XXX not yet supported
+        my $prefer_external_tar = $CPAN::Config->{prefer_external_tar}; # XXX not yet supported id:54
         unless (defined $prefer_external_tar) {
             if ($^O =~ /(MSWin32|solaris)/) {
                 # both have a record of broken tars
@@ -1147,7 +1147,7 @@ sub init {
     #= how plugins work
     #
 
-    # XXX MISSING: my_array_prompt to be used with plugins. We did something like this near
+    # XXX MISSING: my_array_prompt to be used with plugins. We did something like this near id:149
     #     git log -p fd68f8f5e33f4cecea4fdb7abc5ee19c12f138f0..test-notest-test-dependency
     # Need to do similar steps for plugin_list. As long as we do not support it here, people
     # must use the cpan shell prompt to write something like
@@ -2027,7 +2027,7 @@ Please enter your CPAN site:};
 
         if ($ans) {
             $ans =~ s|/?\z|/|; # has to end with one slash
-            # XXX This manipulation is odd.  Shouldn't we check that $ans is
+            # XXX This manipulation is odd. Shouldn't we check that $ans is id:45
             # a directory before converting to file:///?  And we need /// below,
             # too, don't we?  -- dagolden, 2009-11-05
             $ans = "file:$ans" unless $ans =~ /:/; # without a scheme is a file:

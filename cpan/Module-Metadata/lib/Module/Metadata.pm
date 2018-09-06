@@ -364,8 +364,8 @@ sub new_from_module {
       }
     }
 
-    # Normalize versions.  Can't use exists() here because of bug in YAML::Node.
-    # XXX "bug in YAML::Node" comment seems irrelevant -- dagolden, 2009-05-18
+    # Normalize versions.  Can't use exists() here because of bug in YAML: :Node. id:333
+    # XXX "bug in comment seems irrelevant -- dagolden, 2009-05-18 YAML::Node" id:258
     for (grep defined $_->{version}, values %prime) {
       $_->{version} = $normalize_version->( $_->{version} );
     }
@@ -431,7 +431,7 @@ sub _init {
         $self->{module} = 'main';
       }
       else {
-        # TODO: this should maybe default to undef instead
+        # TODO: this should maybe default to undef instead id:195
         $self->{module} = $self->{packages}[0] || '';
       }
     }
@@ -708,14 +708,14 @@ sub _evaluate_version_line {
     croak "failed to build version sub for $self->{filename}";
 
   my $result = eval { $vsub->() };
-  # FIXME: $eval is not the right thing to print here
+  # FIXME: $eval is not the right thing to print here id:377
   croak "Could not get version from $self->{filename} by executing:\n$eval\n\nThe fatal error was: $@\n"
     if $@;
 
   # Upgrade it into a version object
   my $version = eval { _dwim_version($result) };
 
-  # FIXME: $eval is not the right thing to print here
+  # FIXME: $eval is not the right thing to print here id:164
   croak "Version '$result' from $self->{filename} does not appear to be valid:\n$eval\n\nThe fatal error was: $@\n"
     unless defined $version; # "0" is OK!
 

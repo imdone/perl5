@@ -421,8 +421,8 @@ sub _GetOSName {
 			$desc = "Server";
 		    }
 		}
-		# XXX ignoring "Windows 2000 Advanced Server Limited Edition" for Itanium
-		# XXX and "Windows 2000 Datacenter Server Limited Edition" for Itanium
+		# XXX ignoring "Windows 2000 Advanced Server Limited Edition" for Itanium id:302
+		# XXX and "Windows 2000 Datacenter Server Limited Edition" for Itanium id:531
 	    }
 	    elsif ($minor == 1) {
 		$os = "XP/.Net";
@@ -442,14 +442,14 @@ sub _GetOSName {
 		else {
 		    $desc = "Professional";
 		}
-		# XXX ignoring all Windows XP Embedded and Fundamentals versions
+		# XXX ignoring all Windows XP Embedded and Fundamentals versions id:368
 	    }
 	    elsif ($minor == 2) {
 		$os = "2003";
 
 		if (_GetSystemMetrics(SM_SERVERR2, $metrics)) {
-		    # XXX R2 was released for all x86 and x64 versions,
-		    # XXX but only Enterprise Edition for Itanium.
+		    # XXX R2 was released for all x86 and x64 versions, id:463
+		    # XXX but only Enterprise Edition for Itanium. id:487
 		    $desc = "R2";
 		}
 
@@ -626,10 +626,10 @@ sub _GetOSName {
 	s/\s$//;
     }
 
-    # XXX What about "Small Business Server"? NT, 200, 2003, 2008 editions...
+    # XXX What about "Small Business Server"? NT, 200, 2003, 2008 editions... id:303
 
     if ($major >= 5) {
-	# XXX XP, Vista, 7 all have starter editions
+	# XXX XP, Vista, 7 all have starter editions id:532
 	#push(@tags, "Starter Edition") if _GetSystemMetrics(SM_STARTER, $metrics);
     }
 

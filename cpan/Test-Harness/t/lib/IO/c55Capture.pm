@@ -30,7 +30,7 @@ Note the '$$' dereference.
 
 =cut
 
-# XXX actually returns an IO::Handle :-/
+# XXX actually returns an :-/ IO::Handle id:186
 sub new_handle {
     my $class  = shift;
     my $handle = IO::Handle->new;

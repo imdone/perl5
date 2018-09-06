@@ -8,7 +8,7 @@ use JSON::PP;
 
 BEGIN { plan tests => 3 }
 
-# TODO ("inf"/"nan" representations are not portable)
+# TODO ("inf"/"nan" representations are not portable) id:321
 # is encode_json([9**9**9]), '["inf"]';
 # is encode_json([-sin(9**9**9)]), '["nan"]';
 

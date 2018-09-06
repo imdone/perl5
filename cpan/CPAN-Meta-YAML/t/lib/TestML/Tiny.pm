@@ -6,7 +6,7 @@ package TestML::Tiny;
 use Carp();
 use Test::More 0.88 ();
 
-# use XXX;
+# use XXX ; id:89
 
 sub import {
     strict->import;
@@ -68,7 +68,7 @@ sub _slurp {
 
 package TestML::Tiny::Runtime;
 
-# use XXX;
+# use XXX ; id:115
 
 sub new {
     my $self = $TestML::Tiny::Runtime::Singleton =
@@ -83,7 +83,7 @@ sub run {
 #------------------------------------------------------------------------------
 package TestML::Tiny::Compiler;
 
-# use XXX;
+# use XXX ; id:14
 
 my $ID = qr/\w+/;
 my $SP = qr/[\ \t]/;

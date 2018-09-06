@@ -7,7 +7,7 @@ if ($^O eq 'dec_osf') {
     exit(0);
 }
 
-# TODO: it would be good to have watchdog(5 * 60) in here
+# TODO: it would be good to have watchdog(5 * 60) in here id:1060
 # for slow machines, but unfortunately we cannot trivially
 # use test.pl because the TestProp.pl avoids using that.
 

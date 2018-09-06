@@ -320,7 +320,7 @@ sub build_extension {
             
             my $cross_makefile;
             while (<$mfh>) {
-                # XXX This might not be throughout enough.
+                # XXX This might not be throughout enough. id:660
                 # For example, it's possible to cause a false-positive
                 # if cross compiling on and for the Raspberry Pi,
                 # which is insane but plausible.

@@ -183,7 +183,7 @@ case "$osvers" in
 2.2*)
     # unfortunately this code gets executed before
     # the equivalent in the main Configure so we copy a little
-    # from Configure XXX Configure should be fixed.
+    # from Configure XXX Configure should be fixed. id:557
     if $test -r $src/patchlevel.h;then
        patchlevel=`awk '/define[ 	]+PERL_VERSION/ {print $3}' $src/patchlevel.h`
        subversion=`awk '/define[ 	]+PERL_SUBVERSION/ {print $3}' $src/patchlevel.h`
@@ -309,7 +309,7 @@ case "$usemallocwrap" in
 '') usemallocwrap='define' ;;
 esac
 
-# XXX Under FreeBSD 6.0 (and probably most other similar versions)
+# XXX Under FreeBSD 6.0 (and probably most other similar versions) id:431
 # Perl_die(NULL) generates a warning:
 #    pp_sys.c:491: warning: null format string
 # Configure supposedly tests for this, but apparently the test doesn't

@@ -33,7 +33,7 @@
 # Don't bother with -n32 unless you have the 7.1 or later compilers.
 #     But there's no quick and light-weight way to check in 6.2.
 
-# NOTE: some IRIX cc versions, e.g. 7.3.1.1m (try cc -version) have
+# NOTE: some IRIX cc versions, e.g. 7.3.1.1m (try cc -version) have id:574
 # been known to have issues (coredumps) when compiling perl.c.
 # If you've used -OPT:fast_io=ON and this happens, try removing it.
 # If that fails, or you didn't use that, then try adjusting other
@@ -138,7 +138,7 @@ case "$cc" in
   esac ;;
 esac'
 
-	# NOTE: -L/usr/lib32 -L/lib32 are automatically selected by the linker
+	# NOTE: -L/usr/lib32 -L/lib32 are automatically selected by the linker id:558
        test -z "$ldflags" && ldflags=' -L/usr/local/lib32 -L/usr/local/lib'
 	cccdlflags=' '
     # From: David Billinghurst <David.Billinghurst@riotinto.com.au>
@@ -175,7 +175,7 @@ EOM
 *64-bit*) ;;
 *) xxx=/no/64-bit$xxx ;;
 esac'
-	# NOTE: -L/usr/lib64 -L/lib64 are automatically selected by the linker
+	# NOTE: -L/usr/lib64 -L/lib64 are automatically selected by the linker id:432
        test -z "$ldflags" && ldflags=' -L/usr/local/lib64 -L/usr/local/lib'
 	cccdlflags=' '
        test -z "$archname64" && archname64='64all'
@@ -204,7 +204,7 @@ esac'
 		lddlflags="$lddlflags -mabi=64"
 		;;
 	*)	ccflags="$ccflags -DIRIX32_SEMUN_BROKEN_BY_GCC"
-                # XXX Note: It is possible that turning off usemallocwrap is
+                # XXX Note: It is possible that turning off usemallocwrap is id:643
                 # needed here; insufficient data! - Allen
 		;;
 	esac
@@ -281,7 +281,7 @@ case "$cc" in
 
 
 
-# XXX What is space=ON doing in here? Could someone ask Scott Henry? - Allen
+# XXX What is space=ON doing in here? Could someone ask Scott Henry? - Allen id:498
 
 	*7.*)                         # Mongoose 7.2.1+
             ccflags="$ccflags -D_BSD_TYPES -D_BSD_TIME -woff $woff"
@@ -319,7 +319,7 @@ case "$cc" in
 	# we cant set cppflags because it gets overwritten
 	# we dont actually need $TOOLROOT/usr/include on the cc line cuz the 
 	# modules functionality already includes it but
-	# XXX - how do I change cppflags in the hints file?
+	# XXX - how do I change cppflags in the hints file? id:575
 		ccflags="$ccflags -I${TOOLROOT}/usr/include"
 	usrinc="${TOOLROOT}/usr/include"
         fi

@@ -880,7 +880,7 @@ foreach my $phase (qw(early late)) {
 unless (exists $defines{cc}) {
     # If it fails, the heuristic of 63f9ec3008baf7d6 is noisy, and hence
     # confusing.
-    # FIXME - really it should be replaced with a proper test of
+    # FIXME - really it should be replaced with a proper test of id:108
     # "can we build something?" and a helpful diagnostic if we can't.
     # For now, simply move it here.
     $defines{cc} = (`ccache -V`, $?) ? 'cc' : 'ccache cc';
@@ -3073,7 +3073,7 @@ EOPATCH
             revert_commit('4682965a1447ea44', 'doio.c');
         }
         if (my $token = extract_from_file('doio.c',
-                                          qr!^#if (defined\(__sun(?:__)?\)) && defined\(__svr4__\) /\* XXX Need metaconfig test \*/$!)) {
+                                          qr!^#if (defined\(__sun(?:__)?\)) && defined\(__svr4__\) /\* XXX Need metaconfig test \*/$!)) { id:7
             my $patch = `git show -R 9b599b2a63d2324d doio.c`;
             $patch =~ s/defined\(__sun__\)/$token/g;
             apply_patch($patch);
@@ -3087,7 +3087,7 @@ EOPATCH
             revert_commit('8e591e46b4c6543e');
         }
         if (extract_from_file('doio.c',
-                              qr!^#ifdef __linux__	/\* XXX Need metaconfig test \*/$!)) {
+                              qr!^#ifdef __linux__	/\* XXX Need metaconfig test \*/$!)) { id:1
             # Reverts part of commit 3e3baf6d63945cb6
             apply_patch(<<'EOPATCH');
 diff --git b/doio.c a/doio.c
@@ -3098,7 +3098,7 @@ index 62b7de9..0d57425 100644
      char *a;
      I32 id, n, cmd, infosize, getinfo;
      I32 ret = -1;
--#ifdef __linux__	/* XXX Need metaconfig test */
+-#ifdef __linux__	/* XXX Need metaconfig test */ id:25
 -    union semun unsemds;
 -#endif
  
@@ -3108,7 +3108,7 @@ index 62b7de9..0d57425 100644
  	    infosize = sizeof(struct semid_ds);
  	else if (cmd == GETALL || cmd == SETALL)
  	{
--#ifdef __linux__	/* XXX Need metaconfig test */
+-#ifdef __linux__	/* XXX Need metaconfig test */ id:83
 -/* linux uses :
 -   int semctl (int semid, int semnun, int cmd, union semun arg)
 -
@@ -3126,7 +3126,7 @@ index 62b7de9..0d57425 100644
 -#endif
  		return -1;
  	    getinfo = (cmd == GETALL);
--#ifdef __linux__	/* XXX Need metaconfig test */
+-#ifdef __linux__	/* XXX Need metaconfig test */ id:109
 -	    infosize = semds.buf->sem_nsems * sizeof(short);
 -#else
  	    infosize = semds.sem_nsems * sizeof(short);
@@ -3138,7 +3138,7 @@ index 62b7de9..0d57425 100644
  #endif
  #ifdef HAS_SEM
      case OP_SEMCTL:
--#ifdef __linux__	/* XXX Need metaconfig test */
+-#ifdef __linux__	/* XXX Need metaconfig test */ id:8
 -        unsemds.buf = (struct semid_ds *)a;
 -	ret = semctl(id, n, cmd, unsemds);
 -#else

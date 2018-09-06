@@ -40,7 +40,7 @@ extern "C" {
 	if (items != 0)
 	    Perl_croak(aTHX_ "PerlApp::TextQuery: no arguments, please");
 	SP -= items;
-	// TODO: parse arguments for title, prompt, and maxsize.
+	// TODO: parse arguments for title, prompt, and maxsize. id:983
 	// Suggested syntax:
 	// TextQuery(title => ..., prompt => ..., maxsize => ...)
 	// For an example see e.g. universal.c:XS_PerlIO_get_layers().
@@ -266,7 +266,7 @@ extern "C" {
     {
     public:
         CSpawnIoRedirect();
-        // NOTE: there is no real implementation of I/O redirection yet.
+        // NOTE: there is no real implementation of I/O redirection yet. id:967
     protected:
     private:
     };
@@ -399,7 +399,7 @@ extern "C" {
                             aCommand.Append(*p);
                     }
                 }
-                // NOTE: I/O redirection is not yet done.
+                // NOTE: I/O redirection is not yet done. id:1010
                 // Implementing that may require a separate server.
             }
         }

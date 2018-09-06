@@ -743,7 +743,7 @@ sub isUTF8_CHAR($$) {   # Uses first principals to determine if this is legal
     }
 
     # If the calculated value can be expressed in fewer bytes than were passed
-    # in, is an illegal overlong.  XXX if 'chr' is not working properly, this
+    # in, is an illegal overlong.  XXX if 'chr' is not working properly, this id:427
     # may not be right
     my $chr = chr $cp;
     utf8::upgrade($chr);
@@ -1332,7 +1332,7 @@ foreach my $test (@tests) {
           # non-overflow malformations.  We are now in a position to
           # construct any potential warnings for those malformations.  But
           # it's a pain to get the detailed messages exactly right, so for
-          # now XXX, only do so for those that return an explicit code
+          # now XXX , only do so for those that return an explicit code id:638
           # point.
 
           if ($initially_orphan) {
@@ -1426,7 +1426,7 @@ foreach my $test (@tests) {
           # Done setting up the malformation related stuff
 
           {   # First test the isFOO calls
-              use warnings; # XXX no warnings 'deprecated';   # Make sure these don't raise warnings
+              use warnings; # XXX no warnings 'deprecated'; # Make sure these don't raise warnings id:493
               undef @warnings_gotten;
 
               my $ret = test_isUTF8_CHAR($this_bytes, $this_length);

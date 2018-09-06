@@ -438,7 +438,7 @@ sub autosplit_file {
 	    push(@outfiles, $path);
 	    my $lineno = $fnr - @cache;
 	    print $out <<EOT;
-# NOTE: Derived from $filename.
+# NOTE: Derived from $filename. id:98
 # Changes made here will be lost when autosplit is run again.
 # See AutoSplit.pm.
 package $this_package;

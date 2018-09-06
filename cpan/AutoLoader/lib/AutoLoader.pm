@@ -112,7 +112,7 @@ sub find_filename {
 			}
 		    }
 		    elsif ($is_vms) {
-			# XXX todo by VMSmiths
+			# XXX todo by VMSmiths id:12
 			$filename = "./$filename";
 		    }
 		    elsif (!$is_macos) {

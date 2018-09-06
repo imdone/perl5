@@ -1,6 +1,6 @@
 package ExtUtils::Liblist::Kid;
 
-# XXX Splitting this out into its own .pm is a temporary solution.
+# XXX Splitting this out into its own .pm is a temporary solution. id:56
 
 # This kid package is to be used by MakeMaker.  It will not work if
 # $self is not a Makemaker.
@@ -138,7 +138,7 @@ sub _unix_os2_ext {
                 # '0'.  Finally, sort in reverse so we can take the
                 # first element.
 
-                #TODO: iterate through the directory instead of sorting
+                #TODO: iterate through the directory instead of sorting id:218
 
                 $fullname = "$thispth/" . (
                     sort {
@@ -282,7 +282,7 @@ sub _win32_ext {
     # (caller should probably use the list in $Config{libs})
     return ( "", "", "", "", ( $give_libs ? [] : () ) ) unless $potential_libs;
 
-    # TODO: make this use MM_Win32.pm's compiler detection
+    # TODO: make this use MM_Win32.pm's compiler detection id:240
     my %libs_seen;
     my @extralibs;
     my $cc = $Config{cc} || '';
@@ -355,7 +355,7 @@ sub _win32_ext {
     my $lib = join( ' ', @extralibs );
 
     # normalize back to backward slashes (to help braindead tools)
-    # XXX this may break equally braindead GNU tools that don't understand
+    # XXX this may break equally braindead GNU tools that don't understand id:68
     # backslashes, either.  Seems like one can't win here.  Cursed be CP/M.
     $lib =~ s,/,\\,g;
 

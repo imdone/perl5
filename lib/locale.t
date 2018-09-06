@@ -16,7 +16,7 @@
 # between defective locales, and perl bugs is to see what percentage of
 # locales fail a given test.  If it's a lot, then it's more likely to be a
 # perl bug; only a few, those particular locales are likely defective.  In
-# that case the failing tests are marked TODO.  (They should be reported to
+# that case the failing tests are marked TODO . (They should be reported to id:589
 # the vendor, however; but it's not perl's problem.)  In some cases, this
 # script has caused tickets to be filed against perl which turn out to be the
 # platform's bug, but a higher percentage of locales are failing than the
@@ -26,7 +26,7 @@
 # only kick-in when run on versions that are earlier than the fixed one.  But,
 # this rarely happens in practice.
 
-# To make a TODO test, add the string 'TODO' to its %test_names value
+# To make a TODO test, add the string 'TODO' to its %test_names value id:687
 
 my $is_ebcdic = ord("A") == 193;
 my $os = lc $^O;
@@ -72,7 +72,7 @@ my $acceptable_failure_percentage = ($os =~ / ^ ( aix ) $ /x)
 my %problematical_tests;
 
 # If any %problematical_tests fails in one of these locales, it is
-# considered a TODO.
+# considered a TODO . id:447
 my %known_bad_locales = (
                           irix => qr/ ^ (?: cs | hu | sk ) $/x,
                           darwin => qr/ ^ lt_LT.ISO8859 /ix,
@@ -2465,11 +2465,11 @@ foreach $test_num ($first_locales_test_number..$final_locales_test_number) {
     print "ok $test_num";
     $test_names{$test_num} = "" unless defined $test_names{$test_num};
 
-    # If TODO is in the test name, make it thus
+    # If TODO is in the test name, make it thus id:658
     my $todo = $test_names{$test_num} =~ s/\s*TODO\s*//;
     print " $test_names{$test_num}";
     if ($todo) {
-        print " # TODO\n";
+        print " # TODO \n"; id:513
     }
     elsif (%setlocale_failed || ! $has_non_global_failure) {
         print "\n";
@@ -2477,7 +2477,7 @@ foreach $test_num ($first_locales_test_number..$final_locales_test_number) {
     elsif ($has_non_global_failure) {
 
         # If there are any locales that pass this test, or are known-bad, it
-        # may be that there are enough passes that we TODO the failure, but
+        # may be that there are enough passes that we TODO the failure, but id:590
         # only for tests that we have decided can be problematical.
         if (  ($Okay{$test_num} || $Known_bad_locale{$test_num})
             && grep { $_ == $test_num } keys %problematical_tests)
@@ -2493,7 +2493,7 @@ foreach $test_num ($first_locales_test_number..$final_locales_test_number) {
             # Specially handle failures where only known-bad locales fail.
             # This makes the diagnositics clearer.
             if ($adjusted_failures <= 0) {
-                print " # TODO fails only on known bad locales: ",
+                print " # TODO fails only on known bad locales: ", id:688
                       join " ", keys $Known_bad_locale{$test_num}->%*, "\n";
                 next TEST_NUM;
             }
@@ -2503,7 +2503,7 @@ foreach $test_num ($first_locales_test_number..$final_locales_test_number) {
                                           / scalar(@Locale))))
                                / 10;
             $todo = $percent_fail < $acceptable_failure_percentage;
-            print " # TODO" if $todo;
+            print " # TODO " if $todo; id:448
             print "\n";
 
             if ($debug) {
@@ -2518,7 +2518,7 @@ foreach $test_num ($first_locales_test_number..$final_locales_test_number) {
             elsif ($todo) {
                 print "# ", 100 - $percent_fail, "% of locales not known to be problematic on this platform\n";
                 print "# pass the above test, so it is likely that the failures\n";
-                print "# are errors in the locale definitions.  The test is marked TODO, as the\n";
+                print "# are errors in the locale definitions.  The test is marked TODO , as the\n"; id:797
                 print "# problem is not likely to be Perl's\n";
             }
         }
@@ -2772,7 +2772,7 @@ if ($didwarn) {
 
 if (exists $known_bad_locales{$os} && ! %Known_bad_locale) {
     $test_num++;
-    print "ok $test_num $^O no longer has known bad locales # TODO\n";
+    print "ok $test_num $^O no longer has known bad locales # TODO \n"; id:514
 }
 
 print "1..$test_num\n";

@@ -107,7 +107,7 @@ __PACKAGE__->_accessorize(
   'parse_characters',  # Whether parser should expect chars rather than octets
 
  'content_seen',      # whether we've seen any real Pod content
- 'errors_seen',       # TODO: document.  whether we've seen any errors (fatal or not)
+ 'errors_seen',       # TODO: document. whether we've seen any errors (fatal or not) id:169
 
  'codes_in_verbatim', # for PseudoPod extensions
 
@@ -210,7 +210,7 @@ sub abandon_output_string { $_[0]->abandon_output_fh; delete $_[0]{'output_strin
 sub abandon_output_fh     { $_[0]->output_fh(undef) }
 # These don't delete the string or close the FH -- they just delete our
 #  references to it/them.
-# TODO: document these
+# TODO: document these id:339
 
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
@@ -228,7 +228,7 @@ sub new {
 
 
 
-# TODO: an option for whether to interpolate E<...>'s, or just resolve to codes.
+# TODO: an option for whether to interpolate E<...>'s, or just resolve to codes. id:264
 
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
@@ -274,7 +274,7 @@ sub _accept_directives {
 }
 
 #--------------------------------------------------------------------------
-# TODO: document these:
+# TODO: document these: id:201
 
 sub unaccept_directive { shift->unaccept_directives(@_) };
 
@@ -310,7 +310,7 @@ sub _accept_targets {
   my($this, $type) = splice @_,0,2;
   foreach my $t (@_) {
     next unless defined $t and length $t;
-    # TODO: enforce some limitations on what a target name can be?
+    # TODO: enforce some limitations on what a target name can be? id:383
     $this->{'accept_targets'}{$t} = $type;
     DEBUG > 2 and print STDERR "Learning to accept \"$t\" as target of type $type\n";
   }    
@@ -325,7 +325,7 @@ sub unaccept_targets {
   my $this = shift;
   foreach my $t (@_) {
     next unless defined $t and length $t;
-    # TODO: enforce some limitations on what a target name can be?
+    # TODO: enforce some limitations on what a target name can be? id:170
     delete $this->{'accept_targets'}{$t};
     DEBUG > 2 and print STDERR "OK, won't accept \"$t\" as target.\n";
   }    
@@ -337,7 +337,7 @@ sub unaccept_targets {
 #
 # And now codes (not targets or directives)
 
-# XXX Probably it is an error that the digit '9' is excluded from these re's.
+# XXX Probably it is an error that the digit '9' is excluded from these re's. id:340
 # Broken for early Perls on EBCDIC
 my $xml_name_re = eval "qr/[^-.0-8:A-Z_a-z[:^ascii:]]/";
 if (! defined $xml_name_re) {
@@ -874,7 +874,7 @@ sub _ponder_extend {
         "You can't extend an established code like \"$new_letter\""
       );
       
-      #TODO: or allow if last bit is same?
+      #TODO: or allow if last bit is same? id:265
       
       return;
     }
@@ -1420,7 +1420,7 @@ sub _treat_Es {
 
       DEBUG > 1 and print STDERR "Ogling E<$content>\n";
 
-      # XXX E<>'s contents *should* be a valid char in the scope of the current
+      # XXX E<>'s contents *should* be a valid char in the scope of the current id:202
       # =encoding directive. Defaults to iso-8859-1, I believe. Fix this in the
       # future sometime.
 
@@ -1456,7 +1456,7 @@ sub _treat_Ss {
   
   _change_S_to_nbsp($treelet,0) if $self->{'nbsp_for_S'};
 
-  # TODO: or a change_nbsp_to_S
+  # TODO: or a change_nbsp_to_S id:384
   #  Normalizing nbsp's to S is harder: for each text node, make S content
   #  out of anything matching m/([^ \xA0]*(?:\xA0+[^ \xA0]*)+)/
 

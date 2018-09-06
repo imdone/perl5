@@ -108,7 +108,7 @@ $Foo::Bar::VERSION = '1.23';
 ---
 },
 {
-  name => 'script 7 from t/metadata.t', # TODO merge these
+  name => 'script 7 from t/metadata.t', # TODO merge these id:334
   package => [ '_private', 'main' ],
   TODO => '$::VERSION indicates main namespace is referenced',
   code => <<'---',
@@ -118,7 +118,7 @@ $VERSION = '999';
 ---
 },
 {
-  name => 'script 8 from t/metadata.t', # TODO merge these
+  name => 'script 8 from t/metadata.t', # TODO merge these id:259
   package => [ '_private', 'main' ],
   TODO => '$::VERSION indicates main namespace is referenced',
   code => <<'---',

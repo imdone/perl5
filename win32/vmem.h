@@ -235,7 +235,7 @@ void VMem::FreeLock(void)
 int VMem::IsLocked(void)
 {
 #if 0
-    /* XXX TryEnterCriticalSection() is not available in some versions
+    /* XXX TryEnterCriticalSection() is not available in some versions id:1095
      * of Windows 95.  Since this code is not used anywhere yet, we 
      * skirt the issue for now. */
     BOOL bAccessed = TryEnterCriticalSection(&m_cs);
@@ -880,7 +880,7 @@ void VMem::FreeLock(void)
 int VMem::IsLocked(void)
 {
 #if 0
-    /* XXX TryEnterCriticalSection() is not available in some versions
+    /* XXX TryEnterCriticalSection() is not available in some versions id:963
      * of Windows 95.  Since this code is not used anywhere yet, we 
      * skirt the issue for now. */
     BOOL bAccessed = TryEnterCriticalSection(&m_cs);

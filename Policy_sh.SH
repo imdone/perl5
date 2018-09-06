@@ -250,8 +250,7 @@ $spitshell <<!GROK!THIS! >>Policy.sh
 
 !GROK!THIS!
 
-#Credits:
-#   The original design for this Policy.sh file came from Wayne Davison,
+#Credits: # The original design for this Policy.sh file came from Wayne Davison, id:6
 #   maintainer of trn.
 #   This version for Perl5.004_61 originally written by
 #   Andy Dougherty <doughera@lafayette.edu>.

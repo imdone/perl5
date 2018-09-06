@@ -158,7 +158,7 @@ foreach my $func (sort keys %fcns) {
 open(OPTATTR, '>', "${dir}perlshr_attr.opt")
   or die "$0: Can't write to ${dir}perlshr_attr.opt: $!\n";
 if ($isgcc) {
-# TODO -- lost ability to distinguish constant vars from others when
+# TODO -- lost ability to distinguish constant vars from others when id:1071
 # we switched to using makedef.pl for input.
 #  foreach my $var (sort keys %cvars) {
 #    print OPTATTR "PSECT_ATTR=${var},PIC,OVR,RD,NOEXE,NOWRT,SHR\n";

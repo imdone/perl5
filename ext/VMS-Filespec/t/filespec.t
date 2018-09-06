@@ -54,7 +54,7 @@ foreach $test (@tests) {
     is(lc($rslt), lc($expect), "${func}('$arg'): '$rslt'");
   }
   else {
-    is(lc($rslt), lc($expect), "${func}('$arg'): '$rslt' # TODO fix ODS-5 test");
+    is(lc($rslt), lc($expect), "${func}('$arg'): '$rslt' # TODO fix ODS-5 test"); id:426
   }
 }
 
@@ -87,7 +87,7 @@ __DATA__
 #  Column 3: Expected result when DECC$EFS_CHARSET is not in effect
 #  Column 4: Expected result when DECC$EFS_CHARSET is in effect
 #            ^ means expect same result for EFS as for non-EFS
-#            ^* means TODO when EFS is in effect
+#            ^* means TODO when EFS is in effect id:637
 
 # lots of underscores used to minimize collision with existing logical names
 

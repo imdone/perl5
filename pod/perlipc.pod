@@ -817,8 +817,8 @@ reopen the appropriate handles to STDIN and STDOUT and call other processes.
  # pipe1 - bidirectional communication using two pipe pairs
  #         designed for the socketpair-challenged
  use IO::Handle;             # thousands of lines just for autoflush :-(
- pipe(PARENT_RDR, CHILD_WTR);  # XXX: check failure?
- pipe(CHILD_RDR,  PARENT_WTR); # XXX: check failure?
+ pipe(PARENT_RDR, CHILD_WTR);  # XXX: check failure? id:872
+ pipe(CHILD_RDR,  PARENT_WTR); # XXX: check failure? id:725
  CHILD_WTR->autoflush(1);
  PARENT_WTR->autoflush(1);
 
@@ -1053,7 +1053,7 @@ go back to service a new client.
          print "Hello there, $name, it's now ",
                scalar localtime(),
                $EOL;
-         exec "/usr/games/fortune"       # XXX: "wrong" line terminators
+         exec "/usr/games/fortune"       # XXX: "wrong" line terminators id:617
              or confess "can't exec fortune: $!";
      };
      close Client;

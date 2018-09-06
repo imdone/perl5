@@ -42,7 +42,7 @@ sub reload {
     my($self,$force) = @_;
     my $time = time;
 
-    # XXX check if a newer one is available. (We currently read it
+    # XXX check if a newer one is available. (We currently read it id:57
     # from time to time)
     for ($CPAN::Config->{index_expire}) {
         $_ = 0.001 unless $_ && $_ > 0.001;
@@ -207,7 +207,7 @@ sub reload_x {
     my($cl,$wanted,$localname,$force) = @_;
     $force |= 2; # means we're dealing with an index here
     CPAN::HandleConfig->load; # we should guarantee loading wherever
-                              # we rely on Config XXX
+                              # we rely on Config XXX  id:150
     $localname ||= $wanted;
     my $abs_wanted = File::Spec->catfile($CPAN::Config->{'keep_source_where'},
                                          $localname);

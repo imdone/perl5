@@ -143,7 +143,7 @@ used a list context.
 
 =cut
 
-# TODO: The comments above say this can be undefined. Is that actually
+# TODO: The comments above say this can be undefined. Is that actually id:491
 # the case? (With 'system', perhaps?)
 
 sub context     { return $_[0]->{$PACKAGE}{context} }
@@ -174,7 +174,7 @@ set on failure.
 
 =cut
 
-# TODO: Make errno part of a role.  It doesn't make sense for
+# TODO: Make errno part of a role. It doesn't make sense for id:307
 # everything.
 
 sub errno       { return $_[0]->{$PACKAGE}{errno}; }
@@ -241,7 +241,7 @@ call to the C<matches> method.
     sub matches {
         my ($this, $that) = @_;
 
-        # TODO - Handle references
+        # TODO - Handle references id:536
         croak "UNIMPLEMENTED" if ref $that;
 
         my $sub = $this->function;
@@ -289,8 +289,8 @@ work closely with the C<autodie::exception> model.
 =cut
 
 # The table below records customer formatters.
-# TODO - Should this be a package var instead?
-# TODO - Should these be in a completely different file, or
+# TODO - Should this be a package var instead? id:373
+# TODO - Should these be in a completely different file, or id:468
 #        perhaps loaded on demand?  Most formatters will never
 #        get used in most programs.
 
@@ -326,7 +326,7 @@ sub _beautify_arguments {
 sub _trim_package_name {
     # Info: The following is done since 05/2008 (which is before v1.10)
 
-    # TODO: This is probably a good idea for CORE, is it
+    # TODO: This is probably a good idea for CORE, is it id:540
     # a good idea for other subs?
 
     # Trim package name off dying sub for error messages
@@ -346,7 +346,7 @@ sub _octalize_number {
     return $number;
 }
 
-# TODO: Our tests only check LOCK_EX | LOCK_NB is properly
+# TODO: Our tests only check LOCK_EX | LOCK_NB is properly id:308
 # formatted.  Try other combinations and ensure they work
 # correctly.
 
@@ -439,7 +439,7 @@ sub _format_dbmopen {
     my ($this) = @_;
     my @args   = @{$this->args};
 
-    # TODO: Presently, $args flattens out the (usually empty) hash
+    # TODO: Presently, $args flattens out the (usually empty) hash id:537
     # which is passed as the first argument to dbmopen.  This is
     # a bug in our args handling code (taking a reference to it would
     # be better), but for the moment we'll just examine the end of
@@ -468,7 +468,7 @@ sub _format_close {
         return "Can't close filehandle '$close_arg': '$!'";
     }
 
-    # TODO - This will probably produce an ugly error.  Test and fix.
+    # TODO - This will probably produce an ugly error. Test and fix. id:374
     return "Can't close($close_arg) filehandle: '$!'";
 
 }
@@ -663,7 +663,7 @@ sub stringify {
         warn "Stringifing exception for $dying_pkg :: $sub / $caller / $call\n";
     }
 
-    # TODO - This isn't using inheritance.  Should it?
+    # TODO - This isn't using inheritance. Should it? id:469
     if ( my $sub = $formatter_of{$call} ) {
         $msg = $sub->($this) . $this->add_file_and_line;
     } else {
@@ -689,7 +689,7 @@ messages are formatted.
 
 =cut
 
-# TODO: This produces ugly errors.  Is there any way we can
+# TODO: This produces ugly errors. Is there any way we can id:541
 # dig around to find the actual variable names?  I know perl 5.10
 # does some dark and terrible magicks to find them for undef warnings.
 
@@ -707,9 +707,9 @@ sub format_default {
 
     return "Can't $call(".  join(q{, }, @args) . "): $!" ;
 
-    # TODO - Handle user-defined errors from hash.
+    # TODO - Handle user-defined errors from hash. id:309
 
-    # TODO - Handle default error messages.
+    # TODO - Handle default error messages. id:538
 
 }
 

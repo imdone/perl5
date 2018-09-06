@@ -275,7 +275,7 @@ sub cmpFile
 #sub isRawFormat
 #{
 #    my $class = shift;
-#    # TODO -- add Lzma here?
+#    # TODO -- add Lzma here? id:62
 #    my %raw = map { $_ => 1 } qw( RawDeflate );
 #
 #    return defined $raw{$class};

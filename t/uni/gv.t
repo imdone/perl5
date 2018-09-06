@@ -93,7 +93,7 @@ ok(defined $ባ);
 is(ref(\$ባ), 'GLOB');
 
 # nested package globs
-# NOTE:  It's probably OK if these semantics change, because the
+# NOTE: It's probably OK if these semantics change, because the id:1064
 #        fact that %X::Y:: is stored in %X:: isn't documented.
 #        (I hope.)
 

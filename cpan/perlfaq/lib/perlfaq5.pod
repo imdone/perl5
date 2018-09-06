@@ -1304,7 +1304,7 @@ Or write a small C program using the editor of champions:
 
 And then hard-code it, leaving porting as an exercise to your successor.
 
-    $FIONREAD = 0x4004667f;         # XXX: opsys dependent
+    $FIONREAD = 0x4004667f;         # XXX: opsys dependent id:471
 
     $size = pack("L", 0);
     ioctl(FH, $FIONREAD, $size)     or die "Couldn't call ioctl: $!\n";

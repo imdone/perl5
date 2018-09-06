@@ -117,7 +117,7 @@ sub parse_lines {             # Usage: $parser->parse_lines(@lines)
         push @_, undef;
         next;
 
-        # TODO: implement somehow?
+        # TODO: implement somehow? id:171
 
       } elsif( $line =~ s/^\xFF\xFE//s ) {
         DEBUG and print STDERR "Little-endian UTF-16 BOM seen.  Aborting parsing.\n";
@@ -129,7 +129,7 @@ sub parse_lines {             # Usage: $parser->parse_lines(@lines)
         push @_, undef;
         next;
 
-        # TODO: implement somehow?
+        # TODO: implement somehow? id:341
         
       } else {
         DEBUG > 2 and print STDERR "First line is BOM-less.\n";
@@ -311,7 +311,7 @@ sub parse_lines {             # Usage: $parser->parse_lines(@lines)
       $cut_handler->(map $_, $line, $self->{'line_count'}, $self)
        if $cut_handler;
 
-      # TODO: add to docs: Note: this may cause cuts to be processed out
+      # TODO: add to docs: Note: this may cause cuts to be processed out id:266
       #  of order relative to pods, but in order relative to code.
       
     } elsif($line =~ m/^(\s*)$/s) {  # it's a blank line
@@ -556,7 +556,7 @@ sub _gen_errata {
     ;
   }
   
-  # TODO: report of unknown entities? unrenderable characters?
+  # TODO: report of unknown entities? unrenderable characters? id:203
 
   unshift @out,
     ['=head1', {'start_line' => $m, 'errata' => 1}, 'POD ERRORS'],
@@ -659,8 +659,8 @@ sub _ponder_paragraph_buffer {
     #   don't require any lookahead, but all others (bullets
     #   and numbers) do.
 
-# TODO: whinge about many kinds of directives in non-resolving =for regions?
-# TODO: many?  like what?  =head1 etc?
+# TODO: whinge about many kinds of directives in non-resolving =for regions? id:385
+# TODO: many? like what? =head1 etc? id:172
 
     $para = shift @$paras;
     $para_type = $para->[0];
@@ -1310,7 +1310,7 @@ sub _ponder_over {
       
 sub _ponder_back {
   my ($self,$para,$curr_open,$paras) = @_;
-  # TODO: fire off </item-number> or </item-bullet> or </item-text> ??
+  # TODO: fire off </item-number> or </item-bullet> or </item-text> ?? id:342
 
   my $content = join ' ', splice @$para, 2;
   if($content =~ m/\S/) {
@@ -1552,7 +1552,7 @@ sub _ponder_Verbatim {
         s/^([^\t]*)(\t+)/$1.(" " x ((length($2)<<3)-(length($1)&7)))/e
       ) {}
 
-      # TODO: whinge about (or otherwise treat) unindented or overlong lines
+      # TODO: whinge about (or otherwise treat) unindented or overlong lines id:267
 
     }
   }
@@ -1808,7 +1808,7 @@ sub _treelet_from_formatting_codes {
   my @stack;
   my @lineage = ($treelet);
   my $raw = ''; # raw content of L<> fcode before splitting/processing
-    # XXX 'raw' is not 100% accurate: all surrounding whitespace is condensed
+    # XXX 'raw' is not 100% accurate: all surrounding whitespace is condensed id:204
     # into just 1 ' '. Is this the regex's doing or 'raw's?
   my $inL = 0;
 
@@ -1861,7 +1861,7 @@ sub _treelet_from_formatting_codes {
             |
             # whitespace is ok, but we don't want to eat the whitespace before
             # a multiple-bracket end code.
-            # NOTE: we may still have problems with e.g. S<<    >>
+            # NOTE: we may still have problems with e.g. S<< >> id:386
             (?:
               \s(?!\s*>{2,})
             )
@@ -1963,7 +1963,7 @@ sub _treelet_from_formatting_codes {
       DEBUG > 3 and print STDERR "Found stuff \"$6\"\n";
       push @{ $lineage[-1] }, $6;
       $raw .= $6 if $inL;
-        # XXX does not capture multiplace whitespaces -- 'raw' ends up with
+        # XXX does not capture multiplace whitespaces -- 'raw' ends up with id:173
         #     at most 1 leading/trailing whitespace, why not all of it?
 
     } else {

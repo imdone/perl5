@@ -91,8 +91,8 @@ for my $archive_name (@file_only_archives) {
 }
 
 # rt.cpan.org #115160
-# t/09_roundtrip.t was added with all 7 then existent tests marked TODO even
-# though 3 of them were passing.  So what was really TODO was to figure out
+# t/09_roundtrip.t was added with all 7 then existent tests marked TODO even id:87
+# though 3 of them were passing.  So what was really TODO was to figure out id:113
 # why the other 4 were not passing.
 #
 # It turns out that the tests are expecting behavior which, though on the face

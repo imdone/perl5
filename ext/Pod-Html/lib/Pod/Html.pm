@@ -358,7 +358,7 @@ sub pod2html {
         if ($Podfile and $Podfile ne '-') {
             $input = $Podfile;
         } else {
-            $input = '-'; # XXX: make a test case for this
+            $input = '-'; # XXX: make a test case for this id:425
         }
     } else {
         $Podfile = $ARGV[0];

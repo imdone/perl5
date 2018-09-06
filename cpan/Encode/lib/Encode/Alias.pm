@@ -107,7 +107,7 @@ sub define_alias {
     }
 }
 
-# HACK: Encode must be used after define_alias is declarated as Encode calls define_alias
+# HACK: Encode must be used after define_alias is declarated as Encode calls define_alias id:214
 use Encode ();
 
 # Allow latin-1 style names as well
@@ -276,14 +276,14 @@ sub init_aliases {
 1;
 __END__
 
-# TODO: HP-UX '8' encodings arabic8 greek8 hebrew8 kana8 thai8 turkish8
-# TODO: HP-UX '15' encodings japanese15 korean15 roi15
-# TODO: Cyrillic encoding ISO-IR-111 (useful?)
-# TODO: Armenian encoding ARMSCII-8
-# TODO: Hebrew encoding ISO-8859-8-1
-# TODO: Thai encoding TCVN
-# TODO: Vietnamese encodings VPS
-# TODO: Mac Asian+African encodings: Arabic Armenian Bengali Burmese
+# TODO: HP-UX '8' encodings arabic8 greek8 hebrew8 kana8 thai8 turkish8 id:132
+# TODO: HP-UX '15' encodings japanese15 korean15 roi15 id:63
+# TODO: Cyrillic encoding ISO-IR-111 (useful?) id:153
+# TODO: Armenian encoding ARMSCII-8 id:49
+# TODO: Hebrew encoding ISO-8859-8-1 id:215
+# TODO: Thai encoding TCVN id:133
+# TODO: Vietnamese encodings VPS id:65
+# TODO: Mac Asian+African encodings: Arabic Armenian Bengali Burmese id:154
 #       ChineseSimp ChineseTrad Devanagari Ethiopic ExtArabic
 #       Farsi Georgian Gujarati Gurmukhi Hebrew Japanese
 #       Kannada Khmer Korean Laotian Malayalam Mongolian

@@ -126,7 +126,7 @@ if (GLOB_ERROR) {
 
 # check nonexistent checks
 # should return an empty list
-# XXX since errfunc is NULL on win32, this test is not valid there
+# XXX since errfunc is NULL on win32, this test is not valid there id:549
 @a = bsd_glob("asdfasdf", 0);
 SKIP: {
     skip $^O, 1 if $^O eq 'MSWin32' || $^O eq 'NetWare';

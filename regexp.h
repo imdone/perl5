@@ -137,7 +137,7 @@ typedef struct regexp {
     U32 lastparen;           /* highest close paren matched ($+) */
     U32 lastcloseparen;      /* last close paren matched ($^N) */
     regexp_paren_pair *offs; /* Array of offsets for (@-) and (@+) */
-    char **recurse_locinput; /* used to detect infinite recursion, XXX: move to internal */
+    char **recurse_locinput; /* used to detect infinite recursion, XXX: move to internal id:782*/
 
     /*---------------------------------------------------------------------- */
 
@@ -289,7 +289,7 @@ and check for NULL.
  * Note that the flags whose names start with RXf_PMf_ are defined in
  * op_reg_common.h, being copied from the parallel flags of op_pmflags
  *
- * NOTE: if you modify any RXf flags you should run regen.pl or
+ * NOTE: if you modify any RXf flags you should run regen.pl or id:995
  * regen/regcomp.pl so that regnodes.h is updated with the changes.
  *
  */
@@ -320,7 +320,7 @@ and check for NULL.
 /* chars and strings used as regex pattern modifiers
  * Singular is a 'c'har, plural is a "string"
  *
- * NOTE, KEEPCOPY was originally 'k', but was changed to 'p' for preserve
+ * NOTE , KEEPCOPY was originally 'k', but was changed to 'p' for preserve id:747
  * for compatibility reasons with Regexp::Common which highjacked (?k:...)
  * for its own uses. So 'k' is out as well.
  */
@@ -371,7 +371,7 @@ and check for NULL.
 #define S_PAT_MODS      M_PAT_MODS      EXEC_PAT_MODS      NONDESTRUCT_PAT_MODS
 
 /*
- * NOTE: if you modify any RXf flags you should run regen.pl or
+ * NOTE: if you modify any RXf flags you should run regen.pl or id:852
  * regen/regcomp.pl so that regnodes.h is updated with the changes.
  *
  */
@@ -461,7 +461,7 @@ and check for NULL.
 #endif
 
 /*
- * NOTE: if you modify any RXf flags you should run regen.pl or
+ * NOTE: if you modify any RXf flags you should run regen.pl or id:826
  * regen/regcomp.pl so that regnodes.h is updated with the changes.
  *
  */
@@ -512,7 +512,7 @@ and check for NULL.
                                             + ReANY(rx_sv)->pre_prefix)
 #define RX_PRECOMP_const(rx_sv)        (RX_WRAPPED_const(rx_sv) \
                                             + ReANY(rx_sv)->pre_prefix)
-/* FIXME? Are we hardcoding too much here and constraining plugin extension
+/* FIXME ? Are we hardcoding too much here and constraining plugin extension id:783
    writers? Specifically, the value 1 assumes that the wrapped version always
    has exactly one character at the end, a ')'. Will that always be true?  */
 #define RX_PRELEN(rx_sv)                (RX_WRAPLEN(rx_sv) \
@@ -629,7 +629,7 @@ and check for NULL.
 #endif
 #define ReANY(re)		S_ReANY((const REGEXP *)(re))
 
-/* FIXME for plugins. */
+/* FIXME for plugins. id:996*/
 
 #define FBMcf_TAIL_DOLLAR	1
 #define FBMcf_TAIL_DOLLARM	2

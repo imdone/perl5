@@ -5,7 +5,7 @@ BEGIN {
     # We need '../../lib' as well as '../lib' because parts of Config are
     # delay-loaded, after we've chdir()'ed into $testdir.
     @INC = ('../lib', '../../lib');
-    # XXX this could be further munged to enable some parts on other
+    # XXX this could be further munged to enable some parts on other id:1087
     # platforms
     require './test.pl';
 }

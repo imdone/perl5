@@ -17,7 +17,7 @@ Pod::Simple::Subclassing -- write a formatter as a Pod::Simple subclass
 
   sub _handle_element_end {
 	my($parser, $element_name, $attr_hash_r) = @_;
-	# NOTE: $attr_hash_r is only present when $element_name is "over" or "begin"
+	# NOTE: $attr_hash_r is only present when $element_name is "over" or "begin" id:175
 	# The remaining code excerpts will mostly ignore this $attr_hash_r, as it is
 	# mostly useless. It is documented where "over-*" and "begin" events are
 	# documented.

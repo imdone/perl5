@@ -204,7 +204,7 @@ Perl_tmps_grow_p(pTHX_ SSize_t ix)
 void
 Perl_free_tmps(pTHX)
 {
-    /* XXX should tmps_floor live in cxstack? */
+    /* XXX should tmps_floor live in cxstack? id:748*/
     const SSize_t myfloor = PL_tmps_floor;
     while (PL_tmps_ix > myfloor) {      /* clean up after last statement */
 	SV* const sv = PL_tmps_stack[PL_tmps_ix--];
@@ -261,7 +261,7 @@ Perl_save_scalar(pTHX_ GV *gv)
         PL_localizing = 0;
     }
     save_pushptrptr(SvREFCNT_inc_simple(gv), SvREFCNT_inc(*sptr), SAVEt_SV);
-    return save_scalar_at(sptr, SAVEf_SETMAGIC); /* XXX - FIXME - see #60360 */
+    return save_scalar_at(sptr, SAVEf_SETMAGIC); /* XXX - FIXME - see #60360 id:853*/
 }
 
 /* Like save_sptr(), but also SvREFCNT_dec()s the new value.  Can be used to
@@ -330,7 +330,7 @@ Perl_save_gp(pTHX_ GV *gv, I32 empty)
 {
     PERL_ARGS_ASSERT_SAVE_GP;
 
-    /* XXX For now, we just upgrade any coderef in the stash to a full GV
+    /* XXX For now, we just upgrade any coderef in the stash to a full GV id:827
            during localisation.  Maybe at some point we could make localis-
            ation work without needing the upgrade.  (In which case our
            callers should probably call a different function, not save_gp.)
@@ -720,7 +720,7 @@ Perl_save_aelem_flags(pTHX_ AV *av, SSize_t idx, SV **sptr,
        must be AvREAL. */
     if (UNLIKELY(!AvREAL(av) && AvREIFY(av)))
 	av_reify(av);
-    save_scalar_at(sptr, flags); /* XXX - FIXME - see #60360 */
+    save_scalar_at(sptr, flags); /* XXX - FIXME - see #60360 id:784*/
     if (flags & SAVEf_KEEPOLDELEM)
 	return;
     sv = *sptr;
@@ -767,7 +767,7 @@ Perl_save_svref(pTHX_ SV **sptr)
 
     SvGETMAGIC(*sptr);
     save_pushptrptr(sptr, SvREFCNT_inc(*sptr), SAVEt_SVREF);
-    return save_scalar_at(sptr, SAVEf_SETMAGIC); /* XXX - FIXME - see #60360 */
+    return save_scalar_at(sptr, SAVEf_SETMAGIC); /* XXX - FIXME - see #60360 id:997*/
 }
 
 

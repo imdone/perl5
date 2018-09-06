@@ -93,7 +93,7 @@ class CPerlUiTextQueryDialog : public CEikDialog
 {
   public:
     CPerlUiTextQueryDialog(HBufC*& aBuffer);
-    /* TODO: OfferKeyEventL() so that newline can be seen as 'OK'. */
+    /* TODO: OfferKeyEventL() so that newline can be seen as 'OK'. id:982*/
     HBufC*& iData;
     TPtrC iTitle;  // used in S80 but not in S60
     TPtrC iPrompt; // used in S60 and S80

@@ -203,7 +203,7 @@ die "self-tied IO not DESTROYed" unless $destroyed == 1;
 EXPECT
 ########
 
-# TODO IO "self-tie" via TEMP glob
+# TODO IO "self-tie" via TEMP glob id:1020
 my $destroyed = 0;
 sub Self3::TIEHANDLE { bless $_[1], $_[0] }
 sub Self3::DESTROY   { $destroyed = 1; }
@@ -1406,7 +1406,7 @@ sub {
     untie $_[1];
     print tied $h{l} // 'undef';
     # check that tied and untie do not autovivify
-    # XXX should they autovivify?
+    # XXX should they autovivify? id:901
     tied $_[2];
     print exists $h{m} ? "yes" : "no";
     untie $_[2];
@@ -1568,7 +1568,7 @@ EXPECT
 [0][2][3]
 ########
 # keys(%tied) in scalar context with SCALAR present
-# XXX the behaviour of scalar(keys(%tied)) may change - it currently
+# XXX the behaviour of scalar(keys(%tied)) may change - it currently id:918
 # doesn't make use of SCALAR() if present
 my ($f,$n, $s) = (0,0,0);
 my %inner = (a =>1, b => 2, c => 3);

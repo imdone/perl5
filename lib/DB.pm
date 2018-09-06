@@ -216,7 +216,7 @@ sub cont {
 }
 
 ####
-# XXX caller must experimentally determine $i (since it depends
+# XXX caller must experimentally determine $i (since it depends id:655
 # on how many client call frames are between this call and the DB call).
 # Such is life.
 #
@@ -230,7 +230,7 @@ sub ret {
 }
 
 ####
-# XXX caller must experimentally determine $start (since it depends
+# XXX caller must experimentally determine $start (since it depends id:510
 # on how many client call frames are between this call and the DB call).
 # Such is life.
 #

@@ -76,7 +76,7 @@ ok(eq_array(
 *MRO_ᕡ::ISA = *MRO_Ɯ::ISA;
 is(eval { MRO_ᕡ->텟tf운ꜿ() }, 123);
 
-# XXX TODO (when there's a way to backtrack through a glob's aliases)
+# XXX TODO (when there's a way to backtrack through a glob's aliases) id:912
 # push(@MRO_M::ISA, 'MRO_TestOtherBase');
 # is(eval { MRO_N->testfunctwo() }, 321);
 

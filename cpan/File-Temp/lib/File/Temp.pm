@@ -494,7 +494,7 @@ sub _gettemp {
       }
 
       # Try to make sure this will be marked close-on-exec
-      # XXX: Win32 doesn't respect this, nor the proper fcntl,
+      # XXX: Win32 doesn't respect this, nor the proper fcntl, id:135
       #      but may have O_NOINHERIT. This may or may not be in Fcntl.
       local $^F = 2;
 
@@ -607,7 +607,7 @@ sub _gettemp {
 # This has to be done by _gettemp() every time it fails to
 # open a temp file/dir
 
-# Arguments:  $template (the template with XXX),
+# Arguments:  $template (the template with XXX ), id:224
 #             $ignore   (number of characters at end to ignore)
 
 # Returns:    modified template
@@ -1951,7 +1951,7 @@ sub tmpnam {
   # Retrieve the temporary directory name
   my $tmpdir = _wrap_file_spec_tmpdir();
 
-  # XXX I don't know under what circumstances this occurs, -- xdg 2016-04-02
+  # XXX I don't know under what circumstances this occurs, -- xdg 2016-04-02 id:246
   croak "Error temporary directory is not writable"
     if $tmpdir eq '';
 
@@ -2126,7 +2126,7 @@ sub unlink0 {
     # return early (Without unlink) if we have been instructed to retain files.
     return 1 if $KEEP_ALL;
 
-    # XXX: do *not* call this on a directory; possible race
+    # XXX: do *not* call this on a directory; possible race id:74
     #      resulting in recursive removal
     croak "unlink0: $path has become a directory!" if -d $path;
     unlink($path) or return 0;

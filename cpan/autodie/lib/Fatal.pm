@@ -95,7 +95,7 @@ my %TAGS = (
     ':system'  => [qw(system exec)],
 
     # Can we use qw(getpeername getsockname)? What do they do on failure?
-    # TODO - Can socket return false?
+    # TODO - Can socket return false? id:488
     ':socket'  => [qw(accept bind connect getsockopt listen recv send
                    setsockopt shutdown socketpair)],
 
@@ -212,7 +212,7 @@ my %Use_defined_or;
 my %Returns_num_things_changed = (
     'CORE::chmod'  => 1,
     'CORE::chown'  => 2,
-    'CORE::kill'   => 1,  # TODO: Could this return anything on negative args?
+    'CORE::kill'   => 1,  # TODO: Could this return anything on negative args? id:304
     'CORE::unlink' => 0,
     'CORE::utime'  => 2,
 );
@@ -400,7 +400,7 @@ sub import {
             # This requires that autodie is in fact loaded; otherwise
             # the "$class->X()" method calls below will explode.
             require autodie;
-            # TODO, when autodie and Fatal are cleanly separated, we
+            # TODO , when autodie and Fatal are cleanly separated, we id:533
             # should go a "goto &autodie::import" here instead.
         }
 
@@ -822,10 +822,10 @@ sub one_invocation {
 }
 
 # This is the internal interface that generates code.
-# NOTE: This interface WILL change in the future.  Please do not
+# NOTE: This interface WILL change in the future. Please do not id:370
 # call this subroutine directly.
 
-# TODO: Whatever's calling this code has already looked up hints.  Pass
+# TODO: Whatever's calling this code has already looked up hints. Pass id:465
 # them in, rather than look them up a second time.
 
 sub _one_invocation {
@@ -845,7 +845,7 @@ sub _one_invocation {
     # function, and is therefore safe to interpolate in the
     # code generators below.
 
-    # TODO - The following clobbers context, but that's what the
+    # TODO - The following clobbers context, but that's what the id:489
     #        old Fatal did.  Do we care?
 
     if ($back_compat) {
@@ -947,7 +947,7 @@ sub _one_invocation {
 
             if (\$E) {
 
-                # TODO - This can't be overridden in child
+                # TODO - This can't be overridden in child id:305
                 # classes!
 
                 die autodie::exception::system->new(
@@ -1156,12 +1156,12 @@ sub _one_invocation {
 # This returns the old copy of the sub, so we can
 # put it back at end of scope.
 
-# TODO : Check to make sure prototypes are restored correctly.
+# TODO : Check to make sure prototypes are restored correctly. id:534
 
-# TODO: Taking a huge list of arguments is awful.  Rewriting to
+# TODO: Taking a huge list of arguments is awful. Rewriting to id:371
 #       take a hash would be lovely.
 
-# TODO - BACKCOMPAT - This is not yet compatible with 5.10.0
+# TODO - BACKCOMPAT - This is not yet compatible with 5.10.0 id:466
 
 sub _make_fatal {
     my($class, $sub, $pkg, $void, $lexical, $filename, $insist, $install_subs) = @_;
@@ -1187,7 +1187,7 @@ sub _make_fatal {
         $Package_Fatal{$sub} = 1;
     }
 
-    # TODO - We *should* be able to do skipping, since we know when
+    # TODO - We *should* be able to do skipping, since we know when id:490
     # we've lexicalised / unlexicalised a subroutine.
 
 
@@ -1196,7 +1196,7 @@ sub _make_fatal {
 
     if (defined(&$sub)) {   # user subroutine
 
-        # NOTE: Previously we would localise $@ at this point, so
+        # NOTE: Previously we would localise $@ at this point, so id:306
         # the following calls to eval {} wouldn't interfere with anything
         # that's already in $@.  Unfortunately, it would also stop
         # any of our croaks from triggering(!), which is even worse.
@@ -1340,7 +1340,7 @@ sub _make_fatal {
         $core = 1;
     }
 
-    # TODO: This caching works, but I don't like using $void and
+    # TODO: This caching works, but I don't like using $void and id:535
     # $lexical as keys.  In particular, I suspect our code may end up
     # wrapping already wrapped code when autodie and Fatal are used
     # together.
@@ -1396,9 +1396,9 @@ sub _make_fatal {
     # subs.  Fatal subs can leak all they want, it's considered
     # a "feature" (or at least backwards compatible).
 
-    # TODO: Cache our leak guards!
+    # TODO: Cache our leak guards! id:372
 
-    # TODO: This is pretty hairy code.  A lot more tests would
+    # TODO: This is pretty hairy code. A lot more tests would id:467
     # be really nice for this.
 
     my $installed_sub = $code;

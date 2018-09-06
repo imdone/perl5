@@ -1,7 +1,6 @@
 === HTML-WebDAO
 --- yaml
-\--- #YAML:1.0
-name: HTML-WebDAO
+\--- #YAML: name: HTML-WebDAO id:101
 version: 0.04
 author:
   - |-

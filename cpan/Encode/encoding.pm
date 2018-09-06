@@ -79,7 +79,7 @@ sub _get_locale_encoding {
 
             # Could do more heuristics based on the country and language
             # since we have Locale::Country and Locale::Language available.
-            # TODO: get a database of Language -> Encoding mappings
+            # TODO: get a database of Language -> Encoding mappings id:48
             # (the Estonian database at http://www.eki.ee/letter/
             # would be excellent!) --jhi
             if (lc($locale_encoding) eq 'euc') {

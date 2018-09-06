@@ -1684,7 +1684,7 @@ sub bmuladd {
     return $upgrade->bmuladd($x, $upgrade->new($y), $upgrade->new($z), @r)
       if defined $upgrade && (!$y->isa($class) || !$z->isa($class) || !$x->isa($class));
 
-    # TODO: what if $y and $z have A or P set?
+    # TODO: what if $y and $z have A or P set? id:162
     $r[3] = $z;                 # no push here
 
     $x->{sign} = $x->{sign} eq $y->{sign} ? '+' : '-'; # +1 * +1 or -1 * -1 => +

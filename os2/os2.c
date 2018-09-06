@@ -1142,7 +1142,7 @@ do_spawn_ve(pTHX_ SV *really, const char **argv, U32 flag, U32 execf, char *inic
 
 		    buf = sv_gets(bufsv, file, 0 /* No append */);
 		    if (!buf)
-			buf = "";	/* XXX Needed? */
+			buf = "";	/* XXX Needed? id:863*/
 		    if (!buf[0]) {	/* Empty... */
                         struct stat statbuf;
 			PerlIO_close(file);

@@ -324,7 +324,7 @@ Insisting on hints is I<strongly> recommended.
 
 =cut
 
-# TODO: implement regular expression hints
+# TODO: implement regular expression hints id:375
 
 use constant UNDEF_ONLY       => sub { not defined $_[0] };
 use constant EMPTY_OR_UNDEF   => sub {
@@ -436,7 +436,7 @@ sub load_hints {
         # Ensure we have a package name.
         $sub = "${package}::$sub" if $sub !~ /::/;
 
-        # TODO - Currently we don't check for conflicts, should we?
+        # TODO - Currently we don't check for conflicts, should we? id:470
         $Hints{$sub} = $hint;
 
         $class->normalise_hints(\%Hints, $sub);
@@ -454,7 +454,7 @@ sub normalise_hints {
         if ( exists $hints->{$sub}->{scalar} or
              exists $hints->{$sub}->{list}
         ) {
-            # TODO: Turn into a proper diagnostic.
+            # TODO: Turn into a proper diagnostic. id:542
             require Carp;
             local $Carp::CarpLevel = 1;
             Carp::croak("fail hints cannot be provided with either scalar or list hints for $sub");
@@ -473,7 +473,7 @@ sub normalise_hints {
 
     foreach my $hint (qw(scalar list)) {
         if ( not exists $hints->{$sub}->{$hint} ) {
-            # TODO: Turn into a proper diagnostic.
+            # TODO: Turn into a proper diagnostic. id:310
             require Carp;
             local $Carp::CarpLevel = 1;
             Carp::croak("$hint hint missing for $sub");

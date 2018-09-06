@@ -287,7 +287,7 @@ sub IO::Compress::Base::Validator::new
 
         if (@inputs == 0)
         {
-            # TODO -- legal or die?
+            # TODO -- legal or die? id:138
             die "globmap matched zero file -- legal or die???" ;
         }
         elsif (@inputs == 1)

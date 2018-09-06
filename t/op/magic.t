@@ -178,8 +178,8 @@ END
 END
     close CMDPIPE;
     $? >>= 8 if $^O eq 'VMS'; # POSIX status hiding in 2nd byte
-    my $todo = ($^O eq 'os2' ? ' # TODO: EMX v0.9d_fix4 bug: wrong nibble? ' : '');
-    $todo = ($Config{usecrosscompile} ? '# TODO: Not sure whats going on here when cross-compiling' : '');
+    my $todo = ($^O eq 'os2' ? ' # TODO: EMX v0.9d_fix4 bug: wrong nibble? ' : ''); id:1018
+    $todo = ($Config{usecrosscompile} ? '# TODO: Not sure whats going on here when cross-compiling' : ''); id:899
     print $? & 0xFF ? "ok $tn[4]$todo\n" : "not ok $tn[4]$todo\n";
 
     open(CMDPIPE, "|-", $PERL);
@@ -360,7 +360,7 @@ EOF
     } else {
   SKIP:
      {
-	  skip "# TODO: Hit bug posix-2058; exec does not setup argv[0] correctly." if ($^O eq "vos");
+	  skip "# TODO: Hit bug posix-2058; exec does not setup argv[0] correctly." if ($^O eq "vos"); id:916
 	  is $_, $s1;
      }
     }

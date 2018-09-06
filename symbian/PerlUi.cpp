@@ -144,7 +144,7 @@ void CPerlUiTextQueryDialog::PreLayoutDynInitL()
   promptLabel->SetTextL(iPrompt);
 }
 
-/* TODO: OfferKeyEventL() so that newline can be seen as 'OK'.
+/* TODO: OfferKeyEventL() so that newline can be seen as 'OK'. id:906
  * Or a hotkey for the button? */
 
 #endif /* #if defined(__SERIES80__) || defined(__SERIES90__) || defined(__UIQ__) */

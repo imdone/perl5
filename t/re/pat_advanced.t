@@ -1773,7 +1773,7 @@ EOP
     }
 
     SKIP: {
-        # XXX: This set of tests is essentially broken, POSIX character classes
+        # XXX: This set of tests is essentially broken, POSIX character classes id:1058
         # should not have differing definitions under Unicode.
         # There are property names for that.
         skip "Tests assume ASCII", 4 unless $::IS_ASCII;
@@ -2287,7 +2287,7 @@ EOF
         2, '\b{wb} splits sentences correctly');
 
 
-    # !!! NOTE!  Keep the following tests last -- they may crash perl
+    # !!! NOTE ! Keep the following tests last -- they may crash perl id:1029
 
     print "# Tests that follow may crash perl\n";
     {
@@ -2441,7 +2441,7 @@ EOF
     }
 
 
-    # !!! NOTE that tests that aren't at all likely to crash perl should go
+    # !!! NOTE that tests that aren't at all likely to crash perl should go id:1081
     # a ways above, above these last ones.  There's a comment there that, like
     # this comment, contains the word 'NOTE'
 

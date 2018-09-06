@@ -13,7 +13,7 @@ sub failed {
     my ($got, $expected, $name) = @_;
 
     if ($::TODO) {
-	print "not ok $test - $name # TODO: $::TODO\n";
+	print "not ok $test - $name # TODO: $::TODO\n"; id:908
     }
     else {
 	print "not ok $test - $name\n";
@@ -34,7 +34,7 @@ sub like {
     $test = $test + 1;
     if (defined $got && $got =~ $pattern) {
 	if ($::TODO) {
-	    print "ok $test - $name # TODO: $::TODO\n";
+	    print "ok $test - $name # TODO: $::TODO\n"; id:984
 	}
 	else {
 	    print "ok $test - $name\n";
@@ -51,7 +51,7 @@ sub is {
     $test = $test + 1;
     if (defined $got && $got eq $expect) {
 	if ($::TODO) {
-	    print "ok $test - $name # TODO: $::TODO\n";
+	    print "ok $test - $name # TODO: $::TODO\n"; id:968
 	}
 	else {
 	    print "ok $test - $name\n";
@@ -66,7 +66,7 @@ sub isnt {
     $test = $test + 1;
     if (defined $got && $got ne $expect) {
 	if ($::TODO) {
-	    print "ok $test - $name # TODO: $::TODO\n";
+	    print "ok $test - $name # TODO: $::TODO\n"; id:1011
 	}
 	else {
 	    print "ok $test - $name\n";
@@ -81,7 +81,7 @@ sub can_ok {
     $test = $test + 1;
     if (eval { $class->can($method) }) {
 	if ($::TODO) {
-	    print "ok $test - $class->can('$method') # TODO: $::TODO\n";
+	    print "ok $test - $class->can('$method') # TODO: $::TODO\n"; id:763
 	}
 	else {
 	    print "ok $test - $class->can('$method')\n";

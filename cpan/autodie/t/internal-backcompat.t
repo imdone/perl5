@@ -75,7 +75,7 @@ foreach my $test (@one_invocation_calls) {
     is(Fatal::one_invocation( @{ $test->[0] } ), $test->[1], 'one_inovcation');
 }
 
-# TODO: _make_fatal
+# TODO: _make_fatal id:376
 # Since this subroutine has always started with an underscore,
 # I think it's pretty clear that it's internal-only.  I'm not
 # testing it here, and it doesn't yet have backcompat.

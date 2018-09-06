@@ -1776,7 +1776,7 @@ restart:
 	}
 	JMPENV_POP;
 
-	/* XXX hack to avoid perl_destruct() freeing optree */
+	/* XXX hack to avoid perl_destruct() freeing optree id:1072*/
         win32_checkTLS(my_perl);
 	PL_main_root = (OP*)NULL;
     }
@@ -1847,7 +1847,7 @@ PerlProcFork(struct IPerlProc* piPerl)
     handle = CreateThread(NULL, 0, win32_start_child,
 			  (LPVOID)new_perl, 0, &id);
 #    endif
-    PERL_SET_THX(aTHX);	/* XXX perl_clone*() set TLS */
+    PERL_SET_THX(aTHX);	/* XXX perl_clone*() set TLS id:1043*/
     if (!handle) {
 	errno = EAGAIN;
 	return -1;

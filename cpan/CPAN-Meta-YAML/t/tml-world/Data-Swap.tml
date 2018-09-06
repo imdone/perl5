@@ -1,8 +1,7 @@
 === Data-Swap
 # File with a YAML header
 --- yaml
-\--- #YAML:1.0
-name:     Data-Swap
+\--- #YAML: name: Data-Swap id:15
 version:  0.05
 license:  perl
 distribution_type: module

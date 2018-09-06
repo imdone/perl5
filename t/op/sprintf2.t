@@ -612,7 +612,7 @@ for my $t (@hexfloat) {
     # but different implementations, GNU vs vendor, two different archs
     # (ppc and mips), and two different libm interfaces) we have some
     # bits-in-the-last-hexdigit differences.
-    # Patch them up as TODOs instead of deadly errors.
+    # Patch them up as TODO s instead of deadly errors. id:1051
     if ($doubledouble && $ppc_linux && $arg =~ /^2.71828/) {
         # gets  '0x1.5bf0a8b1457695355fb8ac404ecp+1'
         # wants '0x1.5bf0a8b1457695355fb8ac404e8p+1'
@@ -809,7 +809,7 @@ SKIP: {
 	# Note that "0x1p+2" is not considered numeric,
 	# since neither is "0x12", hence the eval.
         my $f = eval $t->[0];
-        # XXX under g++ -ansi, pow(2.0, -1074) returns 0 rather
+        # XXX under g++ -ansi, pow(2.0, -1074) returns 0 rather id:1025
         # than the smallest denorm number. Which means that very small
         # string literals on a perl compiled under g++ may be seen as 0.
         # This is either a bug in the g++ math library or scan_num() in

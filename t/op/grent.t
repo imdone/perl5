@@ -121,7 +121,7 @@ while (<GR>) {
 	    ($name,$passwd,$gid,$members) = @n;
 	    next if $name_s ne $name;
 	}
-	# NOTE: group names *CAN* contain whitespace.
+	# NOTE: group names *CAN* contain whitespace. id:974
 	$members =~ s/\s+/,/g;
 	# what about different orders of members?
 	$perfect{$name_s}++

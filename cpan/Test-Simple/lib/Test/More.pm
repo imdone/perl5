@@ -372,7 +372,7 @@ You are encouraged to use C<is()> and C<isnt()> over C<ok()> where possible,
 however do not be tempted to use them to find out if something is
 true or false!
 
-  # XXX BAD!
+  # XXX BAD! id:457
   is( exists $brooklyn{tree}, 1, 'A tree grows in Brooklyn' );
 
 This does not check if C<exists $brooklyn{tree}> is true, it checks if

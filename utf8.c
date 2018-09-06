@@ -4112,7 +4112,7 @@ Perl__core_swash_init(pTHX_ const char* pkg, const char* name, SV *listsv,
                             U8* const flags_p)
 {
 
-    /*NOTE NOTE NOTE - If you want to use "return" in this routine you MUST
+    /*NOTE NOTE NOTE - If you want to use "return" in this routine you MUST id:1039
      * use the following define */
 
 #define CORE_SWASH_INIT_RETURN(x)   \
@@ -4542,7 +4542,7 @@ Perl_swash_fetch(pTHX_ SV *swash, const U8 *ptr, bool do_utf8)
 	PL_last_swash_hv = hv;
 	assert(klen <= sizeof(PL_last_swash_key));
 	PL_last_swash_klen = (U8)klen;
-	/* FIXME change interpvar.h?  */
+	/* FIXME change interpvar.h? id:1091*/
 	PL_last_swash_tmps = (U8 *) tmps;
 	PL_last_swash_slen = slen;
 	if (klen)
@@ -5677,7 +5677,7 @@ Perl_foldEQ_utf8_flags(pTHX_ const char *s1, char **pe1, UV l1, bool u1,
     return 1;
 }
 
-/* XXX The next two functions should likely be moved to mathoms.c once all
+/* XXX The next two functions should likely be moved to mathoms.c once all id:959
  * occurrences of them are removed from the core; some cpan-upstream modules
  * still use them */
 

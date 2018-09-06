@@ -616,7 +616,7 @@ sub skip_all {
             $begin++;
             last;
         }
-        # HACK!
+        # HACK ! id:296
         die 'Label not found for "last T2_SUBTEST_WRAPPER"' if $begin && $ctx->hub->meta(__PACKAGE__, {})->{parent};
     }
 
@@ -2063,7 +2063,7 @@ Skips the current test, reporting C<$why>.
 Like C<skip()>, only it will declare the test as failing and TODO.  Similar
 to
 
-    print "not ok $tnum # TODO $why\n";
+    print "not ok $tnum # TODO $why\n"; id:525
 
 =begin _unimplemented
 
@@ -2398,7 +2398,7 @@ In these cases, Test::Builder doesn't know the result of the test, so
 its type is 'unknown'.  These details for these tests are filled in.
 They are considered ok, but the name and actual_ok is left C<undef>.
 
-For example "not ok 23 - hole count # TODO insufficient donuts" would
+For example "not ok 23 - hole count # TODO insufficient donuts" would id:362
 result in this structure:
 
     $tests[22] =    # 23 - 1, since arrays start from 0.

@@ -331,7 +331,7 @@ eval 'sub Foo::boogie { "yes, sir!" }';
 is( $::{"Foo::"} ? "ok" : "none", "ok");  # should exist now
 is( Foo->boogie(), "yes, sir!");
 
-# TODO: universal.t should test NoSuchPackage->isa()/can()
+# TODO: universal.t should test NoSuchPackage->isa()/can() id:992
 
 # This is actually testing parsing of indirect objects and undefined subs
 #   print foo("bar") where foo does not exist is not an indirect object.

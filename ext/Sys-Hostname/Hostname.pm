@@ -73,7 +73,7 @@ sub hostname {
     local $ENV{PATH} = '/usr/bin:/bin:/usr/sbin:/sbin'; # Paranoia.
 
     # method 2 - syscall is preferred since it avoids tainting problems
-    # XXX: is it such a good idea to return hostname untainted?
+    # XXX: is it such a good idea to return hostname untainted? id:552
     eval {
 	local $SIG{__DIE__};
 	require "syscall.ph";

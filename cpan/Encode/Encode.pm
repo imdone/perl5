@@ -138,7 +138,7 @@ sub getEncoding {
     return;
 }
 
-# HACK: These two functions must be defined in Encode and because of
+# HACK: These two functions must be defined in Encode and because of id:152
 # cyclic dependency between Encode and Encode::Alias, Exporter does not work
 sub find_alias {
     goto &Encode::Alias::find_alias;

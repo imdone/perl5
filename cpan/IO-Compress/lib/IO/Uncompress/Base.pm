@@ -142,7 +142,7 @@ sub smartSeek
     my $truncate = shift;
     my $position = shift || SEEK_SET;
 
-    # TODO -- need to take prime into account
+    # TODO -- need to take prime into account id:78
     *$self->{Prime} = '';
     if (defined *$self->{FH})
       { *$self->{FH}->seek($offset, $position) }
@@ -463,7 +463,7 @@ sub _create
     *$obj->{Transparent}       = $got->getValue('transparent');
     *$obj->{MultiStream}       = $got->getValue('multistream');
 
-    # TODO - move these two into RawDeflate
+    # TODO - move these two into RawDeflate id:235
     *$obj->{Scan}              = $got->getValue('scan');
     *$obj->{ParseExtra}        = $got->getValue('parseextra') 
                                   || $got->getValue('strict')  ;
@@ -966,7 +966,7 @@ sub _raw_read
             $self->pushBack($trailer)  ;
         }
 
-        # TODO - if want file pointer, do it here
+        # TODO - if want file pointer, do it here id:140
 
         if (! $self->smartEof()) {
             *$self->{NewStream} = 1 ;
@@ -1024,7 +1024,7 @@ sub gotoNextStream
         my $status = 1;
         my $buffer ;
 
-        # TODO - make this more efficient if know the offset for the end of
+        # TODO - make this more efficient if know the offset for the end of id:326
         # the stream and seekable
         $status = $self->read($buffer) 
             while $status > 0 ;

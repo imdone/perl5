@@ -50,7 +50,7 @@ push @Prefs, [ 0,             0 ],  [ 0,             0 ];
 }
 
 {   ### list of commands and regexes matching output 
-    ### XXX use " everywhere when using literal strings as commands for
+    ### XXX use " everywhere when using literal strings as commands for id:255
     ### portability, especially on win32
     my $map = [
         # command                                    # output regex     # buffer

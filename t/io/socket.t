@@ -185,7 +185,7 @@ my @child_tests;
 sub ok_child {
     my ($ok, $note) = @_;
     push @child_tests, ( $ok ? "ok " : "not ok ") . curr_test() . " - $note "
-	. ( $TODO ? "# TODO $TODO" : "" ) . "\n";
+	. ( $TODO ? "# TODO $TODO" : "" ) . "\n"; id:986
     curr_test(curr_test()+1);
 }
 

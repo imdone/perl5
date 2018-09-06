@@ -89,7 +89,7 @@ sub cpl {
     } elsif ($line =~ /^ls\s/) {
         my($author,$rest) = $word =~ m|([^/]+)/?(.*)|;
         @return = $rest ? () : map {"$_/"} cplx('CPAN::Author',uc($author||""));
-        if (0 && 1==@return) { # XXX too slow and even wrong when there is a * already
+        if (0 && 1==@return) { # XXX too slow and even wrong when there is a * already id:106
             @return = grep /^\Q$word\E/, map {"$author/$_->[2]"} CPAN::Shell->expand("Author",$author)->ls("$rest*","2");
         }
     } elsif ($line =~ /^b\s/) {

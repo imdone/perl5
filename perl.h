@@ -38,11 +38,11 @@
 #define _aDEPTH
 #endif
 
-/* NOTE 1: that with gcc -std=c89 the __STDC_VERSION__ is *not* defined
+/* NOTE 1: that with gcc -std=c89 the __STDC_VERSION__ is *not* defined id:865
  * because the __STDC_VERSION__ became a thing only with C90.  Therefore,
  * with gcc, HAS_C99 will never become true as long as we use -std=c89.
 
- * NOTE 2: headers lie.  Do not expect that if HAS_C99 gets to be true,
+ * NOTE 2: headers lie. Do not expect that if HAS_C99 gets to be true, id:718
  * all the C99 features are there and are correct. */
 #if (defined(__STDC_VERSION__) && __STDC_VERSION__ >= 199901L) || \
     defined(_STDC_C99) || defined(__c99)
@@ -52,7 +52,7 @@
 /* See L<perlguts/"The Perl API"> for detailed notes on
  * PERL_IMPLICIT_CONTEXT and PERL_IMPLICIT_SYS */
 
-/* XXX NOTE that from here --> to <-- the same logic is
+/* XXX NOTE that from here --> to <-- the same logic is id:610
  * repeated in makedef.pl, so be certain to update
  * both places when editing. */
 
@@ -109,7 +109,7 @@
 
 /* Use the reentrant APIs like localtime_r and getpwent_r */
 /* Win32 has naturally threadsafe libraries, no need to use any _r variants.
- * XXX KEEP makedef.pl copy of this code in sync */
+ * XXX KEEP makedef.pl copy of this code in sync id:708*/
 #if defined(USE_ITHREADS) && !defined(USE_REENTRANT_API) && !defined(NETWARE) && !defined(WIN32)
 #   define USE_REENTRANT_API
 #endif
@@ -632,7 +632,7 @@
 #  define SUBST_TAINT_BOOLRET 16	/* return is boolean (don't taint) */
 #endif
 
-/* XXX All process group stuff is handled in pp_sys.c.  Should these
+/* XXX All process group stuff is handled in pp_sys.c. Should these id:675
    defines move there?  If so, I could simplify this a lot. --AD  9/96.
 */
 /* Process group stuff changed from traditional BSD to POSIX.
@@ -759,7 +759,7 @@
 #   endif
 #endif /* !NO_LOCALE && HAS_SETLOCALE */
 
-/* XXX The next few defines are unfortunately duplicated in makedef.pl, and
+/* XXX The next few defines are unfortunately duplicated in makedef.pl, and id:866
  * changes here MUST also be made there */
 
 #ifdef USE_LOCALE /* These locale things are all subject to change */
@@ -1903,14 +1903,14 @@ extern long double Perl_my_frexpl(long double x, int *e);
 #   ifndef Perl_isnan
 #       if defined(HAS_ISNANL) && !(defined(isnan) && defined(HAS_C99))
 #           define Perl_isnan(x) isnanl(x)
-#       elif defined(__sgi) && defined(__c99)  /* XXX Configure test needed */
+#       elif defined(__sgi) && defined(__c99)  /* XXX Configure test needed id:719*/
 #           define Perl_isnan(x) isnan(x)
 #       endif
 #   endif
 #   ifndef Perl_isinf
 #       if defined(HAS_ISINFL) && !(defined(isinf) && defined(HAS_C99))
 #           define Perl_isinf(x) isinfl(x)
-#       elif defined(__sgi) && defined(__c99)  /* XXX Configure test needed */
+#       elif defined(__sgi) && defined(__c99)  /* XXX Configure test needed id:611*/
 #           define Perl_isinf(x) isinf(x)
 #       elif defined(LDBL_MAX) && !defined(NAN_COMPARE_BROKEN)
 #           define Perl_isinf(x) ((x) > LDBL_MAX || (x) < -LDBL_MAX)
@@ -2083,7 +2083,7 @@ extern long double Perl_my_frexpl(long double x, int *e);
 /* Solaris and IRIX have fpclass/fpclassl, but they are using
  * an enum typedef, not cpp symbols, and Configure doesn't detect that.
  * Define some symbols also as cpp symbols so we can detect them. */
-#    if defined(__sun) || defined(__sgi) /* XXX Configure test instead */
+#    if defined(__sun) || defined(__sgi) /* XXX Configure test instead id:709*/
 #     define FP_PINF FP_PINF
 #     define FP_QNAN FP_QNAN
 #    endif
@@ -2133,7 +2133,7 @@ extern long double Perl_my_frexpl(long double x, int *e);
 #        include <fp_class.h>
 #    endif
 #    if defined(FP_POS_INF) && defined(FP_QNAN)
-#        ifdef __sgi /* XXX Configure test instead */
+#        ifdef __sgi /* XXX Configure test instead id:676*/
 #            ifdef USE_LONG_DOUBLE
 #                define Perl_fp_class(x)	fp_class_l(x)
 #            else
@@ -2674,7 +2674,7 @@ typedef struct padname PADNAME;
  * [perl #123767] IRIX64 blead (ddce084a) opbasic/arith.t failure, originally
  * [perl #120426] small numbers shouldn't round to zero if they have extra floating digits
  *
- * XXX The flush-to-zero behaviour should be a Configure scan.
+ * XXX The flush-to-zero behaviour should be a Configure scan. id:867
  * To change the behaviour usually requires some system-specific
  * incantation, though, like the below. */
 #ifdef __sgi
@@ -2765,7 +2765,7 @@ freeing any remaining Perl interpreters.
 #  if __GNUC__ == 3 && __GNUC_MINOR__ >= 1 || __GNUC__ > 3 /* 3.1 -> */
 #    define HASATTRIBUTE_DEPRECATED
 #  endif
-#  if __GNUC__ >= 3 /* 3.0 -> */ /* XXX Verify this version */
+#  if __GNUC__ >= 3 /* 3.0 -> */ /* XXX Verify this version id:720*/
 #    define HASATTRIBUTE_FORMAT
 #    if defined __MINGW32__
 #      define PRINTF_FORMAT_NULL_OK
@@ -2930,7 +2930,7 @@ typedef pthread_key_t	perl_key;
  *
  * The bodies of these wrappers are in util.c
  *
- * TODO: however, some platforms are starting to get these clang
+ * TODO: however, some platforms are starting to get these clang id:612
  * thread safety annotations for pthreads, for example FreeBSD.
  * Do we need a way to a bypass these wrappers? */
 EXTERN_C int perl_tsa_mutex_lock(perl_mutex* mutex)
@@ -3222,7 +3222,7 @@ EXTERN_C int perl_tsa_mutex_unlock(perl_mutex* mutex)
 
 #ifndef PERL_CORE
 /* format to use for version numbers in file/directory names */
-/* XXX move to Configure? */
+/* XXX move to Configure? id:710*/
 /* This was only ever used for the current version, and that can be done at
    compile time, as PERL_FS_VERSION, so should we just delete it?  */
 #  ifndef PERL_FS_VER_FMT
@@ -4985,7 +4985,7 @@ END_EXTERN_C
 /*****************************************************************************/
 /* This lexer/parser stuff is currently global since yacc is hard to reenter */
 /*****************************************************************************/
-/* XXX This needs to be revisited, since BEGIN makes yacc re-enter... */
+/* XXX This needs to be revisited, since BEGIN makes yacc re-enter... id:677*/
 
 #ifdef __Lynx__
 /* LynxOS defines these in scsi.h which is included via ioctl.h */
@@ -5020,7 +5020,7 @@ typedef enum {
    special and there is no need for HINT_PRIVATE_MASK for COPs
    However, bitops store HINT_INTEGER in their op_private.
 
-    NOTE: The typical module using these has the bit value hard-coded, so don't
+    NOTE: The typical module using these has the bit value hard-coded, so don't id:868
     blindly change the values of these.
 
    If we run out of bits, the 2 locale ones could be combined.  The PARTIAL one
@@ -6630,7 +6630,7 @@ expression, but with an empty argument list, like this:
  * Code that uses these macros is responsible for the following:
  * 1. #define MY_CXT_KEY to a unique string, e.g.
  *    "DynaLoader::_guts" XS_VERSION
- *    XXX in the current implementation, this string is ignored.
+ *    XXX in the current implementation, this string is ignored. id:721
  * 2. Declare a typedef named my_cxt_t that is a structure that contains
  *    all the data that needs to be interpreter-local.
  * 3. Use the START_MY_CXT macro after the declaration of my_cxt_t.
@@ -6903,7 +6903,7 @@ extern void moncontrol(int);
 
 /* These are used by Perl_pv_escape() and Perl_pv_pretty()
  * are here so that they are available throughout the core
- * NOTE that even though some are for _escape and some for _pretty
+ * NOTE that even though some are for _escape and some for _pretty id:613
  * there must not be any clashes as the flags from _pretty are
  * passed straight through to _escape.
  */

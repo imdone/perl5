@@ -155,12 +155,12 @@ sub glob {
 		}
 	    }
 	    #print "Sould have "GOT" vs "Got"!\n";
-		#FIXME: There should be checking for this.
+		#FIXME: There should be checking for this. id:405
 		#  How or what should be done about failure is beyond me.
 	}
 	if ( $#appendpat != -1
 		) {
-	    #FIXME: Max loop, no way! :")
+	    #FIXME: Max loop, no way! :") id:476
 	    for ( @appendpat ) {
 	        push @pat, $_;
 	    }

@@ -158,7 +158,7 @@ is_deeply $token, $expected,
 
 # bad plan
 
-$plan = '1..0 # TODO 3,4,5';    # old syntax.  No longer supported
+$plan = '1..0 # TODO 3,4,5'; # old syntax. No longer supported id:408
 unlike $plan, $syntax_for{'plan'},
   'Bad plans should not match the plan syntax';
 
@@ -232,9 +232,9 @@ $expected = {
 is_deeply $token, $expected,
   '... and the token should contain the correct data';
 
-# TODO tests
+# TODO tests id:287
 
-$test = 'not ok 2 this is a test # TODO whee!';
+$test = 'not ok 2 this is a test # TODO whee!'; id:397
 like $test, $syntax_for{'test'}, 'Tests should match the test syntax';
 
 $iterator->put($test);
@@ -248,14 +248,14 @@ $expected = {
     'directive'   => 'TODO',
     'description' => 'this is a test',
     'test_num'    => '2',
-    'raw'         => 'not ok 2 this is a test # TODO whee!'
+    'raw'         => 'not ok 2 this is a test # TODO whee!' id:184
 };
 is_deeply $token, $expected, '... and the TODO should be parsed';
 
-# false TODO tests
+# false TODO tests id:354
 
-# escaping that hash mark ('#') means this should *not* be a TODO test
-$test = 'ok 22 this is a test \# TODO whee!';
+# escaping that hash mark ('#') means this should *not* be a TODO test id:409
+$test = 'ok 22 this is a test \# TODO whee!'; id:288
 like $test, $syntax_for{'test'}, 'Tests should match the test syntax';
 
 $iterator->put($test);
@@ -267,9 +267,9 @@ $expected = {
     'explanation' => '',
     'type'        => 'test',
     'directive'   => '',
-    'description' => 'this is a test \# TODO whee!',
+    'description' => 'this is a test \# TODO whee!', id:398
     'test_num'    => '22',
-    'raw'         => 'ok 22 this is a test \# TODO whee!'
+    'raw'         => 'ok 22 this is a test \# TODO whee!' id:185
 };
 is_deeply $token, $expected,
   '... and the token should contain the correct data';
@@ -400,13 +400,13 @@ SKIP: {
 
     $grammar->set_version(13);
 
-    # now this is badly formed YAML that is missing the
+    # now this is badly formed YAML that is missing the id:355
     # leader padding - this is done for coverage testing
     # the $reader code sub in _make_yaml_token, that is
     # passed as the yaml consumer to T::P::YAMLish::Reader.
 
     # because it isnt valid yaml, the yaml document is
-    # not done, and the _peek in the YAMLish::Reader
+    # not done, and the _peek in the YAML  ish::Reader id:410
     # code doesnt find the terminating '...' pattern.
     # but we dont care as this is coverage testing, so
     # if thats what we have to do to exercise that code,

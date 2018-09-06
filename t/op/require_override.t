@@ -50,7 +50,7 @@ eval "require; 1" or $error = $@;
 ok(1, "Check that eval 'require' on overloaded require does not segv");
 ok(0 == @warns, "We expect the eval to die, without producing warnings");
 
-# NOTE! The following test does NOT represent a commitment or promise that the following logic is
+# NOTE ! The following test does NOT represent a commitment or promise that the following logic is id:900
 # the *right* thing to do. It may well not be. But this is how it works now, and we want to test it.
 # IOW, do not use this test as the basis to argue that this is how it SHOULD work. Thanks, yves.
 ok(!defined($error), "We do not expect the overloaded version of require to die from no arguments");

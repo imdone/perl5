@@ -35,9 +35,9 @@ sub _plus_append_open {
 sub _ftp_statistics {
     my($self,$fh) = @_;
     my $locktype = $fh ? LOCK_EX : LOCK_SH;
-    # XXX On Windows flock() implements mandatory locking, so we can
-    # XXX only use shared locking to still allow _yaml_load_file() to
-    # XXX read from the file using a different filehandle.
+    # XXX On Windows flock() implements mandatory locking, so we can id:209
+    # XXX only use shared locking to still allow _yaml_load_file() to id:127
+    # XXX read from the file using a different filehandle. id:53
     $locktype = LOCK_SH if $^O eq "MSWin32";
 
     $fh ||= FileHandle->new;
@@ -125,8 +125,8 @@ sub _add_to_statistics {
         push @debug, scalar @{$fullstats->{history}} if $sdebug;
         push @debug, time if $sdebug;
         push @{$fullstats->{history}}, $stats;
-        # YAML.pm 0.62 is unacceptably slow with 999;
-        # YAML::Syck 0.82 has no noticable performance problem with 999;
+        # YAML .pm 0.62 is unacceptably slow with 999; id:148
+        # YAML: :Syck 0.82 has no noticable performance problem with 999; id:44
         my $ftpstats_size = $CPAN::Config->{ftpstats_size} || 99;
         my $ftpstats_period = $CPAN::Config->{ftpstats_period} || 14;
         while (

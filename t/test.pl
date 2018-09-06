@@ -2,7 +2,7 @@
 # t/test.pl - most of Test::More functionality without the fuss
 
 
-# NOTE:
+# NOTE:  id:1033
 #
 # Do not rely on features found only in more modern Perls here, as some CPAN
 # distributions copy this file and must operate on older Perls. Similarly, keep
@@ -240,7 +240,7 @@ sub _ok {
     }
 
     if ($TODO) {
-	$out = $out . " # TODO $TODO";
+	$out = $out . " # TODO $TODO"; id:1085
     } else {
 	$Tests_Are_Passing = 0 unless $pass;
     }
@@ -539,7 +539,7 @@ sub todo_skip {
     my $n   = @_ ? shift : 1;
 
     for (1..$n) {
-        _print "not ok $test # TODO & SKIP $why\n";
+        _print "not ok $test # TODO & SKIP $why\n"; id:953
         $test = $test + 1;
     }
     local $^W = 0;
@@ -799,7 +799,7 @@ sub runperl {
     } else {
 	$result = `$runperl`;
     }
-    $result =~ s/\n\n/\n/g if $is_vms; # XXX pipes sometimes double these
+    $result =~ s/\n\n/\n/g if $is_vms; # XXX pipes sometimes double these id:926
     return $result;
 }
 
@@ -1086,7 +1086,7 @@ sub fresh_perl_like {
 # The first line of the code to run may be a command line switch such as -wE
 # or -0777 (alphanumerics only; only one cluster, beginning with a minus is
 # allowed).  Later lines may contain (note the '# ' on each):
-#   # TODO reason for todo
+#   # TODO reason for todo id:1063
 #   # SKIP reason for skip
 #   # SKIP ?code to test if this should be skipped
 #   # NAME name of the test (as with ok($ok, $name))
@@ -1583,7 +1583,7 @@ sub warning_like {
 }
 
 # Set a watchdog to timeout the entire test file
-# NOTE:  If the test file uses 'threads', then call the watchdog() function
+# NOTE: If the test file uses 'threads', then call the watchdog() function id:1034
 #        _AFTER_ the 'threads' module is loaded.
 sub watchdog ($;$)
 {

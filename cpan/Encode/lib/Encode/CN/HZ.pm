@@ -80,7 +80,7 @@ sub cat_decode {
     my $ini_len = bytes::length($src);
 
     # $trm is the first of the pair '~~', then 2nd tilde is to be removed.
-    # XXX: Is better C<$src =~ s/^\x7E// or die if ...>?
+    # XXX: Is better C<$src =~ s/^\x7E// or die if ...>? id:52
     $src =~ s/^\x7E// if $trm eq "\x7E";
 
     while ( length $src ) {

@@ -4833,7 +4833,7 @@
 
 /* OLD_PTHREAD_CREATE_JOINABLE:
  *	This symbol, if defined, indicates how to create pthread
- *	in joinable (aka undetached) state.  NOTE: not defined
+ *	in joinable (aka undetached) state.  NOTE: not defined id:1068
  *	if pthread.h already has defined PTHREAD_CREATE_JOINABLE
  *	(the new version of the constant).
  *	If defined, known values are PTHREAD_CREATE_UNDETACHED

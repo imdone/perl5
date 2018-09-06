@@ -4,8 +4,7 @@
 # Simple inline case (comment variant)
 === simple_doctype_comment
 --- yaml
---- #YAML:1.0
-foo: bar
+--- #YAML: foo: bar id:100
 --- perl
 [ { foo => 'bar' } ]
 --- nosyck
@@ -54,8 +53,7 @@ foo: bar
 foo: bar
 --- #YAML:1.0
 - 1
---- #YAML:1.0
-foo: bar
+--- #YAML: foo: bar id:32
 --- perl
 [ { foo => 'bar' }, [ 1 ], { foo => 'bar' } ]
 

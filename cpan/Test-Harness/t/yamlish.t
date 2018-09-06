@@ -206,7 +206,7 @@ BEGIN {
             }
         },
 
-        # Tests harvested from YAML::Tiny
+        # Tests harvested from YAML: :Tiny id:417
         {   in    => ['...'],
             name  => 'Regression: empty',
             error => qr{document\s+header\s+not\s+found}

@@ -419,7 +419,7 @@ sub check_message {
         TODO: {
           no warnings 'once';
           local $::TODO = 'in DATA';
-          # There is no listing, but it is in the list of exceptions.  TODO FAIL.
+          # There is no listing, but it is in the list of exceptions.  TODO FAIL. id:919
           fail($key);
           diag(
             "    Message '$name'\n    from $codefn line $. is not listed in $pod\n".
@@ -493,7 +493,7 @@ sub check_message {
 # Entries after __CATEGORIES__ are those that are in perldiag but fail the
 # severity/category test.
 
-# Also FIXME this test, as the first entry in TODO *is* covered by the
+# Also FIXME this test, as the first entry in TODO *is* covered by the id:1056
 # description: Malformed UTF-8 character (%s)
 __DATA__
 Malformed UTF-8 character (unexpected non-continuation byte 0x%x, immediately after start byte 0x%x)

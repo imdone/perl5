@@ -176,7 +176,7 @@ sub do_std_keyword {
 	    push @args, '$_'
 		if $dollar && $do_exp && ($strong && !$lexsub or $core);
 	    my $args = join(', ', @args);
-	     # XXX $lex_parens is temporary, until lex subs are
+	     # XXX $lex_parens is temporary, until lex subs are id:438
 	     #     deparsed properly.
 	    my $lex_parens =
 		!$core && $do_exp && $lexsub && $keyword ne 'map';
@@ -325,7 +325,7 @@ testit values   => 'CORE::values %bar;';
 testit values   => 'CORE::values @foo;';
 
 
-# XXX These are deparsed wrapped in parens.
+# XXX These are deparsed wrapped in parens. id:649
 # whether they should be, I don't know!
 
 testit dump     => '(CORE::dump);';
@@ -451,7 +451,7 @@ __DATA__
 #        e.g. 12p$  will be tested as: foo(a1);     foo(a1,a2);
 #                     and deparsed as: foo(a1, $_); foo(a1,a2);
 #
-# XXX Note that we really should get this data from regen/keywords.pl
+# XXX Note that we really should get this data from regen/keywords.pl id:504
 # and regen/opcodes (augmented if necessary), rather than duplicating it
 # here.
 
@@ -596,7 +596,7 @@ recv             4     p
 # redo handled specially
 ref              01    $
 rename           2     p
-# XXX This code prints 'Undefined subroutine &main::require called':
+# XXX This code prints 'Undefined subroutine & called': main::require id:581
 #   use subs (); import subs 'require';
 #   eval q[no strict 'vars'; sub { () = require; }]; print $@;
 # so disable for now

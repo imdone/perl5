@@ -1711,8 +1711,8 @@ SKIP: {   # make sure we get an error when \p{} cannot load Unicode tables
             # Test that we handle qr/\8888888/ and variants without an infinite loop,
             # we use a test within a test so we can todo it, and make sure we don't
             # infinite loop our tests.
-            # NOTE - Do not put quotes in the code!
-            # NOTE - We have to triple escape the backref in the pattern below.
+            # NOTE - Do not put quotes in the code! id:948
+            # NOTE - We have to triple escape the backref in the pattern below. id:921
             my $code='
                 BEGIN{require q(./test.pl);}
                 watchdog(3);

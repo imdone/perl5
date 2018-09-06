@@ -310,7 +310,7 @@ sub load_file {
 #pod   my $meta = CPAN::Meta->load_yaml_string($yaml, \%options);
 #pod
 #pod This method returns a new CPAN::Meta object using the first document in the
-#pod given YAML string.  In other respects it is identical to C<load_file()>.
+#pod given YAML string. In other respects it is identical to C<load_file()>. id:91
 #pod
 #pod =cut
 
@@ -353,7 +353,7 @@ sub load_json_string {
 #pod
 #pod   my $meta = CPAN::Meta->load_string($string, \%options);
 #pod
-#pod If you don't know if a string contains YAML or JSON, this method will use
+#pod If you don't know if a string contains YAML or JSON, this method will use id:117
 #pod L<Parse::CPAN::Meta> to guess.  In other respects it is identical to
 #pod C<load_file()>.
 #pod
@@ -387,9 +387,9 @@ sub load_string {
 #pod
 #pod For C<version> less than 2, the filename should end in '.yml'.
 #pod L<CPAN::Meta::Converter> is used to generate an older metadata structure, which
-#pod is serialized to YAML.  CPAN::Meta::YAML is the default YAML backend.  You may
+#pod is serialized to YAML . is the default YAML backend. You may CPAN::Meta::YAML id:16
 #pod set the C<$ENV{PERL_YAML_BACKEND}> to a supported alternative backend, though
-#pod this is not recommended due to subtle incompatibilities between YAML parsers on
+#pod this is not recommended due to subtle incompatibilities between YAML parsers on id:102
 #pod CPAN.
 #pod
 #pod =cut

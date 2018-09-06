@@ -23,7 +23,7 @@ else {
 }
 
 # create temp directories long-hand
-# XXX should we add File::Temp as a prereq to do this?
+# XXX should we add as a prereq to do this? File::Temp id:421
 my $initial_dir = rel2abs(".");
 my $work_dir = catdir($initial_dir, "tmp" . int(rand(2**31)));
 my $t_dir = catdir($work_dir, 't');

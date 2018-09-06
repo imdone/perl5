@@ -48,8 +48,8 @@ not ok 4 - this is a real failure
   --- YAML!
   ...
 ok 5 # skip we have no description
-ok 6 - you shall not pass! # TODO should have failed
-not ok 7 - Gandalf wins.  Game over.  # TODO 'bout time!
+ok 6 - you shall not pass! # TODO should have failed id:411
+not ok 7 - Gandalf wins.  Game over.  # TODO 'bout time! id:290
 END_TAP
 
 can_ok $PARSER, 'new';
@@ -133,7 +133,7 @@ is $failed->explanation, 'some data',
 ok !$failed->has_skip, '... and it is not a SKIPped failed';
 ok $failed->has_todo, '... but it is a TODO succeeded';
 is $failed->as_string,
-  'not ok 2 first line of the input valid # TODO some data',
+  'not ok 2 first line of the input valid # TODO some data', id:400
   '... and its string representation should be correct';
 is $failed->raw, 'not ok first line of the input valid # todo some data',
   '... and raw() should return the original line';
@@ -195,7 +195,7 @@ is $failed->as_string, 'not ok 4 - this is a real failure',
 is $failed->raw, 'not ok 4 - this is a real failure',
   '... and raw() should return the original line';
 
-# Some YAML
+# Some YAML  id:187
 my $yaml = shift @results;
 isa_ok $yaml, $YAML;
 is $yaml->type, 'yaml', '... and it should report the correct type';
@@ -226,7 +226,7 @@ is $test->raw, 'ok 5 # skip we have no description',
   '... and raw() should return the original line';
 
 # a failing test, which also happens to have a directive
-# ok 6 - you shall not pass! # TODO should have failed
+# ok 6 - you shall not pass! # TODO should have failed id:357
 
 my $bonus = shift @results;
 isa_ok $bonus, $TEST;
@@ -245,14 +245,14 @@ is $bonus->explanation, 'should have failed',
   '... and the correct directive explanation';
 ok !$bonus->has_skip, '... and it is not a SKIPped failed';
 ok $bonus->has_todo,  '... but it is a TODO succeeded';
-is $bonus->as_string, 'ok 6 - you shall not pass! # TODO should have failed',
+is $bonus->as_string, 'ok 6 - you shall not pass! # TODO should have failed', id:412
   '... and its string representation should be correct';
-is $bonus->raw, 'ok 6 - you shall not pass! # TODO should have failed',
+is $bonus->raw, 'ok 6 - you shall not pass! # TODO should have failed', id:291
   '... and raw() should return the original line';
 ok $bonus->todo_passed,
   '... todo_bonus() should pass for TODO tests which unexpectedly succeed';
 
-# not ok 7 - Gandalf wins.  Game over.  # TODO 'bout time!
+# not ok 7 - Gandalf wins.  Game over.  # TODO 'bout time! id:520
 
 my $passed = shift @results;
 isa_ok $passed, $TEST;
@@ -272,9 +272,9 @@ is $passed->explanation, "'bout time!",
 ok !$passed->has_skip, '... and it is not a SKIPped passed';
 ok $passed->has_todo, '... but it is a TODO succeeded';
 is $passed->as_string,
-  "not ok 7 - Gandalf wins.  Game over. # TODO 'bout time!",
+  "not ok 7 - Gandalf wins.  Game over. # TODO 'bout time!", id:188
   '... and its string representation should be correct';
-is $passed->raw, "not ok 7 - Gandalf wins.  Game over.  # TODO 'bout time!",
+is $passed->raw, "not ok 7 - Gandalf wins.  Game over.  # TODO 'bout time!", id:358
   '... and raw() should return the original line';
 ok !$passed->todo_passed,
   '... todo_passed() should not pass for TODO tests which failed';
@@ -471,8 +471,8 @@ not ok 4 - this is a real failure
   --- YAML!
   ...
 ok 5 # skip we have no description
-ok 6 - you shall not pass! # TODO should have failed
-not ok 7 - Gandalf wins.  Game over.  # TODO 'bout time!
+ok 6 - you shall not pass! # TODO should have failed id:413
+not ok 7 - Gandalf wins.  Game over.  # TODO 'bout time! id:292
 END_TAP
 
     {
@@ -563,8 +563,8 @@ not ok 4 - this is a real failure
   --- YAML!
   ...
 ok 5 # skip we have no description
-ok 6 - you shall not pass! # TODO should have failed
-not ok 7 - Gandalf wins.  Game over.  # TODO 'bout time!
+ok 6 - you shall not pass! # TODO should have failed id:521
+not ok 7 - Gandalf wins.  Game over.  # TODO 'bout time! id:189
 END_TAP
 
     my $parser = $PARSER->new( { tap => $tap } );
@@ -655,7 +655,7 @@ END_TAP
 TAP version 13
 1..2
 ok 1 - input file opened
-ok 2 - Gandalf wins.  Game over.  # TODO 'bout time!
+ok 2 - Gandalf wins.  Game over.  # TODO 'bout time! id:359
 END_TAP
 
     my $parser = TAP::Parser->new( { tap => $tap } );

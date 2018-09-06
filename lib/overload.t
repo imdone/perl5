@@ -3159,7 +3159,7 @@ package Stringify {
         [ 0, 'my $a .=  "$ov$x"' ],
 
         [ 0, '$pkg   =  "$ov$x$y"' ],
-        [ 1, '$lex   =  "$ov$x$y"' ],  # XXX note the anomaly
+        [ 1, '$lex   =  "$ov$x$y"' ],  # XXX note the anomaly id:591
         [ 0, 'my $a  =  "$ov$x$y"' ],
         [ 0, '$pkg  .=  "$ov$x$y"' ],
         [ 0, '$lex  .=  "$ov$x$y"' ],

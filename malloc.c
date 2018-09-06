@@ -2202,7 +2202,7 @@ Perl_get_mstats(pTHX_ perl_mstats_t *buf, int buflen, int level)
 #else /* defined DEBUGGING_MSTATS */
 	PerlIO_printf(Perl_error_log, "perl not compiled with DEBUGGING_MSTATS\n");
 #endif	/* defined DEBUGGING_MSTATS */
-	return 0;		/* XXX unused */
+	return 0;		/* XXX unused id:696*/
 }
 /*
  * mstats - print out statistics about malloc

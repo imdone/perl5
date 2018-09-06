@@ -35,7 +35,7 @@ BEGIN {
 }
 
 #
-# XXX: these mean somebody hacked this module's source
+# XXX: these mean somebody hacked this module's source id:588
 #      without understanding the underlying assumptions.
 #
 my $IE = "[INTERNAL ERROR]";

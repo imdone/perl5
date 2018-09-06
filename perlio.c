@@ -1316,7 +1316,7 @@ PerlIO_binmode(pTHX_ PerlIO *f, int iotype, int mode, const char *names)
 	 */
 	if (!(mode & O_BINARY)) {
 	    /* Text mode */
-	    /* FIXME?: Looking down the layer stack seems wrong,
+	    /* FIXME ?: Looking down the layer stack seems wrong, id:678
 	       but is a way of reaching past (say) an encoding layer
 	       to flip CRLF-ness of the layer(s) below
 	     */
@@ -2404,8 +2404,8 @@ void PerlIO_teardown(void) /* Call only from PERL_SYS_TERM(). */
 {
     dVAR;
 #if 0
-/* XXX we can't rely on an interpreter being present at this late stage,
-   XXX so we can't use a function like PerlLIO_write that relies on one
+/* XXX we can't rely on an interpreter being present at this late stage, id:869
+   XXX so we can't use a function like PerlLIO_write that relies on one id:722
    being present (at least in win32) :-(.
    Disable for now.
 */
@@ -2525,7 +2525,7 @@ PerlIOUnix_oflags(const char *mode)
 	break;
     }
 
-    /* XXX TODO: PerlIO_open() test that exercises 'rb' and 'rt'. */
+    /* XXX TODO: PerlIO_open() test that exercises 'rb' and 'rt'. id:614*/
 
     /* Unless O_BINARY is different from O_TEXT, first bit-or:ing one
      * of them in, and then bit-and-masking the other them away, won't
@@ -2604,8 +2604,8 @@ PerlIOUnix_pushed(pTHX_ PerlIO *f, const char *mode, SV *arg, PerlIO_funcs *tab)
 	/* We never call down so do any pending stuff now */
 	PerlIO_flush(PerlIONext(f));
 	/*
-	 * XXX could (or should) we retrieve the oflags from the open file
-	 * handle rather than believing the "mode" we are passed in? XXX
+	 * XXX could (or should) we retrieve the oflags from the open file id:712
+	 * handle rather than believing the "mode" we are passed in? XXX  id:679
 	 * Should the value on NULL mode be 0 or -1?
 	 */
         PerlIOUnix_setfd(aTHX_ f, PerlIO_fileno(PerlIONext(f)),
@@ -2693,7 +2693,7 @@ PerlIOUnix_open(pTHX_ PerlIO_funcs *self, PerlIO_list_t *layers,
 	if (f) {
 	    NOOP;
 	    /*
-	     * FIXME: pop layers ???
+	     * FIXME: pop layers ??? id:870
 	     */
 	}
 	return NULL;
@@ -3141,7 +3141,7 @@ PerlIOStdio_dup(pTHX_ PerlIO *f, PerlIO *o, CLONE_PARAMS *param, int flags)
 	    }
 	    else {
 		NOOP;
-		/* FIXME: To avoid messy error recovery if dup fails
+		/* FIXME: To avoid messy error recovery if dup fails id:723
 		   re-use the existing stdio as though flag was not set
 		 */
 	    }
@@ -3163,7 +3163,7 @@ PerlIOStdio_invalidate_fileno(pTHX_ FILE *f)
 {
     PERL_UNUSED_CONTEXT;
 
-    /* XXX this could use PerlIO_canset_fileno() and
+    /* XXX this could use PerlIO_canset_fileno() and id:615
      * PerlIO_set_fileno() support from Configure
      */
 #  if defined(HAS_FDCLOSE)
@@ -3490,7 +3490,7 @@ PerlIOStdio_flush(pTHX_ PerlIO *f)
 	NOOP;
 #if 0
 	/*
-	 * FIXME: This discards ungetc() and pre-read stuff which is not
+	 * FIXME: This discards ungetc() and pre-read stuff which is not id:802
 	 * right if this is just a "sync" from a layer above Suspect right
 	 * design is to do _this_ but not have layer above flush this
 	 * layer read-to-read

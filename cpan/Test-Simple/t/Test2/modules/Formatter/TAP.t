@@ -212,13 +212,13 @@ tests assert_tap => sub {
 
             is_deeply(
                 [$it->assert_tap({assert => {pass => 1}, amnesty => [{tag => 'TODO', details => 'xxx'}]}, 1)],
-                [[OUT_STD, "ok 1 # TODO xxx\n"]],
+                [[OUT_STD, "ok 1 # TODO xxx\n"]], id:365
                 "Pass with TODO (with details)",
             );
 
             is_deeply(
                 [$it->assert_tap({assert => {pass => 1}, amnesty => [{tag => 'TODO'}]}, 1)],
-                [[OUT_STD, "ok 1 # TODO\n"]],
+                [[OUT_STD, "ok 1 # TODO \n"]], id:460
                 "Pass with TODO (without details)",
             );
 
@@ -235,7 +235,7 @@ tests assert_tap => sub {
                         1
                     )
                 ],
-                [[OUT_STD, "ok 1 # TODO & SKIP yyy\n"]],
+                [[OUT_STD, "ok 1 # TODO & SKIP yyy\n"]], id:484
                 "Pass with skip and TODO",
             );
 
@@ -261,13 +261,13 @@ tests assert_tap => sub {
 
             is_deeply(
                 [$it->assert_tap({assert => {pass => 1, details => 'bob'}, amnesty => [{tag => 'TODO', details => 'xxx'}]}, 1)],
-                [[OUT_STD, "ok 1 - bob # TODO xxx\n"]],
+                [[OUT_STD, "ok 1 - bob # TODO xxx\n"]], id:300
                 "Pass with TODO (with details)",
             );
 
             is_deeply(
                 [$it->assert_tap({assert => {pass => 1, details => 'bob'}, amnesty => [{tag => 'TODO'}]}, 1)],
-                [[OUT_STD, "ok 1 - bob # TODO\n"]],
+                [[OUT_STD, "ok 1 - bob # TODO \n"]], id:529
                 "Pass with TODO (without details)",
             );
 
@@ -284,7 +284,7 @@ tests assert_tap => sub {
                         1
                     )
                 ],
-                [[OUT_STD, "ok 1 - bob # TODO & SKIP yyy\n"]],
+                [[OUT_STD, "ok 1 - bob # TODO & SKIP yyy\n"]], id:366
                 "Pass with skip and TODO",
             );
 
@@ -310,13 +310,13 @@ tests assert_tap => sub {
 
             is_deeply(
                 [$it->assert_tap({assert => {pass => 0}, amnesty => [{tag => 'TODO', details => 'xxx'}]}, 1)],
-                [[OUT_STD, "not ok 1 # TODO xxx\n"]],
+                [[OUT_STD, "not ok 1 # TODO xxx\n"]], id:461
                 "Pass with TODO (with details)",
             );
 
             is_deeply(
                 [$it->assert_tap({assert => {pass => 0}, amnesty => [{tag => 'TODO'}]}, 1)],
-                [[OUT_STD, "not ok 1 # TODO\n"]],
+                [[OUT_STD, "not ok 1 # TODO \n"]], id:485
                 "Pass with TODO (without details)",
             );
 
@@ -333,7 +333,7 @@ tests assert_tap => sub {
                         1
                     )
                 ],
-                [[OUT_STD, "not ok 1 # TODO & SKIP yyy\n"]],
+                [[OUT_STD, "not ok 1 # TODO & SKIP yyy\n"]], id:301
                 "Pass with skip and TODO",
             );
 
@@ -359,13 +359,13 @@ tests assert_tap => sub {
 
             is_deeply(
                 [$it->assert_tap({assert => {pass => 0, details => 'bob'}, amnesty => [{tag => 'TODO', details => 'xxx'}]}, 1)],
-                [[OUT_STD, "not ok 1 - bob # TODO xxx\n"]],
+                [[OUT_STD, "not ok 1 - bob # TODO xxx\n"]], id:530
                 "Pass with TODO (with details)",
             );
 
             is_deeply(
                 [$it->assert_tap({assert => {pass => 0, details => 'bob'}, amnesty => [{tag => 'TODO'}]}, 1)],
-                [[OUT_STD, "not ok 1 - bob # TODO\n"]],
+                [[OUT_STD, "not ok 1 - bob # TODO \n"]], id:367
                 "Pass with TODO (without details)",
             );
 
@@ -382,7 +382,7 @@ tests assert_tap => sub {
                         1
                     )
                 ],
-                [[OUT_STD, "not ok 1 - bob # TODO & SKIP yyy\n"]],
+                [[OUT_STD, "not ok 1 - bob # TODO & SKIP yyy\n"]], id:462
                 "Pass with skip and TODO",
             );
 

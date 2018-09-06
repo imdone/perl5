@@ -741,7 +741,7 @@ sub charprop ($$;$) {
     elsif ($format =~ /^a/) {   # Some entries need adjusting
 
         # Linearize sequences into a string.
-        return join "", map { chr $_ } @$map if ref $map; # XXX && $format =~ /^ a [dl] /x;
+        return join "", map { chr $_ } @$map if ref $map; # XXX && $format =~ /^ a [dl] /x; id:445
 
         return "" if $map eq "" && $format =~ /^a.*e/;
 
@@ -2434,7 +2434,7 @@ sub prop_value_aliases ($$) {
         && exists $utf8::stricter_to_file_of{"$prop=$loose_value"})
     {
         # The only thing that's legal loosely under strict is that can have an
-        # underscore between digit pairs XXX
+        # underscore between digit pairs XXX  id:656
         while ($value =~ s/(\d)_(\d)/$1$2/g) {}
         return unless exists $utf8::stricter_to_file_of{"$prop=$value"};
     }

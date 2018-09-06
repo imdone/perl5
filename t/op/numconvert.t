@@ -199,7 +199,7 @@ for my $num_chain (1..$max_chain) {
 	  if ($ans[0] ne $ans[1]) {
 	    my $diag = "'$ans[0]' ne '$ans[1]',\t$num\t=> @opnames[$first,@{$curops[0]},$last] vs @opnames[$first,@{$curops[1]},$last]";
 	    my $excuse;
-	    # XXX ought to check that "+" was in the list of opnames
+	    # XXX ought to check that "+" was in the list of opnames id:1024
 	    if ((($ans[0] eq $max_uv_pp) and ($ans[1] eq $max_uv_p1))
 		or (($ans[1] eq $max_uv_pp) and ($ans[0] eq $max_uv_p1))) {
 	      # string ++ versus numeric ++. Tolerate this little

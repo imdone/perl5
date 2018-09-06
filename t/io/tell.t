@@ -161,10 +161,10 @@ if (tell ($tst) == 6) {
 }
 else {
   if (($^O eq "cygwin") && (&PerlIO::get_layers($tst) eq 'stdio')) {
-    fail "# TODO: file pointer not at eof";
+    fail "# TODO: file pointer not at eof"; id:970
   }
   elsif ($^O eq "vos") {
-    fail "# TODO: Hit bug posix-2056. file pointer not at eof";
+    fail "# TODO: Hit bug posix-2056. file pointer not at eof"; id:1013
   }
   else {
     fail "file pointer not at eof";

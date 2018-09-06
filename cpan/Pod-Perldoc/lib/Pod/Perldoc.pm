@@ -510,7 +510,7 @@ sub process {
         print "\n";
     }
 
-    # TODO: make it deal with being invoked as various different things
+    # TODO: make it deal with being invoked as various different things id:199
     #  such as perlfaq".
 
     return $self->usage_brief  unless  @{ $self->{'args'} };
@@ -920,7 +920,7 @@ sub grand_search_init {
                         opendir(DIR, $dir) or $self->die( "opendir $dir: $!" );
                         while (my $file = readdir(DIR)) {
                             next if ($file =~ /^\./s);
-                            $file =~ s/\.(pm|pod)\z//;  # XXX: badfs
+                            $file =~ s/\.(pm|pod)\z//;  # XXX: badfs id:381
                             print STDERR "\t$me $_\::$file\n";
                         }
                         closedir(DIR)    or $self->die( "closedir $dir: $!" );
@@ -1154,7 +1154,7 @@ sub search_perlop {
   $self->not_dynamic( 1 );
 
   my $perlop = shift @$found_things;
-  # XXX FIXME: getting filehandles should probably be done in a single place
+  # XXX FIXME: getting filehandles should probably be done in a single place id:168
   # especially since we need to support UTF8 or other encoding when dealing
   # with perlop, perlfunc, perlapi, perlfaq[1-9]
   my $fh = $self->open_fh('<', $perlop);
@@ -1630,7 +1630,7 @@ sub minus_f_nocase {   # i.e., do like -f, but without regard to case
         while(defined( $cip = readdir(DIR) )) {
         if (lc $cip eq $lcp){
             $found++;
-            last; # XXX stop at the first? what if there's others?
+            last; # XXX stop at the first? what if there's others? id:338
         }
         }
         closedir DIR  or $self->die( "closedir $p_dirspec: $!" );
@@ -1648,7 +1648,7 @@ sub minus_f_nocase {   # i.e., do like -f, but without regard to case
 #..........................................................................
 
 sub pagers_guessing {
-    # TODO: This whole subroutine needs to be rewritten. It's semi-insane
+    # TODO: This whole subroutine needs to be rewritten. It's semi-insane id:263
     # right now.
 
     my $self = shift;
@@ -1950,7 +1950,7 @@ sub searchfor {
     my $ret;
     my $i;
     my $dir;
-    $self->{'target'} = (splitdir $s)[-1];  # XXX: why not use File::Basename?
+    $self->{'target'} = (splitdir $s)[-1];  # XXX: why not use File::Basename? id:200
     for ($i=0; $i<@dirs; $i++) {
     $dir = $dirs[$i];
     next unless -d $dir;

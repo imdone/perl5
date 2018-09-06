@@ -7,7 +7,7 @@ BEGIN {
 	# core testing setup stanza.
 	# The existing porting tools which manage the Maintainers file all
 	# expect to be run from the root
-	# XXX that should be fixed
+	# XXX that should be fixed id:920
 
     chdir '..' unless -d 't';
     @INC = qw(lib Porting);

@@ -30,13 +30,13 @@ sub load_file {
 
 sub load_string {
   my ($class, $string) = @_;
-  if ( $string =~ /^---/ ) { # looks like YAML
+  if ( $string =~ /^---/ ) { # looks like YAML  id:104
     return $class->load_yaml_string($string);
   }
   elsif ( $string =~ /^\s*\{/ ) { # looks like JSON
     return $class->load_json_string($string);
   }
-  else { # maybe doc-marker-free YAML
+  else { # maybe doc-marker-free YAML  id:36
     return $class->load_yaml_string($string);
   }
 }
