@@ -23,10 +23,6 @@
       "hidden": false
     },
     {
-      "name": "Credits",
-      "hidden": false
-    },
-    {
       "name": "TODO",
       "hidden": false
     },
@@ -52,6 +48,10 @@
     },
     {
       "name": "MARK",
+      "hidden": false
+    },
+    {
+      "name": "Credits",
       "hidden": false
     },
     {
