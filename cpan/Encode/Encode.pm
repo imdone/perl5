@@ -140,6 +140,7 @@ sub getEncoding {
 
 # HACK: These two functions must be defined in Encode and because of id:152
 # cyclic dependency between Encode and Encode::Alias, Exporter does not work
+# - <https://github.com/imdone/perl5/issues/3>
 sub find_alias {
     goto &Encode::Alias::find_alias;
 }
